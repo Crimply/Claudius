@@ -49,7 +49,7 @@ public class Component extends Feature {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drag(mouseX, mouseY);
         counter1 = new int[]{1};
-        float totalItemHeight = this.open ? this.getTotalItemHeight() - 3.0f : 0.0f;
+        float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 0.0f;
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         RenderUtil.drawRect(this.x, this.y - 2.8f, this.x + this.width, this.y + this.height - 6.9f, color);
         if (this.open) {
