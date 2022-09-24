@@ -72,7 +72,7 @@ public class ClickGui extends GuiScreen {
 
     @Override
     public boolean doesGuiPauseGame() {
-        return true;
+        return false;
     }
 
     public final ArrayList<Component> getComponents() {

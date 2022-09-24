@@ -18,13 +18,15 @@ public class TrueDurabilityModule extends Module {
 
   @SubscribeEvent
   public void itemToolTip(ItemTooltipEvent event) {
-    List<String> toolTip = event.getToolTip();
+
     ItemStack stack = event.getItemStack();
     int max = stack.getMaxDamage();
-
+    List<String> toolTip1 = event.getToolTip();
     if(stack.isEmpty() || max <= 0) return;
     if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) return;
-    toolTip.add("Durability: 999999+ ");
+    toolTip1.add("Durability: 999999+ ");
+
+    List<String> toolTip = event.getToolTip();
 
     int damage;
     NBTTagCompound tag = stack.getTagCompound();
@@ -37,7 +39,6 @@ public class TrueDurabilityModule extends Module {
     TextFormatting color;
     if(damage > max) color = TextFormatting.DARK_AQUA;
     else color = TextFormatting.RESET;
-    toolTip.clear();
     toolTip.add(color.toString() + "Durability: " + Long.toString(count) + TextFormatting.RESET + " / " + Long.toString(max) + "");
   }
 }
