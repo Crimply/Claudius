@@ -7,6 +7,7 @@ import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.*;
 import me.crimp.claudius.mod.modules.csgo.*;
+import me.crimp.claudius.mod.modules.exploit.AutoDupe;
 import me.crimp.claudius.mod.modules.exploit.NoClipFly;
 import me.crimp.claudius.mod.modules.fake.*;
 import me.crimp.claudius.mod.modules.fixes.*;
@@ -38,6 +39,7 @@ public class ModuleManager extends Feature {
 
                 //exploit
                 new NoClipFly(),
+                new AutoDupe(),
 
                 //misc
                 new ToolTips(),
@@ -46,8 +48,6 @@ public class ModuleManager extends Feature {
                 new NoToast(),
                 new DonkeyDrop(),
                 new AcidMode(),
-
-
 
                 //fixes
                 new GuiMovee(),
