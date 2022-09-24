@@ -5,6 +5,7 @@ import me.crimp.claudius.mod.modules.Module;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLiquid;
+import net.minecraft.block.BlockTallGrass;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
@@ -16,7 +17,9 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.block.*;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -127,7 +130,7 @@ public class DispenserMeta extends Module {
         }
 
         // IntelliJ dumb, iirc this can cause npe when looking in water, at crystal etc.
-        if (mc.objectMouseOver == null || mc.objectMouseOver.getBlockPos() == null || mc.objectMouseOver.getBlockPos().up() == null) {
+        if (mc.objectMouseOver == null || mc.objectMouseOver.getBlockPos() == null || mc.objectMouseOver.getBlockPos().up() == null || DispenserMeta.mc.objectMouseOver != null && DispenserMeta.mc.objectMouseOver.typeOfHit == RayTraceResult.Type.BLOCK) {
             Command.sendMessage("[Auto32k] Not a valid place target, disabling.");
             this.toggle();
             return;
