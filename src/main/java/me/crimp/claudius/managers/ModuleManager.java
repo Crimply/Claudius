@@ -73,6 +73,7 @@ public class ModuleManager extends Feature {
                 new PopCounter(),
                 new AutoKiller(),
                 new AutoClicker(),
+                new DispenserMeta(),
 
                 //render
                 new Austraila(),
