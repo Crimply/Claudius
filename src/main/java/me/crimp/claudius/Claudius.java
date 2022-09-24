@@ -111,8 +111,7 @@ public class Claudius {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LOGGER.info("F" +
-                "uckyWucky - Crimp");
+        LOGGER.info("FuckyWucky - Crimp");
     }
 
     @Mod.EventHandler

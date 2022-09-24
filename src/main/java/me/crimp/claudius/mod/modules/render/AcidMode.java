@@ -18,7 +18,7 @@ public class AcidMode extends Module {
     @SubscribeEvent
     public void onRenderGameOverlay(RenderGameOverlayEvent event) {
 
-        if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null || Minecraft.getMinecraft().player.getUniqueID() == null)
+        if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null)
             return;
 
         if (OpenGlHelper.shadersSupported) {
@@ -35,9 +35,8 @@ public class AcidMode extends Module {
     @Override
     public void onDisable() {
         if (mc.player == null || mc.world == null) return;
-        if (Minecraft.getMinecraft().entityRenderer.getShaderGroup() != null) {
-            Minecraft.getMinecraft().entityRenderer.getShaderGroup().deleteShaderGroup();
-        }
+        Minecraft.getMinecraft().entityRenderer.getShaderGroup();
+        Minecraft.getMinecraft().entityRenderer.getShaderGroup().deleteShaderGroup();
         firstRun = true;
         super.onDisable();
     }

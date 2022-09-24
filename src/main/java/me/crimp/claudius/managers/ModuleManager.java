@@ -52,7 +52,6 @@ public class ModuleManager extends Feature {
                 //fixes
                 new GuiMovee(),
                 new SetDisplay(),
-                new FontMod(),
                 new AntiLog4j(),
 
                 //client
