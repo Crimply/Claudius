@@ -71,7 +71,7 @@ public class DispenserMeta extends Module {
     private boolean isSneaking;
 
     public DispenserMeta() {
-        super("DispenserMeta", "",Category.PVP, true, false, false);
+        super("Dispencer32k", "",Category.PVP, true, false, false);
     }
 
     @Override

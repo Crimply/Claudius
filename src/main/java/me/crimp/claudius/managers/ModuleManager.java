@@ -63,8 +63,7 @@ public class ModuleManager extends Feature {
                 new GuiBlurr(),
 
                 //fake
-                new Auto32kBypass(),
-                new AntiChainPop(),
+
                 new CatGirlExploit(),
                 new AutoBypasser(),
 
@@ -76,6 +75,7 @@ public class ModuleManager extends Feature {
                 new AutoKiller(),
                 new AutoClicker(),
                 new DispenserMeta(),
+                new AntiChainPop(),
 
                 //render
                 new Austraila(),
