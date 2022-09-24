@@ -2,21 +2,18 @@ package me.crimp.claudius.mod.modules.misc;
 
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.utils.SpecialTagCompound;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.awt.*;
 import java.util.List;
 
 
 public class TrueDurabilityModule extends Module {
   public TrueDurabilityModule() {
-    super("TrueDurability", "", Category.MISC, true, false, false);
+    super("TrueDura", "Display unbreakable items in red enchant, add real durability in tooltip", Category.MISC, true, false, false);
   }
 
   @SubscribeEvent
@@ -29,7 +26,6 @@ public class TrueDurabilityModule extends Module {
     if (stack.hasTagCompound()) {
       assert stack.getTagCompound() != null;
       if (stack.getTagCompound().getBoolean("Unbreakable")) {
-        toolTip.set(7, "Durability");
         toolTip.add("Durability: 99999+");
       }
       return;
@@ -37,13 +33,18 @@ public class TrueDurabilityModule extends Module {
 
     int damage;
     NBTTagCompound tag = stack.getTagCompound();
-    if (tag instanceof SpecialTagCompound) {
+    if (tag != null && tag instanceof SpecialTagCompound) {
       damage = ((SpecialTagCompound) tag).getTrueDamage();
     } else damage = stack.getItemDamage();
 
     long count = (long) max - (long) damage;
 
-    //toolTip.add("");
-    toolTip.add("Durability: " + count + " / " + Long.toString(max) + "" + TextFormatting.RESET);
+    TextFormatting color;
+    if (damage < 0) color = TextFormatting.GRAY;
+    else if (damage > max) color = TextFormatting.GRAY;
+    else color = TextFormatting.GRAY;
+
+    toolTip.add("");
+    toolTip.add(color.toString() + "Durability: " + Long.toString(count) + " / " + Long.toString(max) + "");
   }
 }

@@ -51,7 +51,7 @@ public class Component extends Feature {
         counter1 = new int[]{1};
         float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 0.0f;
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
-        RenderUtil.drawRect(this.x, this.y - 2.8f, this.x + this.width, this.y + this.height - 6.9f, color);
+        RenderUtil.drawRect(this.x, this.y - 1, this.x + this.width, this.y + this.height - 6, color);
         if (this.open) {
             RenderUtil.drawRect(this.x, (float) this.y + 13.5f, this.x + this.width, (float) (this.y + this.height) + totalItemHeight, 0x77000000);
         }
