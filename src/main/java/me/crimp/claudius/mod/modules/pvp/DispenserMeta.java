@@ -130,7 +130,7 @@ public class DispenserMeta extends Module {
         }
 
         // IntelliJ dumb, iirc this can cause npe when looking in water, at crystal etc.
-        if (mc.objectMouseOver == null || mc.objectMouseOver.getBlockPos() == null || mc.objectMouseOver.getBlockPos().up() == null || DispenserMeta.mc.objectMouseOver != null && DispenserMeta.mc.objectMouseOver.typeOfHit == RayTraceResult.Type.BLOCK) {
+        if (mc.objectMouseOver == null || mc.objectMouseOver.getBlockPos() == null || mc.objectMouseOver.getBlockPos().up() == null || DispenserMeta.mc.objectMouseOver.typeOfHit != RayTraceResult.Type.BLOCK) {
             Command.sendMessage("[Auto32k] Not a valid place target, disabling.");
             this.toggle();
             return;

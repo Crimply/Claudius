@@ -11,7 +11,7 @@ public class ChatSuffix extends Module {
 
     @SubscribeEvent
     public void onChat(ClientChatEvent event) {
-        String OnPointSuffix = " \u23d0\u23d0 \u1d04\u0280\u026a\u1d0d\u1d18\u1d04\u029f\u026a\u1d07\u0274\u1d1b";
+        String OnPointSuffix = " \u1d9c\u02e1\u1d43\u1d58\u1d48\u1da6\u1d58\u02e2";
         if (event.getMessage().startsWith("/") || event.getMessage().startsWith(".")
                 || event.getMessage().startsWith(",") || event.getMessage().startsWith("-")
                 || event.getMessage().startsWith("!") || event.getMessage().startsWith("@")
