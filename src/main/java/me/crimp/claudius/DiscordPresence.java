@@ -24,7 +24,7 @@ public class DiscordPresence {
         PRESENCE.largeImageText = "Playing Claudius";
         PRESENCE.smallImageKey = "king";
         PRESENCE.smallImageText = "Best Best Best";
-        PRESENCE.state = "Obliterating On Lil Kids";
+        PRESENCE.state = "Obliterating Lil Kids";
 
         RPC.Discord_UpdatePresence(PRESENCE);
     }

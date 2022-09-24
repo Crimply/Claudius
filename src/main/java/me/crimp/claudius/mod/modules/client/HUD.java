@@ -32,8 +32,8 @@ public class HUD extends Module {
     private final Setting<Boolean> lag = register(new Setting<>("LagNotifier", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
-    public Setting<String> commandBracket = register(new Setting<>("Bracket", "{"));
-    public Setting<String> commandBracket2 = register(new Setting<>("Bracket2", "}"));
+    public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
+    public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
     public Setting<Boolean> notifyToggles = register(new Setting<>("ChatNotify", false, "notifys in chat"));
     public Setting<Boolean> bong = register(new Setting<>("Bong", true, "I Got The Bong No Weed"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
@@ -210,38 +210,6 @@ public class HUD extends Module {
             GlStateManager.enableDepth();
             GlStateManager.disableLighting();
         }
-    }
-
-
-    public void renderArmorHUD(boolean percent) {
-        int width = this.renderer.scaledWidth;
-        int height = this.renderer.scaledHeight;
-        GlStateManager.enableTexture2D();
-        int i = width / 2;
-        int iteration = 0;
-        int y = height - 55 - ((mc.player.isInWater() && mc.playerController.gameIsSurvivalOrAdventure()) ? 10 : 0);
-        for (ItemStack is : (mc.player.inventory.armorInventory)) {
-            iteration++;
-            if (is.isEmpty()) continue;
-            int x = i - 90 + (9 - iteration) * 20 + 2;
-            GlStateManager.enableDepth();
-            RenderUtil.itemRender.zLevel = 200.0F;
-            RenderUtil.itemRender.renderItemAndEffectIntoGUI(is, x, y);
-            RenderUtil.itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, is, x, y, "");
-            RenderUtil.itemRender.zLevel = 0.0F;
-            //String s = (is.getCount() > 1) ? (is.getCount() + "") : "";
-            GlStateManager.enableTexture2D();
-            GlStateManager.disableLighting();
-            GlStateManager.disableDepth();
-            if (percent) {
-                float green = ((float) (is.getMaxDamage() - is.getItemDamage())) / ((float) is.getMaxDamage());
-                float red = 1.0F - green;
-                int dmg = 100 - (int) (red * 100.0F);
-                this.renderer.drawStringWithShadow(dmg + "", (x + 8 - ((float) this.renderer.getStringWidth(dmg + "")) / 2f), (y - 11), ColorUtil.toRGBA((int) (red * 255.0F), (int) (green * 255.0F), 0));
-            }
-        }
-        GlStateManager.enableDepth();
-        GlStateManager.disableLighting();
     }
 
     @SubscribeEvent

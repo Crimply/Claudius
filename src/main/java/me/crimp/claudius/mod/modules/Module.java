@@ -91,7 +91,7 @@ public abstract class Module extends Feature {
         this.onToggle();
         this.onEnable();
         if (HUD.getInstance().notifyToggles.getValue()) {
-            TextComponentString text = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " toggled on.");
+            TextComponentString text = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " Enabled.");
             Module.mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(text, 1);
         }
         if (this.isOn() && this.hasListener && !this.alwaysListening) {
@@ -105,7 +105,7 @@ public abstract class Module extends Feature {
         }
         this.enabled.setValue(false);
         if (HUD.getInstance().notifyToggles.getValue()) {
-            TextComponentString text = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " toggled off.");
+            TextComponentString text = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " Disabled.");
             Module.mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(text, 1);
         }
         this.onToggle();
