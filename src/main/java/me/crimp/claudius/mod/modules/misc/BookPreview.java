@@ -207,7 +207,7 @@ public class BookPreview extends Module {
         }
 
         //Draw white and call text
-        private void draw(int x, int y) {
+        public void draw(int x, int y) {
 
             GlStateManager.scale(scale / 8, scale / 8, scale / 8);
 

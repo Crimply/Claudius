@@ -48,6 +48,7 @@ public class ModuleManager extends Feature {
                 new NoToast(),
                 new DonkeyDrop(),
                 new AcidMode(),
+                new MobOwner(),
 
                 //fixes
                 new GuiMovee(),
