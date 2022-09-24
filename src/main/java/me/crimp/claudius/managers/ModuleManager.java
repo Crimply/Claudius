@@ -44,6 +44,7 @@ public class ModuleManager extends Feature {
                 new BookPreview(),
                 new ChatSuffix(),
                 new NoToast(),
+                new DonkeyDrop(),
 
 
                 //fixes
