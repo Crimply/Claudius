@@ -62,9 +62,9 @@ public class Component extends Feature {
                 Component.counter1[0] = counter1[0] + 1;
                 if (item.isHidden()) continue;
                 item.setLocation((float) this.x + 2.0f, y);
-                item.setWidth(this.getWidth() - 6);
+                item.setWidth(this.getWidth() - 4);
                 item.drawScreen(mouseX, mouseY, partialTicks);
-                y += (float) item.getHeight() + 0.5f;
+                y += (float) item.getHeight() + 1.5f;
             }
         }
     }

@@ -5,7 +5,7 @@ import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
 
 public class DiscordPresence {
-    private static final String ID = "1009030413202759770";
+    private static final String ID = "1022802066609020928";
 
     private static final DiscordRichPresence PRESENCE = new DiscordRichPresence();
     private static final DiscordRPC RPC = DiscordRPC.INSTANCE;
@@ -20,11 +20,11 @@ public class DiscordPresence {
 
         PRESENCE.startTimestamp = System.currentTimeMillis() / 1000L;
         PRESENCE.details = "Best Util Client";
-        PRESENCE.largeImageKey = "rpc_icon";
-        PRESENCE.largeImageText = "Playing Crimp Client";
-        PRESENCE.smallImageKey = "kek";
+        PRESENCE.largeImageKey = "hamlet";
+        PRESENCE.largeImageText = "Playing Claudius";
+        PRESENCE.smallImageKey = "king";
         PRESENCE.smallImageText = "Best Best Best";
-        PRESENCE.state = "Shitting On Lil Kids";
+        PRESENCE.state = "Obliterating On Lil Kids";
 
         RPC.Discord_UpdatePresence(PRESENCE);
     }
