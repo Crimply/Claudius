@@ -20,7 +20,7 @@ public class AutoClicker extends Module {
 
     public void onUpdate() {
         if(Mouse.isButtonDown(0) || this.Always.getValue()) {
-            if(System.currentTimeMillis() - lastClick > speed * 1000) {
+            if(System.currentTimeMillis() - lastClick > speed * 1) {
                 lastClick = System.currentTimeMillis();
                 if(hold < lastClick) {
                     hold = lastClick;
@@ -28,7 +28,7 @@ public class AutoClicker extends Module {
                 int key = mc.gameSettings.keyBindAttack.getKeyCode();
                 KeyBinding.setKeyBindState(key, true);
                 KeyBinding.onTick(key);
-            } else if (System.currentTimeMillis() - hold > holdLength * 1000) {
+            } else if (System.currentTimeMillis() - hold > holdLength * 1) {
                 KeyBinding.setKeyBindState(mc.gameSettings.keyBindAttack.getKeyCode(), false);
             }
         }
