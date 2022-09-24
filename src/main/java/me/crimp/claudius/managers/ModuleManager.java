@@ -45,6 +45,8 @@ public class ModuleManager extends Feature {
                 new ChatSuffix(),
                 new NoToast(),
                 new DonkeyDrop(),
+                new AcidMode(),
+
 
 
                 //fixes
