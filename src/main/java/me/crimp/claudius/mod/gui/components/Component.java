@@ -49,22 +49,22 @@ public class Component extends Feature {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drag(mouseX, mouseY);
         counter1 = new int[]{1};
-        float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f * 2: 6.0f;
+        float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 1.0f;
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
-        RenderUtil.drawRect(this.x, this.y - 2, this.x + this.width, this.y + this.height - 6 * 2, color);
+        RenderUtil.drawRect(this.x, this.y - 1, this.x + this.width, this.y + this.height - 6, color);
         if (this.open) {
-            RenderUtil.drawRect(this.x, (float) this.y + 13.5f * 2, this.x + this.width, (float) (this.y + this.height) + totalItemHeight, 0x77000000);
+            RenderUtil.drawRect(this.x, (float) this.y + 13.5f, this.x + this.width, (float) (this.y + this.height) + totalItemHeight, 0x77000000);
         }
-        Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f * 2, (float) this.y - 4.0f * 2 - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
         if (this.open) {
             float y = (float) (this.getY() + this.getHeight()) - 3.0f;
             for (Item item : this.getItems()) {
-                Component.counter1[0] = counter1[0] + 1 * 2;
+                Component.counter1[0] = counter1[0] + 1;
                 if (item.isHidden()) continue;
-                item.setLocation((float) this.x + 2.0f * 2, y);
-                item.setWidth(this.getWidth() - 4 * 2);
+                item.setLocation((float) this.x + 2.0f, y);
+                item.setWidth(this.getWidth() - 4);
                 item.drawScreen(mouseX, mouseY, partialTicks);
-                y += (float) item.getHeight() + 1.5f * 2;
+                y += (float) item.getHeight() + 1.5f;
             }
         }
     }

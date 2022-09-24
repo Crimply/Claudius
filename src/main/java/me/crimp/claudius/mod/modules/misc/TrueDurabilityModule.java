@@ -23,8 +23,11 @@ public class TrueDurabilityModule extends Module {
     int max = stack.getMaxDamage();
     List<String> toolTip1 = event.getToolTip();
     if(stack.isEmpty() || max <= 0) return;
-    if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) return;
-    toolTip1.add("Durability: 999999+ ");
+    if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) {
+      toolTip1.add(TextFormatting.DARK_AQUA + "Durability: 999999+ " + TextFormatting.RESET);
+      return;
+    }
+
 
     List<String> toolTip = event.getToolTip();
 
