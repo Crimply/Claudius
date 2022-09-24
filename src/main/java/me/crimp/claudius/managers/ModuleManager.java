@@ -49,7 +49,6 @@ public class ModuleManager extends Feature {
                 new DonkeyDrop(),
                 new AcidMode(),
                 new MobOwner(),
-                new TrueDura(),
 
                 //fixes
                 new GuiMovee(),

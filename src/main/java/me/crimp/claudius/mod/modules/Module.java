@@ -16,7 +16,7 @@ public abstract class Module extends Feature {
     private final String description;
     private final Category category;
     public Setting<Boolean> enabled = this.register(new Setting<Boolean>("Enabled", false));
-    public Setting<Boolean> drawn = this.register(new Setting<Boolean>("Drawn", true));
+    public Setting<Boolean> drawn = this.register(new Setting<Boolean>("Drawn", true, "Drawn/"));
     public Setting<Bind> bind = this.register(new Setting<Bind>("Keybind", new Bind(-1)));
     public Setting<String> displayName;
     public boolean hasListener;

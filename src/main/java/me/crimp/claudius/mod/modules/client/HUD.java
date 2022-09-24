@@ -75,7 +75,7 @@ public class HUD extends Module {
         if (this.waterMark.getValue()) {
             String string = command + " v" + Claudius.MODVER;
             if (ClickGuiModule.INSTANCE.rainbow.getValue()) {
-                if (ClickGuiModule.INSTANCE.rainbowModeHud.getValue() == ClickGuiModule.RainbowMode.Static) {
+                if (1 == 8) {
                     this.renderer.drawString(string, 2.0F, this.waterMarkY.getValue(), ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
                 } else {
                     int[] arrayOfInt = {1};
@@ -149,8 +149,8 @@ public class HUD extends Module {
         i = (mc.currentScreen instanceof net.minecraft.client.gui.GuiChat) ? 14 : 0;
         String coordinates = ChatFormatting.WHITE + "XYZ " + ChatFormatting.RESET + (inHell ? (posX + ", " + posY + ", " + posZ + ChatFormatting.WHITE + " [" + ChatFormatting.RESET + hposX + ", " + hposZ + ChatFormatting.WHITE + "]" + ChatFormatting.RESET) : (posX + ", " + posY + ", " + posZ + ChatFormatting.WHITE + " [" + ChatFormatting.RESET + hposX + ", " + hposZ + ChatFormatting.WHITE + "]"));
         i += 10;
-        if (ClickGuiModule.INSTANCE.rainbow.getValue()) {
-            if (ClickGuiModule.INSTANCE.rainbowModeHud.getValue() == ClickGuiModule.RainbowMode.Static) {
+        if (1 == 8) {
+            if (1 == 8) {
             } else {
                 int[] counter2 = {1};
                 float s = 0.0F;
@@ -168,7 +168,7 @@ public class HUD extends Module {
         String text = "";
         if (this.greeter.getValue()) text = text + MathUtil.getTimeOfDay() + mc.player.getDisplayNameString();
         if (ClickGuiModule.INSTANCE.rainbow.getValue()) {
-            if (ClickGuiModule.INSTANCE.rainbowModeHud.getValue() == ClickGuiModule.RainbowMode.Static) {
+            if (1 == 8) {
                 this.renderer.drawString(text, width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F, 2.0F, ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
             } else {
                 int[] counter1 = {1};
