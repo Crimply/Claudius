@@ -9,9 +9,11 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import com.mojang.util.UUIDTypeAdapter;
 import me.crimp.claudius.mod.command.Command;
 import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import org.apache.commons.io.IOUtils;
@@ -61,6 +63,61 @@ public class PlayerUtil implements Util {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static boolean isPlayerInRender(String player) {
+        for (EntityPlayer player1 : mc.player.world.playerEntities) {
+            if (player1.getName().equalsIgnoreCase(player)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static ChatFormatting getDimentionColor(int dimention) {
+        switch (dimention) {
+            case -1:
+                return ChatFormatting.DARK_RED;
+            case 0:
+                return ChatFormatting.DARK_GREEN;
+            case 1:
+                return ChatFormatting.DARK_PURPLE;
+            default:
+                return ChatFormatting.GRAY;
+        }
+    }
+
+    public static Dimention getDimention(int dimension) {
+        Dimention dimention = null;
+        if (dimension == -1) {
+            dimention = Dimention.Nether;
+        } else if (dimension == 0) {
+            dimention = Dimention.Overworld;
+        } else if (dimension == 1) {
+            dimention = Dimention.End;
+        }
+        return dimention;
+    }
+
+    public enum Dimention {
+        Overworld(0xFFFFFF), Nether(0xd3443d), End(0xd65df5);
+
+        private final int color;
+
+        Dimention(int color) {
+            this.color = color;
+        }
+
+        public int getColor() {
+            return color;
+        }
+    }
+
+
+    public static int getHealthColor(final float health) {
+        final int scale = (int) Math.round(255.0 - health * 255.0 / Minecraft.getMinecraft().player.getMaxHealth());
+        final int damageColor = 255 - scale << 8 | scale << 16;
+        return 0xFF000000 | damageColor;
     }
 
     public static String requestIDs(String data) {
@@ -239,6 +296,11 @@ public class PlayerUtil implements Util {
         public String getName() {
             return this.name;
         }
+    }
+
+    public static boolean isWearingArmor(EntityPlayer player) {
+        boolean b = player.inventory.armorItemInSlot(1) != ItemStack.EMPTY;
+        return player.inventory.armorItemInSlot(0) != ItemStack.EMPTY || player.inventory.armorItemInSlot(1) != ItemStack.EMPTY;
     }
 
     public static String getPotionString(PotionEffect effect) {

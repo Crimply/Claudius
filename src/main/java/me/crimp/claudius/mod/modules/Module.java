@@ -38,6 +38,7 @@ public abstract class Module extends Feature {
         this.alwaysListening = alwaysListening;
     }
 
+
     public boolean isSliding() {
         return this.sliding;
     }

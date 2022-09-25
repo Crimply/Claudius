@@ -41,6 +41,7 @@ public class TrueDurabilityModule extends Module {
 
     TextFormatting color;
     if(damage > max) color = TextFormatting.DARK_AQUA;
+    else if (damage > 528) color = TextFormatting.DARK_AQUA;
     else color = TextFormatting.RESET;
     toolTip.add(color.toString() + "Durability: " + Long.toString(count) + TextFormatting.RESET + " / " + Long.toString(max) + "");
   }

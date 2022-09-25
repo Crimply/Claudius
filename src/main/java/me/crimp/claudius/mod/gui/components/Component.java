@@ -10,6 +10,7 @@ import me.crimp.claudius.utils.ColorUtil;
 import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
 
 import java.util.ArrayList;
@@ -48,6 +49,45 @@ public class Component extends Feature {
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drag(mouseX, mouseY);
+        float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 0.0f;
+//        RenderMethods.drawGradientRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, -7829368, -6710887);
+        int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
+        RenderUtil.drawRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
+        if (this.open) {
+            RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), 0x77000000);//1996488704
+        }
+        Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        //var5.f$L.f$E(this.f$E(), (double)((float)this.f$C + 3.0F), (double)((float)this.f$e + 1.5F), 15592941);
+
+        /*if (!open) {
+            if (this.angle > 0) {
+                this.angle -= 6;
+            }
+        } else if (this.angle < 180) {
+            this.angle += 6;
+        }*/
+
+        GlStateManager.pushMatrix();
+        GlStateManager.enableBlend();
+        //RenderMethods.glColor(new Color(255, 255, 255, 255));
+        //minecraft.getTextureManager().bindTexture(new ResourceLocation("textures/exeter/arrow.png"));
+        GlStateManager.translate(getX() + getWidth() - 7, (getY() + 6) - 0.3F, 0.0F);
+        //GlStateManager.rotate(calculateRotation(angle), 0.0F, 0.0F, 1.0F);
+        //RenderUtil.drawModalRect(-5, -5, 0.0F, 0.0F, 10, 10, 10, 10, 10.0F, 10.0F);
+        GlStateManager.disableBlend();
+        GlStateManager.popMatrix();
+
+        if (this.open) {
+            float y = (float)(this.getY() + this.getHeight()) - 3.0f;
+            for (Item item : getItems()) {
+                item.setLocation((float)this.x + 2.0f, y);
+                item.setWidth(this.getWidth() - 4);
+                item.drawScreen(mouseX, mouseY, partialTicks);
+                y += (float)item.getHeight() + 1.5f;
+            }
+        }
+
+        /*this.drag(mouseX, mouseY);
         counter1 = new int[]{1};
         float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 1.0f;
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
@@ -66,7 +106,7 @@ public class Component extends Feature {
                 item.drawScreen(mouseX, mouseY, partialTicks);
                 y += (float) item.getHeight() + 1.5f;
             }
-        }
+        }*/
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
