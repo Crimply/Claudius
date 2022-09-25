@@ -8,7 +8,7 @@ public class RPC
     public static RPC INSTANCE;
 
     public RPC() {
-        super("DiscordRippyBippy", "Discord rich presence", Module.Category.CLIENT, false, false, false);
+        super("DiscordRichP", "Discord rich presence", Module.Category.CLIENT, false, false, false);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
         INSTANCE = this;

@@ -33,7 +33,7 @@ public class GuiBlurr extends Module
                         Util.mc.entityRenderer.getShaderGroup().deleteShaderGroup();
                     }
                     try {
-                        Util.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
+                        Util.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/art.json"));
                     }
                     catch (Exception e) {
                         e.printStackTrace();

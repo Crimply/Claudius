@@ -17,21 +17,18 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
     private static HUD INSTANCE = new HUD();
-    private final Setting<Boolean> grayNess = this.register(new Setting<>("OnTop?", true));
     private final Setting<Boolean> renderingUp = register(new Setting<>("RenderingUp", true, "Orientation of the HUD-Elements."));
     private final Setting<Boolean> waterMark = register(new Setting<>("Watermark", false, "displays watermark"));
     private final Setting<Boolean> arrayList = register(new Setting<>("ArrayList", true, "Lists the active modules."));
     private final Setting<Boolean> totems = register(new Setting<>("Totems", true, "TotemHUD"));
     private final Setting<Boolean> greeter = register(new Setting<>("Welcomer", false, "The time"));
-    //private final Setting<Boolean> lag = register(new Setting<>("LagNotifier", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
     public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
     public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
-    public Setting<Boolean> notifyToggles = register(new Setting<>("ChatNotify", false, "notifys in chat"));
+    public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in chat when shit happens"));
     public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
-    public Setting<Integer> waterMarkY = register(new Setting<>("WatermarkPosY", 2, 0, 20, v -> this.waterMark.getValue()));
     public static final String command = "Claudius";
     private int color;
     private boolean shouldIncrement;
@@ -69,20 +66,17 @@ public class HUD extends Module {
         if (this.waterMark.getValue()) {
             String string = command + " v" + Claudius.MODVER;
             if (ClickGuiModule.INSTANCE.rainbow.getValue()) {
-                if (1 == 8) {
-                    this.renderer.drawString(string, 2.0F, this.waterMarkY.getValue(), ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
-                } else {
+                if (1 == 8) {} else {
                     int[] arrayOfInt = {1};
                     char[] stringToCharArray = string.toCharArray();
                     float f = 0.0F;
                     for (char c : stringToCharArray) {
-                        this.renderer.drawString(String.valueOf(c), 2.0F + f, this.waterMarkY.getValue(), ColorUtil.rainbow(arrayOfInt[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
                         f += this.renderer.getStringWidth(String.valueOf(c));
                         arrayOfInt[0] = arrayOfInt[0] + 1;
                     }
                 }
             } else {
-                this.renderer.drawString(string, 2.0F, this.waterMarkY.getValue(), this.color, true);
+                this.renderer.drawString(string, 2.0F, 2, this.color, true);
             }
         }
         int[] counter1 = {1};
@@ -91,7 +85,7 @@ public class HUD extends Module {
             if (this.renderingMode.getValue() == RenderingMode.ABC) {
                 for (int k = 0; k < Claudius.moduleManager.sortedModulesABC.size(); k++) {
                     String str = Claudius.moduleManager.sortedModulesABC.get(k);
-                    this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), ClickGuiModule.INSTANCE.rainbow.getValue() ? ((ClickGuiModule.INSTANCE.rainbowModeA.getValue() == ClickGuiModule.RainbowModeArray.Up) ? ColorUtil.rainbow(counter1[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB() : ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB()) : this.color, true);
+                    this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
                     j++;
                     counter1[0] = counter1[0] + 1;
                 }
@@ -99,7 +93,7 @@ public class HUD extends Module {
                 for (int k = 0; k < Claudius.moduleManager.sortedModules.size(); k++) {
                     Module module = Claudius.moduleManager.sortedModules.get(k);
                     String str = module.getDisplayName() + ChatFormatting.GRAY + ((module.getDisplayInfo() != null) ? (" [" + ChatFormatting.WHITE + module.getDisplayInfo() + ChatFormatting.GRAY + "]") : "");
-                    this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), ClickGuiModule.INSTANCE.rainbow.getValue() ? ((ClickGuiModule.INSTANCE.rainbowModeA.getValue() == ClickGuiModule.RainbowModeArray.Up) ? ColorUtil.rainbow(counter1[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB() : ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB()) : this.color, true);
+                    this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
                     j++;
                     counter1[0] = counter1[0] + 1;
                 }
@@ -108,7 +102,7 @@ public class HUD extends Module {
             for (int k = 0; k < Claudius.moduleManager.sortedModulesABC.size(); k++) {
                 String str = Claudius.moduleManager.sortedModulesABC.get(k);
                 j += 10;
-                this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j), ClickGuiModule.INSTANCE.rainbow.getValue() ? ((ClickGuiModule.INSTANCE.rainbowModeA.getValue() == ClickGuiModule.RainbowModeArray.Up) ? ColorUtil.rainbow(counter1[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB() : ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB()) : this.color, true);
+                this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j), this.color, true);
                 counter1[0] = counter1[0] + 1;
             }
         } else {
@@ -116,11 +110,11 @@ public class HUD extends Module {
                 Module module = Claudius.moduleManager.sortedModules.get(k);
                 String str = module.getDisplayName() + ChatFormatting.GRAY + ((module.getDisplayInfo() != null) ? (" [" + ChatFormatting.WHITE + module.getDisplayInfo() + ChatFormatting.GRAY + "]") : "");
                 j += 10;
-                this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j), ClickGuiModule.INSTANCE.rainbow.getValue() ? ((ClickGuiModule.INSTANCE.rainbowModeA.getValue() == ClickGuiModule.RainbowModeArray.Up) ? ColorUtil.rainbow(counter1[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB() : ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB()) : this.color, true);
+                this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j),  this.color, true);
                 counter1[0] = counter1[0] + 1;
             }
         }
-        String grayString = this.grayNess.getValue() ? String.valueOf(ChatFormatting.GRAY) : "";
+        String grayString = String.valueOf(ChatFormatting.GRAY);
         int i = (mc.currentScreen instanceof net.minecraft.client.gui.GuiChat && this.renderingUp.getValue()) ? 13 : (this.renderingUp.getValue() ? -2 : 0);
         if (this.renderingUp.getValue()) {
             String fpsText = grayString + "FPS " + ChatFormatting.WHITE + Minecraft.debugFPS;

@@ -45,7 +45,7 @@ public class ModuleManager extends Feature {
                 new ToolTips(),
                 new BookPreview(),
                 new ChatSuffix(),
-                new NoToast(),
+
                 new DonkeyDrop(),
                 new AcidOverlay(),
                 new MobOwner(),
@@ -55,6 +55,7 @@ public class ModuleManager extends Feature {
                 new GuiMovee(),
                 new SetDisplay(),
                 new AntiLog4j(),
+                new NoToast(),
 
                 //client
                 new HUD(),
@@ -62,7 +63,6 @@ public class ModuleManager extends Feature {
                 new GuiBlurr(),
 
                 //fake
-
                 new CatGirlExploit(),
 
                 //pvp

@@ -25,7 +25,6 @@ public class TrueDurabilityModule extends Module {
     if(stack.isEmpty() || max <= 0) return;
     if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) {
       toolTip1.add("");
-      toolTip1.add("");
       toolTip1.add(TextFormatting.UNDERLINE + "" + TextFormatting.BOLD + "" + TextFormatting.GOLD + "Durability = Unbreakable " + TextFormatting.RESET);
       return;
     }
@@ -46,8 +45,8 @@ public class TrueDurabilityModule extends Module {
     else if (damage > 528) color = TextFormatting.GOLD;
     else color = TextFormatting.RESET;
     if (count > max) {
-      toolTip.add("");
-      toolTip.add(TextFormatting.WHITE + "[Durability] = " + TextFormatting.GOLD + Long.toString(count) + TextFormatting.RESET + " Out Of " + Long.toString(max) + "");
+
+      toolTip.add(TextFormatting.GOLD + "[Durability] = " + Long.toString(count) + " Out Of " + Long.toString(max));
     }
   }
 }
