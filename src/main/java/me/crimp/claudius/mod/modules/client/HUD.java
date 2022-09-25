@@ -156,13 +156,13 @@ public class HUD extends Module {
         if (this.greeter.getValue()) text = text + MathUtil.getTimeOfDay() + mc.player.getDisplayNameString();
         if (ClickGuiModule.INSTANCE.rainbow.getValue()) {
             if (1 == 8) {
-                this.renderer.drawString(text, width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F, 2.0F, ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
+                //this.renderer.drawString(text, width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F, 2.0F, ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
             } else {
                 int[] counter1 = {1};
                 char[] stringToCharArray = text.toCharArray();
                 float i = 0.0F;
                 for (char c : stringToCharArray) {
-                    this.renderer.drawString(String.valueOf(c), width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F + i, 2.0F, ColorUtil.rainbow(counter1[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
+                    //this.renderer.drawString(String.valueOf(c), width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F + i, 2.0F, ColorUtil.rainbow(counter1[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
                     i += this.renderer.getStringWidth(String.valueOf(c));
                     counter1[0] = counter1[0] + 1;
                 }

@@ -27,9 +27,9 @@ public class ClickGuiModule extends Module {
     public Setting<Boolean> rainbow = this.register(new Setting<>("Rainbow", false));
    // public Setting<RainbowMode> rainbowModeHud = this.register(new Setting<>("HRainbowMode", RainbowMode.Static, v -> this.rainbow.getValue()));
     //public Setting<RainbowModeArray> rainbowModeA = this.register(new Setting<>("ARainbowMode", RainbowModeArray.Static, v -> this.rainbow.getValue()));
-    public Setting<Integer> rainbowHue = this.register(new Setting<>("Delay", 240, 0, 600, v -> this.rainbow.getValue()));
-    public Setting<Float> rainbowBrightness = this.register(new Setting<>("Brightness ", 150f, 1f, 255f, v -> this.rainbow.getValue()));
-    public Setting<Float> rainbowSaturation = this.register(new Setting<>("Saturation", 150f, 1f, 255f, v -> this.rainbow.getValue()));
+    //public Setting<Integer> rainbowHue = this.register(new Setting<>("Delay", 240, 0, 600, v -> this.rainbow.getValue()));
+    //public Setting<Float> rainbowBrightness = this.register(new Setting<>("Brightness ", 150f, 1f, 255f, v -> this.rainbow.getValue()));
+    //public Setting<Float> rainbowSaturation = this.register(new Setting<>("Saturation", 150f, 1f, 255f, v -> this.rainbow.getValue()));
 
     public ClickGuiModule() {
         super("ClickGui", "Opens the ClickGui", Module.Category.CLIENT, true, false, false);

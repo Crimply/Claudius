@@ -22,10 +22,10 @@ public class TrueDurabilityModule extends Module {
     ItemStack stack = event.getItemStack();
     int max = stack.getMaxDamage();
     List<String> toolTip1 = event.getToolTip();
-    if(stack.isEmpty() || max <= 0) return;
-    if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) {
+    if (stack.isEmpty() || max <= 0) return;
+    if (stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) {
       toolTip1.add("");
-      toolTip1.add(TextFormatting.UNDERLINE + "" + TextFormatting.BOLD + "" + TextFormatting.GOLD + "Durability = Unbreakable " + TextFormatting.RESET);
+      toolTip1.add(TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + "Tag.Unbreakable ");
       return;
     }
 
@@ -34,19 +34,13 @@ public class TrueDurabilityModule extends Module {
 
     int damage;
     NBTTagCompound tag = stack.getTagCompound();
-    if(tag != null && tag instanceof SpecialTagCompound) {
-      damage = ((SpecialTagCompound)tag).getTrueDamage();
+    if (tag != null && tag instanceof SpecialTagCompound) {
+      damage = ((SpecialTagCompound) tag).getTrueDamage();
     } else damage = stack.getItemDamage();
 
-    long count = (long)max - (long)damage;
-
-    TextFormatting color;
-    if(damage > max) color = TextFormatting.GOLD;
-    else if (damage > 528) color = TextFormatting.GOLD;
-    else color = TextFormatting.RESET;
-    if (count > max) {
-
-      toolTip.add(TextFormatting.GOLD + "[Durability] = " + Long.toString(count) + " Out Of " + Long.toString(max));
+    long count = (long) max - (long) damage;
+    if (count > max){
+      toolTip.add(TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + Long.toString(count) + TextFormatting.GRAY + " / " + Long.toString(max));
     }
   }
 }
