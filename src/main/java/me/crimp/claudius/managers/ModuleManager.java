@@ -74,6 +74,7 @@ public class ModuleManager extends Feature {
                 new AutoClicker(),
                 new DispenserMeta(),
                 new AntiChainPop(),
+                new MainHandTotem(),
 
                 //render
                 new Austraila(),
