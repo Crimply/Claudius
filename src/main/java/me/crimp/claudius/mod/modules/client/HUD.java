@@ -11,14 +11,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
@@ -35,7 +29,7 @@ public class HUD extends Module {
     public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
     public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
     public Setting<Boolean> notifyToggles = register(new Setting<>("ChatNotify", false, "notifys in chat"));
-    public Setting<Boolean> bong = register(new Setting<>("Bong", true, "I Got The Bong No Weed"));
+    public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public Setting<Integer> waterMarkY = register(new Setting<>("WatermarkPosY", 2, 0, 20, v -> this.waterMark.getValue()));
     public static final String command = "Claudius";

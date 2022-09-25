@@ -24,7 +24,7 @@ public class EntityAlerts extends Module {
     public EntityAlerts() {
         super("EntityAlerts", "EntityAlerts", Category.MISC, true, false, false);
     }
-
+    int Sounddelay;
     int delay1;
     int delay2;
     int delay3;
@@ -40,85 +40,105 @@ public class EntityAlerts extends Module {
         delay4 = 0;
         delay5 = 0;
         delay6 = 0;
+        Sounddelay = 0;
     }
 
     @Override
     public void onUpdate() {
+        if (Sounddelay > 0) --Sounddelay;
         if (this.Donkeye.getValue()) {
             if (delay1 > 0) --delay1;
-            mc.world.loadedEntityList.forEach(entity -> {
-                if (entity instanceof EntityDonkey && delay1 == 0) {
-                    Command.sendMessage("Donkey Has Benn Spotted");
-                    delay1 = 50;
-                    if (this.Sound.getValue()) {
-                        mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
-                    }
+            if (Sounddelay == 0) {
+                mc.world.loadedEntityList.forEach(entity -> {
+                    if (entity instanceof EntityDonkey && delay1 == 0) {
+                        Command.sendMessage("Donkey Has Benn Spotted");
+                        delay1 = 50;
+                        if (this.Sound.getValue()) {
+                            mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+                            Sounddelay = 25;
+                        }
 
-                }
-            });
+                    }
+                });
+            }
         }
         if (this.Iteme.getValue()) {
             if (delay2 > 0) --delay2;
-            mc.world.loadedEntityList.forEach(entity -> {
-                        if (entity instanceof EntityItem && delay2 == 0) {
-                            EntityItem item = (EntityItem) entity;
-                            Command.sendMessage("Items On Ground Are" + item);
-                            delay2 = 100;
-                            if (this.Sound.getValue()) {
-                                mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+            if (Sounddelay == 0) {
+                mc.world.loadedEntityList.forEach(entity -> {
+                            if (entity instanceof EntityItem && delay2 == 0) {
+                                EntityItem item = (EntityItem) entity;
+                                Command.sendMessage("Items On Ground Are" + item);
+                                delay2 = 100;
+                                if (this.Sound.getValue()) {
+                                    mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+                                    Sounddelay = 25;
+                                }
                             }
                         }
-                    }
-            );
+                );
+            }
         }
         if (this.Ghaste.getValue()) {
             if (delay3 > 0) --delay3;
-            mc.world.loadedEntityList.forEach(entity -> {
-                if (entity instanceof EntityGhast && delay3 == 0) {
-                    Command.sendMessage("Ghast Has Benn Spotted");
-                    delay3 = 50;
-                    if (this.Sound.getValue()) {
-                        mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
-                    }
+            if (Sounddelay == 0) {
+                mc.world.loadedEntityList.forEach(entity -> {
+                    if (entity instanceof EntityGhast && delay3 == 0) {
+                        Command.sendMessage("Ghast Has Benn Spotted");
+                        delay3 = 50;
+                        if (this.Sound.getValue()) {
+                            mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+                            Sounddelay = 25;
+                        }
 
-                }
-            });
+                    }
+                });
+            }
         }
         if (this.Horsee.getValue()) {
             if (delay4 > 0) --delay4;
-            mc.world.loadedEntityList.forEach(entity -> {
-                if (entity instanceof EntityHorse && delay4 == 0) {
-                    Command.sendMessage("Horse Has Benn Spotted");
-                    delay4 = 50;
-                    if (this.Sound.getValue()) {
-                        mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+            if (Sounddelay == 0) {
+                mc.world.loadedEntityList.forEach(entity -> {
+                    if (entity instanceof EntityHorse && delay4 == 0) {
+                        Command.sendMessage("Horse Has Benn Spotted");
+                        delay4 = 50;
+                        if (this.Sound.getValue()) {
+                            mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+                            Sounddelay = 25;
+                        }
                     }
-                }
-            });
+                });
+            }
         }
         if (this.Llamae.getValue()) {
             if (delay5 > 0) --delay5;
-            mc.world.loadedEntityList.forEach(entity -> {
-                if (entity instanceof EntityLlama && delay5 == 0) {
-                    Command.sendMessage("Llama Has Benn Spotted");
-                    delay4 = 50;
-                    if (this.Sound.getValue()) {
-                        mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+            if (Sounddelay == 0) {
+                mc.world.loadedEntityList.forEach(entity -> {
+                    if (entity instanceof EntityLlama && delay5 == 0) {
+                        Command.sendMessage("Llama Has Benn Spotted");
+                        delay4 = 50;
+                        if (this.Sound.getValue()) {
+                            mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+                            Sounddelay = 25;
+                        }
                     }
-                }
-            });
+                });
+            }
         }
         if (this.Parrot.getValue()) {
             if (delay6 > 0) --delay6;
-            mc.world.loadedEntityList.forEach(entity -> {
-                if (entity instanceof EntityParrot && delay6 == 0) {
-                    Command.sendMessage("Parrot Has Benn Spotted");
-                    delay6 = 50;
-                    if (this.Sound.getValue()) {
-                        mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+            if (Sounddelay == 0) {
+                mc.world.loadedEntityList.forEach(entity -> {
+                    if (entity instanceof EntityParrot && delay6 == 0) {
+                        Command.sendMessage("Parrot Has Benn Spotted");
+                        delay6 = 50;
+                        if (this.Sound.getValue()) {
+                            mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 4.0f, 12.0f);
+                            Sounddelay = 25;
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     }
 }

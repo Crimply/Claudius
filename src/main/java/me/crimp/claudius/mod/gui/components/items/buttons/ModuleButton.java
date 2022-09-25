@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ModuleButton extends Button {
     private final Module module;
-    private final ResourceLocation logo = new ResourceLocation("textures/bong.png");
+    private final ResourceLocation logo = new ResourceLocation("textures/Dots.png");
     private List<Item> items = new ArrayList<>();
     private boolean subOpen;
 
@@ -72,7 +72,7 @@ public class ModuleButton extends Button {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (!this.items.isEmpty()) {
-            if (HUD.getInstance().bong.getValue()) {
+            if (HUD.getInstance().Dots.getValue()) {
                 mc.getTextureManager().bindTexture(this.logo);
                 ModuleButton.drawCompleteImage(this.x - 1.5f + (float) this.width - 7.4f, this.y - 2.2f - (float) ClickGui.getClickGui().getTextOffset(), 8, 8);
             }
