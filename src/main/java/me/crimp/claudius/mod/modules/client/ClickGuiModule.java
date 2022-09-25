@@ -24,7 +24,10 @@ public class ClickGuiModule extends Module {
     public Setting<Integer> topGreen = this.register(new Setting<>("SecondGreen", 85, 0, 255));
     public Setting<Integer> topBlue = this.register(new Setting<>("SecondBlue", 165, 0, 255));
     public Setting<Integer> alpha = this.register(new Setting<>("HoverAlpha", 240, 0, 255));
-    public Setting<Boolean> rainbow = this.register(new Setting<>("Rainbow", false));
+    public Setting<Integer> BGRed = this.register(new Setting<>("BGRed", 255, 0, 255));
+    public Setting<Integer> BGGreen = this.register(new Setting<>("BGGreen", 202, 0, 255));
+    public Setting<Integer> BGBlue = this.register(new Setting<>("BGBlue", 165, 0, 255));
+    public Setting<Integer> BGalpha = this.register(new Setting<>("BGalpha", 150, 0, 255));
    // public Setting<RainbowMode> rainbowModeHud = this.register(new Setting<>("HRainbowMode", RainbowMode.Static, v -> this.rainbow.getValue()));
     //public Setting<RainbowModeArray> rainbowModeA = this.register(new Setting<>("ARainbowMode", RainbowModeArray.Static, v -> this.rainbow.getValue()));
     //public Setting<Integer> rainbowHue = this.register(new Setting<>("Delay", 240, 0, 600, v -> this.rainbow.getValue()));

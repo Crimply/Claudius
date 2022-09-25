@@ -65,17 +65,12 @@ public class HUD extends Module {
         this.color = ColorUtil.toRGBA(ClickGuiModule.INSTANCE.red.getValue(), ClickGuiModule.INSTANCE.green.getValue(), ClickGuiModule.INSTANCE.blue.getValue());
         if (this.waterMark.getValue()) {
             String string = command + " v" + Claudius.MODVER;
-            if (ClickGuiModule.INSTANCE.rainbow.getValue()) {
-                if (1 == 8) {} else {
-                    int[] arrayOfInt = {1};
-                    char[] stringToCharArray = string.toCharArray();
-                    float f = 0.0F;
-                    for (char c : stringToCharArray) {
-                        f += this.renderer.getStringWidth(String.valueOf(c));
-                        arrayOfInt[0] = arrayOfInt[0] + 1;
-                    }
-                }
-            } else {
+            int[] arrayOfInt = {1};
+            char[] stringToCharArray = string.toCharArray();
+            float f = 0.0F;
+            for (char c : stringToCharArray) {
+                f += this.renderer.getStringWidth(String.valueOf(c));
+                arrayOfInt[0] = arrayOfInt[0] + 1;
                 this.renderer.drawString(string, 2.0F, 2, this.color, true);
             }
         }
@@ -154,23 +149,8 @@ public class HUD extends Module {
         int width = this.renderer.scaledWidth;
         String text = "";
         if (this.greeter.getValue()) text = text + MathUtil.getTimeOfDay() + mc.player.getDisplayNameString();
-        if (ClickGuiModule.INSTANCE.rainbow.getValue()) {
-            if (1 == 8) {
-                //this.renderer.drawString(text, width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F, 2.0F, ColorUtil.rainbow(ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
-            } else {
-                int[] counter1 = {1};
-                char[] stringToCharArray = text.toCharArray();
-                float i = 0.0F;
-                for (char c : stringToCharArray) {
-                    //this.renderer.drawString(String.valueOf(c), width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F + i, 2.0F, ColorUtil.rainbow(counter1[0] * ClickGuiModule.INSTANCE.rainbowHue.getValue()).getRGB(), true);
-                    i += this.renderer.getStringWidth(String.valueOf(c));
-                    counter1[0] = counter1[0] + 1;
-                }
-            }
-        } else {
             this.renderer.drawString(text, width / 2.0F - this.renderer.getStringWidth(text) / 2.0F + 2.0F, 2.0F, this.color, true);
         }
-    }
 
     public void renderLag() {}
 
