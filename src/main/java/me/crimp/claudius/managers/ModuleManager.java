@@ -45,7 +45,7 @@ public class ModuleManager extends Feature {
                 new ToolTips(),
                 new BookPreview(),
                 new ChatSuffix(),
-
+                new Efly(),
                 new DonkeyDrop(),
                 new AcidOverlay(),
                 new MobOwner(),
