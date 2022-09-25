@@ -29,7 +29,7 @@ public class HUD extends Module {
     private final Setting<Boolean> arrayList = register(new Setting<>("ArrayList", true, "Lists the active modules."));
     private final Setting<Boolean> totems = register(new Setting<>("Totems", true, "TotemHUD"));
     private final Setting<Boolean> greeter = register(new Setting<>("Welcomer", false, "The time"));
-    private final Setting<Boolean> lag = register(new Setting<>("LagNotifier", false, "The time"));
+    //private final Setting<Boolean> lag = register(new Setting<>("LagNotifier", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
     public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
@@ -160,7 +160,6 @@ public class HUD extends Module {
         }
         if (this.totems.getValue()) renderTotemHUD();
         if (this.greeter.getValue()) renderGreeter();
-        if (this.lag.getValue()) renderLag();
     }
 
     public void renderGreeter() {

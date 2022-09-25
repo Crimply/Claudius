@@ -16,7 +16,7 @@ public class PopLagger extends Module {
     public static HashMap<String, Integer> TotemPopContainer = new HashMap();
     public Setting<Boolean> Block = this.register(new Setting<>("Block the lag", true));
     public Setting<Boolean> on = this.register(new Setting<>("Send China", true));
-    public Setting<Boolean> test = this.register(new Setting<>("Test", true));
+    //public Setting<Boolean> test = this.register(new Setting<>("Test", true));
     private static PopLagger INSTANCE = new PopLagger();
 
     public PopLagger() {
