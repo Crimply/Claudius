@@ -8,8 +8,8 @@ import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.*;
 import me.crimp.claudius.mod.modules.csgo.*;
 import me.crimp.claudius.mod.modules.exploit.AutoDupe;
+import me.crimp.claudius.mod.modules.exploit.CatGirlExploit;
 import me.crimp.claudius.mod.modules.exploit.NoClipFly;
-import me.crimp.claudius.mod.modules.fake.*;
 import me.crimp.claudius.mod.modules.fixes.*;
 import me.crimp.claudius.mod.modules.misc.*;
 import me.crimp.claudius.mod.modules.pvp.*;
@@ -64,7 +64,6 @@ public class ModuleManager extends Feature {
                 //fake
 
                 new CatGirlExploit(),
-                new AutoBypasser(),
 
                 //pvp
                 new Burrow(),
