@@ -47,7 +47,7 @@ public class ModuleManager extends Feature {
                 new ChatSuffix(),
                 new NoToast(),
                 new DonkeyDrop(),
-                new AcidMode(),
+                new AcidOverlay(),
                 new MobOwner(),
                 new TrueDurabilityModule(),
 

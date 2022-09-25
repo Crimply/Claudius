@@ -24,7 +24,9 @@ public class TrueDurabilityModule extends Module {
     List<String> toolTip1 = event.getToolTip();
     if(stack.isEmpty() || max <= 0) return;
     if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) {
-      toolTip1.add(TextFormatting.DARK_AQUA + "Durability: 999999+ " + TextFormatting.RESET);
+      toolTip1.add("");
+      toolTip1.add("");
+      toolTip1.add(TextFormatting.UNDERLINE + "" + TextFormatting.BOLD + "" + TextFormatting.GOLD + "Durability = Unbreakable " + TextFormatting.RESET);
       return;
     }
 
@@ -40,9 +42,12 @@ public class TrueDurabilityModule extends Module {
     long count = (long)max - (long)damage;
 
     TextFormatting color;
-    if(damage > max) color = TextFormatting.DARK_AQUA;
-    else if (damage > 528) color = TextFormatting.DARK_AQUA;
+    if(damage > max) color = TextFormatting.GOLD;
+    else if (damage > 528) color = TextFormatting.GOLD;
     else color = TextFormatting.RESET;
-    toolTip.add(color.toString() + "Durability: " + Long.toString(count) + TextFormatting.RESET + " / " + Long.toString(max) + "");
+    if (count > max) {
+      toolTip.add("");
+      toolTip.add(TextFormatting.WHITE + "[Durability] = " + TextFormatting.GOLD + Long.toString(count) + TextFormatting.RESET + " Out Of " + Long.toString(max) + "");
+    }
   }
 }
