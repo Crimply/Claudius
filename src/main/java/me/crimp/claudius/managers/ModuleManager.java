@@ -50,6 +50,7 @@ public class ModuleManager extends Feature {
                 new AcidOverlay(),
                 new MobOwner(),
                 new TrueDurabilityModule(),
+                new AllItemDurability(),
 
                 //fixes
                 new GuiMovee(),
