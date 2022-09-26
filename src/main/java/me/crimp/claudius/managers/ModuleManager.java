@@ -7,9 +7,9 @@ import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.*;
 import me.crimp.claudius.mod.modules.csgo.*;
-import me.crimp.claudius.mod.modules.exploit.FivebDupe;
 import me.crimp.claudius.mod.modules.exploit.CatGirlExploit;
 import me.crimp.claudius.mod.modules.exploit.NoClipFly;
+import me.crimp.claudius.mod.modules.exploit.PearlBait;
 import me.crimp.claudius.mod.modules.fixes.*;
 import me.crimp.claudius.mod.modules.misc.*;
 import me.crimp.claudius.mod.modules.pvp.*;
@@ -39,7 +39,7 @@ public class ModuleManager extends Feature {
 
                 //exploit
                 new NoClipFly(),
-                new FivebDupe(),
+                new PearlBait(),
 
                 //misc
                 new ToolTips(),
@@ -81,6 +81,7 @@ public class ModuleManager extends Feature {
                 new PenisESP(),
                 new EntityAlerts(),
                 new EntityAlerts(),
+                new AntiAlising(),
                 new BurrowEsp()
         );
     }
