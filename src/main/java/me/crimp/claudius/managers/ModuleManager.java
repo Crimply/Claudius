@@ -80,6 +80,7 @@ public class ModuleManager extends Feature {
                 new Austraila(),
                 new PenisESP(),
                 new EntityAlerts(),
+                new EntityAlerts(),
                 new BurrowEsp()
         );
     }
