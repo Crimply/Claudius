@@ -24,7 +24,6 @@ public class CommandManager
         this.commands.add(new HelpCommand());
         this.commands.add(new ReloadCommand());
         this.commands.add(new UnloadCommand());
-        this.commands.add(new ReloadSoundCommand());
         this.commands.add(new Svae());
         this.commands.add(new ThirtyTwoKay());
         this.commands.add(new NameMC());
