@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AllItemDurability extends Module {
   public AllItemDurability() {
-    super("AllItemDurability", "tooltips", Category.MISC, true, false, false);
+    super("ItemInfo", "tooltips", Category.MISC, true, false, false);
   }
 
   @SubscribeEvent
@@ -32,8 +32,11 @@ public class AllItemDurability extends Module {
     } else damage = stack.getItemDamage();
 
     long count = (long) max - (long) damage;
-
-
-      toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
+    for (final String s : stack.getTagCompound().getKeySet()) {
+      toolTip.add(s + stack.getTagCompound().getTag(s).toString());
+      if (max == 0) {
+        toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
+      }
     }
+  }
 }
