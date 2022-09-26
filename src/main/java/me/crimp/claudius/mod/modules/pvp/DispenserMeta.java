@@ -2,11 +2,13 @@ package me.crimp.claudius.mod.modules.pvp;
 
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
+import me.crimp.claudius.utils.RotationUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ClickType;
@@ -142,7 +144,7 @@ public class DispenserMeta extends Module {
             ModuleManager.getModuleByName("IllegalItemBypass").enable();
         }*/
 
-        Command.sendMessage("[Auto32k] Place Target: " + placeTarget.getX() + " " + placeTarget.getY() + " " + placeTarget.getZ() + " Distance: " + df.format(mc.player.getPositionVector().distanceTo(new Vec3d(placeTarget))));
+        //Command.sendMessage("[Auto32k] Place Target: " + placeTarget.getX() + " " + placeTarget.getY() + " " + placeTarget.getZ() + " Distance: " + df.format(mc.player.getPositionVector().distanceTo(new Vec3d(placeTarget))));
 
     }
 
@@ -160,6 +162,8 @@ public class DispenserMeta extends Module {
             placeBlock(new BlockPos(placeTarget), EnumFacing.DOWN);
 
             mc.player.inventory.currentItem = dispenserSlot;
+            //float[] angle = RotationUtil.getLegitRotations(RotationUtil.getEyesPos());
+            //RotationUtil.faceYawAndPitch(angle[0], angle[1]);
             placeBlock(new BlockPos(placeTarget.add(0, 1, 0)), EnumFacing.DOWN);
 
             mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
