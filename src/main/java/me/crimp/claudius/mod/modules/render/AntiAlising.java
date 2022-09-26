@@ -4,9 +4,9 @@ import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.utils.Util;
 import net.minecraft.util.ResourceLocation;
 
-public class AcidOverlay extends Module {
+public class AntiAlising extends Module {
 
-    public AcidOverlay() {
+    public AntiAlising() {
         super("AcidOverlay", "Pill In ibiza", Category.RENDER, true, false, false);
     }
 
@@ -14,7 +14,7 @@ public class AcidOverlay extends Module {
     @Override
     public void onEnable() {
         if (this.mc.world != null) {
-            Util.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/wobble.json"));
+            Util.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/antialias.json"));
         }
     }
 
