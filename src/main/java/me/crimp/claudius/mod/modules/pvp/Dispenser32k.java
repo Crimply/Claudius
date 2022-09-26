@@ -2,13 +2,10 @@ package me.crimp.claudius.mod.modules.pvp;
 
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
-import me.crimp.claudius.utils.RotationUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.BlockTallGrass;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ClickType;
@@ -21,7 +18,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.block.*;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -35,7 +31,7 @@ import java.util.List;
 
 
 //TODO REDO EVERYTHING
-public class DispenserMeta extends Module {
+public class Dispenser32k extends Module {
 
     public static final List<Block> SHULKERS = Arrays.asList( // TODO: Move this to a central place
             Blocks.WHITE_SHULKER_BOX,
@@ -72,7 +68,7 @@ public class DispenserMeta extends Module {
 
     private boolean isSneaking;
 
-    public DispenserMeta() {
+    public Dispenser32k() {
         super("Dispencer32k", "",Category.PVP, true, false, false);
     }
 
@@ -132,7 +128,7 @@ public class DispenserMeta extends Module {
         }
 
         // IntelliJ dumb, iirc this can cause npe when looking in water, at crystal etc.
-        if (mc.objectMouseOver == null || mc.objectMouseOver.getBlockPos() == null || mc.objectMouseOver.getBlockPos().up() == null || DispenserMeta.mc.objectMouseOver.typeOfHit != RayTraceResult.Type.BLOCK) {
+        if (mc.objectMouseOver == null || mc.objectMouseOver.getBlockPos() == null || mc.objectMouseOver.getBlockPos().up() == null || Dispenser32k.mc.objectMouseOver.typeOfHit != RayTraceResult.Type.BLOCK) {
             Command.sendMessage("[Auto32k] Not a valid place target, disabling.");
             this.toggle();
             return;

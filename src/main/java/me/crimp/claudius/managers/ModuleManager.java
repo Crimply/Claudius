@@ -72,7 +72,7 @@ public class ModuleManager extends Feature {
                 new PopCounter(),
                 new AutoKiller(),
                 new AutoClicker(),
-                new DispenserMeta(),
+                new Dispenser32k(),
                 new AntiChainPop(),
                 new MainHandTotem(),
 
