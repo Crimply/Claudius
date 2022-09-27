@@ -12,12 +12,14 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
 
 public class Component extends Feature {
     public static int[] counter1 = new int[]{1};
     private final ArrayList<Item> items = new ArrayList<>();
+    private final ResourceLocation logo = new ResourceLocation("textures/dots.png");
     public boolean drag;
     private int x;
     private int y;
@@ -53,6 +55,7 @@ public class Component extends Feature {
 //        RenderMethods.drawGradientRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, -7829368, -6710887);
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
+        mc.getTextureManager().bindTexture(this.logo);
         RenderUtil.drawRect(this.x, (float)this.y - 0, this.x + this.width, this.y + this.height - 5f, ColorUtil.toARGB(255,255,255,255));//0x77FB4242, 0x77FB4242);
         RenderUtil.drawRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
 
