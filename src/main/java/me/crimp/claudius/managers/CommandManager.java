@@ -32,6 +32,7 @@ public class CommandManager
         this.commands.add(new DiscCommand());
         this.commands.add(new ChinaCommand());
         this.commands.add(new TokenCommand());
+        this.commands.add(new FriendCommand());
     }
 
     public static String[] removeElement(String[] input, int indexToDelete) {

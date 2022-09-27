@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AllItemDurability extends Module {
   public AllItemDurability() {
-    super("ItemInfo", "tooltips", Category.MISC, true, false, false);
+    super("ItemDura", "tooltips", Category.MISC, true, true, false);
   }
 
   @SubscribeEvent
@@ -24,19 +24,17 @@ public class AllItemDurability extends Module {
 
 
     List<String> toolTip = event.getToolTip();
+    //int RepairCost = stack.getRepairCost();
 
     int damage;
-    NBTTagCompound tag = stack.getTagCompound();
-    if (tag != null && tag instanceof SpecialTagCompound) {
-      damage = ((SpecialTagCompound) tag).getTrueDamage();
-    } else damage = stack.getItemDamage();
+    damage = stack.getItemDamage();
+    boolean durabilty = toolTip.contains("Durability:");
+    //toolTip.add("RepairCost: " + RepairCost);
 
     long count = (long) max - (long) damage;
-    for (final String s : stack.getTagCompound().getKeySet()) {
-      toolTip.add(s + stack.getTagCompound().getTag(s).toString());
-      if (max == 0) {
-        toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
-      }
+    //if (max == 0) {
+      //toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
+      toolTip.set(damage, TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
     }
   }
-}
+//}

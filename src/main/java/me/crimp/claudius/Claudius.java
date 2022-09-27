@@ -31,6 +31,8 @@ public class Claudius {
     public static ServerManager serverManager;
     public static EventManager eventManager;
     public static TextManager textManager;
+    public static FriendManager friendManager;
+    public static CapeManager capeManager;
     @Mod.Instance
     public static Claudius INSTANCE;
     private static boolean unloaded;
@@ -59,6 +61,7 @@ public class Claudius {
         positionManager = new PositionManager();
         configManager = new ConfigManager();
         holeManager = new HoleManager();
+        friendManager = new FriendManager();
         LOGGER.info("Managers loaded.");
         moduleManager.init();
         LOGGER.info("Modules loaded.");
@@ -90,6 +93,7 @@ public class Claudius {
         inventoryManager = null;
         moduleManager = null;
         textManager = null;
+        friendManager = null;
         //cape = null;
         LOGGER.info("claudius unloaded!\n");
     }
