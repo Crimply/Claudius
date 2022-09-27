@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AllItemDurability extends Module {
   public AllItemDurability() {
-    super("ItemDura", "tooltips", Category.MISC, true, true, false);
+    super("ItemDura", "tooltips", Category.MISC, true, false, false);
   }
 
   @SubscribeEvent
@@ -24,17 +24,13 @@ public class AllItemDurability extends Module {
 
 
     List<String> toolTip = event.getToolTip();
-    //int RepairCost = stack.getRepairCost();
 
     int damage;
     damage = stack.getItemDamage();
-    boolean durabilty = toolTip.contains("Durability:");
-    //toolTip.add("RepairCost: " + RepairCost);
 
     long count = (long) max - (long) damage;
-    //if (max == 0) {
-      //toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
-      toolTip.set(damage, TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
+    if (max == 0) {
+      toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
     }
   }
-//}
+}

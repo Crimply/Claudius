@@ -31,6 +31,7 @@ public class TrueDurabilityModule extends Module {
 
 
     List<String> toolTip = event.getToolTip();
+    int durabilty = toolTip.indexOf("Durability:");
 
     int damage;
     NBTTagCompound tag = stack.getTagCompound();
@@ -40,7 +41,7 @@ public class TrueDurabilityModule extends Module {
 
     long count = (long) max - (long) damage;
     if (count > max){
-      toolTip.add(TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + Long.toString(count) + TextFormatting.GRAY + " / " + Long.toString(max));
+      toolTip.set(durabilty ,TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + Long.toString(count) + TextFormatting.GRAY + " / " + Long.toString(max));
     }
   }
 }
