@@ -28,11 +28,11 @@ public abstract class MixinAbstractClientPlayer {
 
         if ((Claudius.capeManager.isOg(uuid))) {
             // callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/cape-old.png"));
-            callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/DevCape.png"));
+            callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/ogcape.png"));
         }
 
         if (Claudius.capeManager.isContributor(uuid)) {
-            callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/DevCape.png"));
+            callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/devcape.png"));
         }
     }
 }

@@ -7,7 +7,6 @@
     "MixinEntityPlayerSP",
     "MixinGuiScreen",
     "MixinAbstractClientPlayer",
-    "MixinModelPlayer",
     "MixinNetworkManager"
   ]
 }

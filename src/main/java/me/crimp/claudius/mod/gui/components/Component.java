@@ -53,8 +53,9 @@ public class Component extends Feature {
 //        RenderMethods.drawGradientRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, -7829368, -6710887);
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
+        RenderUtil.drawRect(this.x, (float)this.y - 0, this.x + this.width, this.y + this.height - 5f, ColorUtil.toARGB(255,255,255,255));//0x77FB4242, 0x77FB4242);
         RenderUtil.drawRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
-        RenderUtil.drawRect(this.x, (float)this.y - 1.0f, this.x + this.width, this.y + this.height - 5.5f, ColorUtil.toARGB(255,255,255,255));//0x77FB4242, 0x77FB4242);
+
         if (this.open) {
             RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
         }

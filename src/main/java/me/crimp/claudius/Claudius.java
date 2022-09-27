@@ -62,6 +62,7 @@ public class Claudius {
         configManager = new ConfigManager();
         holeManager = new HoleManager();
         friendManager = new FriendManager();
+        capeManager = new CapeManager();
         LOGGER.info("Managers loaded.");
         moduleManager.init();
         LOGGER.info("Modules loaded.");
@@ -94,6 +95,7 @@ public class Claudius {
         moduleManager = null;
         textManager = null;
         friendManager = null;
+        capeManager = null;
         //cape = null;
         LOGGER.info("claudius unloaded!\n");
     }
