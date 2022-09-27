@@ -14,6 +14,7 @@ import java.util.List;
 public class AllItemDurability extends Module {
   public AllItemDurability() {
     super("ItemDura", "tooltips", Category.MISC, true, false, false);
+    this.drawn.setValue(false);
   }
 
   @SubscribeEvent

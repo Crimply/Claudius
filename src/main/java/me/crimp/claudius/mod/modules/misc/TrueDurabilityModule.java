@@ -14,6 +14,7 @@ import java.util.List;
 public class TrueDurabilityModule extends Module {
   public TrueDurabilityModule() {
     super("TrueDurability", "Display unbreakable items in red enchant, add real durability in tooltip", Category.MISC, true, false, false);
+    this.drawn.setValue(false);
   }
 
   @SubscribeEvent

@@ -82,6 +82,7 @@ public class ModuleManager extends Feature {
                 new PenisESP(),
                 new EntityAlerts(),
                 new AntiAlising(),
+                new DeathEffect(),
                 new BurrowEsp()
         );
     }

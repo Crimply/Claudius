@@ -56,27 +56,22 @@ public class Component extends Feature {
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
         mc.getTextureManager().bindTexture(this.logo);
+        //catogorybox
         RenderUtil.drawRect(this.x, (float)this.y - 0, this.x + this.width, this.y + this.height - 5f, ColorUtil.toARGB(255,255,255,255));//0x77FB4242, 0x77FB4242);
-        RenderUtil.drawRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
+        //whiteline
+        RenderUtil.drawRect(this.x, (float)this.y + 9, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
 
         if (this.open) {
+            RenderUtil.drawRect(this.x + 5, (float)this.y + 15.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), ColorUtil.toARGB(255,255,255,255));
             RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
         //var5.f$L.f$E(this.f$E(), (double)((float)this.f$C + 3.0F), (double)((float)this.f$e + 1.5F), 15592941);
 
-        /*if (!open) {
-            if (this.angle > 0) {
-                this.angle -= 6;
-            }
-        } else if (this.angle < 180) {
-            this.angle += 6;
-        }*/
-
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         //RenderMethods.glColor(new Color(255, 255, 255, 255));
-        //minecraft.getTextureManager().bindTexture(new ResourceLocation("textures/exeter/arrow.png"));
+        mc.getTextureManager().bindTexture(new ResourceLocation("textures/dots.png"));
         GlStateManager.translate(getX() + getWidth() - 7, (getY() + 6) - 0.3F, 0.0F);
         //GlStateManager.rotate(calculateRotation(angle), 0.0F, 0.0F, 1.0F);
         //RenderUtil.drawModalRect(-5, -5, 0.0F, 0.0F, 10, 10, 10, 10, 10.0F, 10.0F);
@@ -92,27 +87,6 @@ public class Component extends Feature {
                 y += (float)item.getHeight() + 1.5f;
             }
         }
-
-        /*this.drag(mouseX, mouseY);
-        counter1 = new int[]{1};
-        float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 1.0f;
-        int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
-        RenderUtil.drawRect(this.x, this.y - 1, this.x + this.width, this.y + this.height - 6, color);
-        if (this.open) {
-            RenderUtil.drawRect(this.x, (float) this.y + 13.5f, this.x + this.width, (float) (this.y + this.height) + totalItemHeight, 0x77000000);
-        }
-        Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        if (this.open) {
-            float y = (float) (this.getY() + this.getHeight()) - 3.0f;
-            for (Item item : this.getItems()) {
-                Component.counter1[0] = counter1[0] + 1;
-                if (item.isHidden()) continue;
-                item.setLocation((float) this.x + 2.0f, y);
-                item.setWidth(this.getWidth() - 4);
-                item.drawScreen(mouseX, mouseY, partialTicks);
-                y += (float) item.getHeight() + 1.5f;
-            }
-        }*/
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
