@@ -105,7 +105,7 @@ public class EventManager extends Feature {
             if (packet.getOpCode() == 35 && packet.getEntity(mc.world) instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer) packet.getEntity(mc.world);
                 MinecraftForge.EVENT_BUS.post(new TotemPopEvent(player));
-                //PopLagger.getInstance().onTotemPop(player);
+                PopLagger.getInstance().onTotemPop(player);
                 PopCounter.getInstance().onTotemPop(player);
             }
         }

@@ -17,7 +17,6 @@ public class PopLagger extends Module {
     public static HashMap<String, Integer> TotemPopContainer = new HashMap();
     public Setting<Boolean> Block = this.register(new Setting<>("Block the lag", true));
     public Setting<Boolean> on = this.register(new Setting<>("Send China", true));
-    //public Setting<Boolean> test = this.register(new Setting<>("Test", true));
     private static PopLagger INSTANCE = new PopLagger();
 
     public PopLagger() {
@@ -89,14 +88,15 @@ public class PopLagger extends Module {
             TotemPopContainer.put(player.getName(), l_Count);
         }
         if (l_Count == 1) {
-            if (Claudius.friendManager.isFriend(player.getName())) return;
-            if (this.enabled.getValue() && this.on.getValue()) {
-                if (delay == 0) {
-                    mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + player.getName() + " " + SND_LAG));
-                    delay = 1;
+                if (!Claudius.friendManager.isFriend((player.getName()))) {
+                    if (this.enabled.getValue() && this.on.getValue()) {
+                        if (delay == 0) {
+                            mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + player.getName() + " " + SND_LAG));
+                            delay = 1;
 
+                        }
+                    }
                 }
-            }
         }
         if (l_Count > 1) {
             if (this.enabled.getValue() && this.on.getValue()) {

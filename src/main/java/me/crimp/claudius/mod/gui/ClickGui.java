@@ -32,7 +32,7 @@ public class ClickGui extends GuiScreen {
 
     private void load() {
         int x = -84;
-        for (final Module.Category category : Claudius.moduleManager.getCategories()) this.components.add(new Component(category.getName(), x += 85, 13, true) {
+        for (final Module.Category category : Claudius.moduleManager.getCategories()) this.components.add(new Component(category.getName(), x += 90, 13, true) {
             @Override
             public void setupItems() {
                 Claudius.moduleManager.getModulesByCategory(category).forEach(module -> {

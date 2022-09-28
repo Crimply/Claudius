@@ -14,7 +14,7 @@ public class AutoClicker extends Module {
     public Setting<Boolean> Always = this.register(new Setting<>("Alwasys oin", false));
 
     public AutoClicker() {
-        super("AutoClicker", "TestDesc", Category.EXPLOIT, true, false, false);
+        super("AutoClicker", "TestDesc", Category.PVP, true, false, false);
     }
 
 
