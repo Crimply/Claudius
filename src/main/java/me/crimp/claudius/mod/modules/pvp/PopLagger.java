@@ -1,6 +1,7 @@
 package me.crimp.claudius.mod.modules.pvp;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
+import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.PacketEvent;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
@@ -88,6 +89,7 @@ public class PopLagger extends Module {
             TotemPopContainer.put(player.getName(), l_Count);
         }
         if (l_Count == 1) {
+            if (Claudius.friendManager.isFriend(player.getName())) return;
             if (this.enabled.getValue() && this.on.getValue()) {
                 if (delay == 0) {
                     mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + player.getName() + " " + SND_LAG));
