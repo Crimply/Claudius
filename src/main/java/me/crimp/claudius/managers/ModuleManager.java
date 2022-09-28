@@ -57,6 +57,7 @@ public class ModuleManager extends Feature {
                 new SetDisplay(),
                 new AntiLog4j(),
                 new NoToast(),
+                new NoSlow(),
 
                 //client
                 new HUD(),
