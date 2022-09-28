@@ -11,8 +11,8 @@ public class ReloadCommand
 
     @Override
     public void execute(String[] commands) {
-        Claudius.unload(true);
-
+        Claudius.capeManager.reload();
+        Claudius.reload();
 
     }
 }
