@@ -26,7 +26,7 @@ public class CapeManager implements Globals {
 
     public CapeManager() {
         try { // og
-            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius/main/Ogcape.txt");
+            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Ogcape.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -35,7 +35,7 @@ public class CapeManager implements Globals {
         } catch (Exception ignored) {
         }
         try { // dev
-            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius/main/Devcape.txt");
+            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Devcape.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -48,7 +48,7 @@ public class CapeManager implements Globals {
 
     public void reload() {
         try { // og
-            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius/main/Ogcape.txt");
+            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Ogcape.txtt");
             BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -57,7 +57,7 @@ public class CapeManager implements Globals {
         } catch (Exception ignored) {
         }
         try { // dev
-            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius/main/Devcape.txt");
+            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Devcape.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
