@@ -17,16 +17,13 @@ import org.lwjgl.input.Keyboard;
 
 public class NoSlow extends Module {
 
-    public static final Setting<Boolean> items = new Setting<>("Items", true);
-    // blocks
-    //public static final Setting<Boolean> soulsand = new Setting<>("Soulsand", false);
-    //public static final Setting<Boolean> slime = new Setting<>("Slime", false); // TODO: 12/18/2021 This stuff
-    public static final Setting<Boolean> inventory = new Setting<>("Inventory", true);
-    public static final Setting<Boolean> webs = new Setting<>("Webs", true);
-    public static final Setting<Integer> lookSpeed = new Setting<>("LookSpeed", 5, 0, 10);
+    public Setting<Boolean> items = register(new Setting<>("Items", true));
+    public Setting<Boolean> inventory = register(new Setting<>("Inventory", true));
+    public Setting<Boolean> webs = register(new Setting<>("Webs", true));
+    public Setting<Integer> lookSpeed = register(new Setting<>("LookSpeed", 5, 0, 10));
     // anti-cheat
-    public static final Setting<Bypass> bypass = new Setting<>("Bypass", Bypass.FencingF);
-    public static final Setting<Boolean> inventoryMoveBypass = new Setting<>("InvMoveBypass", false);
+    public Setting<Bypass> bypass = register(new Setting<>("Bypass", Bypass.TwoBeTwoTee));
+    public Setting<Boolean> inventoryMoveBypass = register(new Setting<>("InvMoveBypass", false));
     public static NoSlow INSTANCE;
     public static KeyBinding[] KEYS;
 
@@ -96,7 +93,7 @@ public class NoSlow extends Module {
                     sneaking = true;
                     mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 }
-            } else if (bypass.getValue() == Bypass.FencingF && !mc.player.isElytraFlying()) {
+            } else if (bypass.getValue() == Bypass.TwoBeTwoTee && !mc.player.isElytraFlying()) {
                 mc.player.connection.sendPacket(new CPacketHeldItemChange(mc.player.inventory.currentItem)); // lmao nice
             }
         }
@@ -141,6 +138,6 @@ public class NoSlow extends Module {
          * The infamous FencingFPlus2+2 NoSlow bypass
          * Skidded into Konas, RusherHack, Future, and every paid client under the sun
          */
-        FencingF
+        TwoBeTwoTee
     }
 }
