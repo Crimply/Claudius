@@ -637,6 +637,17 @@ public class RenderUtil implements Util {
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }
+    public static void drawText(final BlockPos pos, final String text, final Color color) {
+        if (pos == null || text == null) {
+            return;
+        }
+        GlStateManager.pushMatrix();
+        glBillboardDistanceScaled(pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, (EntityPlayer)RenderUtil.mc.player, 1.0f);
+        GlStateManager.disableDepth();
+        GlStateManager.translate(-(Claudius.textManager.getStringWidth(text) / 2.0), 0.0, 0.0);
+        //this.customFont.drawString(text, 0.0f, 0.0f, ColorUtil.toRGBA(color), true);
+        GlStateManager.popMatrix();
+    }
 
     public static void drawSphere(double x, double y, double z, float size, int slices, int stacks) {
         Sphere s = new Sphere();
