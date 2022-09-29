@@ -11,7 +11,7 @@ public class AutoClicker extends Module {
 
     private double speed;
     private double holdLength;
-    public Setting<Boolean> Always = this.register(new Setting<>("Alwasys oin", false));
+    public Setting<Boolean> Always = this.register(new Setting<>("Always on", false));
 
     public AutoClicker() {
         super("AutoClicker", "TestDesc", Category.PVP, true, false, false);
@@ -33,6 +33,5 @@ public class AutoClicker extends Module {
             }
         }
     }
-
 }
 

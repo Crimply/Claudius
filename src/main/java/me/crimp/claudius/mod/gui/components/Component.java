@@ -11,6 +11,7 @@ import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class Component extends Feature {
         this.x = x;
         this.y = y;
         this.width = 80;
-        this.height = 17;
+        this.height = (int) 17.7f;
         this.open = open;
         this.setupItems();
     }
@@ -57,7 +58,7 @@ public class Component extends Feature {
         RenderUtil.drawRect(this.x, (float)this.y - 1f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
 
         if (this.open) {
-            RenderUtil.drawRect(this.x -1f, (float)this.y + 11f, this.x + this.width + 1f, this.open ? (float)(this.y + this.height + 2f) + totalItemHeight : (float)(this.y + this.height - 1), ColorUtil.toARGB(255,255,255,255));//1996488704
+            RenderUtil.drawRect(this.x -1f, (float)this.y + 11.5f, this.x + this.width + 1f, this.open ? (float)(this.y + this.height + 1.2f) + totalItemHeight : (float)(this.y + this.height - 1), ColorUtil.toARGB(255,255,255,255));//1996488704
             RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
@@ -80,27 +81,6 @@ public class Component extends Feature {
                 y += (float)item.getHeight() + 1.5f;
             }
         }
-
-        /*this.drag(mouseX, mouseY);
-        counter1 = new int[]{1};
-        float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 1.0f;
-        int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
-        RenderUtil.drawRect(this.x, this.y - 1, this.x + this.width, this.y + this.height - 6, color);
-        if (this.open) {
-            RenderUtil.drawRect(this.x, (float) this.y + 13.5f, this.x + this.width, (float) (this.y + this.height) + totalItemHeight, 0x77000000);
-        }
-        Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        if (this.open) {
-            float y = (float) (this.getY() + this.getHeight()) - 3.0f;
-            for (Item item : this.getItems()) {
-                Component.counter1[0] = counter1[0] + 1;
-                if (item.isHidden()) continue;
-                item.setLocation((float) this.x + 2.0f, y);
-                item.setWidth(this.getWidth() - 4);
-                item.drawScreen(mouseX, mouseY, partialTicks);
-                y += (float) item.getHeight() + 1.5f;
-            }
-        }*/
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {

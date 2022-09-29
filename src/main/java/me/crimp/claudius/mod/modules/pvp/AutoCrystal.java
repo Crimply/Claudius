@@ -142,6 +142,7 @@ public class AutoCrystal
             this.yaw = angle[0];
             this.pitch = angle[1];
             this.rotating = true;
+            RotationUtil.faceYawAndPitch(angle[0], angle[1]);
         }
     }
 
