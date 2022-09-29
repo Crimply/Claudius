@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.gui.components.items.buttons;
+package me.crimp.claudius.mod.gui.components.items.button;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;

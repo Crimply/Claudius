@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.gui.components.items.buttons;
+package me.crimp.claudius.mod.gui.components.items.button;
 
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.Component;

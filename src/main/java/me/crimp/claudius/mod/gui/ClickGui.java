@@ -4,7 +4,7 @@ import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.components.Component;
 import me.crimp.claudius.mod.gui.components.items.Item;
-import me.crimp.claudius.mod.gui.components.items.buttons.ModuleButton;
+import me.crimp.claudius.mod.gui.components.items.button.ModuleButton;
 import me.crimp.claudius.mod.modules.Module;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Mouse;

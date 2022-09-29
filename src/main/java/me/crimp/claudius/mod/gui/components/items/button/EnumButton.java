@@ -1,5 +1,6 @@
-package me.crimp.claudius.mod.gui.components.items.buttons;
+package me.crimp.claudius.mod.gui.components.items.button;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
@@ -8,10 +9,10 @@ import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 
-public class BooleanButton extends Button {
-    private final Setting<Boolean> setting;
+public class EnumButton extends Button {
+    public Setting<Enum<?>> setting;
 
-    public BooleanButton(Setting<Boolean> setting) {
+    public EnumButton(Setting<Enum<?>> setting) {
         super(setting.getName());
         this.setting = setting;
         this.width = 15;
@@ -20,7 +21,7 @@ public class BooleanButton extends Button {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         RenderUtil.drawRect(this.x, this.y, this.x + (float) this.width + 7.4f, this.y + (float) this.height - 0.5f, this.getState() ? (!this.isHovering(mouseX, mouseY) ? Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).hoverAlpha.getValue()) : Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).alpha.getValue())) : (!this.isHovering(mouseX, mouseY) ? 0x11555555 : -2007673515));
-        Claudius.textManager.drawStringWithShadow(this.getName(), this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), this.getState() ? -1 : -5592406);
+        Claudius.textManager.drawStringWithShadow(this.setting.getName() + " " + ChatFormatting.GRAY + (this.setting.currentEnumName().equalsIgnoreCase("ABC") ? "ABC" : this.setting.currentEnumName()), this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), this.getState() ? -1 : -5592406);
     }
 
     @Override
@@ -43,12 +44,12 @@ public class BooleanButton extends Button {
 
     @Override
     public void toggle() {
-        this.setting.setValue(!((Boolean) this.setting.getValue()));
+        this.setting.increaseEnum();
     }
 
     @Override
     public boolean getState() {
-        return this.setting.getValue();
+        return true;
     }
 }
 

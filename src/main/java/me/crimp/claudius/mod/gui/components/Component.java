@@ -4,12 +4,11 @@ import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.items.Item;
-import me.crimp.claudius.mod.gui.components.items.buttons.Button;
+import me.crimp.claudius.mod.gui.components.items.button.Button;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
 import me.crimp.claudius.utils.ColorUtil;
 import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
 
@@ -32,7 +31,7 @@ public class Component extends Feature {
         this.x = x;
         this.y = y;
         this.width = 80;
-        this.height = 18;
+        this.height = 16;
         this.open = open;
         this.setupItems();
     }
@@ -54,7 +53,7 @@ public class Component extends Feature {
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
         int color3 = ClickGuiModule.INSTANCE.BGalpha.getValue();
-        RenderUtil.drawRect(this.x - 1f, (float)this.y - 2.5f, this.x + 1f + this.width, this.y + this.height - 5.0f, ColorUtil.toARGB(255,255,255,255));//0x77FB4242, 0x77FB4242);
+        RenderUtil.drawRect(this.x - 1f, (float)this.y - 2.5f, this.x + 1f + this.width, this.y + this.height - 5.0f, ColorUtil.toARGB(255,255,255,255));
         RenderUtil.drawRect(this.x, (float)this.y - 1f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
 
         if (this.open) {
@@ -69,8 +68,6 @@ public class Component extends Feature {
         //RenderMethods.glColor(new Color(255, 255, 255, 255));
         //minecraft.getTextureManager().bindTexture(new ResourceLocation("textures/exeter/arrow.png"));
         GlStateManager.translate(getX() + getWidth() - 7, (getY() + 6) - 0.3F, 0.0F);
-        //GlStateManager.rotate(calculateRotation(angle), 0.0F, 0.0F, 1.0F);
-        //RenderUtil.drawModalRect(-5, -5, 0.0F, 0.0F, 10, 10, 10, 10, 10.0F, 10.0F);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
 
