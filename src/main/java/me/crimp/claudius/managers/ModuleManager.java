@@ -77,6 +77,7 @@ public class ModuleManager extends Feature {
                 new Dispenser32k(),
                 new AntiChainPop(),
                 new MainHandTotem(),
+                new AutoCrystal(),
 
                 //render
                 new Austraila(),

@@ -4,13 +4,12 @@ import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.UpdateWalkingPlayerEvent;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CrystalAura extends Module {
+public class CrystalAuraRewrite extends Module {
 
     public Setting<Boolean> Place = this.register(new Setting<>("Place", true));
     public Setting<Boolean> Break = this.register(new Setting<>("Break", true));
@@ -19,7 +18,7 @@ public class CrystalAura extends Module {
     public Setting<Float> PlaceDelay = this.register(new Setting<>("PlaceDelay", 0f,0f,20f));
     public Setting<Float> BreakSpeed = this.register(new Setting<>("BreakSpeed", 20f,0f,20f));
 
-    public CrystalAura() {
+    public CrystalAuraRewrite() {
         super("CrystalAura", "CrystalAura", Category.PVP, true, false, false);
     }
 
