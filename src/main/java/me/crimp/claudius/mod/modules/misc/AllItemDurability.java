@@ -19,16 +19,11 @@ public class AllItemDurability extends Module {
 
   @SubscribeEvent
   public void itemToolTip(ItemTooltipEvent event) {
-
     ItemStack stack = event.getItemStack();
     int max = stack.getMaxDamage();
-
-
     List<String> toolTip = event.getToolTip();
-
     int damage;
     damage = stack.getItemDamage();
-
     long count = (long) max - (long) damage;
     if (max == 0) {
       toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));

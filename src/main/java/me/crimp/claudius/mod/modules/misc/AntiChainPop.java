@@ -9,6 +9,6 @@ public class AntiChainPop extends Module {
 
     @Override
     public void onUpdate() {
-        if (mc.player.getHealth() == 1) {mc.world.sendQuittingDisconnectingPacket();}
+        if (mc.player.getHealth() == 3.5f) {mc.world.sendQuittingDisconnectingPacket();}
     }
 }

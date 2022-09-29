@@ -53,10 +53,12 @@ public class Component extends Feature {
 //        RenderMethods.drawGradientRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, -7829368, -6710887);
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
+        int color3 = ClickGuiModule.INSTANCE.BGalpha.getValue();
         RenderUtil.drawRect(this.x - 1f, (float)this.y - 2.5f, this.x + 1f + this.width, this.y + this.height - 5.0f, ColorUtil.toARGB(255,255,255,255));//0x77FB4242, 0x77FB4242);
         RenderUtil.drawRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
 
         if (this.open) {
+            RenderUtil.drawRect(this.x -1f, (float)this.y + 12.5f, this.x + this.width + 1f, this.open ? (float)(this.y + this.height + 1f) + totalItemHeight : (float)(this.y + this.height - 1), ColorUtil.toARGB(255,255,255,color3));//1996488704
             RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);

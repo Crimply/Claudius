@@ -780,9 +780,9 @@ public class RenderUtil implements Util {
     }
 
     public static void drawOutlinedRoundedRectangle(int x, int y, int width, int height, float radius, float dR, float dG, float dB, float dA, float outlineWidth) {
-        RenderUtil.drawRoundedRectangle(x, y, width, height, radius);
+        RenderUtil.drawRoundedRectangle(x, y, width, height, radius, new Color(60, 60, 60, 255).getRGB());
         GL11.glColor4f(dR, dG, dB, dA);
-        RenderUtil.drawRoundedRectangle((float) x + outlineWidth, (float) y + outlineWidth, (float) width - outlineWidth * 2.0f, (float) height - outlineWidth * 2.0f, radius);
+        RenderUtil.drawRoundedRectangle((float) x + outlineWidth, (float) y + outlineWidth, (float) width - outlineWidth * 2.0f, (float) height - outlineWidth * 2.0f, radius, new Color(60, 60, 60, 255).getRGB());
     }
 
     public static void drawRectangle(float x, float y, float width, float height) {
@@ -818,7 +818,7 @@ public class RenderUtil implements Util {
         RenderUtil.glEnd();
     }
 
-    public static void drawRoundedRectangle(float x, float y, float width, float height, float radius) {
+    public static void drawRoundedRectangle(float x, float y, float width, float height, float radius, int rgb) {
         glEnable(3042);
         RenderUtil.drawArc(x + width - radius, y + height - radius, radius, 0.0f, 90.0f, 16);
         RenderUtil.drawArc(x + radius, y + height - radius, radius, 90.0f, 180.0f, 16);
