@@ -48,7 +48,7 @@ public class CapeManager implements Globals {
 
     public void reload() {
         try { // og
-            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Ogcape.txtt");
+            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Ogcape.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
