@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "claudius",
+    "name": "Claudius",
+    "description": "Best Util Client",
+    "version": "1.0",
+    "mcversion": "1.12.2",
+    "logoFile": "title.png",
+    "url": "https://discord.gg/F8kkNfx33K",
+    "updateUrl": "",
+    "authorList": [
+      "Crimply"
+    ],
+    "screenshots": [],
+    "dependencies": []
+  }
+]

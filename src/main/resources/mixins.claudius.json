@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "me.crimp.claudius.mixins.mixins",
+  "refmap": "mixins.claudius.refmap.json",
+  "mixins": [
+    "MixinEntityPlayerSP",
+    "MixinGuiScreen",
+    "MixinAbstractClientPlayer",
+    "MixinNetworkManager"
+  ]
+}
