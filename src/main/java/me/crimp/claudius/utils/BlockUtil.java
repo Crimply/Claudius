@@ -271,7 +271,7 @@ public class BlockUtil implements Util {
         return BlockUtil.getBlock(pos).canCollideCheck(BlockUtil.getState(pos), false);
     }
 
-    private static Block getBlock(BlockPos pos) {
+    static Block getBlock(BlockPos pos) {
         return BlockUtil.getState(pos).getBlock();
     }
 

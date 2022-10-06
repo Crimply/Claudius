@@ -1,9 +1,11 @@
 package me.crimp.claudius.mod.modules.pvp;
 
+import me.crimp.claudius.event.events.PacketEvent;
 import me.crimp.claudius.utils.BurrowUtil;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.mod.modules.Module;
+import me.crimp.claudius.utils.MathUtil;
 import net.minecraft.block.BlockAnvil;
 import net.minecraft.block.BlockEnderChest;
 import net.minecraft.block.BlockObsidian;
@@ -16,6 +18,7 @@ import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Burrow
         extends Module {

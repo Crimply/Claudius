@@ -52,6 +52,63 @@ public class RenderUtil implements Util {
         Gui.drawRect(x, y, x + w, y + h, color);
     }
 
+    public static void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight) {
+        float f = 1.0F / textureWidth;
+        float f1 = 1.0F / textureHeight;
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder bufferbuilder = tessellator.getBuffer();
+        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+        bufferbuilder.pos(x, (y + height), 0.0D).tex((u * f), ((v + height) * f1)).endVertex();
+        bufferbuilder.pos((x + width), (y + height), 0.0D).tex(((u + width) * f), ((v + height) * f1)).endVertex();
+        bufferbuilder.pos((x + width), y, 0.0D).tex(((u + width) * f), (v * f1)).endVertex();
+        bufferbuilder.pos(x, y, 0.0D).tex((u * f), (v * f1)).endVertex();
+        tessellator.draw();
+    }
+
+    public static void glPrepare() {
+        GL11.glBlendFunc(770, 771);
+        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.glLineWidth(1.5f);
+        GlStateManager.disableTexture2D();
+        GlStateManager.depthMask(false);
+        GlStateManager.enableBlend();
+        GlStateManager.disableDepth();
+        GlStateManager.disableLighting();
+        GlStateManager.disableCull();
+        GlStateManager.enableAlpha();
+        GlStateManager.color(1.0f, 1.0f, 1.0f);
+    }
+
+    public static void glRelease() {
+        GlStateManager.enableCull();
+        GlStateManager.depthMask(true);
+        GlStateManager.enableTexture2D();
+        GlStateManager.enableBlend();
+        GlStateManager.enableDepth();
+    }
+
+    public static void drawBox(AxisAlignedBB bb, float r, float g, float b, float a) {
+        glPrepare();
+        RenderGlobal.renderFilledBox(bb, r, g, b, a);
+        RenderGlobal.drawSelectionBoundingBox(bb, r, g, b, a);
+        glRelease();
+    }
+
+    public static AxisAlignedBB generateBB(double x, double y, double z) {
+        BlockPos blockPos = new BlockPos(x, y, z);
+        final AxisAlignedBB bb = new AxisAlignedBB
+                (
+                        blockPos.getX() - Minecraft.getMinecraft().getRenderManager().viewerPosX,
+                        blockPos.getY() - Minecraft.getMinecraft().getRenderManager().viewerPosY,
+                        blockPos.getZ() - Minecraft.getMinecraft().getRenderManager().viewerPosZ,
+                        blockPos.getX() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosX,
+                        blockPos.getY() + (1) - Minecraft.getMinecraft().getRenderManager().viewerPosY,
+                        blockPos.getZ() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosZ
+                );
+        return bb;
+    }
+
+
     public static AxisAlignedBB interpolateAxis(AxisAlignedBB bb) {
         return new AxisAlignedBB(bb.minX - RenderUtil.mc.getRenderManager().viewerPosX, bb.minY - RenderUtil.mc.getRenderManager().viewerPosY, bb.minZ - RenderUtil.mc.getRenderManager().viewerPosZ, bb.maxX - RenderUtil.mc.getRenderManager().viewerPosX, bb.maxY - RenderUtil.mc.getRenderManager().viewerPosY, bb.maxZ - RenderUtil.mc.getRenderManager().viewerPosZ);
     }

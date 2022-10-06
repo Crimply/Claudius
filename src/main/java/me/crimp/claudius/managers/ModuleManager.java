@@ -53,6 +53,7 @@ public class ModuleManager extends Feature {
                 new AllItemDurability(),
                 new McfSync(),
                 new PopChams(),
+                new RevStep(),
 
                 //fixes
                 new GuiMovee(),

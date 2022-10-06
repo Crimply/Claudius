@@ -1,6 +1,7 @@
 package me.crimp.claudius.utils;
 
 public class Timer {
+    private long current = System.currentTimeMillis();
     private long time = -1L;
 
     public boolean passedS(double s) {
@@ -41,6 +42,10 @@ public class Timer {
 
     public long getMs(long time) {
         return time / 1000000L;
+    }
+
+    public boolean hasReached(final long delay) {
+        return System.currentTimeMillis() - this.current >= delay;
     }
 }
 
