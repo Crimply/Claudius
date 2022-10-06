@@ -35,6 +35,7 @@ public class CommandManager
         this.commands.add(new FriendCommand());
         this.commands.add(new addsyncCommand());
         this.commands.add(new delsyncCommand());
+        this.commands.add(new FriendSyncCommand());
     }
 
     public static String[] removeElement(String[] input, int indexToDelete) {
