@@ -21,10 +21,6 @@ public class addsyncCommand extends Command {
         if (McfSync.INSTANCE.two.getValue().equals(true)) {
             mc.player.sendChatMessage(dos + " " + commands[0]);
         }
-        if (McfSync.INSTANCE.three.getValue().equals(true)) {
-            mc.player.sendChatMessage(tres + " " + commands[0]);
-        }
-
     }
 }
 

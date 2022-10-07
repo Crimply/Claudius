@@ -54,9 +54,9 @@ public class Component extends Feature {
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
         int color3 = ClickGuiModule.INSTANCE.BGalpha.getValue();
-        RenderUtil.drawRect(this.x - 2f, (float)this.y - 2.5f, this.x + 2f + this.width, this.y + this.height - 6.0f, /*ColorUtil.toARGB(255,255,255,255)*/ color);
+        RenderUtil.drawRect(this.x, (float)this.y - 2.5f, this.x + 2f + this.width, this.y + this.height - 6.0f, /*ColorUtil.toARGB(255,255,255,255)*/ color);
         //RenderUtil.drawRect(this.x - 2f, (float)this.y - 2.5f, this.x + 2f + this.width, this.y + this.height - 6.0f, ColorUtil.toARGB(255,255,255,255));
-        RenderUtil.drawRect(this.x, (float)this.y - 1f, this.x + this.width, this.y + this.height - 6, color);//0x77FB4242, 0x77FB4242);
+        RenderUtil.drawRect(this.x, (float)this.y - 1f, this.x + this.width, this.y + this.height - 7, color);//0x77FB4242, 0x77FB4242);
 
         if (this.open) {
             RenderUtil.drawRect(this.x -2f, (float)this.y + 11.5f, this.x + this.width + 2f, this.open ? (float)(this.y + this.height + 2.2f) + totalItemHeight : (float)(this.y + this.height - 1), /*ColorUtil.toARGB(255,255,255,255)*/ color);//1996488704

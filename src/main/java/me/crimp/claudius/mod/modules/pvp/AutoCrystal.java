@@ -33,10 +33,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-
 import static me.crimp.claudius.utils.RenderUtil.generateBB;
-
-//import static org.fenci.fencingfplus2.util.render.RenderUtil.generateBB;
 
 public class AutoCrystal extends Module {
 
@@ -47,23 +44,19 @@ public class AutoCrystal extends Module {
         INSTANCE = this;
     }
 
-    //TODO: Multithreading, Motion-based/Ping based predictions
-
     //placing
     public final Setting<Place> place = this.register(new Setting<>("Place", Place.Normal));
     public final Setting<Float> placeRange =this.register( new Setting<>("PlaceRange", 4f, 0f, 10f));
     public final Setting<Float> playerRange = this.register(new Setting<>("PlayerRange", 8f, 0f, 30f));
-    //public final Setting<Integer> playerOverrideHealth = this.register(new Setting<>("PlayerOverrideHealth", 4, 1, 36));
-    //public static final Setting<Float> placeWallRange = this.register(new Setting<>("PlaceWallRange", 5f, 0, 6);
     public final Setting<Boolean> raytrace = this.register(new Setting<>("Raytrace", false));
     public final Setting<Integer> minDamage = this.register(new Setting<>("MinDamage", 1, 0, 36));
     public final Setting<Integer> maxLocalDamage = this.register(new Setting<>("MaxLocalDamage", 20, 0, 36));
     public final Setting<Boolean> ignoreSelfDmg = this.register(new Setting<>("IgnoreSelfDmg", false));
     public  final Setting<Boolean> placeSwing = this.register(new Setting<>("PlaceSwing", true));
-    public  final Setting<Float> placeDelay = this.register(new Setting<>("PlaceDelay", 0f, 0f, 20f));
+    public  final Setting<Float> placeDelay = this.register(new Setting<>("PlaceDelay", 0f, -20f, 40f));
 
     //breaking
-    public  final Setting<Break> breakCrystal = this.register(new Setting<>("Break", Break.All));
+   // public  final Setting<Break> breakCrystal = this.register(new Setting<>("Break", Break.All));
     public  final Setting<Float> breakRange = this.register(new Setting<>("BreakRange", 5f, 0f, 10f));
     public  final Setting<Float> breakWallRange = this.register(new Setting<>("BreakWallRange", 5f, 0f, 6f));
     public  final Setting<Boolean> packetExplode = this.register(new Setting<>("PacketExplode", true));
@@ -72,14 +65,14 @@ public class AutoCrystal extends Module {
     public  final Setting<Integer> stuckAttempts = this.register(new Setting<>("StuckAttempts", 4, 1, 20));
     public  final Setting<BreakSwing> breakSwing = this.register(new Setting<>("BreakSwing", BreakSwing.Normal));
     public  final Setting<Integer> breakAttempts = this.register(new Setting<>("BreakAttempts", 1, 1, 5));
-    public  final Setting<Float> breakSpeed = this.register(new Setting<>("BreakSpeed", 20f, 0f, 20f));
+    public  final Setting<Float> breakSpeed = this.register(new Setting<>("BreakSpeed", 20f, 0f, 40f));
     public  final Setting<Weakness> antiWeakness = this.register(new Setting<>("AntiWeakness", Weakness.Normal));
     //public  final Setting<Float> antiWeaknessSpeed = this.register(new Setting<>("AntiWeaknessSpeed", 0f, 0, 10));
     public  final Setting<Boolean> threaded = this.register(new Setting<>("Threded", false));
     //public  final Setting<Integer> threads = this.register(new Setting<>("Threads", 2, 1, 5));
 
     //placing and breaking
-    public  final Setting<Boolean> noDesync = this.register(new Setting<>("NoDesync", true));
+    public  final Setting<Boolean> noDesync = this.register(new Setting<>("NoRenderDesync", true));
     public  final Setting<Boolean> swordPause = this.register(new Setting<>("SwordPause", false));
     public  final Setting<Boolean> gapPause = this.register(new Setting<>("GapPause", false));
     //public  final Setting<Boolean> armor = this.register(new Setting<>("Armor", true));
@@ -105,7 +98,6 @@ public class AutoCrystal extends Module {
     public  final Setting<Integer> blue = this.register(new Setting<>("Blue", 255, 0, 255));
     public  final Setting<Integer> alpha = this.register(new Setting<>("Alpha", 50, 0, 255));
 
-    boolean isInHole;
     boolean isRotating;
     private float pitch = 0.0f;
     private float yaw = 0.0f;
@@ -181,9 +173,9 @@ public class AutoCrystal extends Module {
             }
             if (logic.getValue().equals(Logic.PlaceBreak)) {
                 if (!place.getValue().equals(Place.Off) && placeTicks > placeDelay.getValue()) placeCrystal();
-                if (!breakCrystal.getValue().equals(Break.Off) && hitTicks > breakSpeed.getValue()) breakCrystal();
-            } else {
-                if (!breakCrystal.getValue().equals(Break.Off) && hitTicks > breakSpeed.getValue()) breakCrystal();
+                if (hitTicks > breakSpeed.getValue()) breakCrystal();
+            } if (logic.getValue().equals(Logic.BreakPlace)) {
+                if (hitTicks > breakSpeed.getValue()) breakCrystal();
                 if (!place.getValue().equals(Place.Off) && placeTicks > placeDelay.getValue()) placeCrystal();
             }
         }
@@ -284,22 +276,21 @@ public class AutoCrystal extends Module {
             double targetDamage = CrystalUtil.calculateDamage(crystal, target);
             double selfDamage = ignoreSelfDmg.getValue() ? 0 : CrystalUtil.calculateDamage(crystal, mc.player);
 
-            if (!breakCrystal.getValue().equals(Break.All)) {
+            //if (!breakCrystal.getValue().equals(Break.All)) {
                 if (targetDamage < minArmor.getValue() && targetDamage < target.getHealth() + target.getAbsorptionAmount()) continue;
 
                 if (selfDamage > maxLocalDamage.getValue()) continue;
 
                 if ((mc.player.getHealth() + mc.player.getAbsorptionAmount()) - antiSuicideFactor.getValue() - selfDamage <= 0 && antiSuicide.getValue()) continue;
-            }
+           // }
 
-            if (breakCrystal.getValue().equals(Break.All)) {
-                targetCrystal = crystal;
-            } else {
+            //if (breakCrystal.getValue().equals(Break.All)) {
+           // } else {
                 if (targetDamage > maxDamage) {
                     maxDamage = targetDamage;
                     targetCrystal = crystal;
                 }
-            }
+            //}
         }
 
         if (targetCrystal == null) return;
@@ -353,32 +344,6 @@ public class AutoCrystal extends Module {
         }
     }
 
-    /**
-     This was not working properly, so I am temporarily commenting it out
-     */
-
-//    public Map<BlockPos, EntityPlayer> getTargetAndPos() {
-//        getAllDamages(); // this should add all the damages before it can decide if its null
-//        if (damagesForPlayer.isEmpty()) return null;
-//        Map<BlockPos, EntityPlayer> targetAndPos = new HashMap<>();
-//        BlockPos finalPos = null;
-//        for (BlockPos pos : damagesForPlayer.keySet()) {
-//            if (finalPos != null) {
-//                if (CrystalUtil.calculateDamage(pos, damagesForPlayer.get(pos)) < CrystalUtil.calculateDamage(finalPos, damagesForPlayer.get(pos))) continue;
-//            }
-//            finalPos = pos;
-//        }
-//        targetAndPos.put(finalPos, damagesForPlayer.get(finalPos)); //Fuck Idk if this works //TODO: Check on this please its really late and I can't think
-//        return targetAndPos;
-//    }
-//
-//    public void getAllDamages() { //bro its like 2 am right now im exhausted im just ganna do this the easy way and just fix it later also this has no return statement cause its just adding stuff to a hashset that I made at the top
-//        if (getPossibleTargets().isEmpty()) return;
-//        for (EntityPlayer player : getPossibleTargets()) {
-//            damagesForPlayer.put(calculateBlockForPlayer(player), player);
-//        }
-//    }
-
     public BlockPos calculateBlockForPlayer() {
         BlockPos finalPos = null;
         if (getFinalTarget() == null) return null;
@@ -405,12 +370,6 @@ public class AutoCrystal extends Module {
     public EntityPlayer getFinalTarget() {
         EntityPlayer finalPlayer = null;
         for (EntityPlayer player : getPossibleTargets()) {
-            //if (!areAllPlayersInHoles() && HoleUtil.isInHole(player)) continue; //TODO: Fix the thing that makes it so it doesn't return the correct player if they are in holes
-
-//            if (finalPlayer != null && PlayerUtil.getPlayerHealth(player) <= playerOverrideHealth.getValue()) {
-//                if (player.getHealth() > finalPlayer.getHealth()) continue;
-//            } else if (finalPlayer != null && PlayerUtil.getPlayerHealth(player) >= playerOverrideHealth.getValue()) {
-//            }
             if (finalPlayer != null) {
                 if (player.getDistance(player) > player.getDistanceSq(finalPlayer)) continue;
             }
@@ -420,7 +379,7 @@ public class AutoCrystal extends Module {
         return finalPlayer;
     }
     //
-    public Set<EntityPlayer> getPossibleTargets() { //TODO: Get most exposed player
+    public Set<EntityPlayer> getPossibleTargets() {
         Set<EntityPlayer> possiblePlayers = new HashSet<>();
         for (EntityPlayer player : mc.world.playerEntities) {
             if (player.getDistanceSq(mc.player) > MathUtil.square(playerRange.getValue())) continue;
@@ -434,30 +393,6 @@ public class AutoCrystal extends Module {
             possiblePlayers.add(player);
         }
         return possiblePlayers;
-    }
-
-//    public Map<EntityPlayer, Integer> getExposedAmount() {
-//        Map<EntityPlayer, Integer> exposedAmount = new HashMap<>();
-//        Map<EntityPlayer, BlockPos> protectiveBlocks = new HashMap<>();
-//        for (EntityPlayer player : getPossibleTargets()) {
-//            BlockPos playerPos = player.getPosition();
-//            for (EnumFacing facing : EnumFacing.values()) {
-//                if (facing.equals(EnumFacing.UP)) continue;
-//                BlockPos neighbor = playerPos.offset(facing);
-//                if (BlockUtil.getBlockResistance(neighbor) != BlockUtil.BlockResistance.RESISTANT) continue;
-//                protectiveBlocks.put(player, neighbor);
-//            }
-//        }
-//    }
-
-    public boolean areAllPlayersInHoles() {
-        Set<EntityPlayer> playersInHoles = new HashSet<>();
-        for (EntityPlayer player : getPossibleTargets()) {
-            if (!HoleUtil.isInHole(player)) continue;
-            playersInHoles.add(player);
-        }
-        isInHole = !playersInHoles.isEmpty();
-        return isInHole;
     }
 
     public int getMinDamage(EntityPlayer player) { //Apparently this crashes sometimes I don't know why though
@@ -524,7 +459,7 @@ public class AutoCrystal extends Module {
     //rotations
     @SubscribeEvent
     public void onPacketSend(PacketEvent.Send event) {
-        if (rotate.getValue() && event.getPacket() instanceof CPacketPlayer && isRotating) {
+        if (rotate.getValue() && event.getPacket() instanceof CPacketPlayer) {
             CPacketPlayer packet = event.getPacket();
             packet.yaw = this.yaw;
             packet.pitch = this.pitch;
@@ -541,10 +476,6 @@ public class AutoCrystal extends Module {
         }
     }
 
-
-
-
-
     public void rotateToPos(BlockPos pos) {
         if (rotate.getValue()) {
             float[] angle = MathUtil.calcAngle(AutoCrystal.mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((float) pos.getX() + 0.5f, (float) pos.getY() - 0.5f, (float) pos.getZ() + 0.5f));
@@ -558,6 +489,7 @@ public class AutoCrystal extends Module {
     public void onRender3D(Render3DEvent event) {
         if (!fullNullCheck() && renderPosition != null && render.getValue()) {
             RenderUtil.drawBox(generateBB(renderPosition.getX(), renderPosition.getY(), renderPosition.getZ()), red.getValue() / 255f, green.getValue() / 255f, blue.getValue() / 255f, alpha.getValue() / 255f);
+            if (extraRender.getValue().equals(ExtraRender.Off)) {return;}
             if (extraRender.getValue().equals(ExtraRender.CPS)) {
                 RenderUtil.drawText(renderPosition, String.valueOf(crystalsPerSecond.size()));
             } else if (extraRender.getValue().equals(ExtraRender.Damage) && target != null) {
@@ -577,12 +509,9 @@ public class AutoCrystal extends Module {
         Normal, Silent, Off
     }
 
-    public enum Break {
-        All, Off //redo smart mode later
-    }
 
     public enum Logic {
-        PlaceBreak
+        PlaceBreak, BreakPlace
     }
 
     public enum Weakness {

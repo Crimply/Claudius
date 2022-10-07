@@ -15,7 +15,7 @@ public class GuiBlurr extends Module
     final Minecraft mc;
 
     public GuiBlurr() {
-        super("GUIBlur", "nigga", Category.CLIENT, true, false, false);
+        super("GUIBlur", "", Category.CLIENT, true, false, false);
         this.mc = Minecraft.getMinecraft();
     }
 
@@ -33,7 +33,7 @@ public class GuiBlurr extends Module
                         Util.mc.entityRenderer.getShaderGroup().deleteShaderGroup();
                     }
                     try {
-                        Util.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/art.json"));
+                        Util.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blurr.json"));
                     }
                     catch (Exception e) {
                         e.printStackTrace();
