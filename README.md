@@ -17,6 +17,8 @@ Build Instructions <br>
 gradlew setupDecompWorkspace <br>
 gradlew build <br>
 <hr>
-https://discord.gg/srVKeqdc4Z For Help <br>
+<p align="center">
+<b><a> https://discord.gg/srVKeqdc4Z</a></b><br> 
+For Help 
 
 <img src="https://github.com/Crimply/Claudius/blob/master/src/main/resources/title.png?raw=true"/>
