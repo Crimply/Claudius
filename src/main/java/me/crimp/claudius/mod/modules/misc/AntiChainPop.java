@@ -13,7 +13,7 @@ public class AntiChainPop extends Module {
     @Override
     public void onUpdate() {
         if (mc.player.getHealth() == 3.5f) {
-            mc.player.connection.sendPacket(new CPacketChatMessage("Holdon Mum Wants Me"));
+            mc.player.connection.sendPacket(new CPacketChatMessage("Hold up Mum Wants Me"));
             mc.player.connection.sendPacket(new SPacketDisconnect(new TextComponentString("ANTICHAINPOP")));
         }
     }

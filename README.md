@@ -9,13 +9,15 @@
 <p align="center">
 Made For Anarchy
 </p>
-
-</p>
 <p align="center">
 1.12.2 Client Utilitys
-</p>
-</p>
-<p align="center">
-https://discord.gg/srVKeqdc4Z
-</p>
 
+=====================================================================================
+<p align="center">
+Build Instructions <br>
+gradlew setupDecompWorkspace <br>
+gradlew build <br>
+=====================================================================================
+https://discord.gg/srVKeqdc4Z For Help <br>
+
+<img src="https://github.com/Crimply/Claudius/blob/master/src/main/resources/title.png?raw=true"/>
