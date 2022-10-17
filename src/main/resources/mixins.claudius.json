@@ -7,7 +7,6 @@
     "ICPacketUseEntityMixin",
     "MixinAbstractClientPlayer",
     "MixinEntityPlayerSP",
-    "MixinGuiScreen",
     "MixinNetworkManager"
   ]
 }
