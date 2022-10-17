@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 public class FileManager
         extends Feature {
     private final Path base = this.getMkDirectory(this.getRoot(), "claudius");
-    private final Path config = this.getMkDirectory(this.base, "config");
+    private final Path config = this.getMkDirectory(this.base, "default");
 
     public FileManager() {
         //this.getMkDirectory(this.base, "pvp");
@@ -108,7 +108,7 @@ public class FileManager
     }
 
     public Path getConfig() {
-        return this.getBasePath().resolve("config");
+        return this.getBasePath().resolve("default");
     }
 
     public Path getCache() {
