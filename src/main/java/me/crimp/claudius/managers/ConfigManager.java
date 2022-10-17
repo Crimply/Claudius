@@ -128,7 +128,7 @@ public class ConfigManager implements Util {
 
     public String loadCurrentConfig() {
         File currentConfig = new File("claudius/currentconfig.txt");
-        String name = "config";
+        String name = "default";
         try {
             if (currentConfig.exists()) {
                 Scanner reader = new Scanner(currentConfig);
