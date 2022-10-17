@@ -4,10 +4,13 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.ClientEvent;
 import me.crimp.claudius.mod.command.Command;
+import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Bind;
 import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
@@ -28,6 +31,7 @@ public class ClickGuiModule extends Module {
     public Setting<Integer> BGGreen = this.register(new Setting<>("BGGreen", 202, 0, 255));
     public Setting<Integer> BGBlue = this.register(new Setting<>("BGBlue", 165, 0, 255));
     public Setting<Integer> BGalpha = this.register(new Setting<>("BGalpha", 150, 0, 255));
+    public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, "Kekw"));
    // public Setting<RainbowMode> rainbowModeHud = this.register(new Setting<>("HRainbowMode", RainbowMode.Static, v -> this.rainbow.getValue()));
     //public Setting<RainbowModeArray> rainbowModeA = this.register(new Setting<>("ARainbowMode", RainbowModeArray.Static, v -> this.rainbow.getValue()));
     //public Setting<Integer> rainbowHue = this.register(new Setting<>("Delay", 240, 0, 600, v -> this.rainbow.getValue()));
@@ -39,9 +43,23 @@ public class ClickGuiModule extends Module {
         this.bind.setValue(new Bind(Keyboard.KEY_J));
     }
 
+    private static final KeyBinding[] KEYS = {mc.gameSettings.keyBindForward, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindJump, mc.gameSettings.keyBindSprint};
+
     @Override
     public void onUpdate() {
         if (this.customFov.getValue()) ClickGuiModule.mc.gameSettings.setOptionFloatValue(GameSettings.Options.FOV, this.fov.getValue());
+        if ((mc.currentScreen instanceof ClickGui &&  this.Guimove.getValue())) {
+            for (final KeyBinding keyBinding : KEYS) {
+                if (Keyboard.isKeyDown(keyBinding.getKeyCode())) {
+                    if (keyBinding.getKeyConflictContext() != KeyConflictContext.UNIVERSAL) {
+                        keyBinding.setKeyConflictContext(KeyConflictContext.UNIVERSAL);
+                    }
+                    KeyBinding.setKeyBindState(keyBinding.getKeyCode(), true);
+                } else {
+                    KeyBinding.setKeyBindState(keyBinding.getKeyCode(), false);
+                }
+            }
+        }
     }
 
     @SubscribeEvent

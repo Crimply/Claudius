@@ -31,8 +31,7 @@ public class HUD extends Module {
     public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
     public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
     public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in chat when shit happens"));
-    public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
-    public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, "Kekw"));
+    public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"))
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public static final String command = "Claudius";
     private int color;
@@ -55,26 +54,12 @@ public class HUD extends Module {
         INSTANCE = this;
     }
 
-    private static final KeyBinding[] KEYS = {mc.gameSettings.keyBindForward, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindJump, mc.gameSettings.keyBindSprint};
-
     @Override
     public void onUpdate() {
         if (this.shouldIncrement) this.hitMarkerTimer++;
         if (this.hitMarkerTimer == 10) {
             this.hitMarkerTimer = 0;
             this.shouldIncrement = false;
-            if ((mc.currentScreen instanceof ClickGui) && this.Guimove.getValue()) {
-                for (final KeyBinding keyBinding : KEYS) {
-                    if (Keyboard.isKeyDown(keyBinding.getKeyCode())) {
-                        if (keyBinding.getKeyConflictContext() != KeyConflictContext.UNIVERSAL) {
-                            keyBinding.setKeyConflictContext(KeyConflictContext.UNIVERSAL);
-                        }
-                        KeyBinding.setKeyBindState(keyBinding.getKeyCode(), true);
-                    } else {
-                        KeyBinding.setKeyBindState(keyBinding.getKeyCode(), false);
-                    }
-                }
-            }
         }
     }
 
