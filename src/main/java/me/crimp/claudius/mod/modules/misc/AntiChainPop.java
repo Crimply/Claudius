@@ -10,9 +10,11 @@ public class AntiChainPop extends Module {
         super("AntiChainPop", "AntiChainPop", Category.MISC, true, false, false);
     }
 
+
     @Override
     public void onUpdate() {
-        if (mc.player.getHealth() == 3.5f) {
+        float Health = mc.player.getHealth();
+        if (Health == 3.5f) {
             mc.player.connection.sendPacket(new CPacketChatMessage("Hold up Mum Wants Me"));
             mc.player.connection.sendPacket(new SPacketDisconnect(new TextComponentString("ANTICHAINPOP")));
         }

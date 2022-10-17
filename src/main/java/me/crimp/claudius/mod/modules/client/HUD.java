@@ -4,15 +4,19 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.ClientEvent;
 import me.crimp.claudius.event.events.Render2DEvent;
+import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.input.Keyboard;
 
 public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
@@ -28,6 +32,7 @@ public class HUD extends Module {
     public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
     public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in chat when shit happens"));
     public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
+    public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public static final String command = "Claudius";
     private int color;
@@ -50,13 +55,29 @@ public class HUD extends Module {
         INSTANCE = this;
     }
 
+    private static final KeyBinding[] KEYS = {mc.gameSettings.keyBindForward, mc.gameSettings.keyBindRight, mc.gameSettings.keyBindBack, mc.gameSettings.keyBindLeft, mc.gameSettings.keyBindJump, mc.gameSettings.keyBindSprint};
+
+    @Override
     public void onUpdate() {
         if (this.shouldIncrement) this.hitMarkerTimer++;
         if (this.hitMarkerTimer == 10) {
             this.hitMarkerTimer = 0;
             this.shouldIncrement = false;
+            if ((mc.currentScreen instanceof ClickGui) && this.Guimove.getValue()) {
+                for (final KeyBinding keyBinding : KEYS) {
+                    if (Keyboard.isKeyDown(keyBinding.getKeyCode())) {
+                        if (keyBinding.getKeyConflictContext() != KeyConflictContext.UNIVERSAL) {
+                            keyBinding.setKeyConflictContext(KeyConflictContext.UNIVERSAL);
+                        }
+                        KeyBinding.setKeyBindState(keyBinding.getKeyCode(), true);
+                    } else {
+                        KeyBinding.setKeyBindState(keyBinding.getKeyCode(), false);
+                    }
+                }
+            }
         }
     }
+
 
     public void onRender2D(Render2DEvent event) {
         if (fullNullCheck()) return;

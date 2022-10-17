@@ -1,6 +1,7 @@
 package me.crimp.claudius.mod.modules.misc;
 
 import me.crimp.claudius.mod.modules.Module;
+import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.DamageTagCompound;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,10 +12,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.List;
 
 
-public class TrueDurabilityModule extends Module {
-  public TrueDurabilityModule() {
+public class ExtraTooltips extends Module {
+  public Setting<Boolean> NonDuraitems = this.register(new Setting<>("NonDuraitems", false));
+  public Setting<Boolean> TrueDurabilty = this.register(new Setting<>("TrueDurabilty", false));
+
+  public ExtraTooltips() {
     super("TrueDurability", "Display unbreakable items in red enchant, add real durability in tooltip", Category.MISC, true, false, false);
-    this.drawn.setValue(false);
+    //this.drawn.setValue(false);
   }
 
   @SubscribeEvent
@@ -41,8 +45,15 @@ public class TrueDurabilityModule extends Module {
     } else damage = stack.getItemDamage();
 
     long count = (long) max - (long) damage;
-    if (count > max){
-      toolTip.set(durabilty ,TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + Long.toString(count) + TextFormatting.GRAY + " / " + Long.toString(max));
+    if (count > max) {
+      if (this.TrueDurabilty.getValue()) {
+        toolTip.set(durabilty, TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + Long.toString(count) + TextFormatting.GRAY + " / " + Long.toString(max));
+        if (this.NonDuraitems.getValue()) {
+          if (max == 0) {
+            toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
+          }
+        }
+      }
     }
   }
 }

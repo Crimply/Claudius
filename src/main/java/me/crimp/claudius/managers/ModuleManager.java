@@ -42,21 +42,18 @@ public class ModuleManager extends Feature {
                 new PearlBait(),
 
                 //misc
-                new ToolTips(),
                 new BookPreview(),
                 new ChatSuffix(),
                 new Efly(),
                 new DonkeySwap(),
                 new AcidOverlay(),
                 new MobOwner(),
-                new TrueDurabilityModule(),
-                new AllItemDurability(),
+                new ExtraTooltips(),
                 new McfSync(),
                 new PopChams(),
                 new RevStep(),
 
                 //fixes
-                new GuiMovee(),
                 new SetDisplay(),
                 new AntiLog4j(),
                 new NoToast(),

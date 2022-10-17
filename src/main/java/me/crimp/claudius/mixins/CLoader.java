@@ -8,10 +8,10 @@ import org.spongepowered.asm.mixin.Mixins;
 
 import java.util.Map;
 
-public class CrimpLoader implements IFMLLoadingPlugin {
+public class CLoader implements IFMLLoadingPlugin {
     private static boolean isObfuscatedEnvironment = false;
 
-    public CrimpLoader() {
+    public CLoader() {
         Claudius.LOGGER.info("\n\nLoading mixins by Crimp");
         MixinBootstrap.init();
         Mixins.addConfiguration("mixins.claudius.json");
