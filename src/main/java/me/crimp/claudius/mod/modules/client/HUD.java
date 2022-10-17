@@ -31,7 +31,7 @@ public class HUD extends Module {
     public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
     public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
     public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in chat when shit happens"));
-    public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"))
+    public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public static final String command = "Claudius";
     private int color;
