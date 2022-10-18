@@ -1,7 +1,5 @@
 package me.crimp.claudius.mod.modules.pvp;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;

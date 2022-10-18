@@ -63,7 +63,6 @@ public class ClickGuiModule extends Module {
 
     @SubscribeEvent
     public void onSettingChange(ClientEvent event) {
-        configManager.saveConfig(configManager.config.replaceFirst("claudius/", ""));
         if (event.getStage() == 2 && event.getSetting().getFeature().equals(this)) {
             if (event.getSetting().equals(this.prefix)) {
                 Claudius.commandManager.setPrefix(this.prefix.getPlannedValue());
@@ -71,6 +70,11 @@ public class ClickGuiModule extends Module {
             }
             Claudius.colorManager.setColor(this.red.getPlannedValue(), this.green.getPlannedValue(), this.blue.getPlannedValue(), this.hoverAlpha.getPlannedValue());
         }
+    }
+
+    @Override
+    public void onLogout() {
+        configManager.saveConfig(configManager.config.replaceFirst("claudius/", ""));
     }
 
     @Override
