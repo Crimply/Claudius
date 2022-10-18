@@ -78,6 +78,7 @@ public class ModuleManager extends Feature {
                 new AntiChainPop(),
                 new MainHandTotem(),
                 new AutoCrystal(),
+                new AutoTotem(),
 
                 //render
                 new Austraila(),
