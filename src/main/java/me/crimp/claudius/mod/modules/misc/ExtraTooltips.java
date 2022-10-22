@@ -2,7 +2,7 @@ package me.crimp.claudius.mod.modules.misc;
 
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
-import me.crimp.claudius.utils.DamageTagCompound;
+import me.crimp.claudius.utils.DamageUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
@@ -50,8 +50,8 @@ public class ExtraTooltips extends Module {
 
       int damage;
       NBTTagCompound tag = stack.getTagCompound();
-      if (tag != null && tag instanceof DamageTagCompound) {
-        damage = ((DamageTagCompound) tag).getTrueDamage();
+      if (tag != null && tag instanceof DamageUtil.DamageTagUtil) {
+        damage = ((DamageUtil.DamageTagUtil) tag).getTrueDamage();
       } else damage = stack.getItemDamage();
       long count = (long) max - (long) damage;
       if (count > max) {
