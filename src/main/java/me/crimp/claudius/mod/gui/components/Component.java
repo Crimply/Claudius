@@ -63,12 +63,10 @@ public class Component extends Feature {
             RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        Claudius.textManager.drawStringWithShadow("                         \u2727\u0020 ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        //var5.f$L.f$E(this.f$E(), (double)((float)this.f$C + 3.0F), (double)((float)this.f$e + 1.5F), 15592941);
+        Claudius.textManager.drawStringWithShadow("                        \u2727\u0020       ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
 
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        //RenderMethods.glColor(new Color(255, 255, 255, 255));
         //minecraft.getTextureManager().bindTexture(new ResourceLocation("textures/exeter/arrow.png"));
         GlStateManager.translate(getX() + getWidth() - 7, (getY() + 6) - 0.3F, 0.0F);
         GlStateManager.disableBlend();

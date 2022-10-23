@@ -1,5 +1,6 @@
 package me.crimp.claudius.utils;
 
+import me.crimp.claudius.event.events.MoveEvent;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -493,6 +494,50 @@ public class EntityUtil implements Util {
 
     public static boolean is32k(ItemStack stack) {
         return EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, stack) >= 1000;
+    }
+
+    public static double getBaseMoveSpeed() {
+        double baseSpeed = .2873;
+        if (mc.player != null && mc.player.isPotionActive(Objects.requireNonNull(Potion.getPotionById(1)))) {
+            final int amplifier = Objects.requireNonNull(mc.player.getActivePotionEffect(Objects.requireNonNull(Potion.getPotionById(1)))).getAmplifier();
+            baseSpeed *= 1.0 + 0.2 * (amplifier + 1);
+        }
+        return baseSpeed;
+    }
+
+    public static void setVanilaSpeed(MoveEvent event, double speed) {
+        float moveForward = mc.player.movementInput.moveForward;
+        float moveStrafe = mc.player.movementInput.moveStrafe;
+        float rotationYaw = mc.player.rotationYaw;
+
+        if (moveForward == 0.0f && moveStrafe == 0.0f) {
+            event.setX(0.0);
+            event.setZ(0.0);
+
+            return;
+        } else if (moveForward != 0.0f) {
+            if (moveStrafe >= 1.0f) {
+                rotationYaw += moveForward > 0.0f ? -45.0f : 45.0f;
+                moveStrafe = 0.0f;
+            } else if (moveStrafe <= -1.0f) {
+                rotationYaw += moveForward > 0.0f ? 45.0f : -45.0f;
+                moveStrafe = 0.0f;
+            }
+
+            if (moveForward > 0.0f)
+                moveForward = 1.0f;
+            else if (moveForward < 0.0f)
+                moveForward = -1.0f;
+        }
+
+        double motionX = Math.cos(Math.toRadians(rotationYaw + 90.0f));
+        double motionZ = Math.sin(Math.toRadians(rotationYaw + 90.0f));
+
+        double newX = moveForward * speed * motionX + moveStrafe * speed * motionZ;
+        double newZ = moveForward * speed * motionZ - moveStrafe * speed * motionX;
+
+        event.setX(newX);
+        event.setZ(newZ);
     }
 
     public static void moveEntityStrafe(double speed, Entity entity) {

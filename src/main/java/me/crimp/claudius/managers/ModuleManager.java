@@ -52,6 +52,7 @@ public class ModuleManager extends Feature {
                 new McfSync(),
                 new PopChams(),
                 new RevStep(),
+                new GroundStrafe(),
 
                 //fixes
                 new SetDisplay(),
@@ -86,6 +87,8 @@ public class ModuleManager extends Feature {
                 new EntityAlerts(),
                 new AntiAlising(),
                 new DeathEffect(),
+                new Animations(),
+                new Swing(),
                 new BurrowEsp()
         );
     }
