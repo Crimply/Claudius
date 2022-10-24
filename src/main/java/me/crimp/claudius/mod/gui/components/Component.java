@@ -11,7 +11,6 @@ import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
 
@@ -63,7 +62,8 @@ public class Component extends Feature {
             RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        Claudius.textManager.drawStringWithShadow("                        \u2727\u0020       ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        // moduleCounter = ""+Module.Category.amountPerCategory(Module.Category.getCategoryFromString(id));
+        Claudius.textManager.drawStringWithShadow("                       \u2727\u0020       ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
 
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();

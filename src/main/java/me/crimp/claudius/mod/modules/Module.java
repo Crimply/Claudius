@@ -12,6 +12,9 @@ import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.MinecraftForge;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Module extends Feature {
     private final String description;
     private final Category category;
@@ -138,6 +141,7 @@ public abstract class Module extends Feature {
         return this.category;
     }
 
+
     public Bind getBind() {
         return this.bind.getValue();
     }
@@ -163,6 +167,27 @@ public abstract class Module extends Feature {
 
         Category(String name) {
             this.name = name;
+        }
+
+        public static int amountPerCategory(Category category) {
+            List<Module> categoryModules = new ArrayList<>();
+            for (Module module : Claudius.INSTANCE.moduleManager.modules) {
+                if (module.getCategory().equals(category)) {
+                    categoryModules.add(module);
+                }
+            }
+            return categoryModules.size();
+        }
+
+        public static Category getCategoryFromString(String id) {
+            Category finalCategory = null;
+            for (Category category : Category.values()) {
+                if (category.toString().equalsIgnoreCase(id)) {
+                    finalCategory = category;
+                    break;
+                }
+            }
+            return finalCategory;
         }
 
         public String getName() {
