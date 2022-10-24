@@ -40,14 +40,6 @@ public class PopChams extends Module {
         INSTANCE = this;
     }
 
-    @Override
-    public void onUpdate() {
-        if (Golobal.equals(true)) {
-           // lineRed = ClickGuiModule.INSTANCE.red;
-        }
-    }
-
-
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {
         followTimer.reset();

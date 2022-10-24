@@ -1,7 +1,5 @@
 package me.crimp.claudius.mod.modules.render;
 
-import me.crimp.claudius.Claudius;
-import me.crimp.claudius.event.events.PacketEvent;
 import me.crimp.claudius.event.events.Render3DEvent;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;

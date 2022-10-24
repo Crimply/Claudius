@@ -27,7 +27,7 @@ public class Swing extends Module {
         if(mc.player == null || mc.world == null) return;
         if(event.getPacket() instanceof CPacketAnimation) {
             if (this.mode.getValue() == Mode.CANCEL) {
-                if (!this.strict.getValue() || mc.playerController.getIsHittingBlock()) {
+                if (!this.strict.getValue() || mc.playerController.getIsHittingBlock() || mc.player.isSwingInProgress) {
                     event.setCanceled(true);
                 }
             } else if (mode.getValue() == Mode.OFFHAND) {
