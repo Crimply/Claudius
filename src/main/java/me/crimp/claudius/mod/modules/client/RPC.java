@@ -7,8 +7,7 @@ import me.crimp.claudius.mod.setting.Setting;
 public class RPC
         extends Module {
     public static RPC INSTANCE;
-    public final Setting<String> Id = this.register(new Setting<>("id","1022802066609020928"));
-    public final Setting<String> Key = this.register(new Setting<>("Key","1022802066609020928"));
+    public final Setting<Boolean> IP = this.register(new Setting<>("id",true));
 
     public RPC() {
         super("DiscordRichP", "Discord rich presence", Module.Category.CLIENT, false, false, false);
