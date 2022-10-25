@@ -1,35 +1,30 @@
 package me.crimp.claudius.event.events;
 
-import me.crimp.claudius.event.EventStage;
 import net.minecraft.entity.MoverType;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
+import net.minecraftforge.fml.common.eventhandler.Event;
+
 
 @Cancelable
-public class MoveEvent
-        extends EventStage {
-    private MoverType type;
-    private double x;
-    private double y;
-    private double z;
+public class MoveEvent extends Event {
+    private final MoverType moverType;
+    private double x, y, z;
 
-    public MoveEvent(int stage, MoverType type, double x, double y, double z) {
-        super(stage);
-        this.type = type;
+    private final boolean stillMove = true;
+
+    public MoveEvent(MoverType moverType, double x, double y, double z) {
+        this.moverType = moverType;
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public MoverType getType() {
-        return this.type;
-    }
-
-    public void setType(MoverType type) {
-        this.type = type;
+    public MoverType getMoverType() {
+        return moverType;
     }
 
     public double getX() {
-        return this.x;
+        return x;
     }
 
     public void setX(double x) {
@@ -37,7 +32,7 @@ public class MoveEvent
     }
 
     public double getY() {
-        return this.y;
+        return y;
     }
 
     public void setY(double y) {
@@ -45,11 +40,15 @@ public class MoveEvent
     }
 
     public double getZ() {
-        return this.z;
+        return z;
     }
 
     public void setZ(double z) {
         this.z = z;
+    }
+
+    public boolean stillMove() {
+        return stillMove;
     }
 }
 
