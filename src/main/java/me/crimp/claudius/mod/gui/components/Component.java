@@ -5,6 +5,7 @@ import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.items.Item;
 import me.crimp.claudius.mod.gui.components.items.button.Button;
+import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
 import me.crimp.claudius.utils.ColorUtil;
 import me.crimp.claudius.utils.RenderUtil;
@@ -46,7 +47,7 @@ public class Component extends Feature {
         this.y = this.y2 + mouseY;
     }
 
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+    public void drawScreen (int mouseX, int mouseY, float partialTicks) {
         this.drag(mouseX, mouseY);
         float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 0.0f;
 //        RenderMethods.drawGradientRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, -7829368, -6710887);
@@ -63,8 +64,9 @@ public class Component extends Feature {
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
         // moduleCounter = ""+Module.Category.amountPerCategory(Module.Category.getCategoryFromString(id));
-        Claudius.textManager.drawStringWithShadow("                       \u2727\u0020       ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-
+        Claudius.textManager.drawStringWithShadow("                       \u2727\u0020      ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        String id = String.valueOf(1);
+        Claudius.textManager.drawStringWithShadow("      "+ Module.Category.amountPerCategory(Module.Category.getCategoryFromString(id)), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         //minecraft.getTextureManager().bindTexture(new ResourceLocation("textures/exeter/arrow.png"));
