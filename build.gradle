@@ -34,7 +34,7 @@ minecraft {
     version = project.forgeVersion
     runDir = 'run'
     mappings = project.mcpVersion
-    coreMod = 'me.crimp.claudius.mixin.CrimpLoader'
+    coreMod = 'me.crimp.claudius.mixin.CLoader'
     makeObfSourceJar = false
 }
 
@@ -121,7 +121,7 @@ jar {
                 'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
                 'TweakOrder': 0,
                 'FMLCorePluginContainsFMLMod': 'true',
-                'FMLCorePlugin': 'me.crimp.claudius.mixin.CrimpLoader',
+                'FMLCorePlugin': 'me.crimp.claudius.mixin.CLoader',
                 'ForceLoadAsMod': 'true',
                 'FMLAT': 'claudius_at.cfg'
         )
