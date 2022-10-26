@@ -159,7 +159,6 @@ public abstract class Module extends Feature {
         EXPLOIT("Exploit"),
         PVP("PvP"),
         RENDER("Render"),
-        CSGO("Csgo"),
         FIXES("Fixes"),
         CLIENT("Client");
 

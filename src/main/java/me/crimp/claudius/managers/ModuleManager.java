@@ -6,7 +6,6 @@ import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.*;
-import me.crimp.claudius.mod.modules.csgo.*;
 import me.crimp.claudius.mod.modules.exploit.FemBoyExploit;
 import me.crimp.claudius.mod.modules.exploit.NoClipFly;
 import me.crimp.claudius.mod.modules.exploit.PearlBait;
@@ -32,10 +31,6 @@ public class ModuleManager extends Feature {
     public void init() {
         this.modules = Arrays.asList(
                 ClickGuiModule.INSTANCE,
-
-                //csgo
-                new CSGOGuiModule(),
-                new CSGOWatermark(),
 
                 //exploit
                 new NoClipFly(),
@@ -64,6 +59,7 @@ public class ModuleManager extends Feature {
                 new HUD(),
                 new RPC(),
                 new GuiBlurr(),
+                new CSGOGuiModule(),
 
                 //fake
                 new FemBoyExploit(),
@@ -88,7 +84,7 @@ public class ModuleManager extends Feature {
                 new AntiAlising(),
                 new DeathEffect(),
                 new Animations(),
-                new Swing(),
+                new CSGOWatermark(),
                 new BurrowEsp()
         );
     }

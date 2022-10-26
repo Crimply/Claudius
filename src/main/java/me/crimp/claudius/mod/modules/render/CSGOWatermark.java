@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.csgo;
+package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.Render2DEvent;
@@ -20,7 +20,7 @@ public class CSGOWatermark extends Module {
 
     private String message = "";
     public CSGOWatermark() {
-        super("CSGOWatermark", "CSGOey", Category.CSGO, true, false, false);
+        super("CSGOWatermark", "CSGOey", Category.RENDER, true, false, false);
     }
 
     @Override
