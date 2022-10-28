@@ -28,8 +28,8 @@ public class HUD extends Module {
     private final Setting<Boolean> greeter = register(new Setting<>("Greeter", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
-    public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
-    public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
+   // public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
+    //public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
     public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in chat when shit happens"));
     public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
@@ -201,7 +201,7 @@ public class HUD extends Module {
     }
 
     public String getCommandMessage() {
-        return TextUtil.coloredString(this.commandBracket.getPlannedValue(), this.bracketColor.getPlannedValue()) + TextUtil.coloredString(command, this.commandColor.getPlannedValue()) + TextUtil.coloredString(this.commandBracket2.getPlannedValue(), this.bracketColor.getPlannedValue());
+        return TextUtil.coloredString("[", this.bracketColor.getPlannedValue()) + TextUtil.coloredString(command, this.commandColor.getPlannedValue()) + TextUtil.coloredString("]", this.bracketColor.getPlannedValue());
     }
 
     public enum RenderingMode {

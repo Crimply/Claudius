@@ -20,7 +20,6 @@ import static me.crimp.claudius.Claudius.configManager;
 
 public class ClickGuiModule extends Module {
     public static final ClickGuiModule INSTANCE = new ClickGuiModule();
-    public Setting<String> prefix = this.register(new Setting<>("Prefix", "!"));
     public Setting<Boolean> customFov = this.register(new Setting<>("CustomFov", false));
     public Setting<Float> fov = this.register(new Setting<>("Fov", 110f, -180f, 180f));
     public Setting<Integer> red = this.register(new Setting<>("Red", 116, 0, 255));
@@ -64,10 +63,6 @@ public class ClickGuiModule extends Module {
     @SubscribeEvent
     public void onSettingChange(ClientEvent event) {
         if (event.getStage() == 2 && event.getSetting().getFeature().equals(this)) {
-            if (event.getSetting().equals(this.prefix)) {
-                Claudius.commandManager.setPrefix(this.prefix.getPlannedValue());
-                Command.sendMessage("Prefix set to " + ChatFormatting.DARK_GRAY + Claudius.commandManager.getPrefix());
-            }
             Claudius.colorManager.setColor(this.red.getPlannedValue(), this.green.getPlannedValue(), this.blue.getPlannedValue(), this.hoverAlpha.getPlannedValue());
         }
     }
@@ -85,7 +80,6 @@ public class ClickGuiModule extends Module {
     @Override
     public void onLoad() {
         Claudius.colorManager.setColor(this.red.getValue(), this.green.getValue(), this.blue.getValue(), this.hoverAlpha.getValue());
-        Claudius.commandManager.setPrefix(this.prefix.getValue());
     }
 
     @Override

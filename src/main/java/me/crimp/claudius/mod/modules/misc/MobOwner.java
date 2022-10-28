@@ -68,7 +68,7 @@ public class MobOwner extends Module {
     }
 
     public String getNameFromUUID(UUID uuid) {
-        String url = "https://api.mojang.com/user/profiles/" + uuid.toString().replace("-", "") + "/names";
+        String url = "https://sessionserver.mojang.com/session/minecraft/profile/" + uuid;
         try {
             String nameJson = IOUtils.toString(new URL(url));
             JSONArray nameValue = (JSONArray) JSONValue.parseWithException(nameJson);
@@ -81,6 +81,4 @@ public class MobOwner extends Module {
             return null;
         }
     }
-
-
 }

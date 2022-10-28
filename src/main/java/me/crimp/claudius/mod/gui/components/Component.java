@@ -53,7 +53,6 @@ public class Component extends Feature {
 //        RenderMethods.drawGradientRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, -7829368, -6710887);
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
-        int color3 = ClickGuiModule.INSTANCE.BGalpha.getValue();
         RenderUtil.drawRect(this.x - 2f, (float)this.y - 2.5f, this.x + 2f + this.width, this.y + this.height - 6.0f, /*ColorUtil.toARGB(255,255,255,255)*/ color);
         //RenderUtil.drawRect(this.x - 2f, (float)this.y - 2.5f, this.x + 2f + this.width, this.y + this.height - 6.0f, ColorUtil.toARGB(255,255,255,255));
         RenderUtil.drawRect(this.x, (float)this.y - 1f, this.x + this.width, this.y + this.height - 7, color);//0x77FB4242, 0x77FB4242);
@@ -63,13 +62,9 @@ public class Component extends Feature {
             RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        // moduleCounter = ""+Module.Category.amountPerCategory(Module.Category.getCategoryFromString(id));
         Claudius.textManager.drawStringWithShadow("                       \u2727\u0020      ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        String id = String.valueOf(1);
-        Claudius.textManager.drawStringWithShadow("      "+ Module.Category.amountPerCategory(Module.Category.getCategoryFromString(id)), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        //minecraft.getTextureManager().bindTexture(new ResourceLocation("textures/exeter/arrow.png"));
         GlStateManager.translate(getX() + getWidth() - 7, (getY() + 6) - 0.3F, 0.0F);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();

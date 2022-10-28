@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class CommandManager
         extends Feature {
     private final ArrayList<Command> commands = new ArrayList<>();
-    private String clientMessage = "<claudius>";
+    private String clientMessage = "[claudius]";
     private String prefix = "!";
 
     public CommandManager() {
@@ -27,7 +27,6 @@ public class CommandManager
         this.commands.add(new Svae());
         this.commands.add(new ThirtyTwoKay());
         this.commands.add(new NameMC());
-        this.commands.add(new HistoryCommand());
         this.commands.add(new TestCommand());
         this.commands.add(new DiscCommand());
         this.commands.add(new ChinaCommand());
