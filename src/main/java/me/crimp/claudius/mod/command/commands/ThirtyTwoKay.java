@@ -2,6 +2,7 @@ package me.crimp.claudius.mod.command.commands;
 
 import me.crimp.claudius.mod.command.Command;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 
 import static me.crimp.claudius.utils.EnchantmentUtil.*;
 import static net.minecraft.init.Items.DIAMOND_SWORD;
@@ -29,8 +30,8 @@ public class ThirtyTwoKay extends Command {
         addEnchantment(stack, 34, Short.MAX_VALUE); // Unbreaking  32767
         addEnchantment(stack, 70, 1);               // Mending
         addEnchantment(stack, 71, 1);               // Curse of Vanishing
-        //mc.player.setHeldItem(EnumHand.MAIN_HAND,stack);
-        mc.player.openContainer.putStackInSlot(27,stack);
+        mc.player.setHeldItem(EnumHand.MAIN_HAND,stack);
+       // mc.player.openContainer.putStackInSlot(27,stack);
 
        // EntityUtil.attackEntity(mc.pointedEntity, Boolean.valueOf(false), true);
     }

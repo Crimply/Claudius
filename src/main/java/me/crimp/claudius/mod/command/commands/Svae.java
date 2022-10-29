@@ -1,6 +1,5 @@
 package me.crimp.claudius.mod.command.commands;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.command.Command;
 
@@ -16,7 +15,7 @@ public class Svae extends Command {
         configManager.saveConfig(Claudius.configManager.config.replaceFirst("claudius/", ""));
         mc.player.sendChatMessage(".save");
         mc.player.sendChatMessage("*save");
-        Command.sendMessage("Prolly Saved Ur configs" + ChatFormatting.BLUE);
+        Command.sendMessage("Prolly Saved Ur configs");
     }
 }
 
