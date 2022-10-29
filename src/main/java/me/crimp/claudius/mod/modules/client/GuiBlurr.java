@@ -12,7 +12,7 @@ public class GuiBlurr extends Module {
     final Minecraft mc;
 
     public GuiBlurr() {
-        super("GUIBlur", "", Category.CLIENT, true, false, false);
+        super("GUIBlur", "", Category.Client, true, false, false);
         this.mc = Minecraft.getMinecraft();
     }
 

@@ -4,19 +4,15 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.ClientEvent;
 import me.crimp.claudius.event.events.Render2DEvent;
-import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.lwjgl.input.Keyboard;
 
 public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
@@ -39,7 +35,7 @@ public class HUD extends Module {
     private int hitMarkerTimer;
 
     public HUD() {
-        super("HUD", "HUD Elements rendered on your screen", Module.Category.CLIENT, true, false, false);
+        super("HUD", "HUD Elements rendered on your screen", Module.Category.Client, true, false, false);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
         setInstance();

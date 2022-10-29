@@ -155,12 +155,13 @@ public abstract class Module extends Feature {
     }
 
     public enum Category {
-        MISC("Misc"),
-        EXPLOIT("Exploit"),
-        PVP("PvP"),
-        RENDER("Render"),
-        FIXES("Fixes"),
-        CLIENT("Client");
+        Misc("Misc"),
+        Exploit("Exploit"),
+        Pvp("Pvp"),
+        Render("Render"),
+        Fixes("Fixes"),
+        Movement("Movement"),
+        Client("Client");
 
         private final String name;
 

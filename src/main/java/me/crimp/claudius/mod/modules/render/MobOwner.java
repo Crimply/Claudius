@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
@@ -20,7 +20,7 @@ import java.util.UUID;
 public class MobOwner extends Module {
 
     public MobOwner() {
-        super("MobOwner", "",Category.RENDER, true, false, false);
+        super("MobOwner", "",Category.Render, true, false, false);
     }
 
     public static HashMap<UUID, String> knownEntities = new HashMap<UUID, String>();

@@ -33,7 +33,7 @@ public class NoSlow extends Module {
     private boolean sneaking = false;
 
     public NoSlow() {
-        super("NoSlow", "Allows you to do stuff without slowing down", Category.PVP ,true, false, false);
+        super("NoSlow", "Allows you to do stuff without slowing down", Category.Pvp,true, false, false);
         INSTANCE = this;
     }
 
@@ -135,7 +135,7 @@ public class NoSlow extends Module {
 
         /**
          * The infamous FencingFPlus2+2 NoSlow bypass
-         * Skidded into Konas, RusherHack, Future, and every paid client under the sun
+         * Skidded into Konas, RusherHack, Future, Claudius, and every paid client under the sun
          */
         TwoBeTwoTee
     }

@@ -8,7 +8,7 @@ public class DeathEffect extends Module {
     private static final DeathEffect INSTANCE = new DeathEffect();
 
     public DeathEffect() {
-        super("DeathEffect", "DeathEffect", Category.RENDER, true, false, false);
+        super("DeathEffect", "DeathEffect", Category.Render, true, false, false);
     }
 
     public static DeathEffect getInstance() {

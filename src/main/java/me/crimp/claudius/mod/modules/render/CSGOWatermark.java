@@ -20,7 +20,7 @@ public class CSGOWatermark extends Module {
 
     private String message = "";
     public CSGOWatermark() {
-        super("CSGOWatermark", "CSGOey", Category.RENDER, true, false, false);
+        super("CSGOWatermark", "CSGOey", Category.Render, true, false, false);
     }
 
     @Override

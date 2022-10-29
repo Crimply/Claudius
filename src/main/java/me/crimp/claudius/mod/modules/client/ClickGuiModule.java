@@ -2,7 +2,6 @@ package me.crimp.claudius.mod.modules.client;
 
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.ClientEvent;
-import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Bind;
@@ -12,7 +11,6 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import com.mojang.realmsclient.gui.ChatFormatting;
 
 import org.lwjgl.input.Keyboard;
 
@@ -37,7 +35,7 @@ public class ClickGuiModule extends Module {
     public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, "Kekw"));
 
     public ClickGuiModule() {
-        super("ClickGui", "Opens the ClickGui", Module.Category.CLIENT, true, false, false);
+        super("ClickGui", "Opens the ClickGui", Module.Category.Client, true, false, false);
         this.bind.setValue(new Bind(Keyboard.KEY_J));
     }
 

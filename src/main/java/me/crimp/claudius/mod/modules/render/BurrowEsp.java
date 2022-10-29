@@ -1,6 +1,5 @@
 package me.crimp.claudius.mod.modules.render;
 
-import akka.dispatch.CachingConfig;
 import me.crimp.claudius.event.events.Render3DEvent;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
@@ -8,8 +7,6 @@ import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ public class BurrowEsp extends Module {
 
     private final List<BlockPos> posList = new ArrayList<>();
     public BurrowEsp() {
-        super("BurrowEsp", "BurrowEsp", Category.RENDER, true, false, false);
+        super("BurrowEsp", "BurrowEsp", Category.Render, true, false, false);
     }
 
 

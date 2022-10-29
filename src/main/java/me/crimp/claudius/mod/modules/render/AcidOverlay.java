@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 public class AcidOverlay extends Module {
 
     public AcidOverlay() {
-        super("AcidOverlay", "Pill In ibiza", Category.RENDER, true, false, false);
+        super("AcidOverlay", "Pill In ibiza", Category.Render, true, false, false);
     }
 
 

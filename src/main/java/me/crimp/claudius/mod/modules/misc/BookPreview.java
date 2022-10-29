@@ -3,7 +3,6 @@ package me.crimp.claudius.mod.modules.misc;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
-import me.crimp.claudius.utils.RenderUtil;
 import me.crimp.claudius.utils.Timer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,7 +40,7 @@ public class BookPreview extends Module {
     public Setting<Double> bookandmapscalevalue = this.register(new Setting<>("Book and map scale", 4D));
 
     public BookPreview() {
-        super("BookPreview", "Book Tooltips.", Module.Category.MISC, true, false, false);
+        super("BookPreview", "Book Tooltips.", Module.Category.Misc, true, false, false);
     }
 
 

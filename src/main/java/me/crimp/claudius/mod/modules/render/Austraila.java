@@ -1,13 +1,11 @@
 package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.mod.modules.Module;
-import me.crimp.claudius.utils.Util;
 import net.minecraft.client.settings.GameSettings;
-import net.minecraft.util.ResourceLocation;
 
 public class Austraila extends Module {
     public Austraila() {
-        super("Austraila", "Austraila", Category.RENDER, true, false, false);
+        super("Austraila", "Austraila", Category.Render, true, false, false);
     }
 
     int Fov = -110;

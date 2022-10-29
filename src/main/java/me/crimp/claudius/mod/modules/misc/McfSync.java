@@ -23,7 +23,7 @@ public class McfSync
     public Setting<String> syncadd3 = this.register(new Setting<String>("Syncadd3","@Friend add", v -> this.three.getValue()));
     public Setting<String> syncdel3 = this.register(new Setting<String>("Syncdel3","@Friend del", v -> this.three.getValue()));
     public McfSync() {
-        super("McfSync", "Middle click Friend sync", Category.MISC, true, false, false);
+        super("McfSync", "Middle click Friend sync", Category.Misc, true, false, false);
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.util.text.TextComponentString;
 
 public class AntiChainPop extends Module {
     public AntiChainPop() {
-        super("AntiChainPop", "AntiChainPop", Category.MISC, true, false, false);
+        super("AntiChainPop", "AntiChainPop", Category.Misc, true, false, false);
     }
 
 

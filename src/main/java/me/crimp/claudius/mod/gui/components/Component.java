@@ -59,7 +59,11 @@ public class Component extends Feature {
 
         if (this.open) {
             RenderUtil.drawRect(this.x -2f, (float)this.y + 10.5f, this.x + this.width + 2f, this.open ? (float)(this.y + this.height + 2.2f) + totalItemHeight : (float)(this.y + this.height - 1), /*ColorUtil.toARGB(255,255,255,255)*/ color);//1996488704
-            RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
+            //RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
+            RenderUtil.drawLine(x, y, x, y + totalItemHeight, 1.5f, color2);
+            RenderUtil.drawLine(x, y, x + width, y, 1.5f, color2);
+            RenderUtil.drawLine(x + width, y, x + width, y + totalItemHeight, 1.5f, color2);
+            RenderUtil.drawLine(x, y + totalItemHeight, x + width, y + totalItemHeight, 1.5f, color2);
         }
         Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
         Claudius.textManager.drawStringWithShadow("                       \u2727\u0020      ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);

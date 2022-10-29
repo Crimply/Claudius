@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.math.AxisAlignedBB;
 import org.apache.commons.io.IOUtils;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -39,6 +40,18 @@ public class PlayerUtil implements Util {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static double getBlockHeight() {
+        double max_y = -1;
+        final AxisAlignedBB grow = mc.player.getEntityBoundingBox().offset(0, 0.05, 0).grow(0.05);
+        if (!mc.world.getCollisionBoxes(mc.player, grow.offset(0, 2, 0)).isEmpty()) return 100;
+        for (final AxisAlignedBB aabb : mc.world.getCollisionBoxes(mc.player, grow)) {
+            if (aabb.maxY > max_y) {
+                max_y = aabb.maxY;
+            }
+        }
+        return max_y - mc.player.posY;
     }
 
     public static String getNameFromUUID(String uuid) {

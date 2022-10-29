@@ -1,6 +1,5 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.pvp;
 
-import me.crimp.claudius.managers.ModuleManager;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.utils.InventoryUtil;
 import net.minecraft.client.gui.GuiHopper;
@@ -9,11 +8,10 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
-import net.minecraft.tileentity.TileEntity;
 
 public class MainHandTotem extends Module {
     public MainHandTotem() {
-        super("MainHandTotem", "MainHandTotem", Category.PVP, true, false, false);
+        super("MainHandTotem", "MainHandTotem", Category.Pvp, true, false, false);
     }
 
     @Override

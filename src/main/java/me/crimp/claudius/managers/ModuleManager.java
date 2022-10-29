@@ -48,6 +48,9 @@ public class ModuleManager extends Feature {
                 new PopChams(),
                 new RevStep(),
                 new GroundStrafe(),
+                new Step(),
+
+                //movement
 
                 //fixes
                 new SetDisplay(),

@@ -14,7 +14,7 @@ public class AutoClicker extends Module {
     public Setting<Boolean> Always = this.register(new Setting<>("Always on", false));
 
     public AutoClicker() {
-        super("AutoClicker", "TestDesc", Category.PVP, true, false, false);
+        super("AutoClicker", "TestDesc", Category.Pvp, true, false, false);
     }
 
 

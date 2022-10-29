@@ -15,7 +15,7 @@ public class GroundStrafe extends Module {
     double playerSpeed;
 
     public GroundStrafe() {
-        super("GroundStrafe", "Zooooooooooom", Category.MISC,true,false,false);
+        super("GroundStrafe", "Zooooooooooom", Category.Misc,true,false,false);
         INSTANCE = this;
     }
 

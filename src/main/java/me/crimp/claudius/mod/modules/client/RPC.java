@@ -2,7 +2,6 @@ package me.crimp.claudius.mod.modules.client;
 
 import me.crimp.claudius.DiscordPresence;
 import me.crimp.claudius.mod.modules.Module;
-import me.crimp.claudius.mod.setting.Setting;
 
 public class RPC
         extends Module {
@@ -10,7 +9,7 @@ public class RPC
     //public final Setting<Boolean> IP = this.register(new Setting<>("id",true));
 
     public RPC() {
-        super("DiscordRichP", "Discord rich presence", Module.Category.CLIENT, false, false, false);
+        super("DiscordRichP", "Discord rich presence", Module.Category.Client, false, false, false);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
         INSTANCE = this;

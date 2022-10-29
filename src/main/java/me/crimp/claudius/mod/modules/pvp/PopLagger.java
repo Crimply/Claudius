@@ -20,7 +20,7 @@ public class PopLagger extends Module {
     private static PopLagger INSTANCE = new PopLagger();
 
     public PopLagger() {
-        super("PopLagger", "PopLagger", Category.PVP, true, false, false);
+        super("PopLagger", "PopLagger", Category.Pvp, true, false, false);
         this.setInstance();
     }
 

@@ -1,10 +1,8 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.render;
 
 import com.mojang.authlib.GameProfile;
 import me.crimp.claudius.event.events.TotemPopEvent;
 import me.crimp.claudius.mod.modules.Module;
-import me.crimp.claudius.mod.modules.client.ClickGuiModule;
-import me.crimp.claudius.mod.modules.pvp.PopLagger;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.PopChamsUtil;
 import me.crimp.claudius.utils.Timer;
@@ -36,7 +34,7 @@ public class PopChams extends Module {
     Timer followTimer = new Timer();
 
     public PopChams() {
-        super("PopChams", "Cool pop render", Category.RENDER,true,false,false);
+        super("PopChams", "Cool pop render", Category.Render,true,false,false);
         INSTANCE = this;
     }
 

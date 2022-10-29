@@ -17,7 +17,7 @@ public class ExtraTooltips extends Module {
   public Setting<Boolean> NonDuraitems = this.register(new Setting<Boolean>("all item Dura",true, v -> this.TrueDura.getValue()));
 
   public ExtraTooltips() {
-    super("ExtraTooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.MISC, true, false, false);
+    super("ExtraTooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Misc, true, false, false);
     //this.drawn.setValue(false);
   }
 

@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatSuffix extends Module {
     public ChatSuffix() {
-        super("ChatSuffix", "Appends your message", Category.MISC, true, false, false);
+        super("ChatSuffix", "Appends your message", Category.Misc, true, false, false);
     }
 
     @SubscribeEvent

@@ -1,7 +1,6 @@
 package me.crimp.claudius.utils;
 
-import me.crimp.claudius.mod.modules.misc.PopChams;
-import me.crimp.claudius.utils.Globals;
+import me.crimp.claudius.mod.modules.render.PopChams;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelPlayer;

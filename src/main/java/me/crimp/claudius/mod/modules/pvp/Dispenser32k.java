@@ -69,7 +69,7 @@ public class Dispenser32k extends Module {
     private boolean isSneaking;
 
     public Dispenser32k() {
-        super("Dispenser32k", "",Category.PVP, true, false, false);
+        super("Dispenser32k", "",Category.Pvp, true, false, false);
     }
 
     @Override

@@ -8,7 +8,7 @@ import me.crimp.claudius.mod.command.Command;
 
 public class AntiLog4j extends Module {
     public AntiLog4j() {
-        super("AntiLog4J", "Stops log4j", Category.FIXES, true, false, true);
+        super("AntiLog4J", "Stops log4j", Category.Fixes, true, false, true);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
     }

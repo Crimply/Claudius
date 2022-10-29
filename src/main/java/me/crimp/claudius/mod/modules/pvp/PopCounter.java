@@ -15,7 +15,7 @@ public class PopCounter
     private static PopCounter INSTANCE = new PopCounter();
 
     public PopCounter() {
-        super("PopCounter", "Counts other players totem pops.", Module.Category.PVP, true, false, false);
+        super("PopCounter", "Counts other players totem pops.", Module.Category.Pvp, true, false, false);
         this.setInstance();
     }
 

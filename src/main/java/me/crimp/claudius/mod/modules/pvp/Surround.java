@@ -42,7 +42,7 @@ public class Surround
     private boolean offHand = false;
 
     public Surround() {
-        super("Surrond", "Surrounds you with Obsidian", Module.Category.PVP, true, false, false);
+        super("Surrond", "Surrounds you with Obsidian", Module.Category.Pvp, true, false, false);
     }
 
     @Override
