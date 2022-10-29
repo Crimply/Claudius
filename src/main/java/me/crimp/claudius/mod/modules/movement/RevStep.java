@@ -8,7 +8,7 @@ public class RevStep extends Module {
     public static final Setting<Double> height = new Setting<>("Height", 2.0, 1.0, 6.0);
 
     public RevStep() {
-        super("ReverseStep", "Teleports you down blocks", Category.Misc,true,false,false);
+        super("ReverseStep", "Teleports you down blocks", Category.Movement,true,false,false);
     }
 
     @Override

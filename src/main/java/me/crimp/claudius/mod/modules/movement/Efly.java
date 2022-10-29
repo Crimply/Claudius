@@ -5,7 +5,7 @@ import me.crimp.claudius.mod.modules.Module;
 
 public class Efly extends Module {
     public Efly() {
-        super("Efly", "Efly", Category.Misc, true, false, false);
+        super("Efly", "Efly", Category.Movement, true, false, false);
     }
 
     @Override

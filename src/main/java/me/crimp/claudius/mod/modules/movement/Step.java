@@ -7,10 +7,10 @@ import static me.crimp.claudius.utils.PlayerUtil.getBlockHeight;
 
 public class Step extends Module {
     public Step() {
-        super("Step", "Allows you to automatically step up blocks", Category.Misc,true,false,false);
+        super("Step", "Allows you to automatically step up blocks", Category.Movement,true,false,false);
     }
 
-    public final Setting<Stepmode> mode = this.register(new Setting<>("Mode", Stepmode.Vanilla));
+    public final Setting<Stepmode> mode = this.register(new Setting<>("Mode", Stepmode.Normal));
     public final Setting<Float> height = this.register(new Setting<>("Height", 2f, 1f, 6f));
 
     @Override
