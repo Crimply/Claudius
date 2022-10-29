@@ -6,11 +6,10 @@ import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.*;
-import me.crimp.claudius.mod.modules.exploit.FemBoyExploit;
-import me.crimp.claudius.mod.modules.exploit.NoClipFly;
-import me.crimp.claudius.mod.modules.exploit.PearlBait;
+import me.crimp.claudius.mod.modules.exploit.*;
 import me.crimp.claudius.mod.modules.fixes.*;
 import me.crimp.claudius.mod.modules.misc.*;
+import me.crimp.claudius.mod.modules.movement.*;
 import me.crimp.claudius.mod.modules.pvp.*;
 import me.crimp.claudius.mod.modules.render.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,18 +38,18 @@ public class ModuleManager extends Feature {
                 //misc
                 new BookPreview(),
                 new ChatSuffix(),
-                new Efly(),
                 new DonkeySwap(),
                 new AcidOverlay(),
-                new MobOwner(),
+
                 new ExtraTooltips(),
                 new McfSync(),
                 new PopChams(),
-                new RevStep(),
-                new GroundStrafe(),
-                new Step(),
 
                 //movement
+                new GroundStrafe(),
+                new Step(),
+                new RevStep(),
+                new Efly(),
 
                 //fixes
                 new SetDisplay(),
@@ -88,6 +87,7 @@ public class ModuleManager extends Feature {
                 new DeathEffect(),
                 new Animations(),
                 new CSGOWatermark(),
+                new MobOwner(),
                 new BurrowEsp()
         );
     }

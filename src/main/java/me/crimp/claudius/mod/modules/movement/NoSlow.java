@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.pvp;
+package me.crimp.claudius.mod.modules.movement;
 
 import me.crimp.claudius.event.events.PacketEvent;
 import me.crimp.claudius.mod.modules.Module;

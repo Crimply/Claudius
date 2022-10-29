@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.movement;
 
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.MoveEvent;
