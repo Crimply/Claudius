@@ -10,7 +10,7 @@
 Made For Anarchy
 </p>
 <p align="center">
-1.12.2 Client Utilitys
+1.12.2 Client Utilities
 <hr>
 <p align="center">
 Build Instructions <br>
