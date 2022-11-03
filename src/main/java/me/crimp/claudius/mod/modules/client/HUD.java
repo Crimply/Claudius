@@ -3,20 +3,26 @@ package me.crimp.claudius.mod.modules.client;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.ClientEvent;
+import me.crimp.claudius.event.events.ConnectionEvent;
 import me.crimp.claudius.event.events.Render2DEvent;
+import me.crimp.claudius.event.events.TotemPopEvent;
+import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import static me.crimp.claudius.utils.PlayerUtil.timer;
+
 public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
-    private static HUD INSTANCE = new HUD();
+    public static HUD INSTANCE = new HUD();
     private final Setting<Boolean> renderingUp = register(new Setting<>("RenderingUp", true, "Orientation of the HUD-Elements."));
     private final Setting<Boolean> waterMark = register(new Setting<>("Watermark", false, "displays watermark"));
     private final Setting<Boolean> arrayList = register(new Setting<>("ArrayList", true, "Lists the active modules."));
@@ -24,10 +30,12 @@ public class HUD extends Module {
     private final Setting<Boolean> greeter = register(new Setting<>("Greeter", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
-   // public Setting<String> commandBracket = register(new Setting<>("Bracket", "["));
-    //public Setting<String> commandBracket2 = register(new Setting<>("OtherBracket", "]"));
-    public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in chat when shit happens"));
+    public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in text when shit happens"));
+    public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notifyToggles.getValue()));
+    public Setting<Boolean> SelfPop = register(new Setting<Boolean>("SelfPops", false, v -> this.notifyToggles.getValue()));
+    public Setting<Boolean> logOuts = register(new Setting<Boolean>("LogOuts", false, v -> this.notifyToggles.getValue()));
     public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
+    public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public static final String command = "Claudius";
     private int color;
@@ -56,6 +64,36 @@ public class HUD extends Module {
         if (this.hitMarkerTimer == 10) {
             this.hitMarkerTimer = 0;
             this.shouldIncrement = false;
+        }
+        if (mc.player.getHeldItemOffhand().getItem() != Items.TOTEM_OF_UNDYING && InventoryUtil.getItemCount(Items.TOTEM_OF_UNDYING, true) != 0 && totemwarning.getValue()) {
+            if (timer.hasReached(100)) {
+                Command.sendOverwriteClientMessage("There is no totem in your offhand!");
+            }
+        }
+        if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING) {
+            timer.reset();
+        }
+    }
+
+
+
+    @SubscribeEvent
+    public void onConnectionEvent(ConnectionEvent event) {
+        if (event.getEntity() != mc.player && logOuts.getValue()) {
+            if (event.getType().equals(ConnectionEvent.Type.Join)) {
+                if (event.getEntity().equals(Claudius.friendManager.getFriends())) {
+                    Command.sendOverwriteClientMessage("Your Friend " + ChatFormatting.AQUA + event.getEntity().getName() + ChatFormatting.RESET + " has just logged in!");
+                } else {
+                    Command.sendOverwriteClientMessage(event.getEntity().getName() + " has just logged in!");
+                }
+            }
+            if (event.getType().equals(ConnectionEvent.Type.Leave)) {
+                if (event.getEntity().equals(Claudius.friendManager.getFriends())) {
+                    Command.sendOverwriteClientMessage("Your Friend " + ChatFormatting.AQUA + event.getEntity().getName() + ChatFormatting.RESET + " has just logged out!");
+                } else {
+                    Command.sendOverwriteClientMessage(event.getEntity().getName() + " has just logged out!");
+                }
+            }
         }
     }
 

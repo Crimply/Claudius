@@ -12,9 +12,6 @@ import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.MinecraftForge;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Module extends Feature {
     private final String description;
     private final Category category;
@@ -159,9 +156,8 @@ public abstract class Module extends Feature {
         Exploit("Exploit"),
         Pvp("Pvp"),
         Render("Render"),
-        Fixes("Fixes"),
         Movement("Movement"),
-        Chat("Chat"),
+        Text("Text"),
         Client("Client");
 
         private final String name;

@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.fixes;
+package me.crimp.claudius.mod.modules.text;
 
 import net.minecraft.network.play.server.SPacketChat;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -8,7 +8,7 @@ import me.crimp.claudius.mod.command.Command;
 
 public class AntiLog4j extends Module {
     public AntiLog4j() {
-        super("AntiLog4J", "Stops log4j", Category.Fixes, true, false, true);
+        super("AntiLog4J", "Stops log4j", Category.Text, true, false, true);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
     }

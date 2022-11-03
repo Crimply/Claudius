@@ -17,12 +17,22 @@ public class ConnectionEvent
         this.name = name;
         this.entity = null;
     }
+    Type type;
+
 
     public ConnectionEvent(int stage, EntityPlayer entity, UUID uuid, String name) {
         super(stage);
         this.entity = entity;
         this.uuid = uuid;
         this.name = name;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public enum Type {
+        Join, Leave, Other
     }
 
     public String getName() {

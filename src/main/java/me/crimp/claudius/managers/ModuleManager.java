@@ -5,10 +5,9 @@ import me.crimp.claudius.event.events.Render3DEvent;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
-import me.crimp.claudius.mod.modules.chat.*;
+import me.crimp.claudius.mod.modules.text.*;
 import me.crimp.claudius.mod.modules.client.*;
 import me.crimp.claudius.mod.modules.exploit.*;
-import me.crimp.claudius.mod.modules.fixes.*;
 import me.crimp.claudius.mod.modules.misc.*;
 import me.crimp.claudius.mod.modules.movement.*;
 import me.crimp.claudius.mod.modules.pvp.*;
@@ -45,8 +44,11 @@ public class ModuleManager extends Feature {
                 new McfSync(),
                 new PopChams(),
 
-                //chat
+                //text
                 new ChatSuffix(),
+                new PopLagger(),
+                new PopCounter(),
+                new SelfPopCounter(),
 
                 //movement
                 new GroundStrafe(),
@@ -71,8 +73,6 @@ public class ModuleManager extends Feature {
                 //pvp
                 new Burrow(),
                 new Surround(),
-                new PopLagger(),
-                new PopCounter(),
                 new AutoKiller(),
                 new AutoClicker(),
                 new Dispenser32k(),

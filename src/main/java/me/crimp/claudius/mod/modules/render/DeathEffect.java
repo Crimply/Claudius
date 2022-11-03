@@ -5,15 +5,10 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class DeathEffect extends Module {
-    private static final DeathEffect INSTANCE = new DeathEffect();
-
     public DeathEffect() {
         super("DeathEffect", "DeathEffect", Category.Render, true, false, false);
     }
-
-    public static DeathEffect getInstance() {
-        return INSTANCE;
-    }
+    public static DeathEffect INSTANCE = new DeathEffect();
 
     public void onDeath(EntityPlayer player) {
         if (this.enabled.getValue()) {

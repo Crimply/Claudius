@@ -1,6 +1,7 @@
 package me.crimp.claudius.mixins.mixins;
 
 import me.crimp.claudius.Claudius;
+import me.crimp.claudius.mod.modules.client.HUD;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.util.ResourceLocation;
@@ -25,12 +26,12 @@ public abstract class MixinAbstractClientPlayer {
     public void getLocationCape(CallbackInfoReturnable<ResourceLocation> callbackInfoReturnable) {
         UUID uuid = Objects.requireNonNull(getPlayerInfo()).getGameProfile().getId();
 
-        if ((Claudius.capeManager.isOg(uuid))) {
+        if (Claudius.capeManager.isOg(uuid) && HUD.INSTANCE.Capes.getValue()) {
             // callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/cape-old.png"));
             callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/ogcape.png"));
         }
 
-        if (Claudius.capeManager.isContributor(uuid)) {
+        if (Claudius.capeManager.isContributor(uuid) && HUD.INSTANCE.Capes.getValue()) {
             callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/devcape.png"));
         }
     }

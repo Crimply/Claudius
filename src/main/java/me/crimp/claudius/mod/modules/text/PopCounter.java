@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.pvp;
+package me.crimp.claudius.mod.modules.text;
 
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
@@ -6,30 +6,18 @@ import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketChatMessage;
 
+
 import java.util.HashMap;
 
 public class PopCounter
         extends Module {
     public Setting<Boolean> PopMsg = this.register(new Setting<>("Send in Chat", false));
     public static HashMap<String, Integer> TotemPopContainer = new HashMap();
-    private static PopCounter INSTANCE = new PopCounter();
 
     public PopCounter() {
-        super("PopCounter", "Counts other players totem pops.", Module.Category.Pvp, true, false, false);
-        this.setInstance();
+        super("PopCounter", "Counts other players totem pops.", Category.Text, true, false, false);
     }
-
-    public static PopCounter getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new PopCounter();
-        }
-        return INSTANCE;
-    }
-
-    private void setInstance() {
-        INSTANCE = this;
-    }
-
+    public static PopCounter INSTANCE = new PopCounter();
     @Override
     public void onEnable() {
         TotemPopContainer.clear();
@@ -84,4 +72,3 @@ public class PopCounter
         }
     }
 }
-

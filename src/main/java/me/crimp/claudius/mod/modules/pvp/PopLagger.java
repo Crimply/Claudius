@@ -17,22 +17,11 @@ public class PopLagger extends Module {
     public static HashMap<String, Integer> TotemPopContainer = new HashMap();
     public Setting<Boolean> Block = this.register(new Setting<>("Block the lag", true));
     public Setting<Boolean> on = this.register(new Setting<>("Send China", true));
-    private static PopLagger INSTANCE = new PopLagger();
 
     public PopLagger() {
         super("PopLagger", "PopLagger", Category.Pvp, true, false, false);
-        this.setInstance();
     }
-
-    public static PopLagger getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new PopLagger();
-        }
-        return INSTANCE;
-    }
-    private void setInstance() {
-        INSTANCE = this;
-    }
+    public static PopLagger INSTANCE = new PopLagger();
 
     @Override
     public void onEnable() {

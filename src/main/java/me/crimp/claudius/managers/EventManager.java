@@ -6,7 +6,7 @@ import me.crimp.claudius.event.events.*;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.client.HUD;
-import me.crimp.claudius.mod.modules.pvp.PopCounter;
+import me.crimp.claudius.mod.modules.text.PopCounter;
 import me.crimp.claudius.mod.modules.pvp.PopLagger;
 import me.crimp.claudius.mod.modules.render.DeathEffect;
 import me.crimp.claudius.utils.Timer;
@@ -75,8 +75,8 @@ public class EventManager extends Feature {
             if (player == null || player.getHealth() > 0.0F)
                 continue;
             MinecraftForge.EVENT_BUS.post(new DeathEvent(player));
-            PopCounter.getInstance().onDeath(player);
-            DeathEffect.getInstance().onDeath(player);
+            //PopCounter.INSTANCE.onDeath(player);
+            DeathEffect.INSTANCE.onDeath(player);
         }
     }
 
@@ -105,8 +105,8 @@ public class EventManager extends Feature {
             if (packet.getOpCode() == 35 && packet.getEntity(mc.world) instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer) packet.getEntity(mc.world);
                 MinecraftForge.EVENT_BUS.post(new TotemPopEvent(player));
-                PopLagger.getInstance().onTotemPop(player);
-                PopCounter.getInstance().onTotemPop(player);
+                PopLagger.INSTANCE.onTotemPop(player);
+                PopCounter.INSTANCE.onTotemPop(player);
             }
         }
         if (event.getPacket() instanceof SPacketPlayerListItem && !fullNullCheck() && this.logoutTimer.passedS(1.0D)) {
