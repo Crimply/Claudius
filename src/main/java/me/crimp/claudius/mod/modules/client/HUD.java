@@ -65,15 +65,9 @@ public class HUD extends Module {
             this.hitMarkerTimer = 0;
             this.shouldIncrement = false;
         }
+        //if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING) {return;}
         if (mc.player.getHeldItemOffhand().getItem() != Items.TOTEM_OF_UNDYING && InventoryUtil.getItemCount(Items.TOTEM_OF_UNDYING, true) != 0 && totemwarning.getValue()) {
-            if (timer.hasReached(100)) {
-                Command.sendOverwriteClientMessage("There is no totem in your offhand!");
-            }
-        }
-        if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING) {
-            timer.reset();
-        }
-    }
+                Command.sendOverwriteClientMessage("There is no totem in your offhand!");}}
 
 
 
