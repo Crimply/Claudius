@@ -161,6 +161,7 @@ public abstract class Module extends Feature {
         Render("Render"),
         Fixes("Fixes"),
         Movement("Movement"),
+        Chat("Chat"),
         Client("Client");
 
         private final String name;
@@ -169,26 +170,6 @@ public abstract class Module extends Feature {
             this.name = name;
         }
 
-        public static int amountPerCategory(Category category) {
-            List<Module> categoryModules = new ArrayList<>();
-            for (Module module : Claudius.INSTANCE.moduleManager.modules) {
-                if (module.getCategory().equals(category)) {
-                    categoryModules.add(module);
-                }
-            }
-            return categoryModules.size();
-        }
-
-        public static Category getCategoryFromString(String id) {
-            Category finalCategory = null;
-            for (Category category : Category.values()) {
-                if (category.toString().equalsIgnoreCase(id)) {
-                    finalCategory = category;
-                    break;
-                }
-            }
-            return finalCategory;
-        }
 
         public String getName() {
             return this.name;

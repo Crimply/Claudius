@@ -5,6 +5,7 @@ import me.crimp.claudius.event.events.Render3DEvent;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
+import me.crimp.claudius.mod.modules.chat.*;
 import me.crimp.claudius.mod.modules.client.*;
 import me.crimp.claudius.mod.modules.exploit.*;
 import me.crimp.claudius.mod.modules.fixes.*;
@@ -37,13 +38,15 @@ public class ModuleManager extends Feature {
 
                 //misc
                 new BookPreview(),
-                new ChatSuffix(),
+
                 new DonkeySwap(),
                 new AcidOverlay(),
-
                 new ExtraTooltips(),
                 new McfSync(),
                 new PopChams(),
+
+                //chat
+                new ChatSuffix(),
 
                 //movement
                 new GroundStrafe(),

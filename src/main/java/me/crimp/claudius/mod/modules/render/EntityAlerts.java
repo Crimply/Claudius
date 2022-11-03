@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
@@ -22,7 +22,7 @@ public class EntityAlerts extends Module {
     public Setting<Boolean> Sound = this.register(new Setting<>("Sound", true));
 
     public EntityAlerts() {
-        super("EntityAlerts", "EntityAlerts", Category.Misc, true, false, false);
+        super("EntityAlerts", "EntityAlerts", Category.Render, true, false, false);
     }
     int Sounddelay;
     int delay1;

@@ -62,6 +62,27 @@ public abstract class Feature implements Util {
         return null;
     }
 
+    public static int amountPerCategory(Module.Category category) {
+        List<Module> categoryModules = new ArrayList<>();
+        for (Module module : Claudius.INSTANCE.moduleManager.modules) {
+            if (module.getCategory().equals(category)) {
+                categoryModules.add(module);
+            }
+        }
+        return categoryModules.size();
+    }
+
+    public static Module.Category getCategoryFromString(String id) {
+        Module.Category finalCategory = null;
+        for (Module.Category category : Module.Category.values()) {
+            if (category.toString().equalsIgnoreCase(id)) {
+                finalCategory = category;
+                break;
+            }
+        }
+        return finalCategory;
+    }
+
     public void reset() {
         for (Setting setting : this.settings) setting.setValue(setting.getDefaultValue());
     }

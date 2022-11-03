@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.chat;
 
 import me.crimp.claudius.mod.modules.Module;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatSuffix extends Module {
     public ChatSuffix() {
-        super("ChatSuffix", "Appends your message", Category.Misc, true, false, false);
+        super("ChatSuffix", "Appends your message", Category.Chat, true, false, false);
     }
 
     @SubscribeEvent

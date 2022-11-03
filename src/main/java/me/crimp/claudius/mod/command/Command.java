@@ -5,6 +5,7 @@ import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.Feature;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentBase;
+import net.minecraft.util.text.TextComponentString;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +28,13 @@ public abstract class Command extends Feature {
 
     public static void sendMessage(String message) {
         Command.sendSilentMessage(Claudius.commandManager.getClientMessage() + " " + ChatFormatting.GRAY + message);
+    }
+
+    public static void sendOverwriteClientMessage(String message) {
+        if (mc.player != null) {
+            final ITextComponent itc = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + ChatFormatting.GRAY + message);
+            mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(itc, 5936);
+        }
     }
 
     public static void sendSilentMessage(String message) {

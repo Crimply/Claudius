@@ -53,20 +53,19 @@ public class Component extends Feature {
 //        RenderMethods.drawGradientRect(this.x, (float)this.y - 1.5f, this.x + this.width, this.y + this.height - 6, -7829368, -6710887);
         int color = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), 255);
         int color2 = ColorUtil.toARGB(ClickGuiModule.INSTANCE.BGRed.getValue(), ClickGuiModule.INSTANCE.BGGreen.getValue(), ClickGuiModule.INSTANCE.BGBlue.getValue(), ClickGuiModule.INSTANCE.BGalpha.getValue());
-        RenderUtil.drawRect(this.x - 2f, (float)this.y - 2.5f, this.x + 2f + this.width, this.y + this.height - 6.0f, /*ColorUtil.toARGB(255,255,255,255)*/ color);
-        //RenderUtil.drawRect(this.x - 2f, (float)this.y - 2.5f, this.x + 2f + this.width, this.y + this.height - 6.0f, ColorUtil.toARGB(255,255,255,255));
-        RenderUtil.drawRect(this.x, (float)this.y - 1f, this.x + this.width, this.y + this.height - 7, color);//0x77FB4242, 0x77FB4242);
+        RenderUtil.drawRect(this.x-0.5f, (float)this.y - 1.5f, this.x + this.width+0.5f, this.y + this.height - 4, color);
+        //RenderUtil.drawLine(this.x, (float)this.y - 1f, this.x + this.width, this.y + this.height - 3, 1.5f, color); //left line
 
         if (this.open) {
-            RenderUtil.drawRect(this.x -2f, (float)this.y + 10.5f, this.x + this.width + 2f, this.open ? (float)(this.y + this.height + 2.2f) + totalItemHeight : (float)(this.y + this.height - 1), /*ColorUtil.toARGB(255,255,255,255)*/ color);//1996488704
-            //RenderUtil.drawRect(this.x, (float)this.y + 12.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
-            RenderUtil.drawLine(x, y, x, y + totalItemHeight, 1.5f, color2);
-            RenderUtil.drawLine(x, y, x + width, y, 1.5f, color2);
-            RenderUtil.drawLine(x + width, y, x + width, y + totalItemHeight, 1.5f, color2);
-            RenderUtil.drawLine(x, y + totalItemHeight, x + width, y + totalItemHeight, 1.5f, color2);
+            RenderUtil.drawRect(this.x, (float)this.y + 13.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
+            RenderUtil.drawLine(x, y+6, x, y+6 + totalItemHeight + 11, 1.5f, color); //left line
+            RenderUtil.drawLine(x, y+6, x + width, y+6, 1.5f, color); //top line
+            RenderUtil.drawLine(x + width, y+6, x + width, y+6 + totalItemHeight + 11, 1.5f, color); //right line
+            RenderUtil.drawLine(x, y+6 + totalItemHeight + 11, x + width, y+6 + totalItemHeight+11, 1.5f, color); //Bottom line
         }
-        Claudius.textManager.drawStringWithShadow(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        Claudius.textManager.drawStringWithShadow("                       \u2727\u0020      ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        Claudius.textManager.drawStringWithShadow(this.getName() +"     ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+       // Claudius.textManager.drawStringWithShadow("                         \u2727\u0020   ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         GlStateManager.translate(getX() + getWidth() - 7, (getY() + 6) - 0.3F, 0.0F);
