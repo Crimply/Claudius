@@ -108,7 +108,6 @@ public class EventManager extends Feature {
                 MinecraftForge.EVENT_BUS.post(new TotemPopEvent(player));
                 PopLagger.INSTANCE.onTotemPop(player);
                 PopCounter.INSTANCE.onTotemPop(player);
-                SelfPopCounter.INSTANCE.onTotemPop(player);
             }
         }
         if (event.getPacket() instanceof SPacketPlayerListItem && !fullNullCheck() && this.logoutTimer.passedS(1.0D)) {
