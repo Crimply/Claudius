@@ -58,9 +58,9 @@ public class Component extends Feature {
 
         if (this.open) {
             RenderUtil.drawRect(this.x, (float)this.y + 13.5f, this.x + this.width, this.open ? (float)(this.y + this.height) + totalItemHeight : (float)(this.y + this.height - 1), color2);//1996488704
-            RenderUtil.drawLine(x, y+6, x, y+6 + totalItemHeight + 11, 1.5f, color); //left line
+            RenderUtil.drawLine(x, y+6, x, y+6 + totalItemHeight + 11.5f, 1.5f, color); //left line
             RenderUtil.drawLine(x, y+6, x + width, y+6, 1.5f, color); //top line
-            RenderUtil.drawLine(x + width, y+6, x + width, y+6 + totalItemHeight + 11, 1.5f, color); //right line
+            RenderUtil.drawLine(x + width, y+6, x + width, y+6 + totalItemHeight + 11.5f, 1.5f, color); //right line
             RenderUtil.drawLine(x, y+6 + totalItemHeight + 11, x + width, y+6 + totalItemHeight+11, 1.5f, color); //Bottom line
         }
         Claudius.textManager.drawStringWithShadow(this.getName() +"     ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);

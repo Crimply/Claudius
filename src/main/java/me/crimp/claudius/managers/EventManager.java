@@ -9,6 +9,7 @@ import me.crimp.claudius.mod.modules.client.HUD;
 import me.crimp.claudius.mod.modules.text.PopCounter;
 import me.crimp.claudius.mod.modules.pvp.PopLagger;
 import me.crimp.claudius.mod.modules.render.DeathEffect;
+import me.crimp.claudius.mod.modules.text.SelfPopCounter;
 import me.crimp.claudius.utils.Timer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -107,6 +108,7 @@ public class EventManager extends Feature {
                 MinecraftForge.EVENT_BUS.post(new TotemPopEvent(player));
                 PopLagger.INSTANCE.onTotemPop(player);
                 PopCounter.INSTANCE.onTotemPop(player);
+                SelfPopCounter.INSTANCE.onTotemPop(player);
             }
         }
         if (event.getPacket() instanceof SPacketPlayerListItem && !fullNullCheck() && this.logoutTimer.passedS(1.0D)) {
