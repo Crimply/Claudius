@@ -22,7 +22,6 @@ public class PopChams extends Module {
     public  final Setting<Integer> lineBlue = this.register(new Setting<>("LineBlue", 212, 0, 255));
     public  final Setting<Integer> lineAlpha = this.register(new Setting<>("LineAlpha", 50, 0, 255));
     public  final Setting<Integer> fadestart = this.register(new Setting<>("FadeStart", 1238, 0, 3000));
-    public  final Setting<Boolean> Golobal = this.register(new Setting<>("Golobal", false));
     public final Setting<Float> fadeTime = this.register(new Setting<>("FadeTime", 0.4f, 0.0f, 2.0f));
     public  final Setting<Boolean> smallArms = this.register(new Setting<>("SmallArms", false));
     public  final Setting<Boolean> self = this.register(new Setting<>("Self", false));
