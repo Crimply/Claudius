@@ -40,10 +40,10 @@ public class PopChams extends Module {
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {
         followTimer.reset();
-        if (self.getValue() || event.getEntity().getEntityId() != PopChams.mc.player.getEntityId()) {
+        if (self.getValue() || event.getPlayer().getEntityId() != PopChams.mc.player.getEntityId()) {
                 GameProfile profile = new GameProfile(PopChams.mc.player.getUniqueID(), "");
                 this.player = new EntityOtherPlayerMP(PopChams.mc.world, profile);
-                this.player.copyLocationAndAnglesFrom(event.getEntity());
+                this.player.copyLocationAndAnglesFrom(event.getPlayer());
                 this.playerModel = new ModelPlayer(0.0f, smallArms.getValue());
                 this.startTime = System.currentTimeMillis();
                 this.playerModel.bipedHead.showModel = false;

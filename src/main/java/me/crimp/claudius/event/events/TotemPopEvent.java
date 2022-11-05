@@ -5,14 +5,14 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class TotemPopEvent
         extends EventStage {
-    private final EntityPlayer entity;
+    private final EntityPlayer player;
 
-    public TotemPopEvent(EntityPlayer entity) {
-        this.entity = entity;
+    public TotemPopEvent(EntityPlayer player) {
+        this.player = player;
     }
 
-    public EntityPlayer getEntity() {
-        return this.entity;
+    public EntityPlayer getPlayer() {
+        return player;
     }
 }
 
