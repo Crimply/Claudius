@@ -18,7 +18,7 @@ gradlew setupDecompWorkspace <br>
 gradlew build <br>
 <hr>
 <p align="center">
-<a> https://discord.gg/srVKeqdc4Z</a>5
+<a> https://discord.gg/srVKeqdc4Z</a>
 <br> For Help 
 
 <img src="https://raw.githubusercontent.com/Crimply/Claudius/main/src/main/resources/title.png"/>
