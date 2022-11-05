@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
@@ -17,7 +17,7 @@ public class ExtraTooltips extends Module {
   public Setting<Boolean> NonDuraitems = this.register(new Setting<Boolean>("all item Dura",true, v -> this.TrueDura.getValue()));
 
   public ExtraTooltips() {
-    super("ExtraTooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Misc, true, false, false);
+    super("Tooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Render, true, false, false);
     //this.drawn.setValue(false);
   }
 
