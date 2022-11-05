@@ -35,6 +35,7 @@ public class SelfPopCounter extends Module {
     public void onDeath(DeathEvent event) {
         if (event.getPlayer().getEntityId() == mc.player.getEntityId()) {
             Command.sendMessage(ChatFormatting.LIGHT_PURPLE + "You" + ChatFormatting.RESET + " just died after popping " + ChatFormatting.LIGHT_PURPLE + l_Count + ChatFormatting.RESET + totemSpelling);
+            l_Count = 0;
         }
     }
 }
