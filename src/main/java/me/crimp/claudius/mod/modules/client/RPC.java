@@ -1,6 +1,7 @@
 package me.crimp.claudius.mod.modules.client;
 
 import me.crimp.claudius.DiscordPresence;
+import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 
 public class RPC
@@ -18,11 +19,13 @@ public class RPC
     @Override
     public void onEnable() {
         DiscordPresence.start();
+        Command.sendOverwriteClientMessage("Discord Rpc Started");
     }
 
     @Override
     public void onDisable() {
         DiscordPresence.stop();
+        Command.sendOverwriteClientMessage("Discord Rpc Stopped");
     }
 }
 

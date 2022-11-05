@@ -27,9 +27,7 @@ public class SelfPopCounter
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {
             for (EntityPlayer player : this.player) {
-                if (SelfPopCounter.fullNullCheck()) {
-                    return;
-                }
+                if (!fullNullCheck()) {return;}
                 if (TotemPopContainer.containsKey(player.getName())) {
                     l_Count = TotemPopContainer.get(player.getName());
                     TotemPopContainer.put(player.getName(), ++l_Count);

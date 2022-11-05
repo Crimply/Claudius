@@ -30,10 +30,10 @@ public class HUD extends Module {
     private final Setting<Boolean> greeter = register(new Setting<>("Greeter", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
-    public Setting<Boolean> notifyToggles = register(new Setting<>("Notifcations", false, "notifys in text when shit happens"));
-    public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notifyToggles.getValue()));
-    public Setting<Boolean> SelfPop = register(new Setting<Boolean>("SelfPops", false, v -> this.notifyToggles.getValue()));
-    public Setting<Boolean> logOuts = register(new Setting<Boolean>("LogOuts", false, v -> this.notifyToggles.getValue()));
+    public Setting<Boolean> notify = register(new Setting<>("Notifcations", false, "notifys in text when shit happens"));
+    public Setting<Boolean> notifyToggles = register(new Setting<Boolean>("ToggleNotis", false, v -> this.notify.getValue()));
+    public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notify.getValue()));
+    public Setting<Boolean> logOuts = register(new Setting<Boolean>("LogOuts", false, v -> this.notify.getValue()));
     //public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
     public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
