@@ -21,7 +21,6 @@ import java.util.List;
 
 public class ModuleButton extends Button {
     private final Module module;
-    private final ResourceLocation logo = new ResourceLocation("textures/dots.png");
     private List<Item> items = new ArrayList<>();
     private boolean subOpen;
 
@@ -72,29 +71,8 @@ public class ModuleButton extends Button {
         this.items = newItems;
     }
 
-    /**@Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        super.drawScreen(mouseX, mouseY, partialTicks);
-        if (!this.items.isEmpty()) {
-            if (HUD.getInstance().Dots.getValue()) {
-                mc.getTextureManager().bindTexture(this.logo);
-                ModuleButton.drawCompleteImage(this.x - 1.5f + (float) this.width - 7.4f, this.y - 2.2f - (float) ClickGui.getClickGui().getTextOffset(), 8, 8);
-            }
-            if (this.subOpen) {
-                float height = 1.0f;
-                for (Item item : this.items) {
-                    Component.counter1[0] = Component.counter1[0] + 1;
-                    if (!item.isHidden()) {
-                        item.setLocation(this.x + 1.0f, this.y + (height += 15.0f));
-                        item.setHeight(15);
-                        item.setWidth(this.width - 9);
-                        item.drawScreen(mouseX, mouseY, partialTicks);
-                    }
-                    item.update();
-                }
-            }
-        }
-    }**/
+    //mc.getTextureManager().bindTexture();
+    // ModuleButton.drawCompleteImage(this.x - 1.5f + (float) this.width - 7.4f, this.y - 2.2f - (float) ClickGui.getClickGui().getTextOffset(), 8, 8);
 
     @Override
     public void drawScreen(final int mouseX, final int mouseY, final float partialTicks) {

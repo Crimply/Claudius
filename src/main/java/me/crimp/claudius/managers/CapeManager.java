@@ -35,9 +35,9 @@ public class CapeManager implements Globals {
         } catch (Exception ignored) {
         }
         try { // dev
-            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Devcape.txt");
-            BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
-            String inputLine;
+            URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Devcape.txt"); // if ur here can u please consider putting my uuid on the list
+            BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));                       // cos i put a lot of work into this - Crimp
+            String inputLine;                                                                                               //  its 72874b6d-db90-487a-9676-08096a5077b9
             while ((inputLine = in.readLine()) != null) {
                 contributorCapes.add(UUID.fromString(inputLine));
             }
