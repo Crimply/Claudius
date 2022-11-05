@@ -27,14 +27,14 @@ public class SelfPopCounter extends Module {
             totemSpelling = " totems";
         }
         if (event.getPlayer().getEntityId() == mc.player.getEntityId()) {
-            Command.sendMessage(ChatFormatting.LIGHT_PURPLE + "You" + ChatFormatting.RESET + " have popped " + ChatFormatting.LIGHT_PURPLE + l_Count + ChatFormatting.RESET + totemSpelling);
+            Command.sendMessage(ChatFormatting.BLUE + "You" + ChatFormatting.RESET + " have popped " + ChatFormatting.BLUE + l_Count + ChatFormatting.RESET + totemSpelling);
         }
     }
 
     @SubscribeEvent
     public void onDeath(DeathEvent event) {
         if (event.getPlayer().getEntityId() == mc.player.getEntityId()) {
-            Command.sendMessage(ChatFormatting.LIGHT_PURPLE + "You" + ChatFormatting.RESET + " just died after popping " + ChatFormatting.LIGHT_PURPLE + l_Count + ChatFormatting.RESET + totemSpelling);
+            Command.sendMessage(ChatFormatting.BLUE + "You" + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + l_Count + ChatFormatting.RESET + totemSpelling);
             l_Count = 0;
         }
     }
