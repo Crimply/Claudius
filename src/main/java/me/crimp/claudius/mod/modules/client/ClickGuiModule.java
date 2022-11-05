@@ -33,6 +33,7 @@ public class ClickGuiModule extends Module {
     public Setting<Integer> BGBlue = this.register(new Setting<>("BGBlue", 236, 0, 255));
     public Setting<Integer> BGalpha = this.register(new Setting<>("BGalpha", 150, 0, 255));
     public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, "Kekw"));
+    public Setting<Boolean> Cross = register(new Setting<>("Plus/Minus", true, "Kekw"));
 
     public ClickGuiModule() {
         super("ClickGui", "Opens the ClickGui", Module.Category.Client, true, false, false);

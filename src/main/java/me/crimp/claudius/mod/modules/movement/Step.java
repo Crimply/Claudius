@@ -12,6 +12,8 @@ public class Step extends Module {
 
     public final Setting<Stepmode> mode = this.register(new Setting<>("Mode", Stepmode.Normal));
     public final Setting<Float> height = this.register(new Setting<>("Height", 2f, 1f, 6f));
+    public final Setting<Boolean> Rev = this.register(new Setting<>("Reverse", false));
+    public final Setting<Double> speed = new Setting<>("RevSpeed", 1.0, 0.1, 5.0, v -> this.Rev.getValue());
 
     @Override
     public String getDisplayInfo() {
@@ -53,6 +55,13 @@ public class Step extends Module {
                 mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.41999998688698, mc.player.posZ, mc.player.onGround));
                 mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.7531999805212, mc.player.posZ, mc.player.onGround));
                 mc.player.setPosition(mc.player.posX, mc.player.posY + 1.0, mc.player.posZ);
+            }
+        }
+        if (mc.player.onGround && this.Rev.getValue() && !mc.player.isOnLadder() && !mc.player.isInWater() && !mc.player.isInLava()) {
+            for (double y = 0.0; y <= height.getValue() + 0.5; y += 0.1) {
+                if (!mc.world.getCollisionBoxes(mc.player, mc.player.getEntityBoundingBox().offset(0.0, -y, 0.0)).isEmpty()) {
+                    mc.player.motionY -= speed.getValue();
+                }
             }
         }
     }

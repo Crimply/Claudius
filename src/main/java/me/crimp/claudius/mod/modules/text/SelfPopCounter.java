@@ -36,18 +36,14 @@ public class SelfPopCounter
                 } else {
                     TotemPopContainer.put(player.getName(), l_Count);
                 }
-
                 if (l_Count != -1) {
                     if (l_Count == 1) {
                         totemSpelling = " totem";
                     } else if (l_Count > 1) {
                         totemSpelling = " totems";
                     }
-                    if (player.getName().equals(mc.player.getName())) {
-                        Command.sendMessage(ChatFormatting.LIGHT_PURPLE + "I" + ChatFormatting.RESET + " have popped " + ChatFormatting.LIGHT_PURPLE + l_Count + ChatFormatting.RESET + totemSpelling);
-                    }
+                    Command.sendMessage(ChatFormatting.LIGHT_PURPLE + "I" + ChatFormatting.RESET + " have popped " + l_Count + ChatFormatting.RESET + totemSpelling);
                 }
-                this.player.remove(player);
             }
         }
     }

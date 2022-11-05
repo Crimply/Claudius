@@ -15,7 +15,8 @@ public class ConfigCommand extends Command {
 
     public void execute(String[] commands) {
         if (commands.length == 1) {
-            sendMessage("You`ll find the config files in your gameProfile directory under claudius/config \n or u can do config save/load");
+            sendMessage("You`ll find the config files in your gameProfile directory under claudius/config");
+            sendMessage("or u can do config save/load");
             return;
         }
         if (commands.length == 2)

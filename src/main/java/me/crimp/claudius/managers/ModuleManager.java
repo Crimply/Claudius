@@ -53,7 +53,6 @@ public class ModuleManager extends Feature {
                 //movement
                 new GroundStrafe(),
                 new Step(),
-                new RevStep(),
                 new Efly(),
 
                 //fixes

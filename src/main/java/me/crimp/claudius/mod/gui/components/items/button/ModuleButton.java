@@ -1,9 +1,13 @@
 package me.crimp.claudius.mod.gui.components.items.button;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.Component;
 import me.crimp.claudius.mod.gui.components.items.Item;
 import me.crimp.claudius.mod.modules.Module;
+import me.crimp.claudius.mod.modules.client.ClickGuiModule;
+import me.crimp.claudius.mod.modules.client.FontMod;
 import me.crimp.claudius.mod.modules.client.HUD;
 import me.crimp.claudius.mod.setting.Bind;
 import me.crimp.claudius.mod.setting.Setting;
@@ -68,7 +72,7 @@ public class ModuleButton extends Button {
         this.items = newItems;
     }
 
-    @Override
+    /**@Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (!this.items.isEmpty()) {
@@ -90,7 +94,41 @@ public class ModuleButton extends Button {
                 }
             }
         }
+    }**/
+
+    @Override
+    public void drawScreen(final int mouseX, final int mouseY, final float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        if (!this.items.isEmpty()) {
+            if (ClickGuiModule.INSTANCE.Cross.getValue()) {
+                if (this.subOpen) {
+                    if (this.module.isEnabled()) {
+                        Claudius.textManager.drawStringWithShadow("-", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                    } else {
+                        Claudius.textManager.drawStringWithShadow(ChatFormatting.GRAY + "-", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                    }
+                } else if (this.module.isEnabled()) {
+                    Claudius.textManager.drawStringWithShadow("+", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                } else {
+                    Claudius.textManager.drawStringWithShadow(ChatFormatting.GRAY + "+", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                }
+            }
+            if (this.subOpen) {
+                float height = 1.0f;
+                for (final Item item : this.items) {
+                    ++Component.counter1[0];
+                    if (!item.isHidden()) {
+                        item.setLocation(this.x + 1.0f, this.y + (height += 15.0f));
+                        item.setHeight(15);
+                        item.setWidth(this.width - 9);
+                        item.drawScreen(mouseX, mouseY, partialTicks);
+                    }
+                    item.update();
+                }
+            }
+        }
     }
+
 
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {

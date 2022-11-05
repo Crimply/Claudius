@@ -34,7 +34,7 @@ public class HUD extends Module {
     public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notifyToggles.getValue()));
     public Setting<Boolean> SelfPop = register(new Setting<Boolean>("SelfPops", false, v -> this.notifyToggles.getValue()));
     public Setting<Boolean> logOuts = register(new Setting<Boolean>("LogOuts", false, v -> this.notifyToggles.getValue()));
-    public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
+    //public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
     public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public static final String command = "Claudius";
