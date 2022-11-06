@@ -125,6 +125,21 @@ public class ConfigManager implements Util {
             e.printStackTrace();
         }
     }
+    public String CurrentConfig() {
+        File currentConfig = new File("claudius/currentconfig.txt");
+        String name = "default";
+        try {
+            if (currentConfig.exists()) {
+                Scanner reader = new Scanner(currentConfig);
+                while (reader.hasNextLine())
+                    name = reader.nextLine();
+                reader.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
 
     public String loadCurrentConfig() {
         File currentConfig = new File("claudius/currentconfig.txt");

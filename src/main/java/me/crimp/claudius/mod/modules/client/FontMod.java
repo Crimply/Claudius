@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.awt.*;
 
 public class FontMod extends Module {
-    private static FontMod INSTANCE = new FontMod();
     public Setting<String> fontName = this.register(new Setting<String>("FontName", "Arial", "Name of the font."));
     public Setting<Boolean> antiAlias = this.register(new Setting<Boolean>("AntiAlias", Boolean.valueOf(true), "Smoother font."));
     public Setting<Boolean> fractionalMetrics = this.register(new Setting<Boolean>("Metrics", Boolean.valueOf(true), "Thinner font."));
@@ -21,15 +20,8 @@ public class FontMod extends Module {
 
     public FontMod() {
         super("CustomFont", "CustomFont for all of the clients text. Use the font command.", Category.Client, true, false, false);
-        this.setInstance();
     }
-
-    public static FontMod getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new FontMod();
-        }
-        return INSTANCE;
-    }
+    public static FontMod INSTANCE = new FontMod();
 
     public static boolean checkFont(String font, boolean message) {
         String[] fonts;

@@ -1,5 +1,6 @@
 package me.crimp.claudius.mod.modules.render;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.event.events.Render2DEvent;
 import me.crimp.claudius.mod.modules.Module;
@@ -13,8 +14,8 @@ public class CSGOWatermark extends Module {
     public Setting<Boolean> Name = this.register(new Setting("Name", true));
     public Setting<Boolean> Ping = this.register(new Setting("Ping", true));
     public Setting<Boolean> Config = this.register(new Setting("Config", false));
-    public Setting<Boolean> Fps = this.register(new Setting("Fps", false));
-    public Setting<Boolean> Ip = this.register(new Setting("Config", false));
+    //public Setting<Boolean> Fps = this.register(new Setting("Fps", false));
+    public Setting<Boolean> Ip = this.register(new Setting("Ip", false));
 
     private String message = "";
 
@@ -28,7 +29,7 @@ public class CSGOWatermark extends Module {
     }
 
     public void drawCsgoWatermark() {
-        message = "Claudius ";
+        message = ChatFormatting.DARK_AQUA + "Cdus" + ChatFormatting.RESET;
         if (Name.getValue()) {
             message = message + mc.player.getName();
         }
@@ -36,10 +37,7 @@ public class CSGOWatermark extends Module {
             message = message + " " + Claudius.serverManager.getPing() + "ms";
         }
         if (Config.getValue()) {
-            message = message + " " + Claudius.configManager.config;
-        }
-        if (Fps.getValue()) {
-            message = message + " " + mc.fpsCounter;
+            message = message + " " + Claudius.configManager.CurrentConfig();
         }
         if (Ip.getValue()) {
             if (!mc.isSingleplayer()) {
@@ -48,13 +46,13 @@ public class CSGOWatermark extends Module {
             } else {
                 message = message + " Singleplayer";
             }
-
-            Integer Width = mc.fontRenderer.getStringWidth(message); // taken from wurst+ 3
-            Integer Height = mc.fontRenderer.FONT_HEIGHT; // taken from wurst+ 3
-
-
-            RenderUtil.drawRectangleCorrectly(X.getValue(), Y.getValue(), Width + 8, Height + 4, ColorUtil.toRGBA(0, 0, 0, 255)); // inside
-            Claudius.textManager.drawString(message, X.getValue() + 3, Y.getValue() + 2, ColorUtil.toRGBA(255, 255, 255, 255), false); // text
         }
+
+        int Width = mc.fontRenderer.getStringWidth(message);
+        int Height = mc.fontRenderer.FONT_HEIGHT;
+
+
+        RenderUtil.drawRectangleCorrectly(X.getValue(), Y.getValue(), Width + 8, Height+4, ColorUtil.toRGBA(0, 0, 0, 255));
+        Claudius.textManager.drawString(message, X.getValue() + 3, Y.getValue() + 1, ColorUtil.toRGBA(255, 255, 255, 255),false);
     }
 }

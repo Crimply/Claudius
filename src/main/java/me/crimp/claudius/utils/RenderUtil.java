@@ -366,52 +366,6 @@ public class RenderUtil implements Util {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
-    /*public static void drawRoundedRect(double x, double y, double width, double height, double radius, int color) {
-        glPushAttrib(GL_POINTS);
-        glScaled(0.5, 0.5, 0.5); {
-            x *= 2;
-            y *= 2;
-            width *= 2;
-            height *= 2;
-            width += x;
-            height += y;
-            glEnable(GL_BLEND);
-            glDisable(GL_TEXTURE_2D);
-            //glColor4f(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, color.getAlpha() / 255F);
-            float alpha = (float) (color >> 24 & 0xFF) / 255.0f;
-            float red = (float) (color >> 16 & 0xFF) / 255.0f;
-            float green = (float) (color >> 8 & 0xFF) / 255.0f;
-            float blue = (float) (color & 0xFF) / 255.0f;
-            glEnable(GL_LINE_SMOOTH);
-            glBegin(GL_POLYGON);
-            int i;
-            Tessellator tessellator = Tessellator.getInstance();
-            BufferBuilder bufferbuilder = tessellator.getBuffer();
-            bufferbuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-            for (i = 0; i <= 90; i++) {
-                glVertex2d(x + radius + Math.sin(i * Math.PI / 180.0D) * radius * -1.0D, y + radius + Math.cos(i * Math.PI / 180.0D) * radius * -1.0D);
-            }
-            for (i = 90; i <= 180; i++) {
-                glVertex2d(x + radius + Math.sin(i * Math.PI / 180.0D) * radius * -1.0D, height - radius + Math.cos(i * Math.PI / 180.0D) * radius * -1.0D);
-            }
-            for (i = 0; i <= 90; i++) {
-                glVertex2d(width - radius + Math.sin(i * Math.PI / 180.0D) * radius, height - radius + Math.cos(i * Math.PI / 180.0D) * radius);
-            }
-            for (i = 90; i <= 180; i++) {
-                glVertex2d(width - radius + Math.sin(i * Math.PI / 180.0D) * radius, y + radius + Math.cos(i * Math.PI / 180.0D) * radius);
-            }
-            tessellator.draw();
-            glEnd();
-            glEnable(GL_TEXTURE_2D);
-            glDisable(GL_BLEND);
-            glDisable(GL_LINE_SMOOTH);
-            glDisable(GL_BLEND);
-            glEnable(GL_TEXTURE_2D);
-        }
-        glScaled(2, 2, 2);
-        glPopAttrib();
-    }*/
-
     public static void drawRect(float x, float y, float w, float h, int color) {
         float alpha = (float) (color >> 24 & 0xFF) / 255.0f;
         float red = (float) (color >> 16 & 0xFF) / 255.0f;
@@ -882,11 +836,6 @@ public class RenderUtil implements Util {
         RenderUtil.drawArc(x, y, radius, start, end, segments);
     }
 
-    public static void drawOutlinedRoundedRectangle(int x, int y, int width, int height, float radius, float dR, float dG, float dB, float dA, float outlineWidth) {
-        RenderUtil.drawRoundedRect(x, y, width, height, radius, new Color(60, 60, 60, 255).getRGB());
-        GL11.glColor4f(dR, dG, dB, dA);
-        RenderUtil.drawRoundedRect((float) x + outlineWidth, (float) y + outlineWidth, (float) width - outlineWidth * 2.0f, (float) height - outlineWidth * 2.0f, radius, new Color(60, 60, 60, 255).getRGB());
-    }
 
     public static void drawRectangle(float x, float y, float width, float height) {
         glEnable(3042);
@@ -921,32 +870,13 @@ public class RenderUtil implements Util {
         RenderUtil.glEnd();
     }
 
-    public static void drawRoundedRect(float x, float y, float width, float height, float radius, int rgb) {
+    public static void drawRoundedRect(int x, int y, int width, int height, int radius ,int color) {
         glEnable(3042);
         RenderUtil.drawArc(x + width - radius, y + height - radius, radius, 0.0f, 90.0f, 16);
         RenderUtil.drawArc(x + radius, y + height - radius, radius, 90.0f, 180.0f, 16);
         RenderUtil.drawArc(x + radius, y + radius, radius, 180.0f, 270.0f, 16);
         RenderUtil.drawArc(x + width - radius, y + radius, radius, 270.0f, 360.0f, 16);
-        GL11.glBegin(4);
-        GL11.glVertex2d(x + width - radius, y);
-        GL11.glVertex2d(x + radius, y);
-        GL11.glVertex2d(x + width - radius, y + radius);
-        GL11.glVertex2d(x + width - radius, y + radius);
-        GL11.glVertex2d(x + radius, y);
-        GL11.glVertex2d(x + radius, y + radius);
-        GL11.glVertex2d(x + width, y + radius);
-        GL11.glVertex2d(x, y + radius);
-        GL11.glVertex2d(x, y + height - radius);
-        GL11.glVertex2d(x + width, y + radius);
-        GL11.glVertex2d(x, y + height - radius);
-        GL11.glVertex2d(x + width, y + height - radius);
-        GL11.glVertex2d(x + width - radius, y + height - radius);
-        GL11.glVertex2d(x + radius, y + height - radius);
-        GL11.glVertex2d(x + width - radius, y + height);
-        GL11.glVertex2d(x + width - radius, y + height);
-        GL11.glVertex2d(x + radius, y + height - radius);
-        GL11.glVertex2d(x + radius, y + height);
-        RenderUtil.glEnd();
+        Gui.drawRect(x, y, x + width, y + height, color);
     }
 
     public static void renderOne(float lineWidth) {

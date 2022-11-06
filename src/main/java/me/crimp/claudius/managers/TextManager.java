@@ -36,7 +36,7 @@ public class TextManager
     }
 
     public void drawString(String text, float x, float y, int color, boolean shadow) {
-        if (Claudius.moduleManager.isModuleEnabled(FontMod.getInstance().getName())) {
+        if (Claudius.moduleManager.isModuleEnabled(FontMod.INSTANCE.getName())) {
             if (shadow) {
                 this.customFont.drawStringWithShadow(text, x, y, color);
             } else {
@@ -46,16 +46,19 @@ public class TextManager
         }
         TextManager.mc.fontRenderer.drawString(text, x, y, color, shadow);
     }
+    public void drawStringCustom(String text, int x, int y, int color) {
+        this.customFont.drawString(text, x, y, color);
+    }
 
     public int getStringWidth(String text) {
-        if (Claudius.moduleManager.isModuleEnabled(FontMod.getInstance().getName())) {
+        if (Claudius.moduleManager.isModuleEnabled(FontMod.INSTANCE.getName())) {
             return this.customFont.getStringWidth(text);
         }
         return TextManager.mc.fontRenderer.getStringWidth(text);
     }
 
     public int getFontHeight() {
-        if (Claudius.moduleManager.isModuleEnabled(FontMod.getInstance().getName())) {
+        if (Claudius.moduleManager.isModuleEnabled(FontMod.INSTANCE.getName())) {
             String text = "A";
             return this.customFont.getStringHeight(text);
         }
