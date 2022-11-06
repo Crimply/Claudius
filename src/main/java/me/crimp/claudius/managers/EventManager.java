@@ -77,7 +77,7 @@ public class EventManager extends Feature {
                 continue;
             MinecraftForge.EVENT_BUS.post(new DeathEvent(player));
             //PopCounter.INSTANCE.onDeath(player);
-            DeathEffect.INSTANCE.onDeath(player);
+            //DeathEffect.INSTANCE.onDeath(player);
             PopCounter.INSTANCE.onDeath(player);
         }
     }
