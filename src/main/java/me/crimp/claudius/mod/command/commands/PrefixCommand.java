@@ -17,8 +17,8 @@ public class PrefixCommand
             return;
         }
         Prefix.INSTANCE.prefix.setValue(commands[0]);
-        //Claudius.commandManager.setPrefix(commands[0]);
         Command.sendMessage("Prefix changed to " + commands[0]);
+        Prefix.INSTANCE.SetPrefix();
     }
 }
 
