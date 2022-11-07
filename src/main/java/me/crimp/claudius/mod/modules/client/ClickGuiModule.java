@@ -27,6 +27,7 @@ public class ClickGuiModule extends Module {
     public Setting<Integer> topRed = this.register(new Setting<>("SecondRed", 23, 0, 255));
     public Setting<Integer> topGreen = this.register(new Setting<>("SecondGreen", 3, 0, 255));
     public Setting<Integer> topBlue = this.register(new Setting<>("SecondBlue", 137, 0, 255));
+    public Setting<Integer> topAlpha = this.register(new Setting<>("SecondBlue", 255, 0, 255));
     public Setting<Integer> alpha = this.register(new Setting<>("HoverAlpha", 137, 0, 255));
     public Setting<Integer> BGRed = this.register(new Setting<>("BGRed", 253, 0, 255));
     public Setting<Integer> BGGreen = this.register(new Setting<>("BGGreen", 239, 0, 255));
