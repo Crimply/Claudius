@@ -37,7 +37,6 @@ public class ModuleManager extends Feature {
 
                 //misc
                 new BookPreview(),
-
                 new DonkeySwap(),
                 new AcidOverlay(),
                 new ExtraTooltips(),
@@ -65,6 +64,7 @@ public class ModuleManager extends Feature {
                 new HUD(),
                 new RPC(),
                 new CSGOGuiModule(),
+                new Prefix(),
 
                 //fake
                 new FemBoyExploit(),

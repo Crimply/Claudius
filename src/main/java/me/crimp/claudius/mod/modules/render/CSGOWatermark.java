@@ -38,43 +38,40 @@ public class CSGOWatermark extends Module {
     int BoxColour;
 
     public void drawWatermark() {
-        String message = ChatFormatting.DARK_AQUA + "Cdus " + ChatFormatting.RESET;
-        if (Name.getValue()) message = message + mc.player.getName();
-        if (Ping.getValue()) message = message + " Ping:" + Claudius.serverManager.getPing() + "ms";
-        if (Config.getValue()) message = message + " Cfg:" + Claudius.configManager.CurrentConfig();
-        if (Fps.getValue()) message = message + " Fps:" + Minecraft.getDebugFPS();
+        String message = ChatFormatting.DARK_AQUA + "Cdus" + ChatFormatting.RESET;
+        if (Name.getValue()) message = message + "| Name:" +mc.player.getName();
+        if (Ping.getValue()) message = message + "| Ping:" + Claudius.serverManager.getPing() + "ms";
+        if (Config.getValue()) message = message + "| Cfg:" + Claudius.configManager.CurrentConfig();
+        if (Fps.getValue()) message = message + "| Fps:" + Minecraft.getDebugFPS();
         if (Ip.getValue()) {
             if (!mc.isSingleplayer()) {
                 String serverIp = mc.currentServerData.serverIP;
-                if (mc.serverPort != 0) message = message + " IP:" + serverIp + ":" + mc.serverPort;
-                else message = message + " IP:" + serverIp;
-            } else message = message + " IP:Singleplayer";
+                if (mc.serverPort != 0) message = message + "| IP:" + serverIp + ":" + mc.serverPort;
+                else message = message + "| IP:" + serverIp;
+            } else message = message + "| IP:Singleplayer";
         }
         if (Colour.getValue()) BoxColour = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), ClickGuiModule.INSTANCE.topAlpha.getValue());
+
         else BoxColour = ColorUtil.toRGBA(0, 0, 0, 255);
-
-        int h = mc.fontRenderer.FONT_HEIGHT;
-        int w = mc.fontRenderer.getStringWidth(message);
         int math = mc.fontRenderer.getStringWidth(message) / 2;
-
+        int w = mc.fontRenderer.getStringWidth(message);
+        int h = mc.fontRenderer.FONT_HEIGHT;
 
         if (SnapMode.getValue().equals(Snap.Off)) {
-            RenderUtil.drawRectangleCorrectly(X.getValue(), Y.getValue(),  h+ 8, w + 4, BoxColour);
-            RenderUtil.drawLine(X.getValue()+1, Y.getValue(),w-1, Y.getValue(),1.5f,BoxColour); //top line
-           // RenderUtil.drawLine(x, y+6, x + width, y+6, 1.5f, color); //top line
-            Claudius.textManager.drawString(message, X.getValue() + 3, Y.getValue() + 1, ColorUtil.toRGBA(255, 255, 255, 255), false);
+            RenderUtil.drawRectangleCorrectly(X.getValue(), Y.getValue(),  w+ 8, h + 4, BoxColour);
+            Claudius.textManager.drawString(message, X.getValue() + 3, Y.getValue() + 3, ColorUtil.toRGBA(255, 255, 255, 255), false);
         } else if (SnapMode.getValue().equals(Snap.TopLeft)) {
-            RenderUtil.drawRectangleCorrectly(10 + 3, 1 + 1, h + 8, w + 4, BoxColour);
-            Claudius.textManager.drawString(message, 10 + 3, 1 + 1, ColorUtil.toRGBA(255, 255, 255, 255), false);
+            RenderUtil.drawRectangleCorrectly(10, 1, w+ 8, h + 4, BoxColour);
+            Claudius.textManager.drawString(message, 10 + 3, 1 + 3, ColorUtil.toRGBA(255, 255, 255, 255), false);
         } else if (SnapMode.getValue().equals(Snap.TopRight)) {
-            RenderUtil.drawRectangleCorrectly(640 -math + 3, 1 + 1, h + 8, w + 4, BoxColour);
-            Claudius.textManager.drawString(message, 640 -math + 3, 1 + 1, ColorUtil.toRGBA(255, 255, 255, 255), false);
+            RenderUtil.drawRectangleCorrectly(640 +math, 1 + 1, w+ 8, h + 4, BoxColour);
+            Claudius.textManager.drawString(message, 640 +math + 3, 1 + 3, ColorUtil.toRGBA(255, 255, 255, 255), false);
         } else if (SnapMode.getValue().equals(Snap.BottemLeft)) {
-            RenderUtil.drawRectangleCorrectly(1 + 3, 530 + 1, h + 8, w + 4, BoxColour);
-            Claudius.textManager.drawString(message, 1 + 3, 530 + 1, ColorUtil.toRGBA(255, 255, 255, 255), false);
+            RenderUtil.drawRectangleCorrectly(1, 530, w+ 8, h + 4, BoxColour);
+            Claudius.textManager.drawString(message, 1 + 3, 530 + 3, ColorUtil.toRGBA(255, 255, 255, 255), false);
         } else if (SnapMode.getValue().equals(Snap.BottemRight)) {
-            RenderUtil.drawRectangleCorrectly(640 -math + 3, 530 + 1, h + 8, w + 4, BoxColour);
-            Claudius.textManager.drawString(message, 640 -math + 3, 530 + 1, ColorUtil.toRGBA(255, 255, 255, 255), false);
+            RenderUtil.drawRectangleCorrectly(640 +math, 530, w+ 8, h + 4, BoxColour);
+            Claudius.textManager.drawString(message, 640 +math + 3, 530 + 3, ColorUtil.toRGBA(255, 255, 255, 255), false);
         }
     }
 }

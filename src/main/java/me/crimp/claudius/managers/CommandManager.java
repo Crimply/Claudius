@@ -4,6 +4,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.command.commands.*;
+import me.crimp.claudius.mod.modules.client.Prefix;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,7 +13,7 @@ public class CommandManager
         extends Feature {
     private final ArrayList<Command> commands = new ArrayList<>();
     private String clientMessage = "[claudius]";
-    private String prefix = "!";
+    private String prefix = String.valueOf(Prefix.INSTANCE.prefix);
 
     public CommandManager() {
         super("Command");
