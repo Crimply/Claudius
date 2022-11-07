@@ -15,7 +15,6 @@ public class TokenCommand extends Command {
 
     @Override
     public void execute(String[] commands) {
-        String kek = mc.session.getToken();
-        Command.sendMessage("ur token is" + kek);
+        Command.sendMessage("ur Claudius token is 78612hjsdha80d78qjnsahdaudh727dsh82s71313sdawew3");
     }
 }

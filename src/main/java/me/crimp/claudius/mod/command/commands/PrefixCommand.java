@@ -2,6 +2,7 @@ package me.crimp.claudius.mod.command.commands;
 
 import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.command.Command;
+import me.crimp.claudius.mod.modules.client.Prefix;
 
 public class PrefixCommand
         extends Command {
@@ -15,7 +16,8 @@ public class PrefixCommand
             Command.sendMessage("Current prefix is " + Claudius.commandManager.getPrefix());
             return;
         }
-        Claudius.commandManager.setPrefix(commands[0]);
+        Prefix.INSTANCE.prefix.setValue(commands[0]);
+        //Claudius.commandManager.setPrefix(commands[0]);
         Command.sendMessage("Prefix changed to " + commands[0]);
     }
 }
