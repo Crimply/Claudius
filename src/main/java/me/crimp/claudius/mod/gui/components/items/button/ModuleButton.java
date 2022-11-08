@@ -7,13 +7,10 @@ import me.crimp.claudius.mod.gui.components.Component;
 import me.crimp.claudius.mod.gui.components.items.Item;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
-import me.crimp.claudius.mod.modules.client.FontMod;
-import me.crimp.claudius.mod.modules.client.HUD;
 import me.crimp.claudius.mod.setting.Bind;
 import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;

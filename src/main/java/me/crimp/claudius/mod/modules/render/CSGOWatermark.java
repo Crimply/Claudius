@@ -10,6 +10,7 @@ import me.crimp.claudius.utils.ColorUtil;
 import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.Minecraft;
 
+
 public class CSGOWatermark extends Module {
 
     private final Setting<Snap> SnapMode = this.register(new Setting<>("Snap", Snap.Off));
@@ -30,6 +31,7 @@ public class CSGOWatermark extends Module {
     private enum Snap {
         TopLeft, TopRight, BottemLeft, BottemRight, Off
     }
+
     @Override
     public void onRender2D(Render2DEvent event) {
         drawWatermark();
@@ -38,7 +40,7 @@ public class CSGOWatermark extends Module {
     int BoxColour;
 
     public void drawWatermark() {
-        String message = ChatFormatting.DARK_AQUA + "Cdus" + ChatFormatting.RESET;
+        String message = ChatFormatting.BOLD+""+ChatFormatting.DARK_AQUA + "Cdus" + ChatFormatting.RESET;
         if (Name.getValue()) message = message + "| Name:" +mc.player.getName();
         if (Ping.getValue()) message = message + "| Ping:" + Claudius.serverManager.getPing() + "ms";
         if (Config.getValue()) message = message + "| Cfg:" + Claudius.configManager.CurrentConfig();
@@ -53,7 +55,7 @@ public class CSGOWatermark extends Module {
         if (Colour.getValue()) BoxColour = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), ClickGuiModule.INSTANCE.topAlpha.getValue());
 
         else BoxColour = ColorUtil.toRGBA(0, 0, 0, 255);
-        int math = mc.fontRenderer.getStringWidth(message) / 2;
+        int math = mc.fontRenderer.getStringWidth(message) * 2;
         int w = mc.fontRenderer.getStringWidth(message);
         int h = mc.fontRenderer.FONT_HEIGHT;
 

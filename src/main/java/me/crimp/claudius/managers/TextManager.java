@@ -1,9 +1,7 @@
 package me.crimp.claudius.managers;
 
-import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.font.CustomFont;
-import me.crimp.claudius.mod.modules.client.FontMod;
 import me.crimp.claudius.utils.Timer;
 import net.minecraft.util.math.MathHelper;
 
@@ -23,12 +21,7 @@ public class TextManager
     }
 
     public void init(boolean startup) {
-        FontMod cFont = Claudius.moduleManager.getModuleByClass(FontMod.class);
-        try {
-            this.setFontRenderer(new Font(cFont.fontName.getValue(), cFont.fontStyle.getValue(), cFont.fontSize.getValue()), cFont.antiAlias.getValue(), cFont.fractionalMetrics.getValue());
-        } catch (Exception exception) {
-            // empty catch block
-        }
+        // empty catch block
     }
 
     public void drawStringWithShadow(String text, float x, float y, int color) {
@@ -36,32 +29,14 @@ public class TextManager
     }
 
     public void drawString(String text, float x, float y, int color, boolean shadow) {
-        if (Claudius.moduleManager.isModuleEnabled(FontMod.INSTANCE.getName())) {
-            if (shadow) {
-                this.customFont.drawStringWithShadow(text, x, y, color);
-            } else {
-                this.customFont.drawString(text, x, y, color);
-            }
-            return;
-        }
         TextManager.mc.fontRenderer.drawString(text, x, y, color, shadow);
-    }
-    public void drawStringCustom(String text, int x, int y, int color) {
-        this.customFont.drawString(text, x, y, color);
     }
 
     public int getStringWidth(String text) {
-        if (Claudius.moduleManager.isModuleEnabled(FontMod.INSTANCE.getName())) {
-            return this.customFont.getStringWidth(text);
-        }
         return TextManager.mc.fontRenderer.getStringWidth(text);
     }
 
     public int getFontHeight() {
-        if (Claudius.moduleManager.isModuleEnabled(FontMod.INSTANCE.getName())) {
-            String text = "A";
-            return this.customFont.getStringHeight(text);
-        }
         return TextManager.mc.fontRenderer.FONT_HEIGHT;
     }
 
@@ -105,5 +80,3 @@ public class TextManager
         return "";
     }
 }
-
-
