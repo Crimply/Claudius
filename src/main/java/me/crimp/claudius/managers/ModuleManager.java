@@ -89,6 +89,8 @@ public class ModuleManager extends Feature {
                 new Animations(),
                 new CSGOWatermark(),
                 new MobOwner(),
+                new playerlist(),
+                new strichcode(),
                 new BurrowEsp()
         );
     }

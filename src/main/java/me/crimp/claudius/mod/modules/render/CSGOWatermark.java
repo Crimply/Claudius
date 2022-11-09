@@ -16,13 +16,12 @@ public class CSGOWatermark extends Module {
     private final Setting<Snap> SnapMode = this.register(new Setting<>("Snap", Snap.Off));
     public Setting<Integer> X = this.register(new Setting<>("X", 10, 0, 1200));
     public Setting<Integer> Y = this.register(new Setting<>("Y", 10, 0, 1200));
-    public Setting<Boolean> Name = this.register(new Setting<>("Name", true));
+    public Setting<Boolean> Name = this.register(new Setting<>("PlayerName", true));
     public Setting<Boolean> Ping = this.register(new Setting<>("Ping", true));
     public Setting<Boolean> Config = this.register(new Setting<>("Config", false));
     public Setting<Boolean> Fps = this.register(new Setting<>("Fps", false));
     public Setting<Boolean> Ip = this.register(new Setting<>("Ip", false));
     public Setting<Boolean> Colour = this.register(new Setting<>("GuiColour", false));
-
 
     public CSGOWatermark() {
         super("Watermark", "CSGOey", Category.Render, true, false, false);
@@ -40,22 +39,25 @@ public class CSGOWatermark extends Module {
     int BoxColour;
 
     public void drawWatermark() {
-        String message = ChatFormatting.BOLD+""+ChatFormatting.DARK_AQUA + "Cdus" + ChatFormatting.RESET;
+        String message = ChatFormatting.BOLD+""+ChatFormatting.DARK_AQUA + "Cldus" + ChatFormatting.RESET;
+
         if (Name.getValue()) message = message + "| Name:" +mc.player.getName();
         if (Ping.getValue()) message = message + "| Ping:" + Claudius.serverManager.getPing() + "ms";
         if (Config.getValue()) message = message + "| Cfg:" + Claudius.configManager.CurrentConfig();
         if (Fps.getValue()) message = message + "| Fps:" + Minecraft.getDebugFPS();
+
         if (Ip.getValue()) {
             if (!mc.isSingleplayer()) {
                 String serverIp = mc.currentServerData.serverIP;
-                if (mc.serverPort != 0) message = message + "| IP:" + serverIp + ":" + mc.serverPort;
-                else message = message + "| IP:" + serverIp;
+                if (mc.serverPort != 0) message = message + "| IP:" + serverIp + ":" + mc.serverPort;else
+                    message = message + "| IP:" + serverIp;
             } else message = message + "| IP:Singleplayer";
         }
-        if (Colour.getValue()) BoxColour = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), ClickGuiModule.INSTANCE.topAlpha.getValue());
 
+        if (Colour.getValue()) BoxColour = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), ClickGuiModule.INSTANCE.topAlpha.getValue());
         else BoxColour = ColorUtil.toRGBA(0, 0, 0, 255);
-        int math = mc.fontRenderer.getStringWidth(message) * 2;
+
+        int math = mc.fontRenderer.getStringWidth(message) / 2;
         int w = mc.fontRenderer.getStringWidth(message);
         int h = mc.fontRenderer.FONT_HEIGHT;
 

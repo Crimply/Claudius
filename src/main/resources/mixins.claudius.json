@@ -6,8 +6,10 @@
   "mixins": [
     "ICPacketAnimation",
     "ICPacketUseEntityMixin",
-    "MixinAbstractClientPlayer",
     "MixinEntityPlayerSP",
     "MixinNetworkManager"
+  ],
+  "client": [
+    "MixinAbstractClientPlayer"
   ]
 }

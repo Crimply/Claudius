@@ -27,7 +27,6 @@ public abstract class MixinAbstractClientPlayer {
         UUID uuid = Objects.requireNonNull(getPlayerInfo()).getGameProfile().getId();
 
         if (Claudius.capeManager.isOg(uuid) && HUD.INSTANCE.Capes.getValue()) {
-            // callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/cape-old.png"));
             callbackInfoReturnable.setReturnValue(new ResourceLocation("textures/ogcape.png"));
         }
 
