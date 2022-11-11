@@ -16,12 +16,12 @@ public class McfSync
     public Setting<Boolean> one = this.register(new Setting<>("1", true));
     public Setting<Boolean> two = this.register(new Setting<>("2", true));
     public Setting<Boolean> three = this.register(new Setting<>("3", false));
-    public Setting<String> syncadd1 = this.register(new Setting<String>("Syncadd1",".Friend add", v -> this.one.getValue()));
-    public Setting<String> syncadd2 = this.register(new Setting<String>("Syncadd2","*Friend add", v -> this.two.getValue()));
-    public Setting<String> syncdel1 = this.register(new Setting<String>("Syncdel1",".Friend del", v -> this.one.getValue()));
-    public Setting<String> syncdel2 = this.register(new Setting<String>("Syncdel2","*Friend del", v -> this.two.getValue()));
-    public Setting<String> syncadd3 = this.register(new Setting<String>("Syncadd3","@Friend add", v -> this.three.getValue()));
-    public Setting<String> syncdel3 = this.register(new Setting<String>("Syncdel3","@Friend del", v -> this.three.getValue()));
+    public Setting<String> syncadd1 = this.register(new Setting<String>("Syncadd1",".Friend", v -> this.one.getValue()));
+    public Setting<String> syncadd2 = this.register(new Setting<String>("Syncadd2","*Friend", v -> this.two.getValue()));
+    public Setting<String> syncdel1 = this.register(new Setting<String>("Syncdel1",".Friend", v -> this.one.getValue()));
+    public Setting<String> syncdel2 = this.register(new Setting<String>("Syncdel2","*Friend", v -> this.two.getValue()));
+    public Setting<String> syncadd3 = this.register(new Setting<String>("Syncadd3","@Friend", v -> this.three.getValue()));
+    public Setting<String> syncdel3 = this.register(new Setting<String>("Syncdel3","@Friend", v -> this.three.getValue()));
     public McfSync() {
         super("McfSync", "Middle click Friend sync", Category.Misc, true, false, false);
     }
@@ -46,21 +46,21 @@ public class McfSync
                 Claudius.friendManager.removeFriend(entity.getName());
                 Command.sendMessage(entity.getName() + " has been unfriended.");
                 if (one.getValue()) {
-                    mc.player.sendChatMessage(this.syncdel1.getValue() + " " + entity.getName());
+                    mc.player.sendChatMessage(this.syncdel1.getValue() + " del " + entity.getName());
                 } if (two.getValue()) {
-                    mc.player.sendChatMessage(this.syncdel2.getValue() + " " + entity.getName());
+                    mc.player.sendChatMessage(this.syncdel2.getValue() + " del " + entity.getName());
                 }  if (three.getValue()) {
-                    mc.player.sendChatMessage(this.syncdel3.getValue() + " " + entity.getName());
+                    mc.player.sendChatMessage(this.syncdel3.getValue() + " del " + entity.getName());
                 }
             } else {
                 Claudius.friendManager.addFriend(entity.getName());
                 Command.sendMessage(entity.getName() + " has been friended.");
                 if (one.getValue()) {
-                    mc.player.sendChatMessage(this.syncadd1.getValue() + " " + entity.getName());
+                    mc.player.sendChatMessage(this.syncadd1.getValue() + " add " + entity.getName());
                 } if (two.getValue()) {
-                    mc.player.sendChatMessage(this.syncadd2.getValue() + " " + entity.getName());
+                    mc.player.sendChatMessage(this.syncadd2.getValue() + " add " + entity.getName());
                 }  if (three.getValue()) {
-                    mc.player.sendChatMessage(this.syncadd3.getValue() + " " + entity.getName());
+                    mc.player.sendChatMessage(this.syncadd3.getValue() + " add " + entity.getName());
                 }
             }
         }

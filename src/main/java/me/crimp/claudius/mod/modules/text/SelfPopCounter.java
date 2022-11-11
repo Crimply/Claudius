@@ -30,7 +30,7 @@ public class SelfPopCounter extends Module {
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {
         if (!HUD.INSTANCE.SelfPops.getValue()) return;
-        if  (hasdied.equals(true)) {l_Count = 1;}
+        if  (hasdied.equals(true)) {l_Count = 0;}
         l_Count++;
         if (l_Count == 1) {totemSpelling = " totem";}
         else if (l_Count > 1 || l_Count == 0) {totemSpelling = " totems";}

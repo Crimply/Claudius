@@ -34,8 +34,6 @@ public class HUD extends Module {
     public Setting<Boolean> notifyToggles = register(new Setting<Boolean>("ToggleNotis", false, v -> this.notify.getValue()));
     public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notify.getValue()));
     public Setting<Boolean> SelfPops = register(new Setting<Boolean>("SelfPops", false, v -> this.notify.getValue()));
-    public Setting<Boolean> logOuts = register(new Setting<Boolean>("LogOuts", false, v -> this.notify.getValue()));
-    //public Setting<Boolean> Dots = register(new Setting<>("Dots", true, "Kekw"));
     public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public static final String command = "Claudius";
@@ -71,26 +69,6 @@ public class HUD extends Module {
                 Command.sendOverwriteClientMessage("There is no totem in your offhand!");}}
 
 
-
-    @SubscribeEvent
-    public void onConnectionEvent(ConnectionEvent event) {
-        if (event.getEntity() != mc.player && logOuts.getValue()) {
-            if (event.getType().equals(ConnectionEvent.Type.Join)) {
-                if (event.getEntity().equals(Claudius.friendManager.getFriends())) {
-                    Command.sendOverwriteClientMessage("Your Friend " + ChatFormatting.AQUA + event.getEntity().getName() + ChatFormatting.RESET + " has just logged in!");
-                } else {
-                    Command.sendOverwriteClientMessage(event.getEntity().getName() + " has just logged in!");
-                }
-            }
-            if (event.getType().equals(ConnectionEvent.Type.Leave)) {
-                if (event.getEntity().equals(Claudius.friendManager.getFriends())) {
-                    Command.sendOverwriteClientMessage("Your Friend " + ChatFormatting.AQUA + event.getEntity().getName() + ChatFormatting.RESET + " has just logged out!");
-                } else {
-                    Command.sendOverwriteClientMessage(event.getEntity().getName() + " has just logged out!");
-                }
-            }
-        }
-    }
 
 
     public void onRender2D(Render2DEvent event) {

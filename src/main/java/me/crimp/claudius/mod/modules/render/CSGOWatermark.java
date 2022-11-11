@@ -41,17 +41,17 @@ public class CSGOWatermark extends Module {
     public void drawWatermark() {
         String message = ChatFormatting.BOLD+""+ChatFormatting.DARK_AQUA + "Cldus" + ChatFormatting.RESET;
 
-        if (Name.getValue()) message = message + "| Name:" +mc.player.getName();
-        if (Ping.getValue()) message = message + "| Ping:" + Claudius.serverManager.getPing() + "ms";
-        if (Config.getValue()) message = message + "| Cfg:" + Claudius.configManager.CurrentConfig();
-        if (Fps.getValue()) message = message + "| Fps:" + Minecraft.getDebugFPS();
+        if (Name.getValue()) message = message + " | Name:" +mc.player.getName();
+        if (Ping.getValue()) message = message + " | Ping:" + Claudius.serverManager.getPing() + "ms";
+        if (Config.getValue()) message = message + " | Cfg:" + Claudius.configManager.CurrentConfig();
+        if (Fps.getValue()) message = message + " | Fps:" + Minecraft.getDebugFPS();
 
         if (Ip.getValue()) {
             if (!mc.isSingleplayer()) {
                 String serverIp = mc.currentServerData.serverIP;
-                if (mc.serverPort != 0) message = message + "| IP:" + serverIp + ":" + mc.serverPort;else
-                    message = message + "| IP:" + serverIp;
-            } else message = message + "| IP:Singleplayer";
+                if (mc.serverPort != 0) message = message + " | IP:" + serverIp + ":" + mc.serverPort;else
+                    message = message + " | IP:" + serverIp;
+            } else message = message + " | IP:Singleplayer";
         }
 
         if (Colour.getValue()) BoxColour = ColorUtil.toARGB(ClickGuiModule.INSTANCE.topRed.getValue(), ClickGuiModule.INSTANCE.topGreen.getValue(), ClickGuiModule.INSTANCE.topBlue.getValue(), ClickGuiModule.INSTANCE.topAlpha.getValue());

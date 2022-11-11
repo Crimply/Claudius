@@ -26,6 +26,7 @@ public class CapeManager implements Globals {
 
     public CapeManager() {
         try { // og
+            contributorCapes.add(UUID.fromString("72874b6d-db90-487a-9676-08096a5077b9"));
             URL capesList = new URL("https://raw.githubusercontent.com/Crimply/Claudius-Capes/main/Ogcape.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(capesList.openStream()));
             String inputLine;
