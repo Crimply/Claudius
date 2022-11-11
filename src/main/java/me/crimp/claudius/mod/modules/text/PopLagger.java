@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.pvp;
+package me.crimp.claudius.mod.modules.text;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
@@ -19,7 +19,7 @@ public class PopLagger extends Module {
     public Setting<Boolean> on = this.register(new Setting<>("Send China", true));
 
     public PopLagger() {
-        super("PopLagger", "PopLagger", Category.Pvp, true, false, false);
+        super("PopLagger", "PopLagger", Category.Text, true, false, false);
     }
     public static PopLagger INSTANCE = new PopLagger();
 

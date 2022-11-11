@@ -1,11 +1,11 @@
-package me.crimp.claudius.mod.modules.pvp;
+package me.crimp.claudius.mod.modules.text;
 
 import me.crimp.claudius.mod.modules.Module;
 import net.minecraft.network.play.client.CPacketChatMessage;
 
 public class AutoKiller extends Module {
     public AutoKiller() {
-        super("AutoKiller", "AutoKiller", Category.Pvp, true, false, false);
+        super("AutoKiller", "AutoKiller", Category.Text, true, false, false);
     }
 
     @Override
