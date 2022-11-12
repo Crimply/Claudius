@@ -23,9 +23,6 @@ public abstract class EntityLivingBaseMixin extends Entity {
     public EntityLivingBaseMixin(World world) {
         super(world);
     }
-    @Shadow public abstract boolean isPotionActive(Potion potionIn);
-    @Shadow @Nullable
-    public abstract PotionEffect getActivePotionEffect(Potion potionIn);
 
     @Shadow
     protected abstract boolean isPlayer();
@@ -40,11 +37,11 @@ public abstract class EntityLivingBaseMixin extends Entity {
         if (player == null || !this.isPlayer())
             return;
 
-        if (SwingSpeed.INSTANCE.isEnabled()){
+        if (Claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
             callback.setReturnValue(6);
-        } else {
-            callback.setReturnValue(20);
+//        } else if (!SwingSpeed.INSTANCE.isEnabled()) {
+//            callback.setReturnValue(20);
+//        }
         }
-
     }
 }
