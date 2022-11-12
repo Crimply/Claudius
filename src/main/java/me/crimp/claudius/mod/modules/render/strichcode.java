@@ -10,17 +10,18 @@ public class strichcode extends Module {
     public strichcode() {
         super("strichcode", "strichcode", Category.Render, true, false, false);
     }
-    Timer timer = new Timer();
-    int apl = Ampl.getValue() * 10000;
+
+    int delay;
+    int swingcount;
 
     @Override
     public void onUpdate() {
-        //mc.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 0,Ampl.getValue()));
-        if (mc.player.swingProgressInt == 1) {
-            int swingcount = 0;
-            timer.reset();
-            timer.passedMs(apl);
-            mc.player.swingProgressInt = ++swingcount;
+        if (mc.player.swingProgressInt > 1) {
+            if (delay > 0) --delay;
+            if (delay == 0) {
+                delay = Ampl.getValue();
+                mc.player.swingProgressInt = ++swingcount;
+            }
         }
     }
 }
@@ -31,3 +32,32 @@ public class strichcode extends Module {
 //        mc.player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0,Ampl.getValue()));
 //        mc.player.clearActivePotions();
 //    }
+//(MobEffects.MINING_FATIGUE).getAmplifier() = 25;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

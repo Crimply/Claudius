@@ -22,7 +22,7 @@ import static me.crimp.claudius.utils.PlayerUtil.timer;
 
 public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
-    public static HUD INSTANCE = new HUD();
+
     private final Setting<Boolean> renderingUp = register(new Setting<>("RenderingUp", true, "Orientation of the HUD-Elements."));
     private final Setting<Boolean> waterMark = register(new Setting<>("Watermark", false, "displays watermark"));
     private final Setting<Boolean> arrayList = register(new Setting<>("ArrayList", true, "Lists the active modules."));
@@ -33,7 +33,6 @@ public class HUD extends Module {
     public Setting<Boolean> notify = register(new Setting<>("Notifcations", false, "notifys in text when shit happens"));
     public Setting<Boolean> notifyToggles = register(new Setting<Boolean>("ToggleNotis", false, v -> this.notify.getValue()));
     public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notify.getValue()));
-    public Setting<Boolean> SelfPops = register(new Setting<Boolean>("SelfPops", false, v -> this.notify.getValue()));
     public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
     public static final String command = "Claudius";
@@ -45,17 +44,9 @@ public class HUD extends Module {
         super("HUD", "HUD Elements rendered on your screen", Module.Category.Client, true, false, false);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
-        setInstance();
     }
 
-    public static HUD getInstance() {
-        if (INSTANCE == null) INSTANCE = new HUD();
-        return INSTANCE;
-    }
-
-    private void setInstance() {
-        INSTANCE = this;
-    }
+    public static HUD INSTANCE = new HUD();
 
     @Override
     public void onUpdate() {

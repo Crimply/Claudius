@@ -91,7 +91,7 @@ public abstract class Module extends Feature {
         this.enabled.setValue(Boolean.TRUE);
         this.onToggle();
         this.onEnable();
-        if (HUD.getInstance().notifyToggles.getValue()) {
+        if (HUD.INSTANCE.notifyToggles.getValue()) {
             TextComponentString text = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " Enabled.");
             Module.mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(text, 1);
         }
@@ -105,7 +105,7 @@ public abstract class Module extends Feature {
             MinecraftForge.EVENT_BUS.unregister(this);
         }
         this.enabled.setValue(false);
-        if (HUD.getInstance().notifyToggles.getValue()) {
+        if (HUD.INSTANCE.notifyToggles.getValue()) {
             TextComponentString text = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " Disabled.");
             Module.mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(text, 1);
         }
