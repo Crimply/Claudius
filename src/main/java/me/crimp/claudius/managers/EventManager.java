@@ -46,7 +46,7 @@ public class EventManager extends Feature {
         if (!fullNullCheck() && (event.getEntity().getEntityWorld()).isRemote && event.getEntityLiving().equals(mc.player)) {
             Claudius.inventoryManager.update();
             Claudius.moduleManager.onUpdate();
-            if ((HUD.getInstance()).renderingMode.getValue() == HUD.RenderingMode.Length) {
+            if (HUD.INSTANCE.renderingMode.getValue() == HUD.RenderingMode.Length) {
                 Claudius.moduleManager.sortModules(true);
             } else {
                 Claudius.moduleManager.sortModulesABC();

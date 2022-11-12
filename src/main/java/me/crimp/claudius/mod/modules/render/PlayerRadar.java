@@ -10,7 +10,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class PlayerRadar extends Module {
-    private final Setting<Integer> amount = register(new Setting<>("RenderingUp", 10, 1,100));
+    private final Setting<Integer> amount = register(new Setting<>("PlayerCount", 10, 1,100));
+    public Setting<Integer> X = this.register(new Setting<>("X", 10, 0, 950));
+    public Setting<Integer> Y = this.register(new Setting<>("Y", 10, 0, 550));
 
     public PlayerRadar() {
         super("PlayerRadar", "Shows players in render distance on hud", Category.Render, true, false, false);
@@ -28,17 +30,17 @@ public class PlayerRadar extends Module {
 
                 String heal;
                 if (health >= 12.0) {
-                    heal = " \u00a72" + health + "";
+                    heal = " " + ChatFormatting.GREEN + health + "";
                 } else if (health >= 4.0) {
-                    heal = " \u00a76" + health  + "";
+                    heal = " " + ChatFormatting.YELLOW + health  + "";
                 } else {
-                    heal = " \u00a74" + health+ " ";
+                    heal = " " + ChatFormatting.RED + health + "";
                 }
 
                 String name = entity.getGameProfile().getName();
-                String str = "\n"+ name + heal + ChatFormatting.RESET + " " + 0;
+                String str = name + heal + ChatFormatting.RESET;
 
-                Claudius.textManager.drawString(str ,10,10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                Claudius.textManager.drawString(str ,X.getValue() + 5,Y.getValue()+i*10, ColorUtil.toRGBA(255, 255, 255, 255), false);
             }
         }
     }

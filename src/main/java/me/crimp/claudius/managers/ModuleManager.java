@@ -90,7 +90,7 @@ public class ModuleManager extends Feature {
                 new CSGOWatermark(),
                 new MobOwner(),
                 new PlayerRadar(),
-                new strichcode(),
+                new SwingSpeed(),
                 new BurrowEsp()
         );
     }
