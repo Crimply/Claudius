@@ -24,15 +24,13 @@ public abstract class EntityLivingBaseMixin extends Entity {
      * Controls how fast the swinging animation is.
      * Modified by numerous swing speed parameters controlled within the config.
      */
+
     @Shadow
     protected abstract boolean isPlayer();
     @Inject(method = "getArmSwingAnimationEnd", at = @At(value = "HEAD"), cancellable = true)
     protected void onGetArmSwingAnimationEnd(CallbackInfoReturnable<Integer> callback) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (player == null || !this.isPlayer()) return;
-
-        //if (SwingSpeed.INSTANCE.isEnabled() || Claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
-            callback.setReturnValue(8);
-       // }
+        callback.setReturnValue(6);
     }
 }

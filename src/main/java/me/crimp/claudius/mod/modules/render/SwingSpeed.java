@@ -13,12 +13,12 @@ public class SwingSpeed extends Module {
     }
     public static SwingSpeed INSTANCE = new SwingSpeed();
 
-    @Override
-    public void onUpdate() {
-        if (Claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
-            Command.sendOverwriteClientMessage("SwingOn");
-        }
-    }
+//    @Override
+//    public void onUpdate() {
+////        if (Claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
+////            Command.sendOverwriteClientMessage("SwingOn");
+//        }
+//    }
 }
 
 
