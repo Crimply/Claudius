@@ -16,10 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.EventBus;
 import org.lwjgl.input.Keyboard;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ModuleManager extends Feature {
@@ -101,6 +98,12 @@ public class ModuleManager extends Feature {
             return module;
         }
         return null;
+    }
+    public boolean SwingManager() {
+        try {
+            if (SwingSpeed.INSTANCE.isEnabled() && !Animations.INSTANCE.isEnabled()) return true;
+        } catch (Exception ignored) {}
+        return false;
     }
 
     public <T extends Module> T getModuleByClass(Class<T> clazz) {
