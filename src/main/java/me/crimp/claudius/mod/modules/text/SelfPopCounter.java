@@ -27,7 +27,7 @@ public class SelfPopCounter extends Module {
         TotemCount++;
         if (TotemCount == 1) {
             totemSpelling = " totem";
-        } else if (TotemCount > 1 || TotemCount == 0) {
+        } else if (TotemCount > 1) {
             totemSpelling = " totems";
         }
         if (event.getPlayer().getEntityId() == mc.player.getEntityId()) {
@@ -41,7 +41,7 @@ public class SelfPopCounter extends Module {
         if (event.getPlayer().getEntityId() == mc.player.getEntityId()) {
             hasdied = true;
             if (TotemCount == 0) {
-                Command.sendOverwriteClientMessage(ChatFormatting.BLUE + "You" + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + "0" + ChatFormatting.RESET + totemSpelling);
+                Command.sendOverwriteClientMessage(ChatFormatting.BLUE + "You" + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + "0" + ChatFormatting.RESET + "totems");
             } else {
                 Command.sendOverwriteClientMessage(ChatFormatting.BLUE + "You" + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + TotemCount + ChatFormatting.RESET + totemSpelling);
             }

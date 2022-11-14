@@ -4,13 +4,13 @@
   "package": "me.crimp.claudius.mixins.mixins",
   "refmap": "mixins.claudius.refmap.json",
   "mixins": [
-    "EntityLivingBaseMixin",
     "ICPacketAnimation",
     "ICPacketUseEntityMixin",
     "MixinEntityPlayerSP",
     "MixinNetworkManager"
   ],
   "client": [
+    "EntityLivingBaseMixin",
     "MixinAbstractClientPlayer"
   ]
 }
