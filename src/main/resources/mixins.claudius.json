@@ -10,7 +10,6 @@
     "MixinNetworkManager"
   ],
   "client": [
-    "EntityLivingBaseMixin",
     "MixinAbstractClientPlayer"
   ]
 }
