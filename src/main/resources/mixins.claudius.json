@@ -7,12 +7,9 @@
     "EntityLivingBaseMixin",
     "ICPacketAnimation",
     "ICPacketUseEntityMixin",
-    "MixinNetworkManager"
-  ],
-  "client": [
     "MixinAbstractClientPlayer",
     "MixinEntityPlayerSP",
-    "MixinModelPlayer",
+    "MixinNetworkManager",
     "MixinWorldClient"
   ]
 }
