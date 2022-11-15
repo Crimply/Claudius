@@ -1,5 +1,6 @@
 package me.crimp.claudius.mixins.mixins;
 
+import me.crimp.claudius.Claudius;
 import me.crimp.claudius.mod.modules.render.SwingSpeed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -28,7 +29,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
     @Inject(method = "getArmSwingAnimationEnd", at = @At(value = "HEAD"), cancellable = true)
     protected void onGetArmSwingAnimationEnd(CallbackInfoReturnable<Integer> callback) {
         EntityPlayer player = Minecraft.getMinecraft().player;
-        if (player == null || !this.isPlayer())
+        if (player == null || !this.isPlayer() || Claudius.moduleManager.isModuleEnabled("SlowSwing"))
             return;
         callback.setReturnValue(20);
     }
