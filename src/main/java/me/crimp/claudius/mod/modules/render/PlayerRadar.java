@@ -9,6 +9,8 @@ import me.crimp.claudius.utils.ColorUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
+import java.math.BigDecimal;
+
 public class PlayerRadar extends Module {
     private final Setting<Integer> amount = register(new Setting<>("PlayerCount", 10, 1,100));
     public Setting<Integer> X = this.register(new Setting<>("X", 10, 0, 950));
@@ -16,6 +18,12 @@ public class PlayerRadar extends Module {
 
     public PlayerRadar() {
         super("PlayerRadar", "Shows players in render distance on hud", Category.Render, true, false, false);
+    }
+
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 
     @Override
@@ -27,14 +35,13 @@ public class PlayerRadar extends Module {
                 if (i > amount.getValue()) return;
                 EntityPlayer entity = (EntityPlayer) o;
                 float health = entity.getHealth() + entity.getAbsorptionAmount();
-
                 String heal;
                 if (health >= 12.0) {
-                    heal = " " + ChatFormatting.GREEN + health + "";
+                    heal = " " + ChatFormatting.GREEN + round(health, 1) + "";
                 } else if (health >= 4.0) {
-                    heal = " " + ChatFormatting.YELLOW + health  + "";
+                    heal = " " + ChatFormatting.YELLOW + round(health, 1)  + "";
                 } else {
-                    heal = " " + ChatFormatting.RED + health + "";
+                    heal = " " + ChatFormatting.RED + round(health, 1) + "";
                 }
 
                 String name = entity.getGameProfile().getName();

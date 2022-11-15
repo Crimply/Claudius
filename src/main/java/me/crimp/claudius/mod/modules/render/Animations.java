@@ -20,7 +20,7 @@ public class Animations extends Module {
     public static Animations INSTANCE;
 
     private enum Mode {
-        CANCEL, OFFHAND, MAINHAND, OPPOSITE, NONE
+        CANCEL//, OFFHAND, MAINHAND, OPPOSITE, NONE
     }
 
     public Animations() {
@@ -61,15 +61,15 @@ public class Animations extends Module {
     public void onPacketSent(PacketEvent.Send event) {
         if(mc.player == null || mc.world == null) return;
         if(event.getPacket() instanceof CPacketAnimation) {
-            } else if (mode.getValue() == Mode.OFFHAND) {
-                CPacketAnimation packet = (CPacketAnimation) event.getPacket();
-                ((ICPacketAnimation) packet).setHand(EnumHand.OFF_HAND);
-            } else if (mode.getValue() == Mode.MAINHAND) {
-                CPacketAnimation packet = (CPacketAnimation) event.getPacket();
-                ((ICPacketAnimation) packet).setHand(EnumHand.MAIN_HAND);
-            } else if (mode.getValue() == Mode.OPPOSITE) {
-                CPacketAnimation packet = (CPacketAnimation) event.getPacket();
-                ((ICPacketAnimation) packet).setHand(packet.getHand() == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+//            } else if (mode.getValue() == Mode.OFFHAND) {
+//                CPacketAnimation packet = (CPacketAnimation) event.getPacket();
+//                ((ICPacketAnimation) packet).setHand(EnumHand.OFF_HAND);
+//            } else if (mode.getValue() == Mode.MAINHAND) {
+//                CPacketAnimation packet = (CPacketAnimation) event.getPacket();
+//                ((ICPacketAnimation) packet).setHand(EnumHand.MAIN_HAND);
+//            } else if (mode.getValue() == Mode.OPPOSITE) {
+//                CPacketAnimation packet = (CPacketAnimation) event.getPacket();
+//                ((ICPacketAnimation) packet).setHand(packet.getHand() == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
             }
         }
     }

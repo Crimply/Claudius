@@ -99,12 +99,6 @@ public class ModuleManager extends Feature {
         }
         return null;
     }
-    public boolean SwingManager() {
-        try {
-            if (SwingSpeed.INSTANCE.isEnabled() && !Animations.INSTANCE.isEnabled()) return true;
-        } catch (Exception ignored) {}
-        return false;
-    }
 
     public <T extends Module> T getModuleByClass(Class<T> clazz) {
         for (Module module : this.modules) {
