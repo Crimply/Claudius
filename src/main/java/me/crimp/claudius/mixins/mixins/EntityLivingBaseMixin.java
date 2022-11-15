@@ -30,7 +30,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
         if (player == null || !this.isPlayer())
             return;
 
-        callback.setReturnValue(4);
+        callback.setReturnValue(20);
 
     }
 }
