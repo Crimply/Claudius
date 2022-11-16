@@ -1,9 +1,10 @@
 package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.mod.modules.Module;
+import me.crimp.claudius.mod.setting.Setting;
 
 public class SwingSpeed extends Module {
-   //  public Setting<Boolean> Ampl = this.register(new Setting<>("Amplifier", false));
+    public Setting<Integer> Ampl = this.register(new Setting<>("Amplifier", 20,5,50));
     public SwingSpeed() {
         super("SwingSpeed", "strichcode", Category.Render, true, false, false);
     }
