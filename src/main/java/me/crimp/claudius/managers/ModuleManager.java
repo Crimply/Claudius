@@ -29,32 +29,22 @@ public class ModuleManager extends Feature {
                 ClickGuiModule.INSTANCE,
 
                 //exploit
-                new NoClipFly(),
                 new PearlBait(),
 
                 //misc
-                new BookPreview(),
                 new DonkeySwap(),
-                new AcidOverlay(),
-                new ExtraTooltips(),
                 new McfSync(),
-                new PopChams(),
 
                 //text
                 new ChatSuffix(),
-                new PopLagger(),
+                new LagText(),
                 new PopCounter(),
                 new SelfPopCounter(),
+                new AntiLog4j(),
 
                 //movement
                 new GroundStrafe(),
                 new Step(),
-                new Efly(),
-
-                //fixes
-                new SetDisplay(),
-                new AntiLog4j(),
-                new NoToast(),
                 new NoSlow(),
 
                 //client
@@ -64,7 +54,7 @@ public class ModuleManager extends Feature {
                 new Prefix(),
 
                 //fake
-                new FemBoyExploit(),
+                new FakeExploit(),
 
                 //pvp
                 new Burrow(),
@@ -80,14 +70,20 @@ public class ModuleManager extends Feature {
                 //render
                 new Austraila(),
                 new PenisESP(),
+                new PopChams(),
                 new EntityAlerts(),
                 new AntiAlising(),
                 new DeathEffect(),
+                new AcidOverlay(),
+                new ExtraTooltips(),
                 new Animations(),
                 new CSGOWatermark(),
                 new MobOwner(),
                 new PlayerRadar(),
                 new SwingSpeed(),
+                new SetDisplay(),
+                new NoToast(),
+                new BookPreview(),
                 new BurrowEsp()
         );
     }

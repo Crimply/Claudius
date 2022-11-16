@@ -14,7 +14,8 @@ import java.util.List;
 
 public class ExtraTooltips extends Module {
   public Setting<Boolean> TrueDura = this.register(new Setting<>("TrueDura", true));
-  public Setting<Boolean> NonDuraitems = this.register(new Setting<Boolean>("all item Dura",true, v -> this.TrueDura.getValue()));
+  public Setting<Boolean> NonDuraitems = this.register(new Setting<Boolean>("All Item Dura",true, v -> this.TrueDura.getValue()));
+  public Setting<Boolean> Alwasydura = this.register(new Setting<Boolean>("Always On",true, v -> this.TrueDura.getValue()));
 
   public ExtraTooltips() {
     super("Tooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Render, true, false, false);
@@ -26,26 +27,32 @@ public class ExtraTooltips extends Module {
     if (this.TrueDura.getValue()) {
       ItemStack stack = event.getItemStack();
       int max = stack.getMaxDamage();
+      List<String> toolTip = event.getToolTip();
+
 
       if (this.NonDuraitems.getValue()) {
-        List<String> toolTip1 = event.getToolTip();
         int damage;
         damage = stack.getItemDamage();
         long count = (long) max - (long) damage;
         if (max == 0) {
-          toolTip1.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
+          toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
+        }
+      }
+      if (Alwasydura.getValue()) {
+        int damage;
+        damage = stack.getItemDamage();
+        long count = (long) max - (long) damage;
+        if (count == max) {
+          toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
         }
       }
 
-      List<String> toolTip2 = event.getToolTip();
       if (stack.isEmpty() || max <= 0) return;
       if (stack.hasTagCompound() && stack.getTagCompound().getBoolean("Unbreakable")) {
-        toolTip2.add("");
-        toolTip2.add(TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + "Tag.Unbreakable ");
+        toolTip.add("");
+        toolTip.add(TextFormatting.GRAY + "Durability: " + TextFormatting.GOLD + "Tag.Unbreakable ");
         return;
       }
-
-      List<String> toolTip = event.getToolTip();
       int durabilty = toolTip.indexOf("Durability:");
 
       int damage;

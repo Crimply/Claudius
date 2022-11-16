@@ -7,7 +7,7 @@ import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.client.HUD;
 import me.crimp.claudius.mod.modules.text.PopCounter;
-import me.crimp.claudius.mod.modules.text.PopLagger;
+import me.crimp.claudius.mod.modules.text.LagText;
 import me.crimp.claudius.utils.Timer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -105,7 +105,7 @@ public class EventManager extends Feature {
             if (packet.getOpCode() == 35 && packet.getEntity(mc.world) instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer) packet.getEntity(mc.world);
                 MinecraftForge.EVENT_BUS.post(new TotemPopEvent(player));
-                PopLagger.INSTANCE.onTotemPop(player);
+                LagText.INSTANCE.onTotemPop(player);
                 PopCounter.INSTANCE.onTotemPop(player);
             }
         }

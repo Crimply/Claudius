@@ -1,40 +1,19 @@
 package me.crimp.claudius.mod.modules.text;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.Claudius;
-import me.crimp.claudius.event.events.PacketEvent;
-import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
-import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketChatMessage;
-import net.minecraft.network.play.server.SPacketChat;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.HashMap;
-
-public class PopLagger extends Module {
-    public static HashMap<String, Integer> TotemPopContainer = new HashMap();
-    public Setting<Boolean> Block = this.register(new Setting<>("Block the lag", true));
-    public Setting<Boolean> on = this.register(new Setting<>("Send China", true));
-
-    public PopLagger() {
-        super("PopLagger", "PopLagger", Category.Text, true, false, false);
-    }
-    public static PopLagger INSTANCE = new PopLagger();
-
-    @Override
-    public void onEnable() {
-        delay = 0;
+public class LagText extends Module {
+    public LagText() {
+        super("LagText", "LagText", Category.Text, true, false, false);
     }
 
-    @Override
-    public void onUpdate() {
-        if (delay > 0) --delay;
-    }
+    public static LagText INSTANCE = new LagText();
 
-    protected static final String SND_LAG =
-                    "\u0101\u0201\u0301\u0401\u0601\u0701\u0801\u0901\u0A01\u0B01\u0E01\u0F01\u1001" +
+    protected static final String LagMsg =
+            "\u0101\u0201\u0301\u0401\u0601\u0701\u0801\u0901\u0A01\u0B01\u0E01\u0F01\u1001" +
                     "\u1101\u1201\u1301\u1401\u1501\u1601\u1701\u1801\u1901\u1A01\u1B01\u1C01\u1D01\u1E01\u1F01\u2101\u2201\u2301\u2401\u2501\u2701\u2801" +
                     "\u2901\u2A01\u2B01\u2C01\u2D01\u2E01\u2F01\u3001\u3101\u3201\u3301\u3401\u3501\u3601\u3701\u3801\u3901\u3A01\u3B01\u3C01\u3D01\u3E01" +
                     "\u3F01\u4001\u4101\u4201\u4301\u4401\u4501\u4601\u4701\u4801\u4901\u4A01\u4B01\u4C01\u4D01\u4E01\u4F01\u5001\u5101\u5201\u5301\u5401" +
@@ -45,52 +24,14 @@ public class PopLagger extends Module {
                     "\uAD01\uAE01\uAF01\uB001\uB101\uB201\uB301\uB401\uB501\uB601\uB701\uB801\uB901\uBA01\uBB01\uBC01\uBD01";
 
     //It's A Bit Chinese No Pun Intended
-
-
-    int delay = 0;
-
-    @SubscribeEvent
-    public void onPacketReceive(PacketEvent.Receive event) {
-        if (this.Block.getValue()) {
-            if (event.getPacket() instanceof SPacketChat) {
-                String text = ((SPacketChat) event.getPacket()).getChatComponent().getUnformattedText();
-                if (text.contains("\u0B01") || text.contains("\u0201") || text.contains("\u2701")) {
-                    Command.sendSilentMessage(ChatFormatting.DARK_PURPLE + "NoChina");
-                    event.setCanceled(true);
-                }
-            }
-        }
-    }
-
+    int TotemPopCount = 0;
     public void onTotemPop(EntityPlayer player) {
-        if (PopLagger.fullNullCheck()) {
-            return;
-        }
-        if (PopLagger.mc.player.equals(player)) {
-            return;
-        }
-        int l_Count = 1;
-        if (TotemPopContainer.containsKey(player.getName())) {
-            l_Count = TotemPopContainer.get(player.getName());
-            TotemPopContainer.put(player.getName(), ++l_Count);
-        } else {
-            TotemPopContainer.put(player.getName(), l_Count);
-        }
-        if (l_Count == 1) {
-                if (!Claudius.friendManager.isFriend((player.getName()))) {
-                    if (this.enabled.getValue() && this.on.getValue()) {
-                        if (delay == 0) {
-                            mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + player.getName() + " " + SND_LAG));
-                            delay = 1;
-
-                        }
-                    }
-                }
-        }
-        if (l_Count > 1) {
-            if (this.enabled.getValue() && this.on.getValue()) {
-                if (delay == 0) {
-                    delay = 1;
+        if (LagText.fullNullCheck() || LagText.mc.player.equals(player)) return;
+        TotemPopCount++;
+        if (TotemPopCount == 1) {
+            if (!Claudius.friendManager.isFriend((player.getName()))) {
+                if (this.enabled.getValue()) {
+                    mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + player.getName() + " " + LagMsg));
                 }
             }
         }

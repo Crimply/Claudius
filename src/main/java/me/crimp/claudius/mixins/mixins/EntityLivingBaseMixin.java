@@ -31,6 +31,6 @@ public abstract class EntityLivingBaseMixin extends Entity {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (player == null || !this.isPlayer())
             return;
-        callback.setReturnValue(SwingSpeed.INSTANCE.Ampl.getValue());
+        callback.setReturnValue(SwingSpeed.INSTANCE.Ampl.getPlannedValue());
     }
 }
