@@ -24,7 +24,7 @@ public class PopCounter extends Module {
     private Boolean hasdied = false;
 
     @Override
-    public void onEnable() {
+    public void onToggle() {
         TotemCount = 0;
     }
 

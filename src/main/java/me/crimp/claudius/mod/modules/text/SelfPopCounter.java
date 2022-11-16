@@ -19,7 +19,7 @@ public class SelfPopCounter extends Module {
     private Boolean hasdied = false;
 
     @Override
-    public void onDisable() {
+    public void onToggle() {
         TotemCount = 0;
     }
 
