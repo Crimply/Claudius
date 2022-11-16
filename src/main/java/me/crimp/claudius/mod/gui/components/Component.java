@@ -5,7 +5,6 @@ import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.items.Item;
 import me.crimp.claudius.mod.gui.components.items.button.Button;
-import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
 import me.crimp.claudius.utils.ColorUtil;
 import me.crimp.claudius.utils.RenderUtil;
@@ -31,7 +30,7 @@ public class Component extends Feature {
         super(name);
         this.x = x;
         this.y = y;
-        this.width = 80;
+        this.width = 100;
         this.height = (int) 17.7f;
         this.open = open;
         this.setupItems();

@@ -83,7 +83,6 @@ public class ModuleManager extends Feature {
                 new SwingSpeed(),
                 new SetDisplay(),
                 new NoToast(),
-                new BookPreview(),
                 new BurrowEsp()
         );
     }
