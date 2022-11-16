@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
@@ -40,7 +40,7 @@ public class BookPreview extends Module {
     public Setting<Double> bookandmapscalevalue = this.register(new Setting<>("Book and map scale", 4D));
 
     public BookPreview() {
-        super("BookPreview", "Book Tooltips.", Module.Category.Misc, true, false, false);
+        super("BookPreview", "Book Tooltips.", Category.Render, true, false, false);
     }
 
 

@@ -1,7 +1,6 @@
 package me.crimp.claudius.mixins.mixins;
 
 import me.crimp.claudius.Claudius;
-import me.crimp.claudius.mod.modules.render.SwingSpeed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,17 +18,17 @@ public abstract class EntityLivingBaseMixin extends Entity {
         super(world);
     }
 
-    @Shadow
-    protected abstract boolean isPlayer();
-
     /**
      * Controls how fast the swinging animation is.
      * Modified by numerous swing speed parameters controlled within the config.
      */
+
+    @Shadow
+    protected abstract boolean isPlayer();
     @Inject(method = "getArmSwingAnimationEnd", at = @At(value = "HEAD"), cancellable = true)
     protected void onGetArmSwingAnimationEnd(CallbackInfoReturnable<Integer> callback) {
         EntityPlayer player = Minecraft.getMinecraft().player;
-        if (player == null || !this.isPlayer() || Claudius.moduleManager.isModuleEnabled("SlowSwing"))
+        if (player == null || !this.isPlayer())
             return;
         callback.setReturnValue(20);
     }
