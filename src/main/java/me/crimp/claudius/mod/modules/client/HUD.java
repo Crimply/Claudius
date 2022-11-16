@@ -41,7 +41,7 @@ public class HUD extends Module {
     private int hitMarkerTimer;
 
     public HUD() {
-        super("HUD", "HUD Elements rendered on your screen", Module.Category.Client, true, false, false);
+        super("HUD", "HUD Elements rendered on your screen", Module.Category.Client, false, false);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
     }

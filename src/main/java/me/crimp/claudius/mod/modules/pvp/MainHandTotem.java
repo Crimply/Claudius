@@ -11,7 +11,7 @@ import net.minecraft.inventory.ClickType;
 
 public class MainHandTotem extends Module {
     public MainHandTotem() {
-        super("MainHandTotem", "MainHandTotem", Category.Pvp, true, false, false);
+        super("MainHandTotem", "MainHandTotem", Category.Pvp, false, false);
     }
 
     @Override

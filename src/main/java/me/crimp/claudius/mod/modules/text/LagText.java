@@ -7,7 +7,7 @@ import net.minecraft.network.play.client.CPacketChatMessage;
 
 public class LagText extends Module {
     public LagText() {
-        super("LagText", "LagText", Category.Text, true, false, false);
+        super("LagText", "LagText", Category.Text, false, false);
     }
 
     public static LagText INSTANCE = new LagText();
@@ -26,13 +26,13 @@ public class LagText extends Module {
     //It's A Bit Chinese No Pun Intended
 
     int TotemPopCount = 0;
-    public void onTotemPop(EntityPlayer player) {
-        if (LagText.fullNullCheck() || LagText.mc.player.equals(player)) return;
+    public void onPop(EntityPlayer event) {
+        if (LagText.fullNullCheck() || LagText.mc.player.equals(event.getName())) return;
         TotemPopCount++;
         if (TotemPopCount == 1) {
-            if (!Claudius.friendManager.isFriend((player.getName()))) {
+            if (!Claudius.friendManager.isFriend((event.getName()))) {
                 if (this.enabled.getValue()) {
-                    mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + player.getName() + " " + LagMsg));
+                    mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + event.getName() + " " + LagMsg));
                 }
             }
         }

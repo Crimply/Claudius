@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 public class AntiAlising extends Module {
 
     public AntiAlising() {
-        super("AntiAlising", "Pill In ibiza", Category.Render, true, false, false);
+        super("AntiAlising", "Pill In ibiza", Category.Render, false, false);
     }
 
 

@@ -57,7 +57,6 @@ public class ModuleManager extends Feature {
 
                 //pvp
                 new Burrow(),
-                new Surround(),
                 new AutoKiller(),
                 new AutoClicker(),
                 new Dispenser32k(),

@@ -33,7 +33,7 @@ public class NoSlow extends Module {
     private boolean sneaking = false;
 
     public NoSlow() {
-        super("NoSlow", "Allows you to do stuff without slowing down", Category.Movement,true, false, false);
+        super("NoSlow", "Allows you to do stuff without slowing down", Category.Movement,false, false);
         INSTANCE = this;
     }
 

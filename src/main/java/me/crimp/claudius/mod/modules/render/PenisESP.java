@@ -18,7 +18,7 @@ public class PenisESP extends Module {
     private Setting<Float> othersLength = this.register(new Setting<Float>("OthersLength", 0.4f, 0.1f, 5.0f, v -> others.getValue()));
     private Setting<Float> penisSize = this.register(new Setting<Float>("Scale", 1.5f, 0.1f, 5.0f));
     public PenisESP() {
-        super("PenisESP", "Renders a penis on ur screen", Category.Render, true, false, false);
+        super("PenisESP", "Renders a penis on ur screen", Category.Render, false, false);
     }
 
     @Override

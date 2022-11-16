@@ -25,7 +25,7 @@ public class BurrowEsp extends Module {
 
     private final List<BlockPos> posList = new ArrayList<>();
     public BurrowEsp() {
-        super("BurrowEsp", "BurrowEsp", Category.Render, true, false, false);
+        super("BurrowEsp", "BurrowEsp", Category.Render, false, false);
     }
 
 

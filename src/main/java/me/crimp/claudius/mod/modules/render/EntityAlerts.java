@@ -22,7 +22,7 @@ public class EntityAlerts extends Module {
     public Setting<Boolean> Sound = this.register(new Setting<>("Sound", true));
 
     public EntityAlerts() {
-        super("EntityAlerts", "EntityAlerts", Category.Render, true, false, false);
+        super("EntityAlerts", "EntityAlerts", Category.Render, false, false);
     }
     int Sounddelay;
     int delay1;

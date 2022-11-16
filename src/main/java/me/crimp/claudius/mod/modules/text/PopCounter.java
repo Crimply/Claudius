@@ -1,54 +1,59 @@
 package me.crimp.claudius.mod.modules.text;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.crimp.claudius.event.events.DeathEvent;
+import me.crimp.claudius.event.events.TotemPopEvent;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketChatMessage;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
 import java.util.HashMap;
 
 public class PopCounter extends Module {
     public Setting<Boolean> PopMsg = this.register(new Setting<>("Send in Chat", false));
-
     public PopCounter() {
-        super("PopCounter", "Counts other players totem pops.", Category.Text, true, false, false);
+        super("PopCounter", "Counts other players totem pops.", Category.Text, false, false);
     }
     public static PopCounter INSTANCE = new PopCounter();
+    String totemSpelling;
+    public int TotemCount;
+    private Boolean hasdied = false;
 
     @Override
     public void onEnable() {
-        l_Count = 0;
+        TotemCount = 0;
     }
 
 
-    public void onDeath(EntityPlayer player) {
-            if (this.enabled.getValue()) {
-
-                if (l_Count == 1) {
-                    Command.sendMessage(player.getName() + " died after popping " + l_Count + " Totem");
-                    if (this.PopMsg.getValue()) mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " died after popping " + l_Count + " Totem, Thanks To The Power Of Claudius"));
-                } else {
-                    Command.sendMessage(player.getName() + " died after popping " +  l_Count + " Totems");
-                    if (this.PopMsg.getValue()) mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " died after popping " +  l_Count + " Totems, Thanks To The Power Of Claudius"));
-                }
-                l_Count = 0;
-            }
+    @SubscribeEvent
+    public void onPop(TotemPopEvent event) {
+        if (hasdied.equals(true)) {
+            TotemCount = 0;
         }
+        TotemCount++;
+        if (TotemCount == 1) {
+            totemSpelling = " totem";
+        } else if (TotemCount > 1) {
+            totemSpelling = " totems";
+        }
+        if (event.getPlayer().getEntityId() != mc.player.getEntityId()) {
+            Command.sendOverwriteClientMessage(event.getPlayer().getName() + ChatFormatting.RESET + " have popped " + ChatFormatting.BLUE + TotemCount + ChatFormatting.RESET + totemSpelling);
+        }
+    }
 
-    int l_Count = 0;
-    public void onTotemPop(EntityPlayer player) {
-        if (PopCounter.fullNullCheck() || PopCounter.mc.player.equals(player)) return;
 
-        l_Count++;
-        if (this.enabled.getValue()) {
-            if (l_Count == 1) {
-                Command.sendMessage(player.getName() + " popped " + l_Count + " Totem.");
-                if (this.PopMsg.getValue()) mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " popped " + l_Count + " Totem, Thanks To The Power Of Claudius"));
+    @SubscribeEvent
+    public void onDeath(DeathEvent event) {
+        if (event.getPlayer().getEntityId() != mc.player.getEntityId()) {
+            hasdied = true;
+            if (TotemCount == 0) {
+                Command.sendOverwriteClientMessage(event.getPlayer().getName() + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + "0" + ChatFormatting.RESET + "totems");
             } else {
-                Command.sendMessage(player.getName() + " popped " + l_Count  + " Totems.");
-                if (this.PopMsg.getValue()) mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " popped " + l_Count  + " Totems, Thanks To The Power Of Claudius"));
+                Command.sendOverwriteClientMessage(event.getPlayer().getName() + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + TotemCount + ChatFormatting.RESET + totemSpelling);
             }
         }
     }

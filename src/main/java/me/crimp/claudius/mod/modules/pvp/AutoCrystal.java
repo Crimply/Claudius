@@ -40,7 +40,7 @@ public class AutoCrystal extends Module {
     public static AutoCrystal INSTANCE;
 
     public AutoCrystal() {
-        super("AutoCrystal", "Automatically places and breaks crystals.", Category.Pvp, true,false,false);
+        super("AutoCrystal", "Automatically places and breaks crystals.", Category.Pvp,false,false);
         INSTANCE = this;
     }
 

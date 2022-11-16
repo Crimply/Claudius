@@ -17,7 +17,7 @@ public class PlayerRadar extends Module {
     public Setting<Integer> Y = this.register(new Setting<>("Y", 10, 0, 550));
 
     public PlayerRadar() {
-        super("PlayerRadar", "Shows players in render distance on hud", Category.Render, true, false, false);
+        super("PlayerRadar", "Shows players in render distance on hud", Category.Render, false, false);
     }
 
     public static float round(float d, int decimalPlace) {

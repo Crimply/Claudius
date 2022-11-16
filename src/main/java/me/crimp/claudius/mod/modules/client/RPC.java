@@ -10,7 +10,7 @@ public class RPC
     //public final Setting<Boolean> IP = this.register(new Setting<>("id",true));
 
     public RPC() {
-        super("DiscordRichP", "Discord rich presence", Module.Category.Client, false, false, false);
+        super("DiscordRichP", "Discord rich presence", Module.Category.Client, false, false);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
         INSTANCE = this;

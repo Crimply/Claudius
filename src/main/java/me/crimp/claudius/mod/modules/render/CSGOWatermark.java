@@ -24,7 +24,7 @@ public class CSGOWatermark extends Module {
     public Setting<Boolean> Colour = this.register(new Setting<>("GuiColour", false));
 
     public CSGOWatermark() {
-        super("Watermark", "CSGOey", Category.Render, true, false, false);
+        super("Watermark", "CSGOey", Category.Render, false, false);
     }
 
     private enum Snap {

@@ -28,12 +28,12 @@ public abstract class Module extends Feature {
     public float vOffset;
     public boolean sliding;
 
-    public Module(String name, String description, Category category, boolean hasListener, boolean hidden, boolean alwaysListening) {
+    public Module(String name, String description, Category category, boolean hidden, boolean alwaysListening) {
         super(name);
         this.displayName = this.register(new Setting<>("DisplayName", name));
         this.description = description;
         this.category = category;
-        this.hasListener = hasListener;
+        this.hasListener = true;
         this.hidden = hidden;
         this.alwaysListening = alwaysListening;
     }

@@ -37,7 +37,7 @@ public class ClickGuiModule extends Module {
     public Setting<Boolean> Cross = register(new Setting<>("Plus/Minus", true, "Kekw"));
 
     public ClickGuiModule() {
-        super("ClickGui", "Opens the ClickGui", Module.Category.Client, true, false, false);
+        super("ClickGui", "Opens the ClickGui", Module.Category.Client, false, false);
         this.bind.setValue(new Bind(Keyboard.KEY_J));
     }
 

@@ -33,7 +33,7 @@ public class PopChams extends Module {
     Timer followTimer = new Timer();
 
     public PopChams() {
-        super("PopChams", "Cool pop render", Category.Render,true,false,false);
+        super("PopChams", "Cool pop render", Category.Render,false,false);
         INSTANCE = this;
     }
 

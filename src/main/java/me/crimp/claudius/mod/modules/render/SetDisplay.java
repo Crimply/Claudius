@@ -8,7 +8,7 @@ import org.lwjgl.opengl.Display;
 
 public class SetDisplay extends Module {
     public SetDisplay() {
-        super("SetDisplay", "Sets Display Title To Minecraft 1.12.2 Fixing Medal.tv Clipping Software", Category.Render, true, false, false);
+        super("SetDisplay", "Sets Display Title To Minecraft 1.12.2 Fixing Medal.tv Clipping Software", Category.Render, false, false);
         this.enabled.setValue(true);
         this.drawn.setValue(false);
     }

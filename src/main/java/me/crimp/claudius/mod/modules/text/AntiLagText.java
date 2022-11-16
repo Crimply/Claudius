@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AntiLagText extends Module {
     public AntiLagText() {
-        super("AntiLagTxt", "", Category.Text, true, false, false);
+        super("AntiLagTxt", "", Category.Text, false, false);
     }
 
     @SubscribeEvent

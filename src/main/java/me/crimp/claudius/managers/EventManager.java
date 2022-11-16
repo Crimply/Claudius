@@ -76,7 +76,7 @@ public class EventManager extends Feature {
             MinecraftForge.EVENT_BUS.post(new DeathEvent(player));
             //PopCounter.INSTANCE.onDeath(player);
             //DeathEffect.INSTANCE.onDeath(player);
-            PopCounter.INSTANCE.onDeath(player);
+            //PopCounter.INSTANCE.onDeath(player);
         }
     }
 
@@ -105,8 +105,6 @@ public class EventManager extends Feature {
             if (packet.getOpCode() == 35 && packet.getEntity(mc.world) instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer) packet.getEntity(mc.world);
                 MinecraftForge.EVENT_BUS.post(new TotemPopEvent(player));
-                LagText.INSTANCE.onTotemPop(player);
-                PopCounter.INSTANCE.onTotemPop(player);
             }
         }
         if (event.getPacket() instanceof SPacketPlayerListItem && !fullNullCheck() && this.logoutTimer.passedS(1.0D)) {

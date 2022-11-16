@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class SelfPopCounter extends Module {
     public SelfPopCounter() {
-        super("SelfPopCounter", "Counts self totem pops.", Category.Text, true, false, false);
+        super("SelfPopCounter", "Counts self totem pops.", Category.Text, false, false);
     }
 
     public static SelfPopCounter INSTANCE = new SelfPopCounter();
@@ -23,10 +23,6 @@ public class SelfPopCounter extends Module {
         TotemCount = 0;
     }
 
-    @Override
-    public void onLogout() {
-        TotemCount = 0;
-    }
 
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {

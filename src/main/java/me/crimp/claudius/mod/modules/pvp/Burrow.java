@@ -29,7 +29,7 @@ public class Burrow
     private int oldSlot = -1;
 
     public Burrow() {
-        super("Burrow", "TPs you into a block", Module.Category.Pvp, true, false, false);
+        super("Burrow", "TPs you into a block", Module.Category.Pvp, false, false);
     }
 
     @Override

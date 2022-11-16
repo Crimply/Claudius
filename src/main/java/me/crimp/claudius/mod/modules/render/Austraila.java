@@ -5,7 +5,7 @@ import net.minecraft.client.settings.GameSettings;
 
 public class Austraila extends Module {
     public Austraila() {
-        super("Austraila", "Austraila", Category.Render, true, false, false);
+        super("Austraila", "Austraila", Category.Render, false, false);
     }
 
     int Fov = -110;

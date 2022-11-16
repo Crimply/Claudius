@@ -24,7 +24,7 @@ public class Animations extends Module {
     }
 
     public Animations() {
-        super("Animations", "Allows for custom animations", Category.Render,true,false,false);
+        super("Animations", "Allows for custom animations", Category.Render,false,false);
         INSTANCE = this;
     }
 

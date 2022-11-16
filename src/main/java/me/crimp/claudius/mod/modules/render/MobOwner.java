@@ -20,7 +20,7 @@ import java.util.UUID;
 public class MobOwner extends Module {
 
     public MobOwner() {
-        super("MobOwner", "",Category.Render, true, false, false);
+        super("MobOwner", "",Category.Render, false, false);
     }
 
     public static HashMap<UUID, String> knownEntities = new HashMap<UUID, String>();
