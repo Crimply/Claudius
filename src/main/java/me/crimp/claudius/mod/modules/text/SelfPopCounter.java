@@ -18,6 +18,15 @@ public class SelfPopCounter extends Module {
     public int TotemCount;
     private Boolean hasdied = false;
 
+    @Override
+    public void onDisable() {
+        TotemCount = 0;
+    }
+
+    @Override
+    public void onLogout() {
+        TotemCount = 0;
+    }
 
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {

@@ -5,7 +5,7 @@ import net.minecraft.network.play.client.CPacketChatMessage;
 
 public class AutoKiller extends Module {
     public AutoKiller() {
-        super("AutoKiller", "AutoKiller", Category.Text, true, false, false);
+        super("SelfDeath", "AutoKiller", Category.Text, true, false, false);
     }
 
     @Override

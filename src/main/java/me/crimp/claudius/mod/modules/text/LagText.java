@@ -24,6 +24,7 @@ public class LagText extends Module {
                     "\uAD01\uAE01\uAF01\uB001\uB101\uB201\uB301\uB401\uB501\uB601\uB701\uB801\uB901\uBA01\uBB01\uBC01\uBD01";
 
     //It's A Bit Chinese No Pun Intended
+
     int TotemPopCount = 0;
     public void onTotemPop(EntityPlayer player) {
         if (LagText.fullNullCheck() || LagText.mc.player.equals(player)) return;
