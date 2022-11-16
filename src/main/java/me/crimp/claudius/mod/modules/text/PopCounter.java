@@ -6,8 +6,6 @@ import me.crimp.claudius.event.events.TotemPopEvent;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.play.client.CPacketChatMessage;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
