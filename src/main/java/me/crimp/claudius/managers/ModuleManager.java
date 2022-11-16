@@ -50,7 +50,6 @@ public class ModuleManager extends Feature {
                 //client
                 new HUD(),
                 new RPC(),
-                new CSGOGuiModule(),
                 new Prefix(),
 
                 //fake
