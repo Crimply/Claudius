@@ -27,6 +27,7 @@ public class SelfPopCounter extends Module {
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {
         if (hasdied.equals(true)) {
+            hasdied = false;
             TotemCount = 0;
         }
         TotemCount++;

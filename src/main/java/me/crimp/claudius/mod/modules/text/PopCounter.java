@@ -9,8 +9,6 @@ import me.crimp.claudius.mod.setting.Setting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
-import java.util.HashMap;
-
 public class PopCounter extends Module {
     public Setting<Boolean> PopMsg = this.register(new Setting<>("Send in Chat", false));
     public PopCounter() {
@@ -30,6 +28,7 @@ public class PopCounter extends Module {
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {
         if (hasdied.equals(true)) {
+            hasdied = false;
             TotemCount = 0;
         }
         TotemCount++;

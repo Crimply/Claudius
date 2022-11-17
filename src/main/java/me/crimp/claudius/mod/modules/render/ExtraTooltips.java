@@ -42,7 +42,7 @@ public class ExtraTooltips extends Module {
         int damage;
         damage = stack.getItemDamage();
         long count = (long) max - (long) damage;
-        if (count == max) {
+        if (count == max && max != 0) {
           toolTip.add(TextFormatting.GRAY + "Durability: " + Long.toString(count) + " / " + Long.toString(max));
         }
       }
