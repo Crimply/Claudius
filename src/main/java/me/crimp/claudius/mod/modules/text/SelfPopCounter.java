@@ -26,7 +26,7 @@ public class SelfPopCounter extends Module {
 
     @SubscribeEvent
     public void onPop(TotemPopEvent event) {
-        if (hasdied.equals(true)) {
+        if (hasdied.equals(true) && event.getPlayer().getEntityId() == mc.player.getEntityId()) {
             TotemCount = 0;
             hasdied = false;
         }
@@ -36,9 +36,7 @@ public class SelfPopCounter extends Module {
         } else if (TotemCount > 1) {
             totemSpelling = " totems";
         }
-        if (event.getPlayer().getEntityId() == mc.player.getEntityId()) {
             Command.sendOverwriteClientMessage(ChatFormatting.BLUE + "You" + ChatFormatting.RESET + " have popped " + ChatFormatting.BLUE + TotemCount + ChatFormatting.RESET + totemSpelling);
-        }
     }
 
 
