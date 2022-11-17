@@ -19,12 +19,12 @@ import net.minecraft.util.math.BlockPos;
 
 public class Burrow
         extends Module {
-    private final Setting<Integer> offset = this.register(new Setting<Integer>("Offset", 3, -5, 5));
-    private final Setting<Boolean> ground = this.register(new Setting<Boolean>("GroundCheck", true));
-    private final Setting<Boolean> rotate = this.register(new Setting<Boolean>("Rotate", false));
-    private final Setting<Boolean> center = this.register(new Setting<Boolean>("Center", true));
-    private final Setting<Boolean> echest = this.register(new Setting<Boolean>("UseEchest", false));
-    private final Setting<Boolean> anvil = this.register(new Setting<Boolean>("UseAnvil", false));
+    private final Setting<Integer> offset = register(new Setting<Integer>("Offset", 3, -5, 5));
+    private final Setting<Boolean> ground = register(new Setting<Boolean>("GroundCheck", true));
+    private final Setting<Boolean> rotate = register(new Setting<Boolean>("Rotate", false));
+    private final Setting<Boolean> center = register(new Setting<Boolean>("Center", true));
+    private final Setting<Boolean> echest = register(new Setting<Boolean>("UseEchest", false));
+    private final Setting<Boolean> anvil = register(new Setting<Boolean>("UseAnvil", false));
     private BlockPos originalPos;
     private int oldSlot = -1;
 

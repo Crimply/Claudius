@@ -13,13 +13,13 @@ import net.minecraft.init.SoundEvents;
 
 
 public class EntityAlerts extends Module {
-    public Setting<Boolean> Donkeye = this.register(new Setting<>("Donkey", true));
-    public Setting<Boolean> Iteme = this.register(new Setting<>("Item", true));
-    public Setting<Boolean> Ghaste = this.register(new Setting<>("Ghast", true));
-    public Setting<Boolean> Horsee = this.register(new Setting<>("Horse", true));
-    public Setting<Boolean> Llamae = this.register(new Setting<>("Llama", true));
-    public Setting<Boolean> Parrot = this.register(new Setting<>("Parrot", true));
-    public Setting<Boolean> Sound = this.register(new Setting<>("Sound", true));
+    public Setting<Boolean> Donkeye = register(new Setting<>("Donkey", true));
+    public Setting<Boolean> Iteme = register(new Setting<>("Item", true));
+    public Setting<Boolean> Ghaste = register(new Setting<>("Ghast", true));
+    public Setting<Boolean> Horsee = register(new Setting<>("Horse", true));
+    public Setting<Boolean> Llamae = register(new Setting<>("Llama", true));
+    public Setting<Boolean> Parrot = register(new Setting<>("Parrot", true));
+    public Setting<Boolean> Sound = register(new Setting<>("Sound", true));
 
     public EntityAlerts() {
         super("EntityAlerts", "EntityAlerts", Category.Render, false, false);

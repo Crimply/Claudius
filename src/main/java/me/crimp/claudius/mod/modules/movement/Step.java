@@ -10,9 +10,9 @@ public class Step extends Module {
         super("Step", "Allows you to automatically step up blocks", Category.Movement,false,false);
     }
 
-    public final Setting<Stepmode> mode = this.register(new Setting<>("Mode", Stepmode.Normal));
-    public final Setting<Float> height = this.register(new Setting<>("Height", 1f, 1f, 6f));
-    public final Setting<Boolean> Rev = this.register(new Setting<>("Reverse", false));
+    public final Setting<Stepmode> mode = register(new Setting<>("Mode", Stepmode.Normal));
+    public final Setting<Float> height = register(new Setting<>("Height", 1f, 1f, 6f));
+    public final Setting<Boolean> Rev = register(new Setting<>("Reverse", false));
     public final Setting<Double> speed = new Setting<>("RevSpeed", 1.0, 0.1, 5.0, v -> this.Rev.getValue());
 
     @Override

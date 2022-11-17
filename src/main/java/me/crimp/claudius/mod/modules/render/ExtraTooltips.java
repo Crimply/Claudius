@@ -13,9 +13,9 @@ import java.util.List;
 
 
 public class ExtraTooltips extends Module {
-  public Setting<Boolean> TrueDura = this.register(new Setting<>("TrueDura", true));
-  public Setting<Boolean> NonDuraitems = this.register(new Setting<Boolean>("All Item Dura",true, v -> this.TrueDura.getValue()));
-  public Setting<Boolean> Alwasydura = this.register(new Setting<Boolean>("Always On",true, v -> this.TrueDura.getValue()));
+  public Setting<Boolean> TrueDura = register(new Setting<>("TrueDura", true));
+  public Setting<Boolean> NonDuraitems = register(new Setting<Boolean>("All Item Dura",true, v -> this.TrueDura.getValue()));
+  public Setting<Boolean> Alwasydura = register(new Setting<Boolean>("Always On",true, v -> this.TrueDura.getValue()));
 
   public ExtraTooltips() {
     super("Tooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Render, false, false);

@@ -13,15 +13,15 @@ import net.minecraft.client.Minecraft;
 
 public class CSGOWatermark extends Module {
 
-    private final Setting<Snap> SnapMode = this.register(new Setting<>("Snap", Snap.Off));
-    public Setting<Integer> X = this.register(new Setting<>("X", 10, 0, 1200));
-    public Setting<Integer> Y = this.register(new Setting<>("Y", 10, 0, 1200));
-    public Setting<Boolean> Name = this.register(new Setting<>("PlayerName", true));
-    public Setting<Boolean> Ping = this.register(new Setting<>("Ping", true));
-    public Setting<Boolean> Config = this.register(new Setting<>("Config", false));
-    public Setting<Boolean> Fps = this.register(new Setting<>("Fps", false));
-    public Setting<Boolean> Ip = this.register(new Setting<>("Ip", false));
-    public Setting<Boolean> Colour = this.register(new Setting<>("GuiColour", false));
+    private final Setting<Snap> SnapMode = register(new Setting<>("Snap", Snap.Off));
+    public Setting<Integer> X = register(new Setting<>("X", 10, 0, 1200));
+    public Setting<Integer> Y = register(new Setting<>("Y", 10, 0, 1200));
+    public Setting<Boolean> Name = register(new Setting<>("PlayerName", true));
+    public Setting<Boolean> Ping = register(new Setting<>("Ping", true));
+    public Setting<Boolean> Config = register(new Setting<>("Config", false));
+    public Setting<Boolean> Fps = register(new Setting<>("Fps", false));
+    public Setting<Boolean> Ip = register(new Setting<>("Ip", false));
+    public Setting<Boolean> Colour = register(new Setting<>("GuiColour", false));
 
     public CSGOWatermark() {
         super("Watermark", "CSGOey", Category.Render, false, false);

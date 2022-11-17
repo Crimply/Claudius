@@ -15,9 +15,9 @@ import net.minecraftforge.common.MinecraftForge;
 public abstract class Module extends Feature {
     private final String description;
     private final Category category;
-    public Setting<Boolean> enabled = this.register(new Setting<Boolean>("Enabled", false));
-    public Setting<Boolean> drawn = this.register(new Setting<Boolean>("Drawn", true, "Drawn/"));
-    public Setting<Bind> bind = this.register(new Setting<Bind>("Keybind", new Bind(-1)));
+    public Setting<Boolean> enabled = register(new Setting<Boolean>("Enabled", false));
+    public Setting<Boolean> drawn = register(new Setting<Boolean>("Drawn", true, "Drawn/"));
+    public Setting<Bind> bind = register(new Setting<Bind>("Keybind", new Bind(-1)));
     public Setting<String> displayName;
     public boolean hasListener;
     public boolean alwaysListening;
@@ -30,7 +30,7 @@ public abstract class Module extends Feature {
 
     public Module(String name, String description, Category category, boolean hidden, boolean alwaysListening) {
         super(name);
-        this.displayName = this.register(new Setting<>("DisplayName", name));
+        this.displayName = register(new Setting<>("DisplayName", name));
         this.description = description;
         this.category = category;
         this.hasListener = true;

@@ -45,58 +45,58 @@ public class AutoCrystal extends Module {
     }
 
     //placing
-    public final Setting<Place> place = this.register(new Setting<>("Place", Place.Normal));
+    public final Setting<Place> place = register(new Setting<>("Place", Place.Normal));
     public final Setting<Float> placeRange =this.register( new Setting<>("PlaceRange", 4f, 0f, 10f));
-    public final Setting<Float> playerRange = this.register(new Setting<>("PlayerRange", 8f, 0f, 30f));
-    public final Setting<Boolean> raytrace = this.register(new Setting<>("Raytrace", false));
-    public final Setting<Integer> minDamage = this.register(new Setting<>("MinDamage", 1, 0, 36));
-    public final Setting<Integer> maxLocalDamage = this.register(new Setting<>("MaxLocalDamage", 20, 0, 36));
-    public final Setting<Boolean> ignoreSelfDmg = this.register(new Setting<>("IgnoreSelfDmg", false));
-    public  final Setting<Boolean> placeSwing = this.register(new Setting<>("PlaceSwing", true));
-    public  final Setting<Float> placeDelay = this.register(new Setting<>("PlaceDelay", 0f, -20f, 40f));
+    public final Setting<Float> playerRange = register(new Setting<>("PlayerRange", 8f, 0f, 30f));
+    public final Setting<Boolean> raytrace = register(new Setting<>("Raytrace", false));
+    public final Setting<Integer> minDamage = register(new Setting<>("MinDamage", 1, 0, 36));
+    public final Setting<Integer> maxLocalDamage = register(new Setting<>("MaxLocalDamage", 20, 0, 36));
+    public final Setting<Boolean> ignoreSelfDmg = register(new Setting<>("IgnoreSelfDmg", false));
+    public  final Setting<Boolean> placeSwing = register(new Setting<>("PlaceSwing", true));
+    public  final Setting<Float> placeDelay = register(new Setting<>("PlaceDelay", 0f, -20f, 40f));
 
     //breaking
-   // public  final Setting<Break> breakCrystal = this.register(new Setting<>("Break", Break.All));
-    public  final Setting<Float> breakRange = this.register(new Setting<>("BreakRange", 5f, 0f, 10f));
-    public  final Setting<Float> breakWallRange = this.register(new Setting<>("BreakWallRange", 5f, 0f, 6f));
-    public  final Setting<Boolean> packetExplode = this.register(new Setting<>("PacketExplode", true));
-    public  final Setting<Boolean> fastCrystal = this.register(new Setting<>("NoAntiCheat", false));
-    public  final Setting<Boolean> antiStuck = this.register(new Setting<>("AntiStuck", true));
-    public  final Setting<Integer> stuckAttempts = this.register(new Setting<>("StuckAttempts", 4, 1, 20));
-    public  final Setting<BreakSwing> breakSwing = this.register(new Setting<>("BreakSwing", BreakSwing.Normal));
-    public  final Setting<Integer> breakAttempts = this.register(new Setting<>("BreakAttempts", 1, 1, 5));
-    public  final Setting<Float> breakSpeed = this.register(new Setting<>("BreakSpeed", 20f, 0f, 40f));
-    public  final Setting<Weakness> antiWeakness = this.register(new Setting<>("AntiWeakness", Weakness.Normal));
-    //public  final Setting<Float> antiWeaknessSpeed = this.register(new Setting<>("AntiWeaknessSpeed", 0f, 0, 10));
-    public  final Setting<Boolean> threaded = this.register(new Setting<>("Threded", false));
-    //public  final Setting<Integer> threads = this.register(new Setting<>("Threads", 2, 1, 5));
+   // public  final Setting<Break> breakCrystal = register(new Setting<>("Break", Break.All));
+    public  final Setting<Float> breakRange = register(new Setting<>("BreakRange", 5f, 0f, 10f));
+    public  final Setting<Float> breakWallRange = register(new Setting<>("BreakWallRange", 5f, 0f, 6f));
+    public  final Setting<Boolean> packetExplode = register(new Setting<>("PacketExplode", true));
+    public  final Setting<Boolean> fastCrystal = register(new Setting<>("NoAntiCheat", false));
+    public  final Setting<Boolean> antiStuck = register(new Setting<>("AntiStuck", true));
+    public  final Setting<Integer> stuckAttempts = register(new Setting<>("StuckAttempts", 4, 1, 20));
+    public  final Setting<BreakSwing> breakSwing = register(new Setting<>("BreakSwing", BreakSwing.Normal));
+    public  final Setting<Integer> breakAttempts = register(new Setting<>("BreakAttempts", 1, 1, 5));
+    public  final Setting<Float> breakSpeed = register(new Setting<>("BreakSpeed", 20f, 0f, 40f));
+    public  final Setting<Weakness> antiWeakness = register(new Setting<>("AntiWeakness", Weakness.Normal));
+    //public  final Setting<Float> antiWeaknessSpeed = register(new Setting<>("AntiWeaknessSpeed", 0f, 0, 10));
+    public  final Setting<Boolean> threaded = register(new Setting<>("Threded", false));
+    //public  final Setting<Integer> threads = register(new Setting<>("Threads", 2, 1, 5));
 
     //placing and breaking
-    public  final Setting<Boolean> noDesync = this.register(new Setting<>("NoRenderDesync", true));
-    public  final Setting<Boolean> swordPause = this.register(new Setting<>("SwordPause", false));
-    public  final Setting<Boolean> gapPause = this.register(new Setting<>("GapPause", false));
-    //public  final Setting<Boolean> armor = this.register(new Setting<>("Armor", true));
-    public  final Setting<Integer> popHealth = this.register(new Setting<>("PopHealth", 5, 1, 36));
-    public  final Setting<Boolean> overrideIfPopable = this.register(new Setting<>("OverrideIfPopable", true));
-    public  final Setting<Integer> minArmor = this.register(new Setting<>("MinArmorDamage", 20, 0, 100));
-    public  final Setting<Boolean> antiSuicide = this.register(new Setting<>("AntiSuicide", true));
-    public  final Setting<Integer> antiSuicideFactor = this.register(new Setting<>("AntiSuicideFactor", 3, 0, 20));
-    public  final Setting<Boolean> predict = this.register(new Setting<>("Predict", true));
-    public  final Setting<Boolean> rotate = this.register(new Setting<>("Rotate", true));
-    public  final Setting<Logic> logic = this.register(new Setting<>("Logic", Logic.PlaceBreak));
+    public  final Setting<Boolean> noDesync = register(new Setting<>("NoRenderDesync", true));
+    public  final Setting<Boolean> swordPause = register(new Setting<>("SwordPause", false));
+    public  final Setting<Boolean> gapPause = register(new Setting<>("GapPause", false));
+    //public  final Setting<Boolean> armor = register(new Setting<>("Armor", true));
+    public  final Setting<Integer> popHealth = register(new Setting<>("PopHealth", 5, 1, 36));
+    public  final Setting<Boolean> overrideIfPopable = register(new Setting<>("OverrideIfPopable", true));
+    public  final Setting<Integer> minArmor = register(new Setting<>("MinArmorDamage", 20, 0, 100));
+    public  final Setting<Boolean> antiSuicide = register(new Setting<>("AntiSuicide", true));
+    public  final Setting<Integer> antiSuicideFactor = register(new Setting<>("AntiSuicideFactor", 3, 0, 20));
+    public  final Setting<Boolean> predict = register(new Setting<>("Predict", true));
+    public  final Setting<Boolean> rotate = register(new Setting<>("Rotate", true));
+    public  final Setting<Logic> logic = register(new Setting<>("Logic", Logic.PlaceBreak));
 
     //misc
-    public  final Setting<Switch> switchMode = this.register(new Setting<>("Switch", Switch.Normal));
-    public  final Setting<Boolean> strongSwap = this.register(new Setting<>("StrongSwap", false));
-    public  final Setting<Boolean> onePoint13 = this.register(new Setting<>("1.13+", false));
+    public  final Setting<Switch> switchMode = register(new Setting<>("Switch", Switch.Normal));
+    public  final Setting<Boolean> strongSwap = register(new Setting<>("StrongSwap", false));
+    public  final Setting<Boolean> onePoint13 = register(new Setting<>("1.13+", false));
 
     //rendering
-    public  final Setting<Boolean> render = this.register(new Setting<>("Render", true));
-    public  final Setting<ExtraRender> extraRender = this.register(new Setting<>("ExtraRender", ExtraRender.Damage));
-    public  final Setting<Integer> red = this.register(new Setting<>("Red", 57, 0, 255));
-    public  final Setting<Integer> green = this.register(new Setting<>("Green", 236, 0, 255));
-    public  final Setting<Integer> blue = this.register(new Setting<>("Blue", 255, 0, 255));
-    public  final Setting<Integer> alpha = this.register(new Setting<>("Alpha", 50, 0, 255));
+    public  final Setting<Boolean> render = register(new Setting<>("Render", true));
+    public  final Setting<ExtraRender> extraRender = register(new Setting<>("ExtraRender", ExtraRender.Damage));
+    public  final Setting<Integer> red = register(new Setting<>("Red", 57, 0, 255));
+    public  final Setting<Integer> green = register(new Setting<>("Green", 236, 0, 255));
+    public  final Setting<Integer> blue = register(new Setting<>("Blue", 255, 0, 255));
+    public  final Setting<Integer> alpha = register(new Setting<>("Alpha", 50, 0, 255));
 
     boolean isRotating;
     private float pitch = 0.0f;

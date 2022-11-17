@@ -13,8 +13,8 @@ import java.math.BigDecimal;
 
 public class PlayerRadar extends Module {
     private final Setting<Integer> amount = register(new Setting<>("PlayerCount", 10, 1,100));
-    public Setting<Integer> X = this.register(new Setting<>("X", 10, 0, 950));
-    public Setting<Integer> Y = this.register(new Setting<>("Y", 10, 0, 550));
+    public Setting<Integer> X = register(new Setting<>("X", 10, 0, 950));
+    public Setting<Integer> Y = register(new Setting<>("Y", 10, 0, 550));
 
     public PlayerRadar() {
         super("PlayerRadar", "Shows players in render distance on hud", Category.Render, false, false);

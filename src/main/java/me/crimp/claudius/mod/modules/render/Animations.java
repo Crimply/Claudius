@@ -14,9 +14,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Animations extends Module {
 
-    private final Setting<Mode> mode = this.register(new Setting<>("Mode", Mode.CANCEL));
-    public final Setting<Boolean> crouch = this.register(new Setting<>("EveryoneCrouches", true));
-    public final Setting<Boolean> noCrystalRotation = this.register(new Setting<>("NoCrystalMove", false));
+    private final Setting<Mode> mode = register(new Setting<>("Mode", Mode.CANCEL));
+    public final Setting<Boolean> crouch = register(new Setting<>("EveryoneCrouches", true));
+    public final Setting<Boolean> noCrystalRotation = register(new Setting<>("NoCrystalMove", false));
     public static Animations INSTANCE;
 
     private enum Mode {

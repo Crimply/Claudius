@@ -12,11 +12,11 @@ import org.lwjgl.util.glu.Sphere;
 
 
 public class PenisESP extends Module {
-    private Setting<Boolean> self = this.register(new Setting<Boolean>("Self", true));
-    private Setting<Float> selfLength = this.register(new Setting<Float>("SelfLength", 1.0f, 0.1f, 5.0f, v -> self.getValue()));
-    private Setting<Boolean> others = this.register(new Setting<Boolean>("Others", true));
-    private Setting<Float> othersLength = this.register(new Setting<Float>("OthersLength", 0.4f, 0.1f, 5.0f, v -> others.getValue()));
-    private Setting<Float> penisSize = this.register(new Setting<Float>("Scale", 1.5f, 0.1f, 5.0f));
+    private Setting<Boolean> self = register(new Setting<Boolean>("Self", true));
+    private Setting<Float> selfLength = register(new Setting<Float>("SelfLength", 1.0f, 0.1f, 5.0f, v -> self.getValue()));
+    private Setting<Boolean> others = register(new Setting<Boolean>("Others", true));
+    private Setting<Float> othersLength = register(new Setting<Float>("OthersLength", 0.4f, 0.1f, 5.0f, v -> others.getValue()));
+    private Setting<Float> penisSize = register(new Setting<Float>("Scale", 1.5f, 0.1f, 5.0f));
     public PenisESP() {
         super("PenisESP", "Renders a penis on ur screen", Category.Render, false, false);
     }

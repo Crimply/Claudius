@@ -13,15 +13,15 @@ public class McfSync
         extends Module {
     public static final McfSync INSTANCE = new McfSync();
     private boolean clicked = false;
-    public Setting<Boolean> one = this.register(new Setting<>("1", true));
-    public Setting<Boolean> two = this.register(new Setting<>("2", true));
-    public Setting<Boolean> three = this.register(new Setting<>("3", false));
-    public Setting<String> syncadd1 = this.register(new Setting<String>("Syncadd1",".Friend", v -> this.one.getValue()));
-    public Setting<String> syncadd2 = this.register(new Setting<String>("Syncadd2","*Friend", v -> this.two.getValue()));
-    public Setting<String> syncdel1 = this.register(new Setting<String>("Syncdel1",".Friend", v -> this.one.getValue()));
-    public Setting<String> syncdel2 = this.register(new Setting<String>("Syncdel2","*Friend", v -> this.two.getValue()));
-    public Setting<String> syncadd3 = this.register(new Setting<String>("Syncadd3","@Friend", v -> this.three.getValue()));
-    public Setting<String> syncdel3 = this.register(new Setting<String>("Syncdel3","@Friend", v -> this.three.getValue()));
+    public Setting<Boolean> one = register(new Setting<>("1", true));
+    public Setting<Boolean> two = register(new Setting<>("2", true));
+    public Setting<Boolean> three = register(new Setting<>("3", false));
+    public Setting<String> syncadd1 = register(new Setting<String>("Syncadd1",".Friend", v -> this.one.getValue()));
+    public Setting<String> syncadd2 = register(new Setting<String>("Syncadd2","*Friend", v -> this.two.getValue()));
+    public Setting<String> syncdel1 = register(new Setting<String>("Syncdel1",".Friend", v -> this.one.getValue()));
+    public Setting<String> syncdel2 = register(new Setting<String>("Syncdel2","*Friend", v -> this.two.getValue()));
+    public Setting<String> syncadd3 = register(new Setting<String>("Syncadd3","@Friend", v -> this.three.getValue()));
+    public Setting<String> syncdel3 = register(new Setting<String>("Syncdel3","@Friend", v -> this.three.getValue()));
     public McfSync() {
         super("McfSync", "Middle click Friend sync", Category.Misc, false, false);
     }

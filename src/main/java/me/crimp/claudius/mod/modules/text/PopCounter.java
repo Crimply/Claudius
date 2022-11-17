@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
 public class PopCounter extends Module {
-    public Setting<Boolean> PopMsg = this.register(new Setting<>("Send in Chat", false));
+    public Setting<Boolean> PopMsg = register(new Setting<>("Send in Chat", false));
     public PopCounter() {
         super("PopCounter", "Counts other players totem pops.", Category.Text, false, false);
     }
