@@ -41,6 +41,7 @@ public class ModuleManager extends Feature {
                 new PopCounter(),
                 new SelfPopCounter(),
                 new AntiLog4j(),
+                new AntiLagText(),
 
                 //movement
                 new GroundStrafe(),

@@ -18,7 +18,7 @@ public class ExtraTooltips extends Module {
   public Setting<Boolean> Alwasydura = register(new Setting<Boolean>("Always On",true, v -> this.TrueDura.getValue()));
 
   public ExtraTooltips() {
-    super("Tooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Render, false, false);
+    super("ExtraTooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Render, false, false);
     //this.drawn.setValue(false);
   }
 
