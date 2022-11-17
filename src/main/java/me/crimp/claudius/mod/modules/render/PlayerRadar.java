@@ -8,7 +8,6 @@ import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.ColorUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-
 import java.math.BigDecimal;
 
 public class PlayerRadar extends Module {
@@ -19,6 +18,7 @@ public class PlayerRadar extends Module {
     public PlayerRadar() {
         super("PlayerRadar", "Shows players in render distance on hud", Category.Render, false, false);
     }
+    public static PlayerRadar INSTANCE = new PlayerRadar();
 
     public static float round(float d, int decimalPlace) {
         BigDecimal bd = new BigDecimal(Float.toString(d));
@@ -45,7 +45,7 @@ public class PlayerRadar extends Module {
                 }
 
                 String name = entity.getGameProfile().getName();
-                String str = name + heal + ChatFormatting.RESET;
+                String str = name + heal  + ChatFormatting.RESET;
 
                 if (Claudius.friendManager.isFriend(entity.getName()))
                     Claudius.textManager.drawString(ChatFormatting.AQUA + str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);

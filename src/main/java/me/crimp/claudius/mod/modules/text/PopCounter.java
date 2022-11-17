@@ -1,57 +1,88 @@
 package me.crimp.claudius.mod.modules.text;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.event.events.DeathEvent;
-import me.crimp.claudius.event.events.TotemPopEvent;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.client.CPacketChatMessage;
 
 
-public class PopCounter extends Module {
-    public Setting<Boolean> PopMsg = register(new Setting<>("Send in Chat", false));
-    public PopCounter() {
-        super("PopCounter", "Counts other players totem pops.", Category.Text, false, false);
-    }
-    public static PopCounter INSTANCE = new PopCounter();
-    String totemSpelling;
-    public int TotemCount;
-    private Boolean hasdied = false;
+import java.util.HashMap;
 
-    @Override
-    public void onToggle() {
-        TotemCount = 0;
-    }
+public class PopCounter
+        extends Module {
+        public Setting<Boolean> PopMsg = this.register(new Setting<>("Send in Chat", false));
+        public static HashMap<String, Integer> TotemPopContainer = new HashMap();
 
-
-    @SubscribeEvent
-    public void onPop(TotemPopEvent event) {
-        if (hasdied.equals(true)) {
-            hasdied = false;
-            TotemCount = 0;
+        public PopCounter() {
+            super("PopCounter", "Counts other players totem pops.", Category.Text, false, false);
         }
-        TotemCount++;
-        if (TotemCount == 1) {
-            totemSpelling = " totem";
-        } else if (TotemCount > 1) {
-            totemSpelling = " totems";
+        public static PopCounter INSTANCE = new PopCounter();
+
+        @Override
+        public void onEnable() {
+            TotemPopContainer.clear();
+            l_Count = 0;
         }
-        if (event.getPlayer().getEntityId() != mc.player.getEntityId()) {
-            Command.sendOverwriteClientMessage(event.getPlayer().getName() + ChatFormatting.RESET + " have popped " + ChatFormatting.BLUE + TotemCount + ChatFormatting.RESET + totemSpelling);
-        }
-    }
 
 
-    @SubscribeEvent
-    public void onDeath(DeathEvent event) {
-        if (event.getPlayer().getEntityId() != mc.player.getEntityId()) {
-            hasdied = true;
-            if (TotemCount == 0) {
-                Command.sendOverwriteClientMessage(event.getPlayer().getName() + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + "0" + ChatFormatting.RESET + "totems");
+        public void onDeath(EntityPlayer player) {
+            if (TotemPopContainer.containsKey(player.getName())) {
+                int l_Count = TotemPopContainer.get(player.getName());
+                TotemPopContainer.remove(player.getName());
+                if (this.enabled.getValue()) {
+
+                    if (l_Count == 1) {
+                        Command.sendMessage(player.getName() + " died after popping " + l_Count + " Totem");
+                        if (this.PopMsg.getValue()) {
+                            mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " died after popping " + l_Count + " Totem, Thanks To The Power Of Claudius"));
+                        }
+                        if (this.PopMsg.getValue()) mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " died after popping " + l_Count + " Totem, Thanks To The Power Of Claudius"));
+                    } else {
+                        Command.sendMessage(player.getName() + " died after popping " +  l_Count + " Totems");
+                        if (this.PopMsg.getValue()) {
+                            mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " died after popping " +  l_Count + " Totems, Thanks To The Power Of Claudius"));
+                        }
+                        if (this.PopMsg.getValue()) {
+                            mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " died after popping " + l_Count + " Totems, Thanks To The Power Of Claudius"));
+                        }
+                    } l_Count = 0;
+                }
+            }
+        }
+
+        int l_Count = 0;
+        public void onTotemPop(EntityPlayer player) {
+            if (PopCounter.fullNullCheck()) {
+                return;
+            }
+            if (PopCounter.mc.player.equals(player)) {
+                return;
+            }
+            int l_Count = 1;
+            if (TotemPopContainer.containsKey(player.getName())) {
+                l_Count = TotemPopContainer.get(player.getName());
+                TotemPopContainer.put(player.getName(), ++l_Count);
             } else {
-                Command.sendOverwriteClientMessage(event.getPlayer().getName() + ChatFormatting.RESET + " just died after popping " + ChatFormatting.BLUE + TotemCount + ChatFormatting.RESET + totemSpelling);
+                TotemPopContainer.put(player.getName(), l_Count);
+            }
+            if (PopCounter.fullNullCheck() || PopCounter.mc.player.equals(player)) return;
+
+            l_Count++;
+            if (this.enabled.getValue()) {
+                if (l_Count == 1) {
+                    Command.sendMessage(player.getName() + " popped " + l_Count + " Totem.");
+                    if (this.PopMsg.getValue()) {
+                        mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " popped " + l_Count + " Totem, Thanks To The Power Of Claudius"));
+                    }
+                    if (this.PopMsg.getValue()) mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " popped " + l_Count + " Totem, Thanks To The Power Of Claudius"));
+                } else {
+                    Command.sendMessage(player.getName() + " popped " + l_Count  + " Totems.");
+                    if (this.PopMsg.getValue()) {
+                        mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " popped " + l_Count  + " Totems, Thanks To The Power Of Claudius"));
+                    }
+                    if (this.PopMsg.getValue()) mc.player.connection.sendPacket(new CPacketChatMessage(player.getName() + " popped " + l_Count  + " Totems, Thanks To The Power Of Claudius"));
+                }
             }
         }
     }
-}
