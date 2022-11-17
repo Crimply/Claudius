@@ -41,7 +41,7 @@ public class EnumConverter
 
     public Enum doBackward(JsonElement jsonElement) {
         try {
-            return Enum.valueOf(this.clazz, jsonElement.getAsString());
+            return Enum.valueOf(clazz, jsonElement.getAsString());
         } catch (IllegalArgumentException e) {
             return null;
         }

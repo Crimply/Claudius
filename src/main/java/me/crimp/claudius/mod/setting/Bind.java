@@ -20,15 +20,15 @@ public class Bind {
     }
 
     public int getKey() {
-        return this.key;
+        return key;
     }
 
     public boolean isEmpty() {
-        return this.key < 0;
+        return key < 0;
     }
 
     public String toString() {
-        return this.isEmpty() ? "None" : (this.key < 0 ? "None" : this.capitalise(Keyboard.getKeyName(this.key)));
+        return this.isEmpty() ? "None" : (key < 0 ? "None" : this.capitalise(Keyboard.getKeyName(key)));
     }
 
     private String capitalise(String str) {

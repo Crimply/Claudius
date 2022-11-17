@@ -19,22 +19,23 @@ import static me.crimp.claudius.Claudius.configManager;
 public class ClickGuiModule extends Module {
     public static final ClickGuiModule INSTANCE = new ClickGuiModule();
     public Setting<Boolean> customFov = register(new Setting<>("CustomFov", false));
-    public Setting<Float> fov = register(new Setting<>("Fov", 110f, -180f, 180f));
-    public Setting<Integer> red = register(new Setting<>("Red", 99, 0, 255));
-    public Setting<Integer> green = register(new Setting<>("Green", 102, 0, 255));
-    public Setting<Integer> blue = register(new Setting<>("Blue", 123, 0, 255));
-    public Setting<Integer> hoverAlpha = register(new Setting<>("Alpha", 195, 0, 255));
-    public Setting<Integer> topRed = register(new Setting<>("topRed", 23, 0, 255));
-    public Setting<Integer> topGreen = register(new Setting<>("topGreen", 3, 0, 255));
-    public Setting<Integer> topBlue = register(new Setting<>("topBlue", 137, 0, 255));
-    public Setting<Integer> topAlpha = register(new Setting<>("topAlpha", 255, 0, 255));
-    public Setting<Integer> alpha = register(new Setting<>("HoverAlpha", 137, 0, 255));
-    public Setting<Integer> BGRed = register(new Setting<>("BGRed", 253, 0, 255));
-    public Setting<Integer> BGGreen = register(new Setting<>("BGGreen", 239, 0, 255));
-    public Setting<Integer> BGBlue = register(new Setting<>("BGBlue", 236, 0, 255));
-    public Setting<Integer> BGalpha = register(new Setting<>("BGalpha", 150, 0, 255));
-    public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, "Kekw"));
-    public Setting<Boolean> Cross = register(new Setting<>("Plus/Minus", true, "Kekw"));
+    public Setting<Boolean> ColourSettings = register(new Setting<>("ColourSettings", false));
+    public Setting<Integer> fov = register(new Setting<>("Fov", 110, -180, 180));
+    public Setting<Integer> red = register(new Setting<Integer>("Red", 99, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> green = register(new Setting<>("Green", 102, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> blue = register(new Setting<>("Blue", 123, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> hoverAlpha = register(new Setting<>("Alpha", 195, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> topRed = register(new Setting<>("topRed", 23, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> topGreen = register(new Setting<>("topGreen", 3, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> topBlue = register(new Setting<>("topBlue", 137, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> topAlpha = register(new Setting<>("topAlpha", 255, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> alpha = register(new Setting<>("HoverAlpha", 137, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> BGRed = register(new Setting<>("BGRed", 253, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> BGGreen = register(new Setting<>("BGGreen", 239, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> BGBlue = register(new Setting<>("BGBlue", 236, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Integer> BGalpha = register(new Setting<>("BGalpha", 150, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, ""));
+    public Setting<Boolean> Cross = register(new Setting<>("Plus/Minus", true, ""));
 
     public ClickGuiModule() {
         super("ClickGui", "Opens the ClickGui", Module.Category.Client, false, false);
@@ -62,9 +63,7 @@ public class ClickGuiModule extends Module {
 
     @SubscribeEvent
     public void onSettingChange(ClientEvent event) {
-        if (event.getStage() == 2 && event.getSetting().getFeature().equals(this)) {
-            Claudius.colorManager.setColor(this.red.getPlannedValue(), this.green.getPlannedValue(), this.blue.getPlannedValue(), this.hoverAlpha.getPlannedValue());
-        }
+        if (event.getStage() == 2 && event.getSetting().getFeature().equals(this)) Claudius.colorManager.setColor(this.red.getPlannedValue(), this.green.getPlannedValue(), this.blue.getPlannedValue(), this.hoverAlpha.getPlannedValue());
     }
 
     @Override
@@ -79,12 +78,12 @@ public class ClickGuiModule extends Module {
 
     @Override
     public void onLoad() {
-        Claudius.colorManager.setColor(this.red.getValue(), this.green.getValue(), this.blue.getValue(), this.hoverAlpha.getValue());
+        Claudius.colorManager.setColor(red.getValue(), green.getValue(), blue.getValue(), hoverAlpha.getValue());
     }
 
     @Override
     public void onTick() {
-        if (!(ClickGuiModule.mc.currentScreen instanceof me.crimp.claudius.mod.gui.ClickGui)) this.disable();
+        if (!(ClickGuiModule.mc.currentScreen instanceof me.crimp.claudius.mod.gui.ClickGui)) disable();
     }
 }
 
