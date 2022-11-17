@@ -46,8 +46,13 @@ public class PlayerRadar extends Module {
 
                 String name = entity.getGameProfile().getName();
                 String str = name + heal + ChatFormatting.RESET;
-
-                Claudius.textManager.drawString(str ,X.getValue() + 5,Y.getValue()+i*10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                if (Claudius.friendManager.isFriend(entity.getName())) {
+                    Claudius.textManager.drawString(ChatFormatting.AQUA + str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                } else if (Claudius.enemyManager.isEnemy(entity.getName())) {
+                    Claudius.textManager.drawString(ChatFormatting.RED + str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                } else {
+                    Claudius.textManager.drawString(str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                }
             }
         }
     }

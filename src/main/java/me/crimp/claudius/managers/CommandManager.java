@@ -17,24 +17,24 @@ public class CommandManager
 
     public CommandManager() {
         super("Command");
-
-        this.commands.add(new YesCommand());
-        this.commands.add(new BindCommand());
-        this.commands.add(new PrefixCommand());
-        this.commands.add(new ConfigCommand());
-        this.commands.add(new HelpCommand());
-        this.commands.add(new ReloadCommand());
-        this.commands.add(new UnloadCommand());
-        this.commands.add(new Svae());
-        this.commands.add(new ThirtyTwoKay());
-        this.commands.add(new NameMC());
-        this.commands.add(new TestCommand());
-        this.commands.add(new DiscCommand());
-        this.commands.add(new ChinaCommand());
-        this.commands.add(new TokenCommand());
-        this.commands.add(new FriendCommand());
-        this.commands.add(new addsyncCommand());
-        this.commands.add(new delsyncCommand());
+        commands.add(new YesCommand());
+        commands.add(new BindCommand());
+        commands.add(new PrefixCommand());
+        commands.add(new ConfigCommand());
+        commands.add(new HelpCommand());
+        commands.add(new ReloadCommand());
+        commands.add(new UnloadCommand());
+        commands.add(new Svae());
+        commands.add(new ThirtyTwoKay());
+        commands.add(new NameMC());
+        commands.add(new TestCommand());
+        commands.add(new DiscCommand());
+        commands.add(new ChinaCommand());
+        commands.add(new TokenCommand());
+        commands.add(new FriendCommand());
+        commands.add(new addsyncCommand());
+        commands.add(new delsyncCommand());
+        commands.add(new EnemyCommand());
     }
 
     public static String[] removeElement(String[] input, int indexToDelete) {
@@ -61,7 +61,7 @@ public class CommandManager
             if (args[i] == null) continue;
             args[i] = CommandManager.strip(args[i], "\"");
         }
-        for (Command c : this.commands) {
+        for (Command c : commands) {
             if (!c.getName().equalsIgnoreCase(name)) continue;
             c.execute(parts);
             return;
@@ -70,7 +70,7 @@ public class CommandManager
     }
 
     public Command getCommandByName(String name) {
-        for (Command command : this.commands) {
+        for (Command command : commands) {
             if (!command.getName().equals(name)) continue;
             return command;
         }
@@ -78,7 +78,7 @@ public class CommandManager
     }
 
     public ArrayList<Command> getCommands() {
-        return this.commands;
+        return commands;
     }
 
     public String getClientMessage() {
