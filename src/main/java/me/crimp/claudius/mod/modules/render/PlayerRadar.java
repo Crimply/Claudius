@@ -39,7 +39,7 @@ public class PlayerRadar extends Module {
                 if (health >= 12.0) {
                     heal = " " + ChatFormatting.GREEN + round(health, 1) + "";
                 } else if (health >= 4.0) {
-                    heal = " " + ChatFormatting.YELLOW + round(health, 1)  + "";
+                    heal = " " + ChatFormatting.YELLOW + round(health, 1) + "";
                 } else {
                     heal = " " + ChatFormatting.RED + round(health, 1) + "";
                 }
@@ -47,15 +47,15 @@ public class PlayerRadar extends Module {
                 String name = entity.getGameProfile().getName();
                 String str = name + heal + ChatFormatting.RESET;
 
-                if (Claudius.friendManager.isFriend(entity.getName())) {
+                if (Claudius.friendManager.isFriend(entity.getName()))
                     Claudius.textManager.drawString(ChatFormatting.AQUA + str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
-
-                } if (Claudius.enemyManager.isEnemy(entity.getName())) {
-                    Claudius.textManager.drawString(ChatFormatting.RED + str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
-
-                } if (!Claudius.friendManager.isFriend(entity.getName()) || !Claudius.enemyManager.isEnemy(entity.getName())) {
+                else
                     Claudius.textManager.drawString(str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
-                }
+
+                if (Claudius.enemyManager.isEnemy(entity.getName()))
+                    Claudius.textManager.drawString(ChatFormatting.RED + str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                else
+                    Claudius.textManager.drawString(str, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
             }
         }
     }

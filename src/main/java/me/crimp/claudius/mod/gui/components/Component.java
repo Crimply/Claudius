@@ -63,7 +63,8 @@ public class Component extends Feature {
             RenderUtil.drawLine(x, y+6 + totalItemHeight + 11, x + width, y+6 + totalItemHeight+11, 1.5f, color); //Bottom line
         }
         Claudius.textManager.drawStringWithShadow(this.getName() +"     ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-       // Claudius.textManager.drawStringWithShadow("                         \u2727\u0020   ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+
+       // Claudius.textManager.drawStringWithShadow("  \u2727\u0020   ", (float) this.x + 3.0f, (float) this.y - 4.0f - (float) ClickGui.getClickGui().getTextOffset(), -1);
         
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
