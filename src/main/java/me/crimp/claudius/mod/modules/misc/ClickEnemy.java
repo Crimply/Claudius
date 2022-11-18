@@ -11,7 +11,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ClickEnemy extends Module {
     private boolean clicked = false;
-    public Setting<Bind> Keybind = register(new Setting<Bind>("EnemyBind", new Bind(-1)));
+    public Setting<Bind> Keybind = register(new Setting<>("EnemyBind", new Bind(Keyboard.KEY_B)));
 
     public ClickEnemy() {
         super("ClickEnemy", "ClickEnemy", Category.Misc, false, false);
@@ -21,7 +21,7 @@ public class ClickEnemy extends Module {
     public void onUpdate() {
         if (Keyboard.isKeyDown(Keybind.getValue().getKey())) {
             if (!clicked && McfSync.mc.currentScreen == null) {
-                this.onClick();
+                onClick();
             }
             clicked = true;
         } else {

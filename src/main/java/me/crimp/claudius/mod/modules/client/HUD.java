@@ -66,7 +66,7 @@ public class HUD extends Module {
         if (fullNullCheck()) return;
         int width = this.renderer.scaledWidth;
         int height = this.renderer.scaledHeight;
-        this.color = ColorUtil.toRGBA(ClickGuiModule.INSTANCE.red.getValue(), ClickGuiModule.INSTANCE.green.getValue(), ClickGuiModule.INSTANCE.blue.getValue());
+        color = ColorUtil.toRGBA(ClickGuiModule.INSTANCE.red.getValue(), ClickGuiModule.INSTANCE.green.getValue(), ClickGuiModule.INSTANCE.blue.getValue());
         if (this.waterMark.getValue()) {
             String string = command + " v" + Claudius.MODVER;
             int[] arrayOfInt = {1};
@@ -75,7 +75,7 @@ public class HUD extends Module {
             for (char c : stringToCharArray) {
                 f += this.renderer.getStringWidth(String.valueOf(c));
                 arrayOfInt[0] = arrayOfInt[0] + 1;
-                this.renderer.drawString(string, 2.0F, 2, this.color, true);
+                this.renderer.drawString(string, 2.0F, 2, color, true);
             }
         }
         int[] counter1 = {1};

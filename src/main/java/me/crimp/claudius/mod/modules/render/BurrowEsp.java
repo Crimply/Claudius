@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BurrowEsp extends Module {
-    private static BurrowEsp INSTANCE = new BurrowEsp();
-
     public Setting<Integer> range = register(new Setting("Range", 500, 0, 500));
     public Setting<Boolean> self = register(new Setting("Self", true));
     public Setting<Integer> red = register(new Setting("Red", 116, 0, 255));
@@ -24,41 +22,31 @@ public class BurrowEsp extends Module {
     public Setting<Integer> outlineAlpha = register(new Setting("OL-Alpha", 255, 0, 255));
 
     private final List<BlockPos> posList = new ArrayList<>();
+
     public BurrowEsp() {
         super("BurrowEsp", "BurrowEsp", Category.Render, false, false);
     }
 
-
-    public static BurrowEsp getInstance(){
-        if (INSTANCE == null) {
-            INSTANCE = new BurrowEsp();
-        }
-        return INSTANCE;
-    }
-
-    private void setInstance() {
-        INSTANCE = this;
-    }
+    public BurrowEsp INSTANCE = new BurrowEsp();
 
     public void onTick(){
         posList.clear();
         for (EntityPlayer player : mc.world.playerEntities){
             BlockPos blockPos = new BlockPos(Math.floor(player.posX), Math.floor(player.posY+0.2), Math.floor(player.posZ));
-            if((mc.world.getBlockState(blockPos).getBlock() == Blocks.ENDER_CHEST || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN) && blockPos.distanceSq(mc.player.posX, mc.player.posY, mc.player.posZ) <= this.range.getValue()){
-
+            if((mc.world.getBlockState(blockPos).getBlock() == Blocks.ENDER_CHEST || mc.world.getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN || mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK) && blockPos.distanceSq(mc.player.posX, mc.player.posY, mc.player.posZ) <= this.range.getValue()){
                 if (!(blockPos.distanceSq(mc.player.posX, mc.player.posY, mc.player.posZ) <= 1.5) || this.self.getValue()) {
                     posList.add(blockPos);
                 }
-
-
             }
         }
     }
 
     @Override
     public void onRender3D(Render3DEvent event){
-        for (BlockPos blockPos : posList){
-            RenderUtil.drawBoxESP(blockPos, new Color(red.getValue(), green.getValue(), blue.getValue(), outlineAlpha.getValue()), 1.5F, true, true, alpha.getValue());
+        for (BlockPos blockPos : posList) {
+            if (!mc.player.isSpectator() && !mc.player.isAirBorne) {
+                RenderUtil.drawBoxESP(blockPos, new Color(red.getValue(), green.getValue(), blue.getValue(), outlineAlpha.getValue()), 1.5F, true, true, alpha.getValue());
+            }
         }
     }
 }

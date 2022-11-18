@@ -36,7 +36,6 @@ public class ModuleManager extends Feature {
                 new McfSync(),
                 new ClickEnemy(),
 
-
                 //text
                 new ChatSuffix(),
                 new LagText(),
@@ -61,29 +60,21 @@ public class ModuleManager extends Feature {
                 //pvp
                 new Burrow(),
                 new AutoKiller(),
-                new AutoClicker(),
                 new Dispenser32k(),
-                new AntiChainPop(),
                 new MainHandTotem(),
                 new AutoCrystal(),
                 new AutoTotem(),
 
                 //render
-                new Austraila(),
-                new PenisESP(),
                 new PopChams(),
                 new EntityAlerts(),
-                new AntiAlising(),
                 new DeathEffect(),
-                new AcidOverlay(),
                 new ExtraTooltips(),
                 new Animations(),
-                new CSGOWatermark(),
-                new MobOwner(),
+                new BetterWatermark(),
                 new PlayerRadar(),
                 new SwingSpeed(),
-                new SetDisplay(),
-                new NoToast(),
+                new CoolRenderOptions(),
                 new BurrowEsp()
         );
     }

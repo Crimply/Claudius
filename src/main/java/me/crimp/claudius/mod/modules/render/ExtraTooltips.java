@@ -19,7 +19,6 @@ public class ExtraTooltips extends Module {
 
   public ExtraTooltips() {
     super("ExtraTooltips", "Display unbreakable items in red enchant, add real durability in tooltip", Category.Render, false, false);
-    //this.drawn.setValue(false);
   }
 
   @SubscribeEvent

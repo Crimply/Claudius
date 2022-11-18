@@ -1,6 +1,5 @@
 package me.crimp.claudius;
 
-//import me.crimp.claudius.CapeShit.CapeManager;
 import me.crimp.claudius.mod.modules.client.RPC;
 import me.crimp.claudius.managers.*;
 import net.minecraftforge.fml.common.Mod;
@@ -15,7 +14,7 @@ import org.lwjgl.opengl.Display;
 public class Claudius {
     public static final String MODID = "claudius";
     public static final String MODNAME = "claudius";
-    public static final String MODVER = "1.0";
+    public static final String MODVER = "1.7.0";
     public static final Logger LOGGER = LogManager.getLogger("claudius");
     public static CommandManager commandManager;
     public static ModuleManager moduleManager;
