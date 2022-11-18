@@ -34,6 +34,8 @@ public class ModuleManager extends Feature {
                 //misc
                 new DonkeySwap(),
                 new McfSync(),
+                new ClickEnemy(),
+
 
                 //text
                 new ChatSuffix(),
