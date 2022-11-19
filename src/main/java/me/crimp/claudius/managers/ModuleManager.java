@@ -74,6 +74,7 @@ public class ModuleManager extends Feature {
                 new BetterWatermark(),
                 new PlayerRadar(),
                 new CoolRenderOptions(),
+                new ClipFly(),
                 new BurrowEsp()
         );
     }
