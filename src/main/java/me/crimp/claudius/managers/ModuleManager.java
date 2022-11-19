@@ -73,7 +73,6 @@ public class ModuleManager extends Feature {
                 new Animations(),
                 new BetterWatermark(),
                 new PlayerRadar(),
-                new ExplosionChams(),
                 new CoolRenderOptions(),
                 new BurrowEsp()
         );

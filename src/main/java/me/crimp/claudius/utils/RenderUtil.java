@@ -828,7 +828,7 @@ public class RenderUtil implements Util {
         RenderUtil.drawArcOutline(x, y, radius, start, end, segments);
     }
 
-    public static void drawCircle(float x, float y, float z, float radius, int color) {
+    public static void drawCircle(float x, float y, float z, float radius, Color color) {
         BlockPos pos = new BlockPos(x, y, z);
         AxisAlignedBB bb = new AxisAlignedBB((double)pos.getX() - RenderUtil.mc.getRenderManager().viewerPosX, (double)pos.getY() - RenderUtil.mc.getRenderManager().viewerPosY, (double)pos.getZ() - RenderUtil.mc.getRenderManager().viewerPosZ, (double)(pos.getX() + 1) - RenderUtil.mc.getRenderManager().viewerPosX, (double)(pos.getY() + 1) - RenderUtil.mc.getRenderManager().viewerPosY, (double)(pos.getZ() + 1) - RenderUtil.mc.getRenderManager().viewerPosZ);
         camera.setPosition(Objects.requireNonNull(RenderUtil.mc.getRenderViewEntity()).posX, RenderUtil.mc.getRenderViewEntity().posY, RenderUtil.mc.getRenderViewEntity().posZ);
@@ -965,6 +965,8 @@ public class RenderUtil implements Util {
 
     public static void blockESP(BlockPos burrowBlock, boolean b, boolean b1, int i, int i1, Color value) {
     }
+
+
 
     public static final class GeometryMasks {
         public static final HashMap<EnumFacing, Integer> FACEMAP = new HashMap<>();
