@@ -27,8 +27,6 @@ public class BurrowEsp extends Module {
         super("BurrowEsp", "BurrowEsp", Category.Render, false, false);
     }
 
-    public BurrowEsp INSTANCE = new BurrowEsp();
-
     public void onTick(){
         posList.clear();
         for (EntityPlayer player : mc.world.playerEntities){

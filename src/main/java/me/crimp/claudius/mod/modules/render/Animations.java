@@ -8,17 +8,14 @@ import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class Animations extends Module {
-
     public final Setting<Boolean> crouch = register(new Setting<>("EveryoneCrouches", true));
     public final Setting<Boolean> Glowing = register(new Setting<>("EveryoneGlows", true));
     public final Setting<Boolean> noCrystalRotation = register(new Setting<>("NoCrystalMove", false));
-    public static Animations INSTANCE;
 
     public Animations() {
         super("Animations", "Allows for custom animations", Category.Render, false, false);
-        INSTANCE = this;
     }
-
+    public static Animations INSTANCE;
     @Override
     public void onUpdate() {
         if (crouch.getValue()) {

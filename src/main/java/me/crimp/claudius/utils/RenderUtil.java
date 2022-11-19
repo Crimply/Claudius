@@ -828,9 +828,18 @@ public class RenderUtil implements Util {
         RenderUtil.drawArcOutline(x, y, radius, start, end, segments);
     }
 
-    public static void drawCircle(float x, float y, float radius) {
-        RenderUtil.drawCircle(x, y, radius, 0, 360, 64);
+    public static void drawCircle(float x, float y, float z, float radius, int color) {
+        BlockPos pos = new BlockPos(x, y, z);
+        AxisAlignedBB bb = new AxisAlignedBB((double)pos.getX() - RenderUtil.mc.getRenderManager().viewerPosX, (double)pos.getY() - RenderUtil.mc.getRenderManager().viewerPosY, (double)pos.getZ() - RenderUtil.mc.getRenderManager().viewerPosZ, (double)(pos.getX() + 1) - RenderUtil.mc.getRenderManager().viewerPosX, (double)(pos.getY() + 1) - RenderUtil.mc.getRenderManager().viewerPosY, (double)(pos.getZ() + 1) - RenderUtil.mc.getRenderManager().viewerPosZ);
+        camera.setPosition(Objects.requireNonNull(RenderUtil.mc.getRenderViewEntity()).posX, RenderUtil.mc.getRenderViewEntity().posY, RenderUtil.mc.getRenderViewEntity().posZ);
+        if (camera.isBoundingBoxInFrustum(new AxisAlignedBB(bb.minX + RenderUtil.mc.getRenderManager().viewerPosX, bb.minY + RenderUtil.mc.getRenderManager().viewerPosY, bb.minZ + RenderUtil.mc.getRenderManager().viewerPosZ, bb.maxX + RenderUtil.mc.getRenderManager().viewerPosX, bb.maxY + RenderUtil.mc.getRenderManager().viewerPosY, bb.maxZ + RenderUtil.mc.getRenderManager().viewerPosZ))) {
+            RenderUtil.drawCircle(x, y, radius, 0, 360, 64);
+        }
     }
+
+//    public static void drawCircle(float x, float y, float radius, float v, int i) {
+//        RenderUtil.drawCircle(x, y, radius, 0, 360, 64);
+//    }
 
     public static void drawCircle(float x, float y, float radius, int start, int end, int segments) {
         RenderUtil.drawArc(x, y, radius, start, end, segments);
