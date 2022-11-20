@@ -23,9 +23,9 @@ public class EnemyManager
         return this.Enemys.stream().anyMatch(Enemy -> Enemy.username.equalsIgnoreCase(name));
     }
 
-    public boolean isEnemy(EntityPlayer player) {
-        return this.isEnemy(player.getName());
-    }
+//    public boolean isEnemy(EntityPlayer player) {
+//        return this.isEnemy(player.getName());
+//    }
 
     public void addEnemy(String name) {
         Enemy Enemy = this.getEnemyByName(name);

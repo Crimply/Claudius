@@ -23,9 +23,9 @@ public class FriendManager
         return this.friends.stream().anyMatch(friend -> friend.username.equalsIgnoreCase(name));
     }
 
-    public boolean isFriend(EntityPlayer player) {
-        return this.isFriend(player.getName());
-    }
+//    public boolean isFriend(EntityPlayer player) {
+//        return this.isFriend(player.getName());
+//    }
 
     public void addFriend(String name) {
         Friend friend = this.getFriendByName(name);
