@@ -45,6 +45,7 @@ public class HUD extends Module {
         this.enabled.setValue(true);
         this.drawn.setValue(false);
     }
+    public Timer timer = new Timer();
 
     public static HUD INSTANCE = new HUD();
 
@@ -56,8 +57,14 @@ public class HUD extends Module {
             this.shouldIncrement = false;
         }
         //if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING) {return;}
+        if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING && InventoryUtil.getItemCount(Items.TOTEM_OF_UNDYING, true) != 0 && totemwarning.getValue()) { timer.reset();}
         if (mc.player.getHeldItemOffhand().getItem() != Items.TOTEM_OF_UNDYING && InventoryUtil.getItemCount(Items.TOTEM_OF_UNDYING, true) != 0 && totemwarning.getValue()) {
-                Command.sendOverwriteClientMessage("There is no totem in your offhand!");}}
+            if (timer.passedMs(5L)) {
+                Command.sendOverwriteClientMessage("There is no totem in your offhand!");
+                timer.reset();
+            }
+        }
+    }
 
 
 

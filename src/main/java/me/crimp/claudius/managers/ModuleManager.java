@@ -59,7 +59,6 @@ public class ModuleManager extends Feature {
 
                 //pvp
                 new Burrow(),
-                new AutoKiller(),
                 new Dispenser32k(),
                 new MainHandTotem(),
                 new AutoCrystal(),
@@ -70,7 +69,7 @@ public class ModuleManager extends Feature {
                 new EntityAlerts(),
                 new DeathEffect(),
                 new ExtraTooltips(),
-                new Animations(),
+                new OtherPlayers(),
                 new BetterWatermark(),
                 new PlayerRadar(),
                 new CoolRenderOptions(),
