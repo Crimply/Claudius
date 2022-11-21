@@ -20,6 +20,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ModuleManager extends Feature {
+    public static String GetDesc;
     public List<Module> modules;
     public List<Module> sortedModules = new ArrayList<>();
     public List<String> sortedModulesABC = new ArrayList<>();
@@ -191,6 +192,9 @@ public class ModuleManager extends Feature {
         this.modules.forEach(module -> {
             if (module.getBind().getKey() == eventKey) module.toggle();
         });
+    }
+
+    public void GetDesc() {
     }
 }
 

@@ -24,7 +24,6 @@ public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
 
     private final Setting<Boolean> renderingUp = register(new Setting<>("RenderingUp", true, "Orientation of the HUD-Elements."));
-    private final Setting<Boolean> waterMark = register(new Setting<>("Watermark", false, "displays watermark"));
     private final Setting<Boolean> arrayList = register(new Setting<>("ArrayList", true, "Lists the active modules."));
     private final Setting<Boolean> totems = register(new Setting<>("Totems", true, "TotemHUD"));
     private final Setting<Boolean> greeter = register(new Setting<>("Greeter", false, "The time"));
@@ -74,50 +73,34 @@ public class HUD extends Module {
         int width = this.renderer.scaledWidth;
         int height = this.renderer.scaledHeight;
         color = ColorUtil.toRGBA(ClickGuiModule.INSTANCE.red.getValue(), ClickGuiModule.INSTANCE.green.getValue(), ClickGuiModule.INSTANCE.blue.getValue());
-        if (this.waterMark.getValue()) {
-            String string = command + " v" + Claudius.MODVER;
-            int[] arrayOfInt = {1};
-            char[] stringToCharArray = string.toCharArray();
-            float f = 0.0F;
-            for (char c : stringToCharArray) {
-                f += this.renderer.getStringWidth(String.valueOf(c));
-                arrayOfInt[0] = arrayOfInt[0] + 1;
-                this.renderer.drawString(string, 2.0F, 2, color, true);
-            }
-        }
-        int[] counter1 = {1};
         int j = (mc.currentScreen instanceof net.minecraft.client.gui.GuiChat && !this.renderingUp.getValue()) ? 14 : 0;
         if (this.arrayList.getValue()) if (this.renderingUp.getValue()) {
             if (this.renderingMode.getValue() == RenderingMode.ABC) {
                 for (int k = 0; k < Claudius.moduleManager.sortedModulesABC.size(); k++) {
                     String str = Claudius.moduleManager.sortedModulesABC.get(k);
-                    this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
+                    Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
                     j++;
-                    counter1[0] = counter1[0] + 1;
                 }
             } else {
                 for (int k = 0; k < Claudius.moduleManager.sortedModules.size(); k++) {
                     Module module = Claudius.moduleManager.sortedModules.get(k);
                     String str = module.getDisplayName() + ChatFormatting.GRAY + ((module.getDisplayInfo() != null) ? (" [" + ChatFormatting.WHITE + module.getDisplayInfo() + ChatFormatting.GRAY + "]") : "");
-                    this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
+                    Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
                     j++;
-                    counter1[0] = counter1[0] + 1;
                 }
             }
         } else if (this.renderingMode.getValue() == RenderingMode.ABC) {
             for (int k = 0; k < Claudius.moduleManager.sortedModulesABC.size(); k++) {
                 String str = Claudius.moduleManager.sortedModulesABC.get(k);
                 j += 10;
-                this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j), this.color, true);
-                counter1[0] = counter1[0] + 1;
+                Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j), this.color, true);
             }
         } else {
             for (int k = 0; k < Claudius.moduleManager.sortedModules.size(); k++) {
                 Module module = Claudius.moduleManager.sortedModules.get(k);
                 String str = module.getDisplayName() + ChatFormatting.GRAY + ((module.getDisplayInfo() != null) ? (" [" + ChatFormatting.WHITE + module.getDisplayInfo() + ChatFormatting.GRAY + "]") : "");
                 j += 10;
-                this.renderer.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j),  this.color, true);
-                counter1[0] = counter1[0] + 1;
+                Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j),  this.color, true);
             }
         }
         String grayString = String.valueOf(ChatFormatting.GRAY);
@@ -131,25 +114,6 @@ public class HUD extends Module {
             String fpsText = grayString + "FPS " + ChatFormatting.WHITE + Minecraft.debugFPS;
             String str1 = grayString + "Ping " + ChatFormatting.WHITE + Claudius.serverManager.getPing();
             if (this.renderer.getStringWidth(str1) > this.renderer.getStringWidth(fpsText)) {
-            }
-        }
-        boolean inHell = mc.world.getBiome(mc.player.getPosition()).getBiomeName().equals("Hell");
-        int posX = (int) mc.player.posX;
-        int posY = (int) mc.player.posY;
-        int posZ = (int) mc.player.posZ;
-        float nether = !inHell ? 0.125F : 8.0F;
-        int hposX = (int) (mc.player.posX * nether);
-        int hposZ = (int) (mc.player.posZ * nether);
-        i = (mc.currentScreen instanceof net.minecraft.client.gui.GuiChat) ? 14 : 0;
-        String coordinates = ChatFormatting.WHITE + "XYZ " + ChatFormatting.RESET + (inHell ? (posX + ", " + posY + ", " + posZ + ChatFormatting.WHITE + " [" + ChatFormatting.RESET + hposX + ", " + hposZ + ChatFormatting.WHITE + "]" + ChatFormatting.RESET) : (posX + ", " + posY + ", " + posZ + ChatFormatting.WHITE + " [" + ChatFormatting.RESET + hposX + ", " + hposZ + ChatFormatting.WHITE + "]"));
-        i += 10;
-        if (1 == 8) {
-            if (1 == 8) {
-            } else {
-                int[] counter2 = {1};
-                float s = 0.0F;
-                int[] counter3 = {1};
-                float u = 0.0F;
             }
         }
         if (this.totems.getValue()) renderTotemHUD();

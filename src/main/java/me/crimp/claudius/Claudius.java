@@ -13,7 +13,7 @@ import org.lwjgl.opengl.Display;
 @Mod(modid = Claudius.MODID, name = Claudius.MODNAME, version = Claudius.MODVER)
 public class Claudius {
     public static final String MODID = "claudius";
-    public static final String MODNAME = "claudius";
+    public static final String MODNAME = "Claudius";
     public static final String MODVER = "1.7.0";
     public static final Logger LOGGER = LogManager.getLogger("claudius");
     public static CommandManager commandManager;

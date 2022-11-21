@@ -5,13 +5,13 @@ import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.items.Item;
 import me.crimp.claudius.mod.gui.components.items.button.Button;
+import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
 import me.crimp.claudius.utils.ColorUtil;
 import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
-
 import java.util.ArrayList;
 
 public class Component extends Feature {
@@ -25,6 +25,7 @@ public class Component extends Feature {
     private int width;
     private int height;
     private boolean open;
+    //private me.crimp.claudius.mod.modules.Module Module;
 
     public Component(String name, int x, int y, boolean open) {
         super(name);
@@ -105,6 +106,7 @@ public class Component extends Feature {
         }
         this.getItems().forEach(item -> item.mouseClicked(mouseX, mouseY, mouseButton));
     }
+
 
     public void mouseReleased(int mouseX, int mouseY, int releaseButton) {
         if (releaseButton == 0) {
