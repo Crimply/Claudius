@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class DeathEffect extends Module {
     public DeathEffect() {
-        super("DeathEffect", "DeathEffect", Category.Render, false, false);
+        super("DeathEffect", "Summons Lighting When Other People Die", Category.Render, false, false);
     }
     public static DeathEffect INSTANCE = new DeathEffect();
 

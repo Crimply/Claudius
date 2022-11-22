@@ -19,7 +19,7 @@ public class Button extends Item {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        RenderUtil.drawRect(this.x, this.y, this.x + (float) this.width, this.y + (float) this.height - 0.5f, this.getState() ? (!this.isHovering(mouseX, mouseY) ? Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).hoverAlpha.getValue()) : Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).alpha.getValue())) : (!this.isHovering(mouseX, mouseY) ? 0x11555555 : -2007673515));
+        RenderUtil.drawRect(this.x-1, this.y, this.x + (float) this.width+1, this.y + (float) this.height - 0.5f, this.getState() ? (!this.isHovering(mouseX, mouseY) ? Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).hoverAlpha.getValue()) : Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).alpha.getValue())) : (!this.isHovering(mouseX, mouseY) ? 0x11555555 : -2007673515));
         Claudius.textManager.drawStringWithShadow(this.getName(), this.x + 2.3f, this.y - 2.0f - (float) ClickGui.getClickGui().getTextOffset(), this.getState() ? -1 : -5592406);
     }
 

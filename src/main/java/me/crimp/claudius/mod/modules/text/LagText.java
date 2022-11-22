@@ -7,7 +7,7 @@ import net.minecraft.network.play.client.CPacketChatMessage;
 
 public class LagText extends Module {
     public LagText() {
-        super("LagText", "LagText", Category.Text, false, false);
+        super("LagText", "Sends The Annoying Lag Text", Category.Text, false, false);
     }
 
     public static LagText INSTANCE = new LagText();

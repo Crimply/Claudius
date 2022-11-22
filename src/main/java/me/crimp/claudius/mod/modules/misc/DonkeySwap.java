@@ -13,7 +13,7 @@ import java.util.Objects;
 
 
 public class DonkeySwap extends Module {
-    public DonkeySwap() {super("Donkey Swap", "Get Shit Outta Donkey For ur Duping Needs", Category.Misc, false, false);}
+    public DonkeySwap() {super("Donkey Swap", "Get Shit Outta Donkey For Ur Duping Needs", Category.Misc, false, false);}
 
     @Override
     public void onUpdate() {

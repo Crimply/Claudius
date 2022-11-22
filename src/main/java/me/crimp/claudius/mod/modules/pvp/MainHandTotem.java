@@ -11,7 +11,7 @@ import net.minecraft.inventory.ClickType;
 
 public class MainHandTotem extends Module {
     public MainHandTotem() {
-        super("MainHandTotem", "MainHandTotem", Category.Pvp, false, false);
+        super("MainHandTotem", "Puts Totem In Your MainHand When Your Low Health To Stop You From Dieing To 32k", Category.Pvp, false, false);
     }
 
     @Override

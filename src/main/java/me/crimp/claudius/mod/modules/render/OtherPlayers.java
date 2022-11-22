@@ -9,7 +9,7 @@ public class OtherPlayers extends Module {
     public final Setting<Boolean> Glowing = register(new Setting<>("EveryoneGlows", true));
 
     public OtherPlayers() {
-        super("OtherPlayers", "Allows for custom animations", Category.Render, false, false);
+        super("OtherPlayers", "Does Stuff To Other Players", Category.Render, false, false);
     }
     public static OtherPlayers INSTANCE;
     @Override

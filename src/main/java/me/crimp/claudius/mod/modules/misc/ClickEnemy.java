@@ -14,7 +14,7 @@ public class ClickEnemy extends Module {
     public Setting<Bind> Keybind = register(new Setting<>("EnemyBind", new Bind(Keyboard.KEY_B)));
 
     public ClickEnemy() {
-        super("ClickEnemy", "ClickEnemy", Category.Misc, false, false);
+        super("ClickEnemy", "Like Mcf But With A Different Bind", Category.Misc, false, false);
     }
 
     @Override

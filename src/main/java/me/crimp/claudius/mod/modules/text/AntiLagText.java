@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AntiLagText extends Module {
     public AntiLagText() {
-        super("AntiLagTxt", "", Category.Text, false, false);
+        super("AntiLagTxt", "Stops Annoying Chinese Lag Text", Category.Text, false, false);
     }
 
     @SubscribeEvent

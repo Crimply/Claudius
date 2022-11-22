@@ -28,7 +28,7 @@ public class BetterWatermark extends Module {
 
 
     public BetterWatermark() {
-        super("BetterWatermark", "BetterWatermark", Category.Text, false, false);
+        super("BetterWatermark", "Watermark But Better", Category.Text, false, false);
     }
 
     private enum Snap {

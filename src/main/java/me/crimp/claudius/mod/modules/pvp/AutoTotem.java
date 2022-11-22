@@ -17,7 +17,7 @@ public class AutoTotem extends Module {
     private static final AutoTotem INSTANCE = new AutoTotem();
 
     public AutoTotem() {
-        super("AutoTotem", "AutoTotem", Category.Pvp, false, false);
+        super("AutoTotem", "Puts Totem In Your Offhand When Theres Not One There", Category.Pvp, false, false);
     }
 
     public static AutoTotem getInstance() {

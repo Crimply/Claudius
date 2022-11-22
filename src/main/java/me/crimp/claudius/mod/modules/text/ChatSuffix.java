@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatSuffix extends Module {
     public ChatSuffix() {
-        super("ChatSuffix", "Appends your message", Category.Text, false, false);
+        super("ChatSuffix", "Adds Suffix To Your Message", Category.Text, false, false);
     }
 
 

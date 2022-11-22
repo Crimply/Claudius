@@ -7,9 +7,11 @@ import me.crimp.claudius.mod.gui.components.Component;
 import me.crimp.claudius.mod.gui.components.items.Item;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
+import me.crimp.claudius.mod.modules.text.BetterWatermark;
 import me.crimp.claudius.mod.setting.Bind;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.ColorUtil;
+import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 import org.lwjgl.opengl.GL11;
@@ -103,8 +105,12 @@ public class ModuleButton extends Button {
                 }
             }
         }
+        String A = module.getDescription();
+        A = A.replace(" ", " \r\n");
+
         if (isHovering(mouseX, mouseY)) {
-            Claudius.textManager.drawString(module.getDescription(), mouseX, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), true);
+            Claudius.textManager.drawString(A, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+
         }
     }
 

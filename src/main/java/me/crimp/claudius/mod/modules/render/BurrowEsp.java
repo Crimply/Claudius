@@ -24,7 +24,7 @@ public class BurrowEsp extends Module {
     private final List<BlockPos> posList = new ArrayList<>();
 
     public BurrowEsp() {
-        super("BurrowEsp", "BurrowEsp", Category.Render, false, false);
+        super("BurrowEsp", "Shows When People Are Inside Of Blocks", Category.Render, false, false);
     }
 
     public void onTick(){

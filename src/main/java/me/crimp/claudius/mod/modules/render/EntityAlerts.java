@@ -22,7 +22,7 @@ public class EntityAlerts extends Module {
     public Setting<Boolean> Sound = register(new Setting<>("Sound", true));
 
     public EntityAlerts() {
-        super("EntityAlerts", "EntityAlerts", Category.Render, false, false);
+        super("EntityAlerts", "Alerts You When A Few Different Entity Are In Render Distance", Category.Render, false, false);
     }
     int Sounddelay;
     int delay1;

@@ -11,7 +11,7 @@ public class CoolRenderOptions extends Module {
     public Setting<Boolean> NoToastPopUps = register(new Setting<>("NoToastPopUps", true));
     public Setting<Boolean> AcidOverlay = register(new Setting<>("AcidOverlay", true));
     public CoolRenderOptions() {
-        super("RenderFixes", "CoolRenderOptions", Category.Render, false, false);
+        super("RenderFixes", "Cool Render Options", Category.Render, false, false);
     }
 
     public void onUpdate() {
