@@ -34,6 +34,7 @@ public class ClickGuiModule extends Module {
     public Setting<Integer> BGGreen = register(new Setting<>("BGGreen", 239, 0, 255, v -> ColourSettings.getValue()));
     public Setting<Integer> BGBlue = register(new Setting<>("BGBlue", 236, 0, 255, v -> ColourSettings.getValue()));
     public Setting<Integer> BGalpha = register(new Setting<>("BGalpha", 150, 0, 255, v -> ColourSettings.getValue()));
+    public Setting<Boolean> Gradient = register(new Setting<>("Gradient", true, v -> ColourSettings.getValue()));
     public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, ""));
     public Setting<Boolean> Cross = register(new Setting<>("Plus/Minus", true, ""));
 
