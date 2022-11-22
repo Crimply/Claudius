@@ -59,7 +59,6 @@ public class ModuleManager extends Feature {
                 new FakeExploit(),
 
                 //pvp
-                new Burrow(),
                 new Dispenser32k(),
                 new MainHandTotem(),
                 new AutoCrystal(),
