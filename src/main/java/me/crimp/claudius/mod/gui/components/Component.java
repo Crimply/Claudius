@@ -54,8 +54,7 @@ public class Component extends Feature {
         RenderUtil.drawRect(this.x, (float)this.y - 1f, this.x + this.width+0.5f, this.y + this.height - 4, color);
 
         if (this.open) {
-            if (ClickGuiModule.INSTANCE.Gradient.getValue()) RenderUtil.drawGradientRect(this.x, (int) ((float)this.y + 13.5f), this.x + this.width, (int) ((float)(this.y + this.height) + totalItemHeight), color2,color);//1996488704
-            else RenderUtil.drawRect(this.x, ((float)this.y + 13.5f), this.x + this.width, ((float)(this.y + this.height) + totalItemHeight), color2);//1996488704
+            RenderUtil.drawRect(this.x, ((float)this.y + 13.5f), this.x + this.width, ((float)(this.y + this.height) + totalItemHeight), color2);//1996488704
             RenderUtil.drawLine(x, y+6, x, y+6 + totalItemHeight + 11.5f, 1.5f, color); //left line
             RenderUtil.drawLine(x, y+6, x + width, y+6, 1.5f, color); //top line
             RenderUtil.drawLine(x + width, y+6, x + width, y+6 + totalItemHeight + 11.5f, 1.5f, color); //right line

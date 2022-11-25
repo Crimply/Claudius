@@ -106,7 +106,8 @@ public class ModuleButton extends Button {
             }
         }
         String A = module.getDescription();
-        A = A.replace(" ", " \r\n");
+        String B = " a \n ";
+        A = A.replace(" ", B);
 
         if (isHovering(mouseX, mouseY)) {
             Claudius.textManager.drawString(A, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
