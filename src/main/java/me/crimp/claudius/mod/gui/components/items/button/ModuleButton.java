@@ -105,16 +105,33 @@ public class ModuleButton extends Button {
                 }
             }
         }
-        String A = module.getDescription();
-        String B = " a \n ";
-        A = A.replace(" ", B);
+        String a = module.getDescription().split(" ",1).toString();
+        String b = module.getDescription().split(" ",1).toString();
+        String c = module.getDescription().split(" ",1).toString();
+        String d = module.getDescription().split(" ",1).toString();
+        String e = module.getDescription().split(" ",1).toString();
+        String f = module.getDescription().split(" ",1).toString();
+        String g = module.getDescription().split(" ",1).toString();
+        String h = module.getDescription().split(" ",1).toString();
+        String i = module.getDescription().split(" ",1).toString();
+        String j = module.getDescription().split(" ",1).toString();
+        String k = module.getDescription().split(" ",1).toString();
 
+        
         if (isHovering(mouseX, mouseY)) {
-            Claudius.textManager.drawString(A, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-
+            Claudius.textManager.drawString(a, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(b, mouseX+10, mouseY + 5, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(c, mouseX+10, mouseY + 10, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(d, mouseX+10, mouseY + 15, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(e, mouseX+10, mouseY + 20, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(f, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(g, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(h, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(i, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(j, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            Claudius.textManager.drawString(k, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+           
         }
-    }
-
 
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
