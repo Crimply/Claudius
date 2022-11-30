@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.command.commands;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 
 public class UnloadCommand extends Command {
@@ -10,7 +10,7 @@ public class UnloadCommand extends Command {
 
     @Override
     public void execute(String[] commands) {
-        Claudius.unload(true);
+        claudius.unload(true);
     }
 }
 

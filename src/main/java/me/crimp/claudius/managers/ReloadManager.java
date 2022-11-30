@@ -1,7 +1,7 @@
 package me.crimp.claudius.managers;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.PacketEvent;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.command.Command;
@@ -27,7 +27,7 @@ public class ReloadManager
     public void onPacketSend(PacketEvent.Send event) {
         CPacketChatMessage packet;
         if (event.getPacket() instanceof CPacketChatMessage && (packet = event.getPacket()).getMessage().startsWith(this.prefix) && packet.getMessage().contains("reload")) {
-            Claudius.load();
+            claudius.load();
             event.setCanceled(true);
         }
     }

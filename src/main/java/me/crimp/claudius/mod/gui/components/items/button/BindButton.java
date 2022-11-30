@@ -1,7 +1,7 @@
 package me.crimp.claudius.mod.gui.components.items.button;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
 import me.crimp.claudius.mod.setting.Bind;
@@ -22,9 +22,9 @@ public class BindButton extends Button {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        RenderUtil.drawRect(this.x, this.y, this.x + (float) this.width + 7.4f, this.y + (float) this.height - 0.5f, this.getState() ? (!this.isHovering(mouseX, mouseY) ? 0x11555555 : -2007673515) : (!this.isHovering(mouseX, mouseY) ? Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).hoverAlpha.getValue()) : Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).alpha.getValue())));
-        if (this.isListening) Claudius.textManager.drawStringWithShadow("Press a Key...", this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), -1);
-        else Claudius.textManager.drawStringWithShadow(this.setting.getName() + " " + ChatFormatting.GRAY + this.setting.getValue().toString().toUpperCase(), this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), this.getState() ? -1 : -5592406);
+        RenderUtil.drawRect(this.x, this.y, this.x + (float) this.width + 7.4f, this.y + (float) this.height - 0.5f, this.getState() ? (!this.isHovering(mouseX, mouseY) ? 0x11555555 : -2007673515) : (!this.isHovering(mouseX, mouseY) ? claudius.colorManager.getColorWithAlpha(claudius.moduleManager.getModuleByClass(ClickGuiModule.class).hoverAlpha.getValue()) : claudius.colorManager.getColorWithAlpha(claudius.moduleManager.getModuleByClass(ClickGuiModule.class).alpha.getValue())));
+        if (this.isListening) claudius.textManager.drawStringWithShadow("Press a Key...", this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        else claudius.textManager.drawStringWithShadow(this.setting.getName() + " " + ChatFormatting.GRAY + this.setting.getValue().toString().toUpperCase(), this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), this.getState() ? -1 : -5592406);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package me.crimp.claudius.mod.gui.components.items.button;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.Component;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
@@ -28,8 +28,8 @@ public class Slider extends Button {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.dragSetting(mouseX, mouseY);
         RenderUtil.drawRect(this.x, this.y, this.x + (float) this.width + 7.4f, this.y + (float) this.height - 0.5f, !this.isHovering(mouseX, mouseY) ? 0x11555555 : -2007673515);
-        RenderUtil.drawRect(this.x, this.y, ((Number) this.setting.getValue()).floatValue() <= this.min.floatValue() ? this.x : this.x + ((float) this.width + 7.4f) * this.partialMultiplier(), this.y + (float) this.height - 0.5f, !this.isHovering(mouseX, mouseY) ? Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).hoverAlpha.getValue()) : Claudius.colorManager.getColorWithAlpha(Claudius.moduleManager.getModuleByClass(ClickGuiModule.class).alpha.getValue()));
-        Claudius.textManager.drawStringWithShadow(this.getName() + " " + ChatFormatting.GRAY + (this.setting.getValue() instanceof Float ? this.setting.getValue() : Double.valueOf(((Number) this.setting.getValue()).doubleValue())), this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), -1);
+        RenderUtil.drawRect(this.x, this.y, ((Number) this.setting.getValue()).floatValue() <= this.min.floatValue() ? this.x : this.x + ((float) this.width + 7.4f) * this.partialMultiplier(), this.y + (float) this.height - 0.5f, !this.isHovering(mouseX, mouseY) ? claudius.colorManager.getColorWithAlpha(claudius.moduleManager.getModuleByClass(ClickGuiModule.class).hoverAlpha.getValue()) : claudius.colorManager.getColorWithAlpha(claudius.moduleManager.getModuleByClass(ClickGuiModule.class).alpha.getValue()));
+        claudius.textManager.drawStringWithShadow(this.getName() + " " + ChatFormatting.GRAY + (this.setting.getValue() instanceof Float ? this.setting.getValue() : Double.valueOf(((Number) this.setting.getValue()).doubleValue())), this.x + 2.3f, this.y - 1.7f - (float) ClickGui.getClickGui().getTextOffset(), -1);
     }
 
     @Override

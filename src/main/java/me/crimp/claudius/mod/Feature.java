@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class Feature implements Util {
     public List<Setting<?>> settings = new ArrayList<>();
-    public TextManager renderer = Claudius.textManager;
+    public TextManager renderer = claudius.textManager;
     private String name;
 
     public Feature() {
@@ -64,7 +64,7 @@ public abstract class Feature implements Util {
 
     public static int amountPerCategory(Module.Category category) {
         List<Module> categoryModules = new ArrayList<>();
-        for (Module module : Claudius.INSTANCE.moduleManager.modules) {
+        for (Module module : claudius.INSTANCE.moduleManager.modules) {
             if (module.getCategory().equals(category)) {
                 categoryModules.add(module);
             }

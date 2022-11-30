@@ -1,7 +1,7 @@
 package me.crimp.claudius.utils;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -167,7 +167,7 @@ public class BlockUtil implements Util {
             sneaking = true;
         }
         if (rotate) {
-            Claudius.rotationManager.lookAtVec3d(hitVec);
+            claudius.rotationManager.lookAtVec3d(hitVec);
         }
         BlockUtil.rightClickBlock(neighbour, hitVec, hand, opposite, packet);
         mc.player.swingArm(EnumHand.MAIN_HAND);

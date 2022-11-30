@@ -26,7 +26,7 @@ public class DiscordPresence {
         PRESENCE.details = "Best Util Client";
         //PRESENCE.largeImageKey = me.crimp.claudius.mod.modules.client.RPC.INSTANCE.Key.getValue();
         PRESENCE.largeImageKey =  "hamlet";
-        PRESENCE.largeImageText = "Playing Claudius";
+        PRESENCE.largeImageText = "Playing claudius";
         PRESENCE.smallImageKey = "king";
         PRESENCE.smallImageText = "Best Best Best";
         PRESENCE.state = "Obliterating Lil Kids";

@@ -1,9 +1,9 @@
 package me.crimp.claudius.mod.command.commands;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 
-import static me.crimp.claudius.Claudius.configManager;
+import static me.crimp.claudius.claudius.configManager;
 
 public class Svae extends Command {
     public Svae() {
@@ -12,7 +12,7 @@ public class Svae extends Command {
 
     @Override
     public void execute(String[] commands) {
-        configManager.saveConfig(Claudius.configManager.config.replaceFirst("claudius/", ""));
+        configManager.saveConfig(claudius.configManager.config.replaceFirst("claudius/", ""));
         mc.player.sendChatMessage(".save");
         mc.player.sendChatMessage("*save");
         Command.sendMessage("Prolly Saved Ur configs");

@@ -10,6 +10,7 @@
     "MixinAbstractClientPlayer",
     "MixinEntityPlayerSP",
     "MixinNetworkManager",
-    "MixinWorldClient"
+    "MixinWorldClient",
+    "MixinGuiMainMenu"
   ]
 }

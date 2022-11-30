@@ -1,17 +1,15 @@
 package me.crimp.claudius.mod.gui.components.items.button;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.gui.components.Component;
 import me.crimp.claudius.mod.gui.components.items.Item;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
-import me.crimp.claudius.mod.modules.text.BetterWatermark;
 import me.crimp.claudius.mod.setting.Bind;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.ColorUtil;
-import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 import org.lwjgl.opengl.GL11;
@@ -81,14 +79,14 @@ public class ModuleButton extends Button {
             if (ClickGuiModule.INSTANCE.Cross.getValue()) {
                 if (this.subOpen) {
                     if (this.module.isEnabled()) {
-                        Claudius.textManager.drawStringWithShadow("-", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                        claudius.textManager.drawStringWithShadow("-", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
                     } else {
-                        Claudius.textManager.drawStringWithShadow(ChatFormatting.GRAY + "-", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                        claudius.textManager.drawStringWithShadow(ChatFormatting.GRAY + "-", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
                     }
                 } else if (this.module.isEnabled()) {
-                    Claudius.textManager.drawStringWithShadow("+", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                    claudius.textManager.drawStringWithShadow("+", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
                 } else {
-                    Claudius.textManager.drawStringWithShadow(ChatFormatting.GRAY + "+", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
+                    claudius.textManager.drawStringWithShadow(ChatFormatting.GRAY + "+", this.x - 1.5f + this.width - 7.4f, this.y - 2.2f - ClickGui.getClickGui().getTextOffset(), -1);
                 }
             }
             if (this.subOpen) {
@@ -105,12 +103,31 @@ public class ModuleButton extends Button {
                 }
             }
         }
-        String A = module.getDescription();
-        String B = " a \n ";
-        A = A.replace(" ", B);
+        String a = module.getDescription().split(" ",1).toString();
+        String b = module.getDescription().split(" ",1).toString();
+        String c = module.getDescription().split(" ",1).toString();
+        String d = module.getDescription().split(" ",1).toString();
+        String e = module.getDescription().split(" ",1).toString();
+        String f = module.getDescription().split(" ",1).toString();
+        String g = module.getDescription().split(" ",1).toString();
+        String h = module.getDescription().split(" ",1).toString();
+        String i = module.getDescription().split(" ",1).toString();
+        String j = module.getDescription().split(" ",1).toString();
+        String k = module.getDescription().split(" ",1).toString();
+
 
         if (isHovering(mouseX, mouseY)) {
-            Claudius.textManager.drawString(A, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            claudius.textManager.drawString(a, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            claudius.textManager.drawString(b, mouseX+10, mouseY + 5, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            claudius.textManager.drawString(c, mouseX+10, mouseY + 10, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            claudius.textManager.drawString(d, mouseX+10, mouseY + 15, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            claudius.textManager.drawString(e, mouseX+10, mouseY + 20, ColorUtil.toRGBA(0, 0, 0, 255), false);
+//            claudius.textManager.drawString(f, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+//            claudius.textManager.drawString(g, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+//            claudius.textManager.drawString(h, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+//            claudius.textManager.drawString(i, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+//            claudius.textManager.drawString(j, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
+//            claudius.textManager.drawString(k, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
 
         }
     }

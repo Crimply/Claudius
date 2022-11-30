@@ -1,7 +1,7 @@
 package me.crimp.claudius.mod.command.commands;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Bind;
@@ -20,7 +20,7 @@ public class BindCommand extends Command {
         }
         String rkey = commands[1];
         String moduleName = commands[0];
-        Module module = Claudius.moduleManager.getModuleByName(moduleName);
+        Module module = claudius.moduleManager.getModuleByName(moduleName);
         if (module == null) {
             BindCommand.sendMessage("Unknown module '" + module + "'!");
             return;

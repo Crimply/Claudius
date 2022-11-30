@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.command.commands;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 
 public class ReloadCommand
@@ -11,8 +11,8 @@ public class ReloadCommand
 
     @Override
     public void execute(String[] commands) {
-        Claudius.capeManager.reload();
-        Claudius.reload();
+        claudius.capeManager.reload();
+        claudius.reload();
 
     }
 }

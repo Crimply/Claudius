@@ -1,7 +1,7 @@
 package me.crimp.claudius.utils;
 
+import me.crimp.claudius.claudius;
 import net.minecraft.client.Minecraft;
-import me.crimp.claudius.Claudius;
 
 public interface Globals {
     Minecraft mc = Minecraft.getMinecraft();
@@ -10,7 +10,7 @@ public interface Globals {
         return mc.player != null && mc.world != null;
     }
 
-    default Claudius getCrimp() {
-        return Claudius.INSTANCE;
+    default claudius getCrimp() {
+        return claudius.INSTANCE;
     }
 }

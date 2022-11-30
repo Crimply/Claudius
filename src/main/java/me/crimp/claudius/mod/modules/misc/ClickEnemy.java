@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.modules.misc;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Bind;
 import me.crimp.claudius.mod.setting.Setting;
@@ -33,10 +33,10 @@ public class ClickEnemy extends Module {
         Entity entity;
         RayTraceResult result = McfSync.mc.objectMouseOver;
         if (result != null && result.typeOfHit == RayTraceResult.Type.ENTITY && (entity = result.entityHit) instanceof EntityPlayer) {
-            if (Claudius.enemyManager.isEnemy(entity.getName())) {
-                Claudius.enemyManager.removeEnemy(entity.getName());
-            } else if (!Claudius.enemyManager.isEnemy(entity.getName())) {
-                Claudius.enemyManager.addEnemy(entity.getName());
+            if (claudius.enemyManager.isEnemy(entity.getName())) {
+                claudius.enemyManager.removeEnemy(entity.getName());
+            } else if (!claudius.enemyManager.isEnemy(entity.getName())) {
+                claudius.enemyManager.addEnemy(entity.getName());
             }
         }
     }

@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.modules.movement;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.MoveEvent;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
@@ -25,30 +25,31 @@ public class GroundStrafe extends Module {
                 if (mc.player.collidedHorizontally || mc.player.movementInput.sneak || mc.player.moveForward == 0) return;
                 if (mc.player.onGround || !onGroundOnly.getValue()) {
                     if (mc.player.ticksExisted % 2 == 0) {
-                        Claudius.tickManager.setTicks(1.0f);
+                        claudius.tickManager.setTicks(1.0f);
                     } else {
                         if (useTimer.getValue()) {
-                            Claudius.tickManager.setTicks(1.2f);
+                            claudius.tickManager.setTicks(1.2f);
                         } else {
-                            Claudius.tickManager.setTicks(1.0f);
+                            claudius.tickManager.setTicks(1.0f);
                         }
                     }
                     playerSpeed = EntityUtil.getBaseMoveSpeed();
                 }
             } else {
-                Claudius.tickManager.setTicks(1.0f);
+                claudius.tickManager.setTicks(1.0f);
             }
 
             playerSpeed = Math.max(playerSpeed, EntityUtil.getBaseMoveSpeed());
             EntityUtil.setVanilaSpeed(event, playerSpeed);
 
             if (!useTimer.getValue()) {
-                Claudius.tickManager.setTicks(1.0f);
+                claudius.tickManager.setTicks(1.0f);
             }
         }
 
 
     @Override
-    public void onDisable() {Claudius.tickManager.setTicks(1.0f);
+    public void onDisable() {
+        claudius.tickManager.setTicks(1.0f);
     }
 }

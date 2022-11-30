@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.command.commands;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.misc.McfSync;
 
@@ -14,7 +14,7 @@ public class addsyncCommand extends Command {
 
     @Override
     public void execute(String[] commands) {
-        Claudius.friendManager.addFriend(commands[0]);
+        claudius.friendManager.addFriend(commands[0]);
         if (McfSync.INSTANCE.one.getValue().equals(true)) {
             mc.player.sendChatMessage(Uno + " " + commands[0]);
         }

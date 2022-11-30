@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.command.commands;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 
 import java.io.File;
@@ -34,12 +34,12 @@ public class ConfigCommand extends Command {
         if (commands.length >= 3) {
             switch (commands[0]) {
                 case "save":
-                    Claudius.configManager.saveConfig(commands[1]);
+                    claudius.configManager.saveConfig(commands[1]);
                     sendMessage("Config " + commands[1] + " has been saved.");
                     return;
                 case "load":
-                    if (Claudius.configManager.configExists(commands[1])) {
-                        Claudius.configManager.loadConfig(commands[1]);
+                    if (claudius.configManager.configExists(commands[1])) {
+                        claudius.configManager.loadConfig(commands[1]);
                         sendMessage("Config " + commands[1] + " has been loaded.");
                     } else {
                         sendMessage("Config " + commands[1] + " does not exist.");

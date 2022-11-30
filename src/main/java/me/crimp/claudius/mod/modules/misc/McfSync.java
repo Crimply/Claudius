@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.modules.misc;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
@@ -42,8 +42,8 @@ public class McfSync
         Entity entity;
         RayTraceResult result = McfSync.mc.objectMouseOver;
         if (result != null && result.typeOfHit == RayTraceResult.Type.ENTITY && (entity = result.entityHit) instanceof EntityPlayer) {
-            if (Claudius.friendManager.isFriend(entity.getName())) {
-                Claudius.friendManager.removeFriend(entity.getName());
+            if (claudius.friendManager.isFriend(entity.getName())) {
+                claudius.friendManager.removeFriend(entity.getName());
                 Command.sendMessage(entity.getName() + " has been unfriended.");
                 if (one.getValue()) {
                     mc.player.sendChatMessage(this.syncdel1.getValue() + " del " + entity.getName());
@@ -53,7 +53,7 @@ public class McfSync
                     mc.player.sendChatMessage(this.syncdel3.getValue() + " del " + entity.getName());
                 }
             } else {
-                Claudius.friendManager.addFriend(entity.getName());
+                claudius.friendManager.addFriend(entity.getName());
                 Command.sendMessage(entity.getName() + " has been friended.");
                 if (one.getValue()) {
                     mc.player.sendChatMessage(this.syncadd1.getValue() + " add " + entity.getName());

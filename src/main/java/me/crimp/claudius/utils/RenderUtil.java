@@ -1,6 +1,6 @@
 package me.crimp.claudius.utils;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -386,8 +386,8 @@ public class RenderUtil implements Util {
         GlStateManager.pushMatrix();
         RenderUtil.glBillboardDistanceScaled((float) pos.getX() + 0.5f, (float) pos.getY() + 0.5f, (float) pos.getZ() + 0.5f, RenderUtil.mc.player, 1.0f);
         GlStateManager.disableDepth();
-        GlStateManager.translate(-((double) Claudius.textManager.getStringWidth(text) / 2.0), 0.0, 0.0);
-        Claudius.textManager.drawStringWithShadow(text, 0.0f, 0.0f, -5592406);
+        GlStateManager.translate(-((double) claudius.textManager.getStringWidth(text) / 2.0), 0.0, 0.0);
+        claudius.textManager.drawStringWithShadow(text, 0.0f, 0.0f, -5592406);
         GlStateManager.popMatrix();
     }
 
@@ -756,7 +756,7 @@ public class RenderUtil implements Util {
         GlStateManager.pushMatrix();
         glBillboardDistanceScaled(pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, (EntityPlayer)RenderUtil.mc.player, 1.0f);
         GlStateManager.disableDepth();
-        GlStateManager.translate(-(Claudius.textManager.getStringWidth(text) / 2.0), 0.0, 0.0);
+        GlStateManager.translate(-(claudius.textManager.getStringWidth(text) / 2.0), 0.0, 0.0);
         //this.customFont.drawString(text, 0.0f, 0.0f, ColorUtil.toRGBA(color), true);
         GlStateManager.popMatrix();
     }

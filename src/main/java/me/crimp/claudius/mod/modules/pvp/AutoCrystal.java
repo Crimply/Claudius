@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.modules.pvp;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.PacketEvent;
 import me.crimp.claudius.event.events.Render3DEvent;
 import me.crimp.claudius.event.events.UpdateWalkingPlayerEvent;
@@ -384,7 +384,7 @@ public class AutoCrystal extends Module {
         for (EntityPlayer player : mc.world.playerEntities) {
             if (player.getDistanceSq(mc.player) > MathUtil.square(playerRange.getValue())) continue;
 
-            if (Claudius.friendManager.isFriend(player.getName())) continue;
+            if (claudius.friendManager.isFriend(player.getName())) continue;
 
             if (player.getHealth() <= 0) continue;
 

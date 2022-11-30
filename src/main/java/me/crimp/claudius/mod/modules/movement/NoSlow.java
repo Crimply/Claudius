@@ -135,7 +135,7 @@ public class NoSlow extends Module {
 
         /**
          * The infamous FencingFPlus2+2 NoSlow bypass
-         * Skidded into Konas, RusherHack, Future, Claudius, and every paid client under the sun
+         * Skidded into Konas, RusherHack, Future, claudius, and every paid client under the sun
          */
         TwoBeTwoTee
     }

@@ -1,6 +1,6 @@
 package me.crimp.claudius.mixins;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.MixinEnvironment;
@@ -12,11 +12,11 @@ public class CLoader implements IFMLLoadingPlugin {
     private static boolean isObfuscatedEnvironment = false;
 
     public CLoader() {
-        Claudius.LOGGER.info("\n\nLoading mixins by Crimp");
+        claudius.LOGGER.info("\n\nLoading mixins by Crimp");
         MixinBootstrap.init();
         Mixins.addConfiguration("mixins.claudius.json");
         MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
-        Claudius.LOGGER.info(MixinEnvironment.getDefaultEnvironment().getObfuscationContext());
+        claudius.LOGGER.info(MixinEnvironment.getDefaultEnvironment().getObfuscationContext());
     }
 
     public String[] getASMTransformerClass() {

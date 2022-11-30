@@ -1,24 +1,19 @@
 package me.crimp.claudius.mod.modules.client;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.ClientEvent;
-import me.crimp.claudius.event.events.ConnectionEvent;
 import me.crimp.claudius.event.events.Render2DEvent;
-import me.crimp.claudius.event.events.TotemPopEvent;
 import me.crimp.claudius.mod.command.Command;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static me.crimp.claudius.utils.PlayerUtil.timer;
 
 public class HUD extends Module {
     private static final ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
@@ -33,8 +28,9 @@ public class HUD extends Module {
     public Setting<Boolean> notifyToggles = register(new Setting<Boolean>("ToggleNotis", false, v -> this.notify.getValue()));
     public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notify.getValue()));
     public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
+    public Setting<Boolean> CustomBg = register(new Setting<>("CustomBackground", true, "CustomBackground in main menu"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
-    public static final String command = "Claudius";
+    public static final String command = "claudius";
     private int color;
     private boolean shouldIncrement;
     private int hitMarkerTimer;
@@ -76,43 +72,43 @@ public class HUD extends Module {
         int j = (mc.currentScreen instanceof net.minecraft.client.gui.GuiChat && !this.renderingUp.getValue()) ? 14 : 0;
         if (this.arrayList.getValue()) if (this.renderingUp.getValue()) {
             if (this.renderingMode.getValue() == RenderingMode.ABC) {
-                for (int k = 0; k < Claudius.moduleManager.sortedModulesABC.size(); k++) {
-                    String str = Claudius.moduleManager.sortedModulesABC.get(k);
-                    Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
+                for (int k = 0; k < claudius.moduleManager.sortedModulesABC.size(); k++) {
+                    String str = claudius.moduleManager.sortedModulesABC.get(k);
+                    claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
                     j++;
                 }
             } else {
-                for (int k = 0; k < Claudius.moduleManager.sortedModules.size(); k++) {
-                    Module module = Claudius.moduleManager.sortedModules.get(k);
+                for (int k = 0; k < claudius.moduleManager.sortedModules.size(); k++) {
+                    Module module = claudius.moduleManager.sortedModules.get(k);
                     String str = module.getDisplayName() + ChatFormatting.GRAY + ((module.getDisplayInfo() != null) ? (" [" + ChatFormatting.WHITE + module.getDisplayInfo() + ChatFormatting.GRAY + "]") : "");
-                    Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
+                    claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (2 + j * 10), this.color, true);
                     j++;
                 }
             }
         } else if (this.renderingMode.getValue() == RenderingMode.ABC) {
-            for (int k = 0; k < Claudius.moduleManager.sortedModulesABC.size(); k++) {
-                String str = Claudius.moduleManager.sortedModulesABC.get(k);
+            for (int k = 0; k < claudius.moduleManager.sortedModulesABC.size(); k++) {
+                String str = claudius.moduleManager.sortedModulesABC.get(k);
                 j += 10;
-                Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j), this.color, true);
+                claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j), this.color, true);
             }
         } else {
-            for (int k = 0; k < Claudius.moduleManager.sortedModules.size(); k++) {
-                Module module = Claudius.moduleManager.sortedModules.get(k);
+            for (int k = 0; k < claudius.moduleManager.sortedModules.size(); k++) {
+                Module module = claudius.moduleManager.sortedModules.get(k);
                 String str = module.getDisplayName() + ChatFormatting.GRAY + ((module.getDisplayInfo() != null) ? (" [" + ChatFormatting.WHITE + module.getDisplayInfo() + ChatFormatting.GRAY + "]") : "");
                 j += 10;
-                Claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j),  this.color, true);
+                claudius.textManager.drawString(str, (width - 2 - this.renderer.getStringWidth(str)), (height - j),  this.color, true);
             }
         }
         String grayString = String.valueOf(ChatFormatting.GRAY);
         int i = (mc.currentScreen instanceof net.minecraft.client.gui.GuiChat && this.renderingUp.getValue()) ? 13 : (this.renderingUp.getValue() ? -2 : 0);
         if (this.renderingUp.getValue()) {
             String fpsText = grayString + "FPS " + ChatFormatting.WHITE + Minecraft.debugFPS;
-            String str1 = grayString + "Ping " + ChatFormatting.WHITE + Claudius.serverManager.getPing();
+            String str1 = grayString + "Ping " + ChatFormatting.WHITE + claudius.serverManager.getPing();
             if (this.renderer.getStringWidth(str1) > this.renderer.getStringWidth(fpsText)) {
             }
         } else {
             String fpsText = grayString + "FPS " + ChatFormatting.WHITE + Minecraft.debugFPS;
-            String str1 = grayString + "Ping " + ChatFormatting.WHITE + Claudius.serverManager.getPing();
+            String str1 = grayString + "Ping " + ChatFormatting.WHITE + claudius.serverManager.getPing();
             if (this.renderer.getStringWidth(str1) > this.renderer.getStringWidth(fpsText)) {
             }
         }
@@ -160,13 +156,13 @@ public class HUD extends Module {
     }
 
     public void onLoad() {
-        Claudius.commandManager.setClientMessage(getCommandMessage());
+        claudius.commandManager.setClientMessage(getCommandMessage());
     }
 
     @SubscribeEvent
     public void onSettingChange(ClientEvent event) {
         if (event.getStage() == 2 && equals(event.getSetting().getFeature()))
-            Claudius.commandManager.setClientMessage(getCommandMessage());
+            claudius.commandManager.setClientMessage(getCommandMessage());
     }
 
     public String getCommandMessage() {

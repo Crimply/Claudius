@@ -10,8 +10,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.Display;
 
-@Mod(modid = Claudius.MODID, name = Claudius.MODNAME, version = Claudius.MODVER)
-public class Claudius {
+@Mod(modid = claudius.MODID, name = claudius.MODNAME, version = claudius.MODVER)
+public class claudius {
     public static final String MODID = "claudius";
     public static final String MODNAME = "Claudius";
     public static final String MODVER = "1.7.0";
@@ -35,7 +35,7 @@ public class Claudius {
     public static CapeManager capeManager;
     public static TickManager tickManager;
     @Mod.Instance
-    public static Claudius INSTANCE;
+    public static claudius INSTANCE;
     private static boolean unloaded;
 
     static {
@@ -83,7 +83,7 @@ public class Claudius {
             reloadManager = new ReloadManager();
             reloadManager.init(commandManager != null ? commandManager.getPrefix() : "!");
         }
-        Claudius.onUnload();
+        claudius.onUnload();
         eventManager = null;
         speedManager = null;
         holeManager = null;
@@ -105,15 +105,15 @@ public class Claudius {
     }
 
     public static void reload() {
-        Claudius.unload(false);
-        Claudius.load();
+        claudius.unload(false);
+        claudius.load();
     }
 
     public static void onUnload() {
         if (!unloaded) {
             eventManager.onUnload();
             moduleManager.onUnload();
-            configManager.saveConfig(Claudius.configManager.config.replaceFirst("claudius/", ""));
+            configManager.saveConfig(claudius.configManager.config.replaceFirst("claudius/", ""));
             moduleManager.onUnloadPost();
             unloaded = true;
         }
@@ -127,7 +127,7 @@ public class Claudius {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         Display.setTitle("Minecraft 1.12.2");
-        Claudius.load();
+        claudius.load();
         }
 
     @Mod.EventHandler

@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.gui;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.gui.components.Component;
 import me.crimp.claudius.mod.gui.components.items.Item;
@@ -32,10 +32,10 @@ public class ClickGui extends GuiScreen {
 
     private void load() {
         int x = -84;
-        for (final Module.Category category : Claudius.moduleManager.getCategories()) this.components.add(new Component(category.getName(), x += 100, 23, true) {
+        for (final Module.Category category : claudius.moduleManager.getCategories()) this.components.add(new Component(category.getName(), x += 100, 23, true) {
             @Override
             public void setupItems() {
-                Claudius.moduleManager.getModulesByCategory(category).forEach(module -> {
+                claudius.moduleManager.getModulesByCategory(category).forEach(module -> {
                     if (!module.hidden) this.addButton(new ModuleButton(module));
                 });
             }

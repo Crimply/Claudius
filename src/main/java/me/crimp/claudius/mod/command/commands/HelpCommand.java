@@ -1,7 +1,7 @@
 package me.crimp.claudius.mod.command.commands;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.command.Command;
 
 public class HelpCommand
@@ -13,7 +13,7 @@ public class HelpCommand
     @Override
     public void execute(String[] commands) {
         HelpCommand.sendMessage("Commands: ");
-        for (Command command : Claudius.commandManager.getCommands()) HelpCommand.sendMessage(ChatFormatting.GRAY + Claudius.commandManager.getPrefix() + command.getName());
+        for (Command command : claudius.commandManager.getCommands()) HelpCommand.sendMessage(ChatFormatting.GRAY + claudius.commandManager.getPrefix() + command.getName());
     }
 }
 

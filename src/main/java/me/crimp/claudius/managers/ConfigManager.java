@@ -1,7 +1,7 @@
 package me.crimp.claudius.managers;
 
 import com.google.gson.*;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Bind;
@@ -51,7 +51,7 @@ public class ConfigManager implements Util {
                 } catch (Exception ignored) {}
                 return;
         }
-        Claudius.LOGGER.error("Unknown Setting type for: " + feature.getName() + " : " + setting.getName());
+        claudius.LOGGER.error("Unknown Setting type for: " + feature.getName() + " : " + setting.getName());
     }
 
     private static void loadFile(JsonObject input, Feature feature) {
@@ -178,10 +178,10 @@ public class ConfigManager implements Util {
     }
 
     public void init() {
-        this.features.addAll(Claudius.moduleManager.modules);
+        this.features.addAll(claudius.moduleManager.modules);
         String name = loadCurrentConfig();
         loadConfig(name);
-        Claudius.LOGGER.info("Config loaded.");
+        claudius.LOGGER.info("Config loaded.");
     }
 
     private void loadSettings(Feature feature) throws IOException {
@@ -196,7 +196,7 @@ public class ConfigManager implements Util {
         try {
             loadFile((new JsonParser()).parse(new InputStreamReader(stream)).getAsJsonObject(), feature);
         } catch (IllegalStateException e) {
-            Claudius.LOGGER.error("Bad Config File for: " + feature.getName() + ". Resetting...");
+            claudius.LOGGER.error("Bad Config File for: " + feature.getName() + ". Resetting...");
             loadFile(new JsonObject(), feature);
         }
         stream.close();

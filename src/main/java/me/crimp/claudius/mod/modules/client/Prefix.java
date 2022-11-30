@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.modules.client;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
 
@@ -10,11 +10,11 @@ public class Prefix extends Module {
     public static Prefix INSTANCE = new Prefix();
 
     public void SetPrefix() {
-        Claudius.commandManager.setPrefix(prefix.getPlannedValue());
+        claudius.commandManager.setPrefix(prefix.getPlannedValue());
     }
 
     @Override
     public void onLoad() {
-        Claudius.commandManager.setPrefix(prefix.getValue());
+        claudius.commandManager.setPrefix(prefix.getValue());
     }
 }

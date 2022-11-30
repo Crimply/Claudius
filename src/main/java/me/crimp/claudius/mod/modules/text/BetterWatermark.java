@@ -1,7 +1,7 @@
 package me.crimp.claudius.mod.modules.text;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.Render2DEvent;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.client.ClickGuiModule;
@@ -45,14 +45,14 @@ public class BetterWatermark extends Module {
     public void drawWatermark() {
         if (BasicBitchMode.getValue()) {
             int textcolor = ColorUtil.toRGBA(ClickGuiModule.INSTANCE.red.getValue(), ClickGuiModule.INSTANCE.green.getValue(), ClickGuiModule.INSTANCE.blue.getValue());
-            String string = Claudius.MODNAME + " v" + Claudius.MODVER;
-            Claudius.textManager.drawString(string, 2.0F, 2, textcolor, true);
+            String string = claudius.MODNAME + " v" + claudius.MODVER;
+            claudius.textManager.drawString(string, 2.0F, 2, textcolor, true);
         } else {
-            String message = ChatFormatting.BOLD + "" + ChatFormatting.DARK_AQUA + "Cldus v" + Claudius.MODVER + ChatFormatting.RESET;
+            String message = ChatFormatting.BOLD + "" + ChatFormatting.DARK_AQUA + "Cldus v" + claudius.MODVER + ChatFormatting.RESET;
 
             if (Name.getValue()) message = message + " | Name:" + mc.player.getName();
-            if (Ping.getValue()) message = message + " | Ping:" + Claudius.serverManager.getPing() + "ms";
-            if (Config.getValue()) message = message + " | Cfg:" + Claudius.configManager.CurrentConfig();
+            if (Ping.getValue()) message = message + " | Ping:" + claudius.serverManager.getPing() + "ms";
+            if (Config.getValue()) message = message + " | Cfg:" + claudius.configManager.CurrentConfig();
             if (Fps.getValue()) message = message + " | Fps:" + Minecraft.getDebugFPS();
 
             if (Ip.getValue()) {
@@ -76,13 +76,13 @@ public class BetterWatermark extends Module {
             if (SnapMode.getValue().equals(Snap.Off)) {
                 if (BackGround.getValue())
                     RenderUtil.drawRectangleCorrectly(X.getValue(), Y.getValue(), w + 8, h + 4, BoxColour);
-                Claudius.textManager.drawString(message, X.getValue() + 3, Y.getValue() + 3, ColorUtil.toRGBA(255, 255, 255, 255), true);
+                claudius.textManager.drawString(message, X.getValue() + 3, Y.getValue() + 3, ColorUtil.toRGBA(255, 255, 255, 255), true);
             } else if (SnapMode.getValue().equals(Snap.TopLeft)) {
                 if (BackGround.getValue()) RenderUtil.drawRectangleCorrectly(10, 1, w + 8, h + 4, BoxColour);
-                Claudius.textManager.drawString(message, 10 + 3, 1 + 3, ColorUtil.toRGBA(255, 255, 255, 255), true);
+                claudius.textManager.drawString(message, 10 + 3, 1 + 3, ColorUtil.toRGBA(255, 255, 255, 255), true);
             } else if (SnapMode.getValue().equals(Snap.BottemLeft)) {
                 if (BackGround.getValue()) RenderUtil.drawRectangleCorrectly(1, 530, w + 8, h + 4, BoxColour);
-                Claudius.textManager.drawString(message, 1 + 3, 530 + 3, ColorUtil.toRGBA(255, 255, 255, 255), true);
+                claudius.textManager.drawString(message, 1 + 3, 530 + 3, ColorUtil.toRGBA(255, 255, 255, 255), true);
             }
         }
     }

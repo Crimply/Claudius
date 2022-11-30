@@ -1,7 +1,7 @@
 package me.crimp.claudius.managers;
 
 import com.google.common.base.Strings;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.*;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.command.Command;
@@ -43,12 +43,12 @@ public class EventManager extends Feature {
     @SubscribeEvent
     public void onUpdate(LivingEvent.LivingUpdateEvent event) {
         if (!fullNullCheck() && (event.getEntity().getEntityWorld()).isRemote && event.getEntityLiving().equals(mc.player)) {
-            Claudius.inventoryManager.update();
-            Claudius.moduleManager.onUpdate();
+            claudius.inventoryManager.update();
+            claudius.moduleManager.onUpdate();
             if (HUD.INSTANCE.renderingMode.getValue() == HUD.RenderingMode.Length) {
-                Claudius.moduleManager.sortModules(true);
+                claudius.moduleManager.sortModules(true);
             } else {
-                Claudius.moduleManager.sortModulesABC();
+                claudius.moduleManager.sortModulesABC();
             }
         }
     }
@@ -56,19 +56,19 @@ public class EventManager extends Feature {
     @SubscribeEvent
     public void onClientConnect(FMLNetworkEvent.ClientConnectedToServerEvent event) {
         this.logoutTimer.reset();
-        Claudius.moduleManager.onLogin();
+        claudius.moduleManager.onLogin();
     }
 
     @SubscribeEvent
     public void onClientDisconnect(FMLNetworkEvent.ClientDisconnectionFromServerEvent event) {
-        Claudius.moduleManager.onLogout();
+        claudius.moduleManager.onLogout();
     }
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
         if (fullNullCheck())
             return;
-        Claudius.moduleManager.onTick();
+        claudius.moduleManager.onTick();
         for (EntityPlayer player : mc.world.playerEntities) {
             if (player == null || player.getHealth() > 0.0F)
                 continue;
@@ -84,13 +84,13 @@ public class EventManager extends Feature {
         if (fullNullCheck())
             return;
         if (event.getStage() == 0) {
-            Claudius.speedManager.updateValues();
-            Claudius.rotationManager.updateRotations();
-            Claudius.positionManager.updatePosition();
+            claudius.speedManager.updateValues();
+            claudius.rotationManager.updateRotations();
+            claudius.positionManager.updatePosition();
         }
         if (event.getStage() == 1) {
-            Claudius.rotationManager.restoreRotations();
-            Claudius.positionManager.restorePosition();
+            claudius.rotationManager.restoreRotations();
+            claudius.positionManager.restorePosition();
         }
     }
 
@@ -98,7 +98,7 @@ public class EventManager extends Feature {
     public void onPacketReceive(PacketEvent.Receive event) {
         if (event.getStage() != 0)
             return;
-        Claudius.serverManager.onPacketReceived();
+        claudius.serverManager.onPacketReceived();
         if (event.getPacket() instanceof SPacketEntityStatus) {
             SPacketEntityStatus packet = event.getPacket();
             if (packet.getOpCode() == 35 && packet.getEntity(mc.world) instanceof EntityPlayer) {
@@ -134,7 +134,7 @@ public class EventManager extends Feature {
                     });
         }
         if (event.getPacket() instanceof net.minecraft.network.play.server.SPacketTimeUpdate)
-            Claudius.serverManager.update();
+            claudius.serverManager.update();
     }
 
     @SubscribeEvent
@@ -149,7 +149,7 @@ public class EventManager extends Feature {
         GlStateManager.disableDepth();
         GlStateManager.glLineWidth(1.0F);
         Render3DEvent render3dEvent = new Render3DEvent(event.getPartialTicks());
-        Claudius.moduleManager.onRender3D(render3dEvent);
+        claudius.moduleManager.onRender3D(render3dEvent);
         GlStateManager.glLineWidth(1.0F);
         GlStateManager.shadeModel(7424);
         GlStateManager.disableBlend();
@@ -168,7 +168,7 @@ public class EventManager extends Feature {
     @SubscribeEvent
     public void renderHUD(RenderGameOverlayEvent.Post event) {
         if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR)
-            Claudius.textManager.updateResolution();
+            claudius.textManager.updateResolution();
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -176,7 +176,7 @@ public class EventManager extends Feature {
         if (event.getType().equals(RenderGameOverlayEvent.ElementType.TEXT)) {
             ScaledResolution resolution = new ScaledResolution(mc);
             Render2DEvent render2DEvent = new Render2DEvent(event.getPartialTicks(), resolution);
-            Claudius.moduleManager.onRender2D(render2DEvent);
+            claudius.moduleManager.onRender2D(render2DEvent);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
     }
@@ -184,7 +184,7 @@ public class EventManager extends Feature {
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
     public void onKeyInput(InputEvent.KeyInputEvent event) {
         if (Keyboard.getEventKeyState())
-            Claudius.moduleManager.onKeyPressed(Keyboard.getEventKey());
+            claudius.moduleManager.onKeyPressed(Keyboard.getEventKey());
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -193,7 +193,7 @@ public class EventManager extends Feature {
             event.setCanceled(true);
             try {
                 mc.ingameGUI.getChatGUI().addToSentMessages(event.getMessage());
-                if (event.getMessage().length() > 1) Claudius.commandManager.executeCommand(event.getMessage().substring(Command.getCommandPrefix(toString()).length() - 1));
+                if (event.getMessage().length() > 1) claudius.commandManager.executeCommand(event.getMessage().substring(Command.getCommandPrefix(toString()).length() - 1));
                 else Command.sendMessage("Please enter a command.");
             } catch (Exception e) {
                 e.printStackTrace();

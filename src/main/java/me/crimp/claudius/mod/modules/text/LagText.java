@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.modules.text;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.modules.Module;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketChatMessage;
@@ -30,7 +30,7 @@ public class LagText extends Module {
         if (LagText.fullNullCheck() || LagText.mc.player.equals(event.getName())) return;
         TotemPopCount++;
         if (TotemPopCount == 1) {
-            if (!Claudius.friendManager.isFriend((event.getName()))) {
+            if (!claudius.friendManager.isFriend((event.getName()))) {
                 if (this.enabled.getValue()) {
                     mc.player.connection.sendPacket(new CPacketChatMessage("/msg " + event.getName() + " " + LagMsg));
                 }

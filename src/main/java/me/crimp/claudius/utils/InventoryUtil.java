@@ -1,6 +1,6 @@
 package me.crimp.claudius.utils;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -334,7 +334,7 @@ public class InventoryUtil implements Util {
                     switchedItemSwitched[0] = true;
                 } else if (back && switchedItem) {
                     switchedItemSwitched[0] = false;
-                    Claudius.inventoryManager.recoverSilent(lastHotbarSlot);
+                    claudius.inventoryManager.recoverSilent(lastHotbarSlot);
                 }
                 switchedItemSwitched[1] = true;
                 break;
@@ -366,7 +366,7 @@ public class InventoryUtil implements Util {
                     switchedItemSwitched[0] = true;
                 } else if (back && switchedItem) {
                     switchedItemSwitched[0] = false;
-                    Claudius.inventoryManager.recoverSilent(lastHotbarSlot);
+                    claudius.inventoryManager.recoverSilent(lastHotbarSlot);
                 }
                 switchedItemSwitched[1] = true;
                 break;

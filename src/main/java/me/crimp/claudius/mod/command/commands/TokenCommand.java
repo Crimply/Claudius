@@ -15,6 +15,6 @@ public class TokenCommand extends Command {
 
     @Override
     public void execute(String[] commands) {
-        Command.sendMessage("ur Claudius token is 78612hjsdha80d78qjnsahdaudh727dsh82s71313sdawew3");
+        Command.sendMessage("ur claudius token is 78612hjsdha80d78qjnsahdaudh727dsh82s71313sdawew3");
     }
 }

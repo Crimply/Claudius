@@ -1,6 +1,6 @@
 package me.crimp.claudius.mod.modules.client;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.ClientEvent;
 import me.crimp.claudius.mod.gui.ClickGui;
 import me.crimp.claudius.mod.modules.Module;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import org.lwjgl.input.Keyboard;
 
-import static me.crimp.claudius.Claudius.configManager;
+import static me.crimp.claudius.claudius.configManager;
 
 public class ClickGuiModule extends Module {
     public static final ClickGuiModule INSTANCE = new ClickGuiModule();
@@ -64,7 +64,7 @@ public class ClickGuiModule extends Module {
 
     @SubscribeEvent
     public void onSettingChange(ClientEvent event) {
-        if (event.getStage() == 2 && event.getSetting().getFeature().equals(this)) Claudius.colorManager.setColor(this.red.getPlannedValue(), this.green.getPlannedValue(), this.blue.getPlannedValue(), this.hoverAlpha.getPlannedValue());
+        if (event.getStage() == 2 && event.getSetting().getFeature().equals(this)) claudius.colorManager.setColor(this.red.getPlannedValue(), this.green.getPlannedValue(), this.blue.getPlannedValue(), this.hoverAlpha.getPlannedValue());
     }
 
     @Override
@@ -79,7 +79,7 @@ public class ClickGuiModule extends Module {
 
     @Override
     public void onLoad() {
-        Claudius.colorManager.setColor(red.getValue(), green.getValue(), blue.getValue(), hoverAlpha.getValue());
+        claudius.colorManager.setColor(red.getValue(), green.getValue(), blue.getValue(), hoverAlpha.getValue());
     }
 
     @Override

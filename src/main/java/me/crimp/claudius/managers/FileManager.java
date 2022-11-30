@@ -1,6 +1,6 @@
 package me.crimp.claudius.managers;
 
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.modules.Module;
 
@@ -24,10 +24,12 @@ public class FileManager
 
     public FileManager() {
         //this.getMkDirectory(this.base, "pvp");
-        for (Module.Category category : Claudius.moduleManager.getCategories()) {
+        for (Module.Category category : claudius.moduleManager.getCategories()) {
             this.getMkDirectory(this.config, category.getName());
         }
     }
+    public static final Path GAMEDIR = mc.gameDir.toPath().resolve(claudius.MODNAME);
+
 
     public static boolean appendTextFile(String data, String file) {
         try {

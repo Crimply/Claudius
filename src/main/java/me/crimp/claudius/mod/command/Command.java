@@ -1,7 +1,7 @@
 package me.crimp.claudius.mod.command;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.crimp.claudius.Claudius;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.Feature;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentBase;
@@ -27,12 +27,12 @@ public abstract class Command extends Feature {
     }
 
     public static void sendMessage(String message) {
-        Command.sendSilentMessage(Claudius.commandManager.getClientMessage() + " " + ChatFormatting.GRAY + message);
+        Command.sendSilentMessage(claudius.commandManager.getClientMessage() + " " + ChatFormatting.GRAY + message);
     }
 
     public static void sendOverwriteClientMessage(String message) {
         if (mc.player != null) {
-            final ITextComponent itc = new TextComponentString(Claudius.commandManager.getClientMessage() + " " + ChatFormatting.GRAY + message);
+            final ITextComponent itc = new TextComponentString(claudius.commandManager.getClientMessage() + " " + ChatFormatting.GRAY + message);
             mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(itc, 5936);
         }
     }
@@ -45,7 +45,7 @@ public abstract class Command extends Feature {
     }
 
     public static String getCommandPrefix(String s) {
-        return Claudius.commandManager.getPrefix();
+        return claudius.commandManager.getPrefix();
     }
 
     public abstract void execute(String[] var1);
