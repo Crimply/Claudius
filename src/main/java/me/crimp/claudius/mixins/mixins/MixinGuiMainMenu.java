@@ -66,7 +66,7 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
 
 
             int j = this.width / 2 - 137;
-            this.drawGradientRect(0, 0, this.width, this.height, ColorUtil.toARGB(255, 255, 255, 255), ColorUtil.toARGB(255, 255, 255, 255));
+            this.drawGradientRect(0, 0, this.width, this.height, ColorUtil.toARGB(255, 0, 0, 255), ColorUtil.toARGB(66, 155, 184, 255));
             this.drawGradientRect(0, 0, this.width, this.height, 0, Integer.MIN_VALUE);
 
 

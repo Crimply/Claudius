@@ -103,32 +103,14 @@ public class ModuleButton extends Button {
                 }
             }
         }
-        String a = module.getDescription().split(" ",1).toString();
-        String b = module.getDescription().split(" ",1).toString();
-        String c = module.getDescription().split(" ",1).toString();
-        String d = module.getDescription().split(" ",1).toString();
-        String e = module.getDescription().split(" ",1).toString();
-        String f = module.getDescription().split(" ",1).toString();
-        String g = module.getDescription().split(" ",1).toString();
-        String h = module.getDescription().split(" ",1).toString();
-        String i = module.getDescription().split(" ",1).toString();
-        String j = module.getDescription().split(" ",1).toString();
-        String k = module.getDescription().split(" ",1).toString();
-
-
+        String a = module.getDescription();
+        String split[] = a.split(" ", 25);
+        int num1 = 0;
         if (isHovering(mouseX, mouseY)) {
-            claudius.textManager.drawString(a, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-            claudius.textManager.drawString(b, mouseX+10, mouseY + 5, ColorUtil.toRGBA(0, 0, 0, 255), false);
-            claudius.textManager.drawString(c, mouseX+10, mouseY + 10, ColorUtil.toRGBA(0, 0, 0, 255), false);
-            claudius.textManager.drawString(d, mouseX+10, mouseY + 15, ColorUtil.toRGBA(0, 0, 0, 255), false);
-            claudius.textManager.drawString(e, mouseX+10, mouseY + 20, ColorUtil.toRGBA(0, 0, 0, 255), false);
-//            claudius.textManager.drawString(f, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-//            claudius.textManager.drawString(g, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-//            claudius.textManager.drawString(h, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-//            claudius.textManager.drawString(i, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-//            claudius.textManager.drawString(j, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-//            claudius.textManager.drawString(k, mouseX+10, mouseY, ColorUtil.toRGBA(0, 0, 0, 255), false);
-
+            for (String s : split) {
+                num1 = num1 + 10;
+                claudius.textManager.drawString(s, mouseX, mouseY + num1, ColorUtil.toRGBA(0, 0, 0, 255), false);
+            }
         }
     }
 

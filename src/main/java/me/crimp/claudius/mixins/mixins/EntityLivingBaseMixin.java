@@ -29,7 +29,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
         if (player == null || !this.isPlayer())
             return;
 
-        if (1 == 1 && claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
+        if (claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
             callback.setReturnValue(20);
         }
     }

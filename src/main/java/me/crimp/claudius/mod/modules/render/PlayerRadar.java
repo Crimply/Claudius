@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.text;
+package me.crimp.claudius.mod.modules.render;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.claudius;
@@ -17,7 +17,7 @@ public class PlayerRadar extends Module {
     public Setting<Integer> Y = register(new Setting<>("Y", 10, 0, 550));
 
     public PlayerRadar() {
-        super("PlayerRadar", "Shows players in render distance on hud", Category.Text, false, false);
+        super("PlayerRadar", "Shows players in render distance on hud", Category.Render, false, false);
     }
 
     public static PlayerRadar INSTANCE = new PlayerRadar();
@@ -27,6 +27,7 @@ public class PlayerRadar extends Module {
         bd = bd.setScale(decimalPlace, RoundingMode.HALF_UP);
         return bd.floatValue();
     }
+
 
     @Override
     public void onRender2D(Render2DEvent event) {
@@ -44,15 +45,6 @@ public class PlayerRadar extends Module {
                 health_str = health + "";
 
                 health_str = health_str.replace(".0", "");
-                health_str = health_str.replace(".1", "");
-                health_str = health_str.replace(".2", "");
-                health_str = health_str.replace(".3", "");
-                health_str = health_str.replace(".4", "");
-                health_str = health_str.replace(".5", "");
-                health_str = health_str.replace(".6", "");
-                health_str = health_str.replace(".7", "");
-                health_str = health_str.replace(".8", "");
-                health_str = health_str.replace(".9", "");
 
                 if (health >= 12.0) {
                     heal = " " + ChatFormatting.GREEN + health_str + "";
@@ -71,7 +63,7 @@ public class PlayerRadar extends Module {
                 } else if (claudius.enemyManager.isEnemy(entity.getName())) {
                     claudius.textManager.drawString(str + ChatFormatting.RED + name, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 } else {
-                    claudius.textManager.drawString(str + name, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.rainbow(0).getRGB(), false);
+                    claudius.textManager.drawString(str + name, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 }
             }
         }
