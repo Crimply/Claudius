@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.text;
+package me.crimp.claudius.mod.modules.render;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.claudius;
@@ -28,7 +28,7 @@ public class BetterWatermark extends Module {
 
 
     public BetterWatermark() {
-        super("BetterWatermark", "Watermark But Better", Category.Text, false, false);
+        super("BetterWatermark", "Watermark But Better", Category.Render, false, false);
     }
 
     private enum Snap {

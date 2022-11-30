@@ -75,6 +75,17 @@ public class ModuleButton extends Button {
     @Override
     public void drawScreen(final int mouseX, final int mouseY, final float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
+        String a = module.getDescription();
+        String split[] = a.split(" ", 25);
+        int num1 = 0;
+        if (isHovering(mouseX, mouseY)) {
+            for (String s : split) {
+                num1 = num1 + 10;
+                if (ClickGuiModule.INSTANCE.Descriptions.getValue()) {
+                    claudius.textManager.drawString(s, mouseX, mouseY + num1, ColorUtil.toRGBA(0, 0, 0, 255), false);
+                }
+            }
+        }
         if (!this.items.isEmpty()) {
             if (ClickGuiModule.INSTANCE.Cross.getValue()) {
                 if (this.subOpen) {
@@ -101,15 +112,6 @@ public class ModuleButton extends Button {
                     }
                     item.update();
                 }
-            }
-        }
-        String a = module.getDescription();
-        String split[] = a.split(" ", 25);
-        int num1 = 0;
-        if (isHovering(mouseX, mouseY)) {
-            for (String s : split) {
-                num1 = num1 + 10;
-                claudius.textManager.drawString(s, mouseX, mouseY + num1, ColorUtil.toRGBA(0, 0, 0, 255), false);
             }
         }
     }

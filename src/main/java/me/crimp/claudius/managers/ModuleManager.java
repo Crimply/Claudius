@@ -54,6 +54,7 @@ public class ModuleManager extends Feature {
                 new HUD(),
                 new RPC(),
                 new Prefix(),
+                new CustomBackground(),
 
                 //fake
                 new FakeExploit(),

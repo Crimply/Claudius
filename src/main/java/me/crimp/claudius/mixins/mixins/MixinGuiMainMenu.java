@@ -1,6 +1,7 @@
 package me.crimp.claudius.mixins.mixins;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
+import me.crimp.claudius.claudius;
 import me.crimp.claudius.mod.modules.client.HUD;
 import me.crimp.claudius.utils.ColorUtil;
 import net.minecraft.client.Minecraft;
@@ -53,13 +54,16 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
     private int openGLWarningY2;
     @Shadow
     private int openGLWarning2Width;
-    @Shadow private float panoramaTimer;
-    @Shadow private static ResourceLocation[] TITLE_PANORAMA_PATHS;
+    @Shadow
+    private float panoramaTimer;
+    @Shadow
+    private static ResourceLocation[] TITLE_PANORAMA_PATHS;
     private static final ResourceLocation BGTEXTURE = new ResourceLocation("textures/2.png");
 
 
     @Inject(method = "drawScreen", at = @At("HEAD"), cancellable = true)
     void drawScreen(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
+        if (claudius.moduleManager.isModuleEnabled("CustomBackground")) {
 
             GlStateManager.enableAlpha();
             GlStateManager.disableCull();
@@ -137,9 +141,10 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
             GlStateManager.pushMatrix();
 
 
-        if (HUD.INSTANCE.CustomBg.getValue()) {
-            ci.cancel();
-            super.drawScreen(mouseX, mouseY, partialTicks);
+            if (claudius.moduleManager.isModuleEnabled("CustomBackground")) {
+                ci.cancel();
+                super.drawScreen(mouseX, mouseY, partialTicks);
+            }
         }
     }
 }

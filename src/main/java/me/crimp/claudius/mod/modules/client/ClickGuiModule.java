@@ -37,6 +37,7 @@ public class ClickGuiModule extends Module {
 //    public Setting<Boolean> Gradient = register(new Setting<>("Gradient", true, v -> ColourSettings.getValue()));
     public Setting<Boolean> Guimove = register(new Setting<>("ClickGuiMove", true, ""));
     public Setting<Boolean> Cross = register(new Setting<>("Plus/Minus", true, ""));
+    public Setting<Boolean> Descriptions = register(new Setting<>("Descriptions", true, ""));
 
     public ClickGuiModule() {
         super("ClickGui", "Opens the ClickGui", Module.Category.Client, false, false);
