@@ -1,6 +1,5 @@
 package me.crimp.claudius.utils;
 
-import me.crimp.claudius.mod.modules.client.ClickGuiModule;
 
 import java.awt.*;
 
