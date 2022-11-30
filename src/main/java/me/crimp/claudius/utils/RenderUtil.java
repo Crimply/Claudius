@@ -51,61 +51,6 @@ public class RenderUtil implements Util {
         GL11.glLineWidth(1.0f);
         Gui.drawRect(x, y, x + w, y + h, color);
     }
-    public static void drawSidewaysGradientRect(int left, int top, int right, int bottom, int startColor, int endColor) {
-        float c = (float) (startColor >> 24 & 255) / 255.0F;
-        float c1 = (float) (startColor >> 16 & 255) / 255.0F;
-        float c2 = (float) (startColor >> 8 & 255) / 255.0F;
-        float c3 = (float) (startColor & 255) / 255.0F;
-        float c4 = (float) (endColor >> 24 & 255) / 255.0F;
-        float c5 = (float) (endColor >> 16 & 255) / 255.0F;
-        float c6 = (float) (endColor >> 8 & 255) / 255.0F;
-        float c7 = (float) (endColor & 255) / 255.0F;
-        GlStateManager.disableTexture2D();
-        GlStateManager.enableBlend();
-        GlStateManager.disableAlpha();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        GlStateManager.shadeModel(7425);
-        Tessellator tessellator = Tessellator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuffer();
-        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-        bufferbuilder.pos((double) right, (double) top, (double) 0).color(c1, c2, c3, c).endVertex();
-        bufferbuilder.pos((double) left, (double) top, (double) 0).color(c5, c6, c7, c4).endVertex();
-        bufferbuilder.pos((double) left, (double) bottom, (double) 0).color(c5, c6, c7, c4).endVertex();
-        bufferbuilder.pos((double) right, (double) bottom, (double) 0).color(c1, c2, c3, c).endVertex();
-        tessellator.draw();
-        GlStateManager.shadeModel(7424);
-        GlStateManager.disableBlend();
-        GlStateManager.enableAlpha();
-        GlStateManager.enableTexture2D();
-    }
-
-    public static void drawGradientRect(final int x, final int y, final int w, final int h, final int startColor, final int endColor) {
-        final float f = (startColor >> 24 & 0xFF) / 255.0f;
-        final float f2 = (startColor >> 16 & 0xFF) / 255.0f;
-        final float f3 = (startColor >> 8 & 0xFF) / 255.0f;
-        final float f4 = (startColor & 0xFF) / 255.0f;
-        final float f5 = (endColor >> 24 & 0xFF) / 255.0f;
-        final float f6 = (endColor >> 16 & 0xFF) / 255.0f;
-        final float f7 = (endColor >> 8 & 0xFF) / 255.0f;
-        final float f8 = (endColor & 0xFF) / 255.0f;
-        GlStateManager.disableTexture2D();
-        GlStateManager.enableBlend();
-        GlStateManager.disableAlpha();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        GlStateManager.shadeModel(7425);
-        final Tessellator tessellator = Tessellator.getInstance();
-        final BufferBuilder vertexbuffer = tessellator.getBuffer();
-        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_COLOR);
-        vertexbuffer.pos(x + (double)w, (double)y, 0.0).color(f2, f3, f4, f).endVertex();
-        vertexbuffer.pos((double)x, (double)y, 0.0).color(f2, f3, f4, f).endVertex();
-        vertexbuffer.pos((double)x, y + (double)h, 0.0).color(f6, f7, f8, f5).endVertex();
-        vertexbuffer.pos(x + (double)w, y + (double)h, 0.0).color(f6, f7, f8, f5).endVertex();
-        tessellator.draw();
-        GlStateManager.shadeModel(7424);
-        GlStateManager.disableBlend();
-        GlStateManager.enableAlpha();
-        GlStateManager.enableTexture2D();
-    }
 
     public static void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight) {
         float f = 1.0F / textureWidth;
