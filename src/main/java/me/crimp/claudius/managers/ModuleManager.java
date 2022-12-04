@@ -36,6 +36,7 @@ public class ModuleManager extends Feature {
                 new DonkeySwap(),
                 new McfSync(),
                 new ClickEnemy(),
+                new AutoEmemy(),
 
                 //text
                 new ChatSuffix(),
@@ -76,6 +77,7 @@ public class ModuleManager extends Feature {
                 new CoolRenderOptions(),
                 new SwingSpeed(),
                 new ClipFly(),
+                new RainBowTextTest(),
                 new BurrowEsp()
         );
     }

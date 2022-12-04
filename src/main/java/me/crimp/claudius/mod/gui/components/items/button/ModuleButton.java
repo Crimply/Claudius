@@ -82,7 +82,7 @@ public class ModuleButton extends Button {
             for (String s : split) {
                 num1 = num1 + 10;
                 if (ClickGuiModule.INSTANCE.Descriptions.getValue()) {
-                    claudius.textManager.drawString(s, mouseX, mouseY + num1, ColorUtil.toRGBA(0, 0, 0, 255), false);
+                    claudius.textManager.drawStringWithShadow(s, mouseX, mouseY + num1, ColorUtil.toRGBA(0, 0, 0, 255));
                 }
             }
         }
