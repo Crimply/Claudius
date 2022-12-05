@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityLivingBase.class)
-public abstract class EntityLivingBaseMixin extends Entity {
-    public EntityLivingBaseMixin(World world) {
+public abstract class MixinEntityLivingBase extends Entity {
+    public MixinEntityLivingBase(World world) {
         super(world);
     }
 
@@ -30,7 +30,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
             return;
 
         if (claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
-            callback.setReturnValue(20);
+            callback.setReturnValue(SwingSpeed.INSTANCE.sped.getValue());
         }
     }
 }

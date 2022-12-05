@@ -24,9 +24,6 @@ public class HUD extends Module {
     private final Setting<Boolean> greeter = register(new Setting<>("Greeter", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
-    public Setting<Boolean> notify = register(new Setting<>("Notifcations", false, "notifys in text when shit happens"));
-    public Setting<Boolean> notifyToggles = register(new Setting<Boolean>("ToggleNotis", false, v -> this.notify.getValue()));
-    public Setting<Boolean> totemwarning = register(new Setting<Boolean>("TotemWarning", false, v -> this.notify.getValue()));
     public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
     public Setting<Boolean> CustomBg = register(new Setting<>("CustomBackground", true, "CustomBackground in main menu"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
@@ -50,14 +47,6 @@ public class HUD extends Module {
         if (this.hitMarkerTimer == 10) {
             this.hitMarkerTimer = 0;
             this.shouldIncrement = false;
-        }
-        //if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING) {return;}
-        if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING && InventoryUtil.getItemCount(Items.TOTEM_OF_UNDYING, true) != 0 && totemwarning.getValue()) { timer.reset();}
-        if (mc.player.getHeldItemOffhand().getItem() != Items.TOTEM_OF_UNDYING && InventoryUtil.getItemCount(Items.TOTEM_OF_UNDYING, true) != 0 && totemwarning.getValue()) {
-            if (timer.passedMs(5L)) {
-                Command.sendOverwriteClientMessage("There is no totem in your offhand!");
-                timer.reset();
-            }
         }
     }
 

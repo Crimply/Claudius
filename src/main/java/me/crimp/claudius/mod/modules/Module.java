@@ -7,6 +7,7 @@ import me.crimp.claudius.event.events.Render2DEvent;
 import me.crimp.claudius.event.events.Render3DEvent;
 import me.crimp.claudius.mod.Feature;
 import me.crimp.claudius.mod.modules.client.HUD;
+import me.crimp.claudius.mod.modules.text.Notifications;
 import me.crimp.claudius.mod.setting.Bind;
 import me.crimp.claudius.mod.setting.Setting;
 import net.minecraft.util.text.TextComponentString;
@@ -91,7 +92,7 @@ public abstract class Module extends Feature {
         this.enabled.setValue(Boolean.TRUE);
         this.onToggle();
         this.onEnable();
-        if (HUD.INSTANCE.notifyToggles.getValue()) {
+        if (Notifications.INSTANCE.notifyToggles.getValue()) {
             TextComponentString text = new TextComponentString(claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " Enabled.");
             Module.mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(text, 1);
         }
@@ -105,7 +106,7 @@ public abstract class Module extends Feature {
             MinecraftForge.EVENT_BUS.unregister(this);
         }
         this.enabled.setValue(false);
-        if (HUD.INSTANCE.notifyToggles.getValue()) {
+        if (Notifications.INSTANCE.notifyToggles.getValue()) {
             TextComponentString text = new TextComponentString(claudius.commandManager.getClientMessage() + " " + this.getDisplayName() + " Disabled.");
             Module.mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(text, 1);
         }
@@ -157,7 +158,7 @@ public abstract class Module extends Feature {
         Pvp("Pvp"),
         Render("Render"),
         Movement("Movement"),
-        Text("Text"),
+        Text("Text & Chat"),
         Client("Client");
 
         private final String name;
