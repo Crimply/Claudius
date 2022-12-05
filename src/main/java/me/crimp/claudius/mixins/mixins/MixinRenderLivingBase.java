@@ -38,19 +38,16 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
 
     protected MixinRenderLivingBase(RenderManager renderManager) {
         super(renderManager);
-        this.red = 0.0F;
         this.green = 0.0F;
+        this.red = 0.0F;
         this.blue = 0.0F;
     }
 
-
-    
     /**
      * @author
      * @reason
      */
-
-
+    
     @Overwrite
     public void doRender(T entity, double x, double y, double z, float entityYaw, float partialTicks) {
         if (!MinecraftForge.EVENT_BUS.post(new RenderLivingEvent.Pre(entity, RenderLivingBase.class.cast(this), partialTicks, x, y, z))) {
@@ -110,10 +107,10 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                     if (flag1)
                         unsetScoreTeamColor();
                 } else {
-                    if (Wireframe.INSTANCE.isOn() && (Wireframe.INSTANCE.players.getValue() && entity instanceof EntityPlayer && (Wireframe.INSTANCE.mode.getValue().equals(Wireframe.RenderMode.SOLID)))) {
-                        this.red = ClickGuiModule.INSTANCE.red.getValue() / 255.0F;
-                        this.green = ClickGuiModule.INSTANCE.green.getValue() / 255.0F;
-                        this.blue = ClickGuiModule.INSTANCE.blue.getValue() / 255.0F;
+                    if (Wireframe.INSTANCE.isOn() && (Wireframe.INSTANCE).players.getValue().booleanValue() && entity instanceof EntityPlayer && (Wireframe.INSTANCE).mode.getValue().equals(Wireframe.RenderMode.SOLID)) {
+                        this.red = (ClickGuiModule.INSTANCE).red.getValue().intValue() / 255.0F;
+                        this.green = (ClickGuiModule.INSTANCE).green.getValue().intValue() / 255.0F;
+                        this.blue = (ClickGuiModule.INSTANCE).blue.getValue().intValue() / 255.0F;
                         GlStateManager.pushMatrix();
                         GL11.glPushAttrib(1048575);
                         GL11.glDisable(3553);
@@ -124,14 +121,14 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                         GL11.glDisable(2929);
                         GL11.glDepthMask(false);
                         if (claudius.friendManager.isFriend(entity.getName()) || entity == (Minecraft.getMinecraft()).player) {
-                            GL11.glColor4f(0.0F, 191.0F, 255.0F, Wireframe.INSTANCE.alpha.getValue().floatValue() / 255.0F);
+                            GL11.glColor4f(0.0F, 191.0F, 255.0F, (Wireframe.INSTANCE).alpha.getValue().floatValue() / 255.0F);
                         }
                         renderModel(entity, f6, f5, f8, f2, f7, f4);
                         GL11.glDisable(2896);
                         GL11.glEnable(2929);
                         GL11.glDepthMask(true);
                         if (claudius.friendManager.isFriend(entity.getName()) || entity == (Minecraft.getMinecraft()).player) {
-                            GL11.glColor4f(0.0F, 191.0F, 255.0F, Wireframe.INSTANCE.alpha.getValue().floatValue() / 255.0F);
+                            GL11.glColor4f(0.0F, 191.0F, 255.0F, (Wireframe.INSTANCE).alpha.getValue().floatValue() / 255.0F);
                         }
                         renderModel(entity, f6, f5, f8, f2, f7, f4);
                         GL11.glEnable(2896);
@@ -139,17 +136,17 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                         GlStateManager.popMatrix();
                     }
                     boolean flag1 = setDoRenderBrightness(entity, partialTicks);
-                    if (!(entity instanceof EntityPlayer) || Wireframe.INSTANCE.isOn() && Wireframe.INSTANCE.mode.getValue().equals(Wireframe.RenderMode.WIREFRAME) && Wireframe.INSTANCE.playerModel.getValue());
+                    if (!(entity instanceof EntityPlayer) || (Wireframe.INSTANCE.isOn() && (Wireframe.INSTANCE).mode.getValue().equals(Wireframe.RenderMode.WIREFRAME) && (Wireframe.INSTANCE).playerModel.getValue().booleanValue()) || Wireframe.INSTANCE.isOff())
                         renderModel(entity, f6, f5, f8, f2, f7, f4);
                     if (flag1)
                         unsetBrightness();
                     GlStateManager.depthMask(true);
                     if (!(entity instanceof EntityPlayer) || !((EntityPlayer) entity).isSpectator())
                         renderLayers(entity, f6, f5, partialTicks, f8, f2, f7, f4);
-                    if (Wireframe.INSTANCE.isOn() && Wireframe.INSTANCE.players.getValue() && entity instanceof EntityPlayer && Wireframe.INSTANCE.mode.getValue().equals(Wireframe.RenderMode.WIREFRAME)) {
-                        this.red = ClickGuiModule.INSTANCE.red.getValue() / 255.0F;
-                        this.green = ClickGuiModule.INSTANCE.green.getValue() / 255.0F;
-                        this.blue = ClickGuiModule.INSTANCE.blue.getValue() / 255.0F;
+                    if (Wireframe.INSTANCE.isOn() && (Wireframe.INSTANCE).players.getValue().booleanValue() && entity instanceof EntityPlayer && (Wireframe.INSTANCE).mode.getValue().equals(Wireframe.RenderMode.WIREFRAME)) {
+                        this.red = (ClickGuiModule.INSTANCE).red.getValue().intValue() / 255.0F;
+                        this.green = (ClickGuiModule.INSTANCE).green.getValue().intValue() / 255.0F;
+                        this.blue = (ClickGuiModule.INSTANCE).blue.getValue().intValue() / 255.0F;
                         GlStateManager.pushMatrix();
                         GL11.glPushAttrib(1048575);
                         GL11.glPolygonMode(1032, 6913);
@@ -160,9 +157,9 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                         GL11.glEnable(3042);
                         GL11.glBlendFunc(770, 771);
                         if (claudius.friendManager.isFriend(entity.getName()) || entity == (Minecraft.getMinecraft()).player) {
-                            GL11.glColor4f(0.0F, 191.0F, 255.0F, Wireframe.INSTANCE.alpha.getValue().floatValue() / 255.0F);
+                            GL11.glColor4f(0.0F, 191.0F, 255.0F, (Wireframe.INSTANCE).alpha.getValue().floatValue() / 255.0F);
                         }
-                        GL11.glLineWidth((Wireframe.INSTANCE.lineWidth.getValue()));
+                        GL11.glLineWidth((Wireframe.INSTANCE).lineWidth.getValue().floatValue());
                         renderModel(entity, f6, f5, f8, f2, f7, f4);
                         GL11.glEnable(2896);
                         GlStateManager.popAttrib();

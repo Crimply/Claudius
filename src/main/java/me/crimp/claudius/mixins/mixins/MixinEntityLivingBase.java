@@ -30,7 +30,7 @@ public abstract class MixinEntityLivingBase extends Entity {
             return;
 
         if (claudius.moduleManager.isModuleEnabled("SwingSpeed")) {
-            callback.setReturnValue(SwingSpeed.INSTANCE.sped.getValue());
+            callback.setReturnValue(SwingSpeed.INSTANCE.sped.getValue().intValue());
         }
     }
 }

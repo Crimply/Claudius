@@ -11,9 +11,7 @@
     "MixinEntityPlayerSP",
     "MixinGuiMainMenu",
     "MixinNetworkManager",
-    "MixinWorldClient"
-  ],
-  "client": [
+    "MixinWorldClient",
     "MixinRenderLivingBase"
   ]
 }
