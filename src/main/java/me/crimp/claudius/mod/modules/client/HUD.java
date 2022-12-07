@@ -21,6 +21,7 @@ public class HUD extends Module {
     private final Setting<Boolean> renderingUp = register(new Setting<>("RenderingUp", true, "Orientation of the HUD-Elements."));
     private final Setting<Boolean> arrayList = register(new Setting<>("ArrayList", true, "Lists the active modules."));
     private final Setting<Boolean> totems = register(new Setting<>("Totems", true, "TotemHUD"));
+    private final Setting<Boolean> armor = register(new Setting<>("Renders Armor", true, "ArmorHud"));
     private final Setting<Boolean> greeter = register(new Setting<>("Greeter", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
@@ -103,6 +104,12 @@ public class HUD extends Module {
         }
         if (this.totems.getValue()) renderTotemHUD();
         if (this.greeter.getValue()) renderGreeter();
+        if (this.totems.getValue()) {
+            renderBootHUD();
+            renderleggingHUD();
+            renderChestplateHUD();
+            renderHelmetHUD();
+        }
     }
 
     public void renderGreeter() {
@@ -134,6 +141,108 @@ public class HUD extends Module {
             GlStateManager.disableLighting();
             GlStateManager.disableDepth();
             this.renderer.drawStringWithShadow(totems + "", (x + 19 - 2 - this.renderer.getStringWidth(totems + "")), (y + 9), 16777215);
+            GlStateManager.enableDepth();
+            GlStateManager.disableLighting();
+        }
+    }
+    private static final ItemStack boot = new ItemStack(Items.DIAMOND_BOOTS);
+    public void renderBootHUD() {
+        int width = this.renderer.scaledWidth;
+        int height = this.renderer.scaledHeight;
+        int boots = mc.player.inventory.mainInventory.stream().filter(itemStack -> (itemStack.getItem() == Items.DIAMOND_BOOTS)).mapToInt(ItemStack::getCount).sum();
+        if (mc.player.getHeldItemOffhand().getItem() == Items.DIAMOND_BOOTS)
+            boots += mc.player.getHeldItemOffhand().getCount();
+        if (boots > 0) {
+            GlStateManager.enableTexture2D();
+            int i = width / 2;
+            int y = height - 55;
+            if ((mc.player.isInWater() && mc.playerController.gameIsSurvivalOrAdventure())) y = height - 10;
+            int x = i - 189 + 180 + 2;
+            GlStateManager.enableDepth();
+            RenderUtil.itemRender.zLevel = 200.0F;
+            RenderUtil.itemRender.renderItemAndEffectIntoGUI(boot, x, y);
+            RenderUtil.itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, boot, x, y, "");
+            RenderUtil.itemRender.zLevel = 0.0F;
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableLighting();
+            GlStateManager.disableDepth();
+            this.renderer.drawStringWithShadow(boots + "", (x + 19 - 2 - this.renderer.getStringWidth(boots + "")), (y + 9), 16777215);
+            GlStateManager.enableDepth();
+            GlStateManager.disableLighting();
+        }
+    }
+    private static final ItemStack legging = new ItemStack(Items.DIAMOND_LEGGINGS);
+    public void renderleggingHUD() {
+        int width = this.renderer.scaledWidth;
+        int height = this.renderer.scaledHeight;
+        int leggings = mc.player.inventory.mainInventory.stream().filter(itemStack -> (itemStack.getItem() == Items.DIAMOND_LEGGINGS)).mapToInt(ItemStack::getCount).sum();
+        if (mc.player.getHeldItemOffhand().getItem() == Items.DIAMOND_LEGGINGS)
+            leggings += mc.player.getHeldItemOffhand().getCount();
+        if (leggings > 0) {
+            GlStateManager.enableTexture2D();
+            int i = width / 2;
+            int y = height - 55;
+            if ((mc.player.isInWater() && mc.playerController.gameIsSurvivalOrAdventure())) y = height - 10; //- ((mc.player.isInWater() && mc.playerController.gameIsSurvivalOrAdventure()) ? 10 : 0);
+            int x = i - 189 + 180 + 2;
+            GlStateManager.enableDepth();
+            RenderUtil.itemRender.zLevel = 200.0F;
+            RenderUtil.itemRender.renderItemAndEffectIntoGUI(legging, x, y);
+            RenderUtil.itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, legging, x, y, "");
+            RenderUtil.itemRender.zLevel = 0.0F;
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableLighting();
+            GlStateManager.disableDepth();
+            this.renderer.drawStringWithShadow(leggings + "", (x + 19 - 2 - this.renderer.getStringWidth(leggings + "")), (y + 9), 16777215);
+            GlStateManager.enableDepth();
+            GlStateManager.disableLighting();
+        }
+    }
+    private static final ItemStack chestplate = new ItemStack(Items.DIAMOND_CHESTPLATE);
+    public void renderChestplateHUD() {
+        int width = this.renderer.scaledWidth;
+        int height = this.renderer.scaledHeight;
+        int chestplates = mc.player.inventory.mainInventory.stream().filter(itemStack -> (itemStack.getItem() == Items.DIAMOND_CHESTPLATE)).mapToInt(ItemStack::getCount).sum();
+        if (mc.player.getHeldItemOffhand().getItem() == Items.DIAMOND_CHESTPLATE)
+            chestplates += mc.player.getHeldItemOffhand().getCount();
+        if (chestplates > 0) {
+            GlStateManager.enableTexture2D();
+            int i = width / 2;
+            int y = height - 55; //- ((mc.player.isInWater() && mc.playerController.gameIsSurvivalOrAdventure()) ? 10 : 0);
+            int x = i - 189 + 180 + 2;
+            GlStateManager.enableDepth();
+            RenderUtil.itemRender.zLevel = 200.0F;
+            RenderUtil.itemRender.renderItemAndEffectIntoGUI(chestplate, x, y);
+            RenderUtil.itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, chestplate, x, y, "");
+            RenderUtil.itemRender.zLevel = 0.0F;
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableLighting();
+            GlStateManager.disableDepth();
+            this.renderer.drawStringWithShadow(chestplates + "", (x + 19 - 2 - this.renderer.getStringWidth(chestplates + "")), (y + 9), 16777215);
+            GlStateManager.enableDepth();
+            GlStateManager.disableLighting();
+        }
+    }
+    private static final ItemStack helmet = new ItemStack(Items.DIAMOND_HELMET);
+    public void renderHelmetHUD() {
+        int width = this.renderer.scaledWidth;
+        int height = this.renderer.scaledHeight;
+        int helmets = mc.player.inventory.mainInventory.stream().filter(itemStack -> (itemStack.getItem() == Items.DIAMOND_HELMET)).mapToInt(ItemStack::getCount).sum();
+        if (mc.player.getHeldItemOffhand().getItem() == Items.DIAMOND_HELMET)
+            helmets += mc.player.getHeldItemOffhand().getCount();
+        if (helmets > 0) {
+            GlStateManager.enableTexture2D();
+            int i = width / 2;
+            int y = height - 55; //- ((mc.player.isInWater() && mc.playerController.gameIsSurvivalOrAdventure()) ? 10 : 0);
+            int x = i - 189 + 180 + 2;
+            GlStateManager.enableDepth();
+            RenderUtil.itemRender.zLevel = 200.0F;
+            RenderUtil.itemRender.renderItemAndEffectIntoGUI(helmet, x, y);
+            RenderUtil.itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, helmet, x, y, "");
+            RenderUtil.itemRender.zLevel = 0.0F;
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableLighting();
+            GlStateManager.disableDepth();
+            this.renderer.drawStringWithShadow(helmets + "", (x + 19 - 2 - this.renderer.getStringWidth(helmets + "")), (y + 9), 16777215);
             GlStateManager.enableDepth();
             GlStateManager.disableLighting();
         }

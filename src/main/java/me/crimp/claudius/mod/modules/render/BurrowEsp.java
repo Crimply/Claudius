@@ -42,7 +42,7 @@ public class BurrowEsp extends Module {
     @Override
     public void onRender3D(Render3DEvent event){
         for (BlockPos blockPos : posList) {
-            if (!mc.player.isSpectator() && !mc.player.isAirBorne) {
+            if (!mc.player.isSpectator()) {
                 RenderUtil.drawBoxESP(blockPos, new Color(red.getValue(), green.getValue(), blue.getValue(), outlineAlpha.getValue()), 1.5F, true, true, alpha.getValue());
             }
         }

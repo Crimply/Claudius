@@ -77,7 +77,6 @@ public class ModuleManager extends Feature {
                 new CoolRenderOptions(),
                 new SwingSpeed(),
                 new ClipFly(),
-                new RainBowTextTest(),
                 new Wireframe(),
                 new BurrowEsp()
         );

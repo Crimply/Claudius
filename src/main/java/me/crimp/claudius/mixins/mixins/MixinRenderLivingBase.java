@@ -110,14 +110,14 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                         unsetScoreTeamColor();
                 } else {
                     boolean flag1 = setDoRenderBrightness(entity, partialTicks);
-                    if (!(entity instanceof EntityPlayer) || (Wireframe.getINSTANCE().isOn() && (Wireframe.getINSTANCE()).mode.getValue().equals(Wireframe.RenderMode.WIREFRAME) && (Wireframe.getINSTANCE()).playerModel.getValue().booleanValue()) || Wireframe.getINSTANCE().isOff())
+                    if (!(entity instanceof EntityPlayer) || claudius.moduleManager.isModuleEnabled("Wireframe") || (Wireframe.INSTANCE).isOn() && (Wireframe.INSTANCE).playerModel.getValue().booleanValue() || (Wireframe.INSTANCE).isOff())
                         renderModel(entity, f6, f5, f8, f2, f7, f4);
                     if (flag1)
                         unsetBrightness();
                     GlStateManager.depthMask(true);
                     if (!(entity instanceof EntityPlayer) || !((EntityPlayer) entity).isSpectator())
                         renderLayers(entity, f6, f5, partialTicks, f8, f2, f7, f4);
-                    if (Wireframe.getINSTANCE().isOn() && (Wireframe.getINSTANCE()).players.getValue().booleanValue() && entity instanceof EntityPlayer && (Wireframe.getINSTANCE()).mode.getValue().equals(Wireframe.RenderMode.WIREFRAME)) {
+                    if (claudius.moduleManager.isModuleEnabled("Wireframe") && (Wireframe.INSTANCE).players.getValue().booleanValue() && entity instanceof EntityPlayer) {
                         this.red = ClickGuiModule.INSTANCE.red.getValue().intValue() / 255.0F;
                         this.green = ClickGuiModule.INSTANCE.green.getValue().intValue() / 255.0F;
                         this.blue = ClickGuiModule.INSTANCE.blue.getValue().intValue() / 255.0F;
@@ -129,11 +129,19 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
                         GL11.glDisable(2929);
                         GL11.glEnable(2848);
                         GL11.glEnable(3042);
-                        GL11.glBlendFunc(770, 771);
                         if (claudius.friendManager.isFriend(entity.getName()) || entity == (Minecraft.getMinecraft()).player) {
-                            GL11.glColor4f(0.0F, 191.0F, 255.0F, (Wireframe.getINSTANCE()).alpha.getValue().floatValue() / 255.0F);
+                            GL11.glColor4f(0.0F, 191.0F, 255.0F, (Wireframe.INSTANCE).alpha.getValue().floatValue() / 255.0F);
                         }
-                        GL11.glLineWidth((Wireframe.getINSTANCE()).lineWidth.getValue().floatValue());
+
+//                        } else {
+//                            if ((Wireframe.INSTANCE).globalcolour.getValue().booleanValue()) {
+//                                GL11.glColor4f(red, green, blue, (Wireframe.INSTANCE).alpha.getValue().floatValue() / 255.0F);
+//                            } else {
+//                                GL11.glColor4f((Wireframe.INSTANCE).red.getValue().intValue(), (Wireframe.INSTANCE).green.getValue().intValue(), (Wireframe.INSTANCE).blue.getValue().intValue(), (Wireframe.INSTANCE).alpha.getValue().floatValue() / 255.0F);
+//                            }
+//                        }
+
+                        GL11.glLineWidth((Wireframe.INSTANCE).lineWidth.getValue().floatValue());
                         renderModel(entity, f6, f5, f8, f2, f7, f4);
                         GL11.glEnable(2896);
                         GlStateManager.popAttrib();
@@ -154,8 +162,6 @@ public abstract class MixinRenderLivingBase<T extends EntityLivingBase> extends 
         }
     }
 
-    @Shadow
-    protected abstract boolean isVisible(EntityLivingBase paramEntityLivingBase);
 
     @Shadow
     protected abstract float getSwingProgress(T paramT, float paramFloat);

@@ -7,26 +7,18 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Wireframe
         extends Module {
-    private static Wireframe INSTANCE = new Wireframe();
-    public final Setting<Float> alpha = this.register(new Setting<Float>("PAlpha", Float.valueOf(255.0f), Float.valueOf(0.1f), Float.valueOf(255.0f)));
+    public static Wireframe INSTANCE = new Wireframe();
+
     public final Setting<Float> lineWidth = this.register(new Setting<Float>("PLineWidth", Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(3.0f)));
-    public Setting<RenderMode> mode = this.register(new Setting<RenderMode>("PMode", RenderMode.WIREFRAME));
+    public Setting<Boolean> globalcolour = this.register(new Setting<Boolean>("Gui Colour", Boolean.FALSE));
     public Setting<Boolean> players = this.register(new Setting<Boolean>("Players", Boolean.FALSE));
     public Setting<Boolean> playerModel = this.register(new Setting<Boolean>("PlayerModel", Boolean.FALSE));
+    public final Setting<Integer> red = this.register(new Setting<>("red", 255, 0, 255));
+    public final Setting<Integer> green = this.register(new Setting<>("green", 255, 0, 255));
+    public final Setting<Integer> blue = this.register(new Setting<>("blue", 255, 0, 255));
+    public final Setting<Float> alpha = this.register(new Setting<Float>("PAlpha", Float.valueOf(255.0f), Float.valueOf(0.1f), Float.valueOf(255.0f)));
     public Wireframe() {
         super("Wireframe", "Draws a wireframe esp around other players.", Category.Render, false, false);
-        this.setInstance();
-    }
-
-    public static Wireframe getINSTANCE() {
-        if (INSTANCE == null) {
-            INSTANCE = new Wireframe();
-        }
-        return INSTANCE;
-    }
-
-    private void setInstance() {
-        INSTANCE = this;
     }
 
     @SubscribeEvent
@@ -34,8 +26,4 @@ public class Wireframe
         event.getEntityPlayer().hurtTime = 0;
     }
 
-    public enum RenderMode {
-        WIREFRAME
-
-    }
 }
