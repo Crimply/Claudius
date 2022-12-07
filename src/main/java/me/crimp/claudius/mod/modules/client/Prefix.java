@@ -18,3 +18,5 @@ public class Prefix extends Module {
         claudius.commandManager.setPrefix(prefix.getValue());
     }
 }
+
+// may seem dumb to have but is needed ;)

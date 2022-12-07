@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.SPacketEntityStatus;
 import net.minecraft.network.play.server.SPacketPlayerListItem;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
@@ -68,14 +69,16 @@ public class EventManager extends Feature {
     public void onTick(TickEvent.ClientTickEvent event) {
         if (fullNullCheck())
             return;
+        DamageSource cause = null;
+        MinecraftForge.EVENT_BUS.post(new DeathCauseEvent(cause));
         claudius.moduleManager.onTick();
         for (EntityPlayer player : mc.world.playerEntities) {
             if (player == null || player.getHealth() > 0.0F)
                 continue;
             MinecraftForge.EVENT_BUS.post(new DeathEvent(player));
             PopCounter.INSTANCE.onDeath(player);
-            //DeathEffect.INSTANCE.onDeath(player);
-            //PopCounter.INSTANCE.onDeath(player);
+            //DeathEffect.INSTANCE.DeathCauseEvent(player);
+            //PopCounter.INSTANCE.DeathCauseEvent(player);
         }
     }
 
