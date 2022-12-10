@@ -4,6 +4,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.Render2DEvent;
 import me.crimp.claudius.mod.modules.Module;
+import me.crimp.claudius.mod.modules.text.PopCounter;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.ColorUtil;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +13,7 @@ import java.math.RoundingMode;
 
 public class PlayerRadar extends Module {
     private final Setting<Integer> amount = register(new Setting<>("PlayerCount", 10, 1, 100));
+    private final Setting<Boolean> totemPops = register(new Setting<>("totempops", true));
     public Setting<Integer> X = register(new Setting<>("X", 10, 0, 950));
     public Setting<Integer> Y = register(new Setting<>("Y", 10, 0, 550));
 
@@ -55,14 +57,19 @@ public class PlayerRadar extends Module {
 
 
                 String name = entity.getGameProfile().getName();
+                String popStr = "";
                 String str = heal + " " + ChatFormatting.RESET;
 
+                if (totemPops.getValue()) {
+                    popStr = " " + PopCounter.INSTANCE.getTotemPopString(entity);
+                }
+
                 if (claudius.friendManager.isFriend(entity.getName())) {
-                    claudius.textManager.drawString( str + ChatFormatting.AQUA + name, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                    claudius.textManager.drawString( str + ChatFormatting.AQUA + name + ChatFormatting.RESET + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 } else if (claudius.enemyManager.isEnemy(entity.getName())) {
-                    claudius.textManager.drawString(str + ChatFormatting.RED + name, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                    claudius.textManager.drawString(str + ChatFormatting.RED + name + ChatFormatting.RESET + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 } else {
-                    claudius.textManager.drawString(str + name, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                    claudius.textManager.drawString(str + name + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 }
             }
         }

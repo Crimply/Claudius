@@ -125,6 +125,11 @@ public class DamageUtil implements Util {
         return 250;
     }
 
+    public static boolean hasDurability(ItemStack stack) {
+        Item item = stack.getItem();
+        return item instanceof ItemArmor || item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemShield;
+    }
+
     @SideOnly(Side.CLIENT)
     public class DamageTagUtil extends NBTTagCompound {
 

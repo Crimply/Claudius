@@ -11,6 +11,7 @@
     "MixinEntityPlayerSP",
     "MixinGuiMainMenu",
     "MixinNetworkManager",
-    "MixinWorldClient"
+    "MixinWorldClient",
+    "MixinRenderPlayer"
   ]
 }

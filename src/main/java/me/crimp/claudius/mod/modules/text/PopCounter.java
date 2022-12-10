@@ -8,11 +8,14 @@ import net.minecraft.network.play.client.CPacketChatMessage;
 
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PopCounter
         extends Module {
         public Setting<Boolean> PopMsg = this.register(new Setting<>("Send in Chat", false));
         public static HashMap<String, Integer> TotemPopContainer = new HashMap();
+        private Map<EntityPlayer, Integer> poplist = new ConcurrentHashMap<EntityPlayer, Integer>();
 
         public PopCounter() {
             super("PopCounter", "Counts other players totem pops.", Category.Text, false, false);
@@ -27,6 +30,7 @@ public class PopCounter
 
 
         public void onDeath(EntityPlayer player) {
+            this.resetPops(player);
             if (TotemPopContainer.containsKey(player.getName())) {
                 int l_Count = TotemPopContainer.get(player.getName());
                 TotemPopContainer.remove(player.getName());
@@ -53,6 +57,7 @@ public class PopCounter
 
         int l_Count = 0;
         public void onTotemPop(EntityPlayer player) {
+            this.popTotem(player);
             if (PopCounter.fullNullCheck()) {
                 return;
             }
@@ -85,4 +90,29 @@ public class PopCounter
                 }
             }
         }
+
+
+    public void resetPops(EntityPlayer player) {
+        this.setTotemPops(player, 0);
     }
+
+    public void popTotem(EntityPlayer player) {
+        this.poplist.merge(player, 1, Integer::sum);
+    }
+
+    public void setTotemPops(EntityPlayer player, int amount) {
+        this.poplist.put(player, amount);
+    }
+
+    public int getTotemPops(EntityPlayer player) {
+        Integer pops = this.poplist.get(player);
+        if (pops == null) {
+            return 0;
+        }
+        return pops;
+    }
+
+    public String getTotemPopString(EntityPlayer player) {
+        return "\u00a7f" + (this.getTotemPops(player) <= 0 ? "" : "-" + this.getTotemPops(player) + " ");
+    }
+}

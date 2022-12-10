@@ -31,6 +31,7 @@ public class ModuleManager extends Feature {
 
                 //exploit
                 new PearlBait(),
+                new ClipFly(),
 
                 //misc
                 new DonkeySwap(),
@@ -77,7 +78,7 @@ public class ModuleManager extends Feature {
                 new PlayerRadar(),
                 new CoolRenderOptions(),
                 new SwingSpeed(),
-                new ClipFly(),
+                new Nametags(),
                 new BurrowEsp()
         );
     }
