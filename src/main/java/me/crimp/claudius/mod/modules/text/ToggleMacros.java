@@ -9,12 +9,12 @@ public class ToggleMacros
     public Setting<Boolean> one = register(new Setting<>("1", true));
     public Setting<Boolean> two = register(new Setting<>("2", true));
     public Setting<Boolean> three = register(new Setting<>("3", false));
-    public Setting<String> oneone = register(new Setting<>("Syncadd1", "", v -> this.one.getValue()));
-    public Setting<String> oneoneoff = register(new Setting<>("Syncdeloff", "", v -> this.one.getValue()));
-    public Setting<String> twotwo = register(new Setting<>("Syncaddoff", "", v -> this.two.getValue()));
-    public Setting<String> twotwooff = register(new Setting<>("Syncadd3", "", v -> this.two.getValue()));
-    public Setting<String> threethree = register(new Setting<>("Syncdel1", "", v -> this.three.getValue()));
-    public Setting<String> threethreeoff = register(new Setting<>("Syncdel3", "", v -> this.three.getValue()));
+    public Setting<String> oneone = register(new Setting<>("1 OnToggleMsg", "", v -> this.one.getValue()));
+    public Setting<String> oneoneoff = register(new Setting<>("1 OffToggleMsg", "", v -> this.one.getValue()));
+    public Setting<String> twotwo = register(new Setting<>("2 OnToggleMsg", "", v -> this.two.getValue()));
+    public Setting<String> twotwooff = register(new Setting<>("2 OffToggleMsg", "", v -> this.two.getValue()));
+    public Setting<String> threethree = register(new Setting<>("3 OnToggleMsg", "", v -> this.three.getValue()));
+    public Setting<String> threethreeoff = register(new Setting<>("3 OffToggleMsg", "", v -> this.three.getValue()));
 
     public ToggleMacros() {
         super("ToggleMacros", "When Turned On Do X When Turned Off Do Y", Category.Text, false, false);
