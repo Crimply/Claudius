@@ -8,9 +8,9 @@ public class addsyncCommand extends Command {
     public addsyncCommand() {
         super("Add", new String[]{"<name>"});
     }
-    public static String Uno = McfSync.INSTANCE.syncadd1.getValue();
-    public static String dos = McfSync.INSTANCE.syncadd2.getValue();
-    public static String tres = McfSync.INSTANCE.syncadd3.getValue();
+    public static String Uno = McfSync.INSTANCE.syncadd1.getPlannedValue() + " add";
+    public static String dos = McfSync.INSTANCE.syncadd2.getPlannedValue() + " add";
+    public static String tres = McfSync.INSTANCE.syncadd3.getPlannedValue() + " add";
 
     @Override
     public void execute(String[] commands) {

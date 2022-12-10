@@ -8,9 +8,9 @@ public class delsyncCommand extends Command {
     public delsyncCommand() {
         super("del", new String[]{"<name>"});
     }
-    public static String Uno = McfSync.INSTANCE.syncdel1.getValueAsString();
-    public static String dos = McfSync.INSTANCE.syncdel2.getValueAsString();
-    public static String tres = McfSync.INSTANCE.syncdel3.getValueAsString();
+    public static String Uno = McfSync.INSTANCE.syncdel1.getPlannedValue() + " del";
+    public static String dos = McfSync.INSTANCE.syncdel2.getPlannedValue() + " del";
+    public static String tres = McfSync.INSTANCE.syncdel3.getPlannedValue() + " del";;
 
     @Override
     public void execute(String[] commands) {

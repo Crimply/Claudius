@@ -47,6 +47,7 @@ public class ModuleManager extends Feature {
                 new AntiLog4j(),
                 new AntiLagText(),
                 new Notifications(),
+                new ToggleMacros(),
 
                 //movement
                 new GroundStrafe(),
@@ -65,8 +66,6 @@ public class ModuleManager extends Feature {
                 //pvp
                 new Dispenser32k(),
                 new MainHandTotem(),
-                new AutoCrystal(),
-                new AutoTotem(),
 
                 //render
                 new PopChams(),
@@ -79,7 +78,6 @@ public class ModuleManager extends Feature {
                 new CoolRenderOptions(),
                 new SwingSpeed(),
                 new ClipFly(),
-                new Wireframe(),
                 new BurrowEsp()
         );
     }

@@ -28,7 +28,7 @@ public class HUD extends Module {
     public Setting<Boolean> Capes = register(new Setting<>("Capes", true, "Kekw"));
     public Setting<Boolean> CustomBg = register(new Setting<>("CustomBackground", true, "CustomBackground in main menu"));
     public Setting<RenderingMode> renderingMode = register(new Setting<>("Ordering", RenderingMode.Length));
-    public static final String command = "claudius";
+    public static final String command = "Claudius";
     private int color;
     private boolean shouldIncrement;
     private int hitMarkerTimer;
