@@ -10,6 +10,7 @@ import me.crimp.claudius.utils.ColorUtil;
 import me.crimp.claudius.utils.RenderUtil;
 import net.minecraft.client.Minecraft;
 
+import java.awt.*;
 
 
 public class BetterWatermark extends Module {
@@ -72,7 +73,6 @@ public class BetterWatermark extends Module {
 
             int w = mc.fontRenderer.getStringWidth(message);
             int h = mc.fontRenderer.FONT_HEIGHT;
-
             if (SnapMode.getValue().equals(Snap.Off)) {
                 if (BackGround.getValue())
                     RenderUtil.drawRectangleCorrectly(X.getValue(), Y.getValue(), w + 8, h + 4, BoxColour);

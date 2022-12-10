@@ -1,7 +1,6 @@
 package me.crimp.claudius.managers;
 
 import me.crimp.claudius.mod.Feature;
-import me.crimp.claudius.mod.gui.font.CustomFont;
 import me.crimp.claudius.utils.Timer;
 import net.minecraft.util.math.MathHelper;
 
@@ -13,7 +12,6 @@ public class TextManager
     public int scaledWidth;
     public int scaledHeight;
     public int scaleFactor;
-    private CustomFont customFont = new CustomFont(new Font("Verdana", 0, 17), true, false);
     private boolean idling;
 
     public TextManager() {
@@ -40,13 +38,6 @@ public class TextManager
         return TextManager.mc.fontRenderer.FONT_HEIGHT;
     }
 
-    public void setFontRenderer(Font font, boolean antiAlias, boolean fractionalMetrics) {
-        this.customFont = new CustomFont(font, antiAlias, fractionalMetrics);
-    }
-
-    public Font getCurrentFont() {
-        return this.customFont.getFont();
-    }
 
     public void updateResolution() {
         this.scaledWidth = TextManager.mc.displayWidth;
