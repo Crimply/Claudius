@@ -21,7 +21,7 @@ public class HUD extends Module {
     private final Setting<Boolean> renderingUp = register(new Setting<>("RenderingUp", true, "Orientation of the HUD-Elements."));
     private final Setting<Boolean> arrayList = register(new Setting<>("ArrayList", true, "Lists the active modules."));
     private final Setting<Boolean> totems = register(new Setting<>("Totems", true, "TotemHUD"));
-    private final Setting<Boolean> armor = register(new Setting<>("Renders Armor", true, "ArmorHud"));
+    private final Setting<Boolean> armor = register(new Setting<>("Armor", true, "ArmorHud"));
     private final Setting<Boolean> greeter = register(new Setting<>("Greeter", false, "The time"));
     public Setting<TextUtil.Color> bracketColor = register(new Setting<>("BracketColor", TextUtil.Color.WHITE));
     public Setting<TextUtil.Color> commandColor = register(new Setting<>("NameColor", TextUtil.Color.AQUA));
@@ -104,7 +104,7 @@ public class HUD extends Module {
         }
         if (this.totems.getValue()) renderTotemHUD();
         if (this.greeter.getValue()) renderGreeter();
-        if (this.totems.getValue()) {
+        if (this.armor.getValue()) {
             renderBootHUD();
             renderleggingHUD();
             renderChestplateHUD();

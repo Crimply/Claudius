@@ -6,7 +6,6 @@ import me.crimp.claudius.event.events.Render2DEvent;
 import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.ColorUtil;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -33,7 +32,7 @@ public class PlayerRadar extends Module {
     public void onRender2D(Render2DEvent event) {
         int i = 0;
         for (Object o : mc.world.loadedEntityList) {
-            if (o instanceof EntityPlayer && o != Minecraft.getMinecraft().player) {
+            if (o instanceof EntityPlayer && o != mc.player) {
                 i++;
                 if (i > amount.getValue()) return;
                 EntityPlayer entity = (EntityPlayer) o;

@@ -3,7 +3,6 @@ package me.crimp.claudius;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
-import me.crimp.claudius.mod.modules.client.RPC;
 
 public class DiscordPresence {
 

@@ -70,7 +70,6 @@ public class EventManager extends Feature {
         if (fullNullCheck())
             return;
         DamageSource cause = null;
-        MinecraftForge.EVENT_BUS.post(new DeathCauseEvent(cause));
         claudius.moduleManager.onTick();
         for (EntityPlayer player : mc.world.playerEntities) {
             if (player == null || player.getHealth() > 0.0F)

@@ -16,13 +16,8 @@ public class CapeManager implements Globals {
     private final List<UUID> ogCapes = new ArrayList<>();
     private final List<UUID> contributorCapes = new ArrayList<>();
 
-    private final List<ResourceLocation> ogCapeFrames = new ArrayList<>();
 
-    public static int capeFrameCount = 0;
 
-    public ResourceLocation getOgCape() {
-        return ogCapeFrames.get(capeFrameCount % 35);
-    }
 
     public CapeManager() {
         try { // og
