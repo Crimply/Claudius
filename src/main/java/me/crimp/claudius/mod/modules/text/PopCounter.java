@@ -113,6 +113,6 @@ public class PopCounter
     }
 
     public String getTotemPopString(EntityPlayer player) {
-        return "\u00a7f" + (this.getTotemPops(player) <= 0 ? "" : "-" + this.getTotemPops(player) + " ");
+        return (this.getTotemPops(player) <= 0 ? "" : "-" + this.getTotemPops(player) + " ");
     }
 }
