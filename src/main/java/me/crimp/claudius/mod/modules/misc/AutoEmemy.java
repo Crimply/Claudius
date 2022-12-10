@@ -1,6 +1,7 @@
 package me.crimp.claudius.mod.modules.misc;
 
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import me.crimp.claudius.claudius;
 import me.crimp.claudius.event.events.PacketEvent;
 import me.crimp.claudius.mod.command.Command;
@@ -15,12 +16,11 @@ import java.util.List;
 
 
 public class AutoEmemy extends Module {
-    public Setting<Boolean> Crashgame = register(new Setting<>("Crashgame", false, "wiw"));
+    public Setting<Boolean> Crashgame = register(new Setting<>("Add Msgs", false, "wiw"));
     public AutoEmemy() {
         super("AutoEnemy", "Automatic way of adding Players to enemy list. it adds when killed by them", Category.Misc, false, true);
     }
 
-    String namereal = null;
     //private final List<String> fyck = new ArrayList<>();
 
     @SubscribeEvent
@@ -37,12 +37,9 @@ public class AutoEmemy extends Module {
                             Command.sendMessage(name + " : check 1");
 
                             if (text.contains(name)) {
-                                Command.sendMessage(namereal + " : check 2");
-                                namereal = name;
+                                claudius.enemyManager.addEnemy(name);
                                 if (Crashgame.getValue()) {
-                                    Command.sendMessage(namereal + " : check 3");
-                                    claudius.enemyManager.addEnemy(name);
-                                  //  fyck.add(name);
+                                    Command.sendMessage(name + "Is Now A " + ChatFormatting.RED + "Enemy");
                                 }
                             }
                         }
