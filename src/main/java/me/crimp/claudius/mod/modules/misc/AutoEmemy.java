@@ -27,14 +27,12 @@ public class AutoEmemy extends Module {
     public void onPacketReceive(PacketEvent.Receive event) {
         if (event.getPacket() instanceof SPacketChat) {
             String text = ((SPacketChat) event.getPacket()).getChatComponent().getFormattedText();
-            if (text.contains("by") || text.contains("got") || text.contains("fucked") || text.contains("shoved")) {
+            if (text.contains("by") || text.contains("got") || text.contains("fucked") || text.contains("shoved") || text.contains("whilst") ) {
                 if (text.contains(mc.player.getName())) {
                     for (Object o : mc.world.loadedEntityList) {
                         if (o instanceof EntityPlayer && o != mc.player) {
                             EntityPlayer entity = (EntityPlayer) o;
                             String name = entity.getGameProfile().getName();
-
-                            Command.sendMessage(name + " : check 1");
 
                             if (text.contains(name)) {
                                 claudius.enemyManager.addEnemy(name);
