@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class AutoEmemy extends Module {
     public Setting<Boolean> Crashgame = register(new Setting<>("Add Msgs", false, "wiw"));
     public AutoEmemy() {
-        super("AutoEnemy", "Automatic way of adding Players to enemy list. it adds when killed by them", Category.Misc, false, true);
+        super("AutoEnemy", "Automatic way of adding Players to enemy list. it adds when killed by them or you kill them", Category.Misc, false, true);
     }
 
     @SubscribeEvent
