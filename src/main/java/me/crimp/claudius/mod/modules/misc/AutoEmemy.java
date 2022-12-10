@@ -11,8 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.SPacketChat;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class AutoEmemy extends Module {
@@ -20,8 +18,6 @@ public class AutoEmemy extends Module {
     public AutoEmemy() {
         super("AutoEnemy", "Automatic way of adding Players to enemy list. it adds when killed by them", Category.Misc, false, true);
     }
-
-    //private final List<String> fyck = new ArrayList<>();
 
     @SubscribeEvent
     public void onPacketReceive(PacketEvent.Receive event) {
@@ -37,7 +33,11 @@ public class AutoEmemy extends Module {
                             if (text.contains(name)) {
                                 claudius.enemyManager.addEnemy(name);
                                 if (Crashgame.getValue()) {
-                                    Command.sendMessage(name + "Is Now A " + ChatFormatting.RED + "Enemy");
+                                    if (claudius.enemyManager.isEnemy(name)) {
+                                        Command.sendMessage(name + "Is Now A " + ChatFormatting.RED + "Enemy");
+                                    } else {
+                                        Command.sendMessage(name + "Is Already A " + ChatFormatting.RED + "Enemy");
+                                    }
                                 }
                             }
                         }
