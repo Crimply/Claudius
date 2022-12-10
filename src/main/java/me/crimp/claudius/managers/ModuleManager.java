@@ -37,6 +37,7 @@ public class ModuleManager extends Feature {
                 new McfSync(),
                 new ClickEnemy(),
                 new AutoEmemy(),
+                new EnemyAlert(),
 
                 //text
                 new ChatSuffix(),
@@ -45,6 +46,7 @@ public class ModuleManager extends Feature {
                 new SelfPopCounter(),
                 new AntiLog4j(),
                 new AntiLagText(),
+                new Notifications(),
 
                 //movement
                 new GroundStrafe(),
