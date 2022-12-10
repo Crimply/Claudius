@@ -65,9 +65,9 @@ public class PlayerRadar extends Module {
                 }
 
                 if (claudius.friendManager.isFriend(entity.getName())) {
-                    claudius.textManager.drawString( str + ChatFormatting.AQUA + name + ChatFormatting.RESET + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                    claudius.textManager.drawString( str + ChatFormatting.AQUA + name + ChatFormatting.YELLOW + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 } else if (claudius.enemyManager.isEnemy(entity.getName())) {
-                    claudius.textManager.drawString(str + ChatFormatting.RED + name + ChatFormatting.RESET + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                    claudius.textManager.drawString(str + ChatFormatting.RED + name + ChatFormatting.YELLOW + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 } else {
                     claudius.textManager.drawString(str + name + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 }

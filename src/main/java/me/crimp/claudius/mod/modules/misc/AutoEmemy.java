@@ -34,9 +34,9 @@ public class AutoEmemy extends Module {
                                 claudius.enemyManager.addEnemy(name);
                                 if (Crashgame.getValue()) {
                                     if (claudius.enemyManager.isEnemy(name)) {
-                                        Command.sendMessage(name + "Is Now A " + ChatFormatting.RED + "Enemy");
+                                        Command.sendMessage(name + " Is Now A " + ChatFormatting.RED + "Enemy");
                                     } else {
-                                        Command.sendMessage(name + "Is Already A " + ChatFormatting.RED + "Enemy");
+                                        Command.sendMessage(name + " Is Already A " + ChatFormatting.RED + "Enemy");
                                     }
                                 }
                             }
