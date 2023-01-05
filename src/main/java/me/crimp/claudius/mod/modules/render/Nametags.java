@@ -6,8 +6,8 @@ import me.crimp.claudius.mod.modules.Module;
 import me.crimp.claudius.mod.modules.text.PopCounter;
 import me.crimp.claudius.mod.setting.Setting;
 import me.crimp.claudius.utils.ColorUtil;
-import me.crimp.claudius.utils.DamageUtil;
 import me.crimp.claudius.utils.EntityUtil;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -29,10 +30,11 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 import java.util.Objects;
 
-public class Nametags extends Module {
+public class Nametags
+        extends Module {
     private final Setting<Boolean> health = this.register(new Setting<>("Health", true));
     private final Setting<Boolean> armor = this.register(new Setting<>("Armor", true));
-    private final Setting<Float> scaling = this.register(new Setting<>("Size", 0.3f, 0.1f, 20.0f));
+    private final Setting<Float> scaling = this.register(new Setting<>("Size", 0.3f, 0.1f, 20.0f, v -> this.scaleing.getValue()));
     private final Setting<Boolean> invisibles = this.register(new Setting<>("Invisibles", false));
     private final Setting<Boolean> ping = this.register(new Setting<>("Ping", true));
     private final Setting<Boolean> totemPops = this.register(new Setting<>("TotemPops", true));
@@ -49,9 +51,10 @@ public class Nametags extends Module {
     private final Setting<Boolean> heldStackName = this.register(new Setting<>("StackName", false));
     private final Setting<Boolean> whiter = this.register(new Setting<>("White", false));
     private final Setting<Boolean> scaleing = this.register(new Setting<>("Scale", false));
+    private final Setting<Boolean> betterscale = this.register(new Setting<>("betterscale", false));
+    private final Setting<Float> betterscalefactor = this.register(new Setting<>("BSFactor", 0.3f, 0.1f, 10.0f, v -> this.scaleing.getValue()));
     private final Setting<Float> factor = this.register(new Setting<>("Factor", 0.3f, 0.1f, 1.0f, v -> this.scaleing.getValue()));
     private final Setting<Boolean> smartScale = this.register(new Setting<>("SmartScale", false, v -> this.scaleing.getValue()));
-
 
     public Nametags() {
         super("Nametags", "Better Nametags", Category.Render, false, false);
@@ -135,6 +138,9 @@ public class Nametags extends Module {
         if (!this.scaleing.getValue()) {
             scale = (double) this.scaling.getValue() / 100.0;
         }
+        if (betterscale.getValue()) {
+            scale = 0.016666668f * this.getNametagSize(player);
+        }
         GlStateManager.pushMatrix();
         RenderHelper.enableStandardItemLighting();
         GlStateManager.enablePolygonOffset();
@@ -158,7 +164,7 @@ public class Nametags extends Module {
             drawRect(-width - 2, -(this.renderer.getFontHeight() + 1), (float) width + 2.0f, 1.5f, ColorUtil.toRGBA(0,0,0,0));
         }
         GlStateManager.disableBlend();
-        ItemStack renderMainHand = player.getHeldItemMainhand().copy();
+        ItemStack renderMainHand = player.getHeldItemOffhand().copy();
         if (renderMainHand.hasEffect() && (renderMainHand.getItem() instanceof ItemTool || renderMainHand.getItem() instanceof ItemArmor)) {
             renderMainHand.stackSize = 1;
         }
@@ -172,29 +178,39 @@ public class Nametags extends Module {
             GL11.glPopMatrix();
         }
         if (this.armor.getValue()) {
-            GlStateManager.pushMatrix();
-            int xOffset = -8;
+
+            int xOffset = 0;
+            xOffset += 16;
             for (ItemStack stack : player.inventory.armorInventory) {
                 if (stack == null) continue;
                 xOffset -= 8;
             }
+            for (int index = 3; index >= 0; --index) {
+                final ItemStack armourStack2 = (ItemStack) player.inventory.armorInventory.get(index);
+                final ItemStack renderStack2 = armourStack2.copy();
+                this.renderItemStack(renderStack2, xOffset);
+                xOffset += 16;
+            }
+            GlStateManager.pushMatrix();
+            xOffset = -8;
             xOffset -= 8;
-            ItemStack renderOffhand = player.getHeldItemOffhand().copy();
+            ItemStack renderOffhand = player.getHeldItemMainhand().copy();
             if (renderOffhand.hasEffect() && (renderOffhand.getItem() instanceof ItemTool || renderOffhand.getItem() instanceof ItemArmor)) {
                 renderOffhand.stackSize = 1;
             }
-            this.renderItemStack(renderOffhand, xOffset, -26);
+
+            this.renderItemStack(renderOffhand, xOffset);
             xOffset += 16;
-            for (ItemStack stack : player.inventory.armorInventory) {
-                if (stack == null) continue;
-                ItemStack armourStack = stack.copy();
-                if (armourStack.hasEffect() && (armourStack.getItem() instanceof ItemTool || armourStack.getItem() instanceof ItemArmor)) {
-                    armourStack.stackSize = 1;
-                }
-                this.renderItemStack(armourStack, xOffset, -26);
-                xOffset += 16;
-            }
-            this.renderItemStack(renderMainHand, xOffset, -26);
+//            for (ItemStack stack : player.inventory.armorInventory) {
+//                if (stack == null) continue;
+//                ItemStack armourStack = stack.copy();
+//                if (armourStack.hasEffect() && (armourStack.getItem() instanceof ItemTool || armourStack.getItem() instanceof ItemArmor)) {
+//                    armourStack.stackSize = 1;
+//                }
+//                this.renderItemStack(armourStack, xOffset);
+//                xOffset += 16;
+//            }
+            this.renderItemStack(renderMainHand, xOffset);
             GlStateManager.popMatrix();
         }
         this.renderer.drawStringWithShadow(displayTag, -width, -(this.renderer.getFontHeight() - 1), this.getDisplayColour(player));
@@ -208,7 +224,13 @@ public class Nametags extends Module {
         GlStateManager.popMatrix();
     }
 
-    private void renderItemStack(ItemStack stack, int x, int y) {
+    private float getNametagSize(final EntityLivingBase player) {
+        final ScaledResolution scaledRes = new ScaledResolution(Nametags.mc);
+        final double twoDscale = scaledRes.getScaleFactor() / Math.pow(scaledRes.getScaleFactor(), 0.0 + betterscalefactor.getValue());
+        return (float)twoDscale + Nametags.mc.player.getDistance(player) / 5.6f;
+    }
+
+    private void renderItemStack(ItemStack stack, int x) {
         GlStateManager.pushMatrix();
         GlStateManager.depthMask(true);
         GlStateManager.clear(256);
@@ -217,22 +239,22 @@ public class Nametags extends Module {
         GlStateManager.disableAlpha();
         GlStateManager.enableDepth();
         GlStateManager.disableCull();
-        mc.getRenderItem().renderItemAndEffectIntoGUI(stack, x, y);
-        mc.getRenderItem().renderItemOverlays(Nametags.mc.fontRenderer, stack, x, y);
+        mc.getRenderItem().renderItemAndEffectIntoGUI(stack, x, -26);
+        mc.getRenderItem().renderItemOverlays(Nametags.mc.fontRenderer, stack, x, -26);
         Nametags.mc.getRenderItem().zLevel = 0.0f;
         RenderHelper.disableStandardItemLighting();
         GlStateManager.enableCull();
         GlStateManager.enableAlpha();
         GlStateManager.scale(0.5f, 0.5f, 0.5f);
         GlStateManager.disableDepth();
-        this.renderEnchantmentText(stack, x, y);
+        this.renderEnchantmentText(stack, x);
         GlStateManager.enableDepth();
         GlStateManager.scale(2.0f, 2.0f, 2.0f);
         GlStateManager.popMatrix();
     }
 
-    private void renderEnchantmentText(ItemStack stack, int x, int y) {
-        int enchantmentY = y - 8;
+    private void renderEnchantmentText(ItemStack stack, int x) {
+        int enchantmentY = -26 - 8;
         if (stack.getItem() == Items.GOLDEN_APPLE && stack.hasEffect()) {
             this.renderer.drawStringWithShadow("god", x * 2, enchantmentY, -3977919);
             enchantmentY -= 8;
@@ -248,10 +270,12 @@ public class Nametags extends Module {
             this.renderer.drawStringWithShadow(encName, x * 2, enchantmentY, -1);
             enchantmentY -= 8;
         }
-        if (DamageUtil.hasDurability(stack)) {
-            int percent = DamageUtil.getRoundedDamage(stack);
-            String color = percent >= 60 ? "\u00a7a" : (percent >= 25 ? "\u00a7e" : "\u00a7c");
-            this.renderer.drawStringWithShadow(color + percent + "%", x * 2, enchantmentY, -1);
+        int encY = -26 - 24;
+        if (stack.getItem() instanceof ItemArmor || stack.getItem() instanceof ItemTool) {
+            final float green = (stack.getMaxDamage() - (float) stack.getItemDamage()) / stack.getMaxDamage();
+            final float red = 1.0f - green;
+            final int dmg = 100 - (int) (red * 100.0f);
+            this.renderer.drawStringWithShadow(dmg + "%", x * 2, enchantmentY, new Color((int) (red * 255.0f), (int) (green * 255.0f), 0).getRGB());
         }
     }
 
@@ -310,9 +334,6 @@ public class Nametags extends Module {
 
     private String getDisplayTag(EntityPlayer player) {
         String name = player.getDisplayName().getFormattedText();
-        if (name.contains(mc.getSession().getUsername())) {
-            name = "You";
-        }
         if (!this.health.getValue()) {
             return name;
         }

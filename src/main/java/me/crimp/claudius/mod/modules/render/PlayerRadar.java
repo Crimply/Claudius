@@ -69,7 +69,7 @@ public class PlayerRadar extends Module {
                 } else if (claudius.enemyManager.isEnemy(entity.getName())) {
                     claudius.textManager.drawString(str + ChatFormatting.RED + name + ChatFormatting.YELLOW + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 } else {
-                    claudius.textManager.drawString(str + name + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
+                    claudius.textManager.drawString(str + name + ChatFormatting.YELLOW + popStr, X.getValue() + 5, Y.getValue() + i * 10, ColorUtil.toRGBA(255, 255, 255, 255), false);
                 }
             }
         }
