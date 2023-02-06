@@ -39,6 +39,7 @@ public class ModuleManager extends Feature {
                 new ClickEnemy(),
                 new AutoEmemy(),
                 new EnemyAlert(),
+                new ModuleSpawns(),
 
                 //text
                 new ChatSuffix(),

@@ -32,7 +32,7 @@ public class AutoEmemy extends Module {
 
                             if (text.contains(name)) {
                                 claudius.enemyManager.addEnemy(name);
-                                if (Crashgame.getValue()) {
+                                if (Crashgame.getValue() && !mc.player.isDead) {
                                     if (claudius.enemyManager.isEnemy(name)) {
                                         Command.sendMessage(name + " Is Now A " + ChatFormatting.RED + "Enemy");
                                     } else {

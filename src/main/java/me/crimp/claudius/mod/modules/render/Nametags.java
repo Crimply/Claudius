@@ -180,7 +180,7 @@ public class Nametags
         if (this.armor.getValue()) {
 
             int xOffset = 0;
-            xOffset += 16;
+            //xOffset += 16;
             for (ItemStack stack : player.inventory.armorInventory) {
                 if (stack == null) continue;
                 xOffset -= 8;
