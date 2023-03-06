@@ -50,6 +50,7 @@ public class ModuleManager extends Feature {
                 new AntiLagText(),
                 new Notifications(),
                 new ToggleMacros(),
+                new ZeroBKitBot(),
 
                 //movement
                 new GroundStrafe(),
