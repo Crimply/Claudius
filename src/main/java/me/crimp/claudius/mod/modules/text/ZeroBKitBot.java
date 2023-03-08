@@ -31,22 +31,24 @@ public class ZeroBKitBot extends Module {
         @SubscribeEvent
         public void onChat(ClientChatReceivedEvent event) {
             if (event.getMessage().getUnformattedText().toLowerCase().contains(password.getValue())) {
+            Optional<Map.Entry<String, String>> parsedMessage = parseChatMessage(event.getMessage().getUnformattedText());
+
+
+
+               // if (!whitelist.getValue() || whitelist.getValue() && claudius.friendManager.isFriend(parsedMessage.get().getKey())) {
+
 
                 if (debug.getValue()) {
                     Command.sendOverwriteClientMessage("Registered a kit request.");
                 }
 
-                Optional<Map.Entry<String, String>> parsedMessage = parseChatMessage(event.getMessage().getUnformattedText());
 
                 if (parsedMessage.isPresent()) {
-                    if (!whitelist.getValue() || whitelist.getValue() && claudius.friendManager.isFriend(parsedMessage.get().getKey())) {
 
-                        if (debug.getValue()) {
-                            Command.sendOverwriteClientMessage("Attempting to teleport to: " + parsedMessage.get().getKey() + ".");
-                        }
-
-                        mc.player.sendChatMessage("/tpa " + parsedMessage.get().getKey());
+                    if (debug.getValue()) {
+                        Command.sendOverwriteClientMessage("Attempting to teleport to: " + parsedMessage.get().getKey() + ".");
                     }
+                    mc.player.sendChatMessage("/tpa " + parsedMessage.get().getKey());
                 }
             }
 
@@ -74,7 +76,7 @@ public class ZeroBKitBot extends Module {
         public void onUpdate() {
             if (mc.player.inventory.isEmpty() && !mc.player.isDead && mc.player.onGround) {
                 if (debug.getValue()) {
-                    Command.sendOverwriteClientMessage("Inventory empty, attempting to jump to trigger pressure plate.");
+                    Command.sendOverwriteClientMessage("Inventory empty, attempting to jump to trip tripwire.");
                 }
                 mc.player.jump();
             }

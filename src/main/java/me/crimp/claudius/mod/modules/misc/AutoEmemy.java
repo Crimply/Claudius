@@ -11,6 +11,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.SPacketChat;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.AbstractMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class AutoEmemy extends Module {
