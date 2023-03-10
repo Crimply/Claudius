@@ -40,6 +40,7 @@ public class ModuleManager extends Feature {
                 new AutoEmemy(),
                 new EnemyAlert(),
                 new ModuleSpawns(),
+                new NoGlobalSounds(),
 
                 //text
                 new ChatSuffix(),

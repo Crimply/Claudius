@@ -1,4 +1,4 @@
-package me.crimp.claudius.mod.modules.misc;
+package me.crimp.claudius.mod.modules.render;
 
 import me.crimp.claudius.event.events.Render3DEvent;
 import me.crimp.claudius.mod.modules.Module;
@@ -19,12 +19,11 @@ public class ModuleSpawns
     public Setting<Integer> green = register(new Setting("Green",85, 0, 255));
     public Setting<Integer> blue = register(new Setting("Blue", 185, 0, 255));
     public Setting<Integer> alpha = register(new Setting("Alpha", 51, 0, 255));
-    public Setting<Integer> SiZe = register(new Setting("SiZe", 51, 0, 255));
     public static Color color8;
     public static HashMap<UUID, Thingering> thingers;
 
     public ModuleSpawns() {
-        super("Spawns", "Spawns", Category.Misc,false,false);
+        super("Spawns", "Spawns", Category.Render,false,false);
     }
 
     @Override

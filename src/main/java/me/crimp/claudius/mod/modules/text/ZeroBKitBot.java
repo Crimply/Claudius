@@ -41,15 +41,10 @@ public class ZeroBKitBot extends Module {
                 if (debug.getValue()) {
                     Command.sendOverwriteClientMessage("Registered a kit request.");
                 }
-
-
-                if (parsedMessage.isPresent()) {
-
-                    if (debug.getValue()) {
-                        Command.sendOverwriteClientMessage("Attempting to teleport to: " + parsedMessage.get().getKey() + ".");
-                    }
-                    mc.player.sendChatMessage("/tpa " + parsedMessage.get().getKey());
+                if (debug.getValue()) {
+                    Command.sendOverwriteClientMessage("Attempting to teleport to: " + parsedMessage.get().getKey() + ".");
                 }
+                mc.player.sendChatMessage("/tpa " + parsedMessage.get().getKey());
             }
 
             if (event.getMessage().getUnformattedText().contains("teleporting to:")) {
