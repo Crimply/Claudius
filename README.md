@@ -19,6 +19,6 @@ gradlew build <br>
 <hr>
 <p align="center">
 <a> J for gui open and ! is Commands</a>
-<br> If Ur Too Dumb To Fiure that out STOP running smaller clients
+<br> If Ur Too Dumb To Figure that out STOP running smaller clients
 
 <img src="https://raw.githubusercontent.com/Crimply/Claudius/main/src/main/resources/title.png"/>
